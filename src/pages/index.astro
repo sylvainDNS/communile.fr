@@ -1,170 +1,23 @@
 ---
-import SocialLink from '@components/SocialLink.astro'
-import Layout from '@layouts/Layout.astro'
-import { Image } from 'astro:assets'
+import '../styles/global.css';
+
+import Button from '../components/Button.astro';
+
+
 ---
 
-<Layout title="Commun'Île">
-  <header class='bg-gray-100 py-6 px-4 md:px-6'>
-    <div class='container mx-auto flex items-center justify-between'>
-      <a class='text-2xl font-bold text-gray-900' href='/'>
-        <Image
-          src='/logo_solo_center.png'
-          aria-hidden
-          alt=''
-          width='70'
-          height='70'
-          class='inline'
-        />
-        Commun'Île
-      </a>
-    </div>
-  </header>
-  <main>
-    <section class='py-12 md:py-20 bg-gray-50'>
-      <div class='container mx-auto px-4 md:px-6'>
-        <div class='grid md:grid-cols-2 gap-8'>
-          <div>
-            <h1 class='text-3xl md:text-4xl font-bold text-gray-900 mb-4'>
-              Commun'Île, archipel des communs
-            </h1>
-            <p class='text-gray-600 mb-8'>
-              Favoriser l'émergence et le soutien d'activités en cohérence avec
-              nos valeurs afin de créer des nouvelles formes de solidarités
-              entre les citoyens, acteurs, métiers, territoires.
-            </p>
-            <p class='text-gray-600 mb-8'>
-              Commun'Île est un archipel de lieux et d'initiatives qui
-              expérimentent des formes de gouvernance et de coopération
-              alternatives, pour une société plus juste, plus solidaire et plus
-              écologique.
-            </p>
-          </div>
-          <div class='hidden md:block'>
-            <Image
-              src='/wall_01.jpg'
-              alt='Un mur coloré avec un palmier et un oiseau. Une scène tropicale pleine de couleurs vives et de nature exotique.'
-              width='600'
-              height='400'
-              class='rounded-lg'
-              style='aspect-ratio: 600 / 400; object-fit: cover;'
-            />
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class='py-12 md:py-20'>
-      <div class='container mx-auto px-4 md:px-6'>
-        <h2 class='text-2xl md:text-3xl font-bold text-gray-900 mb-8'>
-          Nos lieux
-        </h2>
-        <div class='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8'>
-          <div class='bg-white rounded-lg shadow-md overflow-hidden'>
-            <Image
-              src='/wattignies.jpg'
-              width='400'
-              height='250'
-              alt='Le Wattignies'
-              class='w-full h-48 object-cover'
-              style='aspect-ratio: 400 / 250; object-fit: cover;'
-            />
-            <div class='p-4'>
-              <h3 class='text-xl font-bold text-gray-900 mb-2'>
-                Le Wattignies
-              </h3>
-              <div class='flex space-x-4 mb-4'>
-                <SocialLink
-                  variant='facebook'
-                  href='https://www.facebook.com/WattigniesNantesOfficiel/'
-                  alt='Page Facebook du Wattignies'
-                />
-                <SocialLink
-                  variant='instagram'
-                  href='https://www.instagram.com/wattigniesnantes/'
-                  alt='Page Instagram du Wattignies'
-                />
-              </div>
-            </div>
-          </div>
-          <div class='bg-white rounded-lg shadow-md overflow-hidden'>
-            <Image
-              src='/bar_ile.jpg'
-              width='400'
-              height='250'
-              alt="Le Bar'Île"
-              class='w-full h-48 object-cover'
-              style='aspect-ratio: 400 / 250; object-fit: cover;'
-            />
-            <div class='p-4'>
-              <h3 class='text-xl font-bold text-gray-900 mb-2'>Le Bar'Île</h3>
-              <div class='flex space-x-4 mb-4'>
-                <SocialLink
-                  variant='facebook'
-                  href='https://www.facebook.com/lebarilenantes/'
-                  alt="Page Facebook du Bar'Île"
-                />
-                <SocialLink
-                  variant='instagram'
-                  href='https://www.instagram.com/lebarilenantes/'
-                  alt="Page Instagram du Bar'Île"
-                />
-              </div>
-            </div>
-          </div>
-          <div class='bg-white rounded-lg shadow-md overflow-hidden'>
-            <Image
-              src='/labo_diva.jpg'
-              width='400'
-              height='250'
-              alt='Le Labo Diva'
-              class='w-full h-48 object-cover'
-              style='aspect-ratio: 400 / 250; object-fit: cover;'
-            />
-            <div class='p-4'>
-              <h3 class='text-xl font-bold text-gray-900 mb-2'>Le Labo Diva</h3>
-              <div class='flex space-x-4 mb-4'>
-                <SocialLink
-                  variant='facebook'
-                  href='https://www.facebook.com/labodiva/'
-                  alt='Page Facebook du Labo Diva'
-                />
-                <SocialLink
-                  variant='instagram'
-                  href='https://www.instagram.com/labodiva/'
-                  alt='Page Instagram du Labo Diva'
-                />
-              </div>
-            </div>
-          </div>
-          <div class='bg-white rounded-lg shadow-md overflow-hidden'>
-            <Image
-              src='/logo_landes_fertiles.png'
-              width='400'
-              height='250'
-              alt='Les Landes Fertiles'
-              class='w-full h-48 object-cover'
-              style='aspect-ratio: 400 / 250; object-fit: cover;'
-            />
-            <div class='p-4'>
-              <h3 class='text-xl font-bold text-gray-900 mb-2'>
-                Les Landes Fertiles
-              </h3>
-              <div class='flex space-x-4 mb-4'>
-                <SocialLink
-                  variant='facebook'
-                  href='https://www.facebook.com/Leslandesfertiles/'
-                  alt='Page Facebook des Landes Fertiles'
-                />
-                <SocialLink
-                  variant='instagram'
-                  href='https://www.instagram.com/landes_fertiles/'
-                  alt='Page Instagram des Landes Fertiles'
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-</Layout>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Commun'Île</title>
+	</head>
+
+	<body>
+		<div class="grid place-items-center h-screen content-center">
+			<Button>Tailwind Button in Astro!</Button>
+		</div>
+	</body>
+</html>
