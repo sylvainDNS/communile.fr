@@ -41,6 +41,7 @@ Styling
 - Leverage global styles when necessary, importing them in layouts.
 - Utilize CSS preprocessing with Sass or Less if required.
 - Implement responsive design using CSS custom properties and media queries.
+- Use Tailwind 4 classes for styling
 
 Performance Optimization
 - Minimize use of client-side JavaScript; leverage Astro's static generation.
