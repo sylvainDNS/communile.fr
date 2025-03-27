@@ -1,0 +1,62 @@
+---
+import { cn } from '../lib/style'
+
+interface IconDefinition {
+  viewBox: string
+  path: string
+  type?: 'stroke' | 'fill'
+}
+
+const icons = {
+  menu: {
+    viewBox: '0 0 24 24',
+    path: 'M4 12H20M4 6H20M4 18H20',
+    type: 'stroke',
+  },
+} satisfies Record<string, IconDefinition>
+
+export interface Props {
+  name: keyof typeof icons
+  size?: string | number
+  class?: string
+  color?: string
+  title?: string
+  fill?: boolean
+}
+
+const {
+  name,
+  size = 24,
+  class: className,
+  color = 'currentColor',
+  title,
+  fill = false,
+} = Astro.props
+
+const sizeStyle = typeof size === 'number' ? `${size}px` : size
+
+const selectedIcon = icons[name]
+const iconType = fill ? 'fill' : selectedIcon.type || 'stroke'
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width={sizeStyle}
+  height={sizeStyle}
+  viewBox={selectedIcon.viewBox}
+  fill={iconType === 'fill' ? color : 'none'}
+  stroke={iconType === 'stroke' ? color : 'none'}
+  class={cn(
+    iconType === 'stroke' ? 'stroke-2' : '',
+    className
+  )}
+  aria-hidden={title ? "false" : "true"}
+  role={title ? "img" : "presentation"}
+>
+  {title && <title>{title}</title>}
+  <path
+    stroke-linecap={iconType === 'stroke' ? "round" : undefined}
+    stroke-linejoin={iconType === 'stroke' ? "round" : undefined}
+    d={selectedIcon.path}
+  />
+</svg> 

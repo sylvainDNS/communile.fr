@@ -1,0 +1,20 @@
+---
+import Icon from './icon.astro'
+import Link from './link.astro'
+import Button from './button.astro'
+import { SITE_NAME } from '../lib/constants'
+---
+
+<header class="bg-white rounded-sm m-2 px-4 py-3 flex items-center justify-between">
+  <Link href="/" class="font-bold uppercase text-neutral-800 hover:text-neutral-700">
+    {SITE_NAME}
+  </Link>
+  
+  <Button 
+    type="button" 
+    class="p-2 text-neutral-800 rounded-md hover:bg-neutral-100"
+    aria-label="Open menu"
+  >
+    <Icon name="menu" size={24} />
+  </Button>
+</header>
