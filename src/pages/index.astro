@@ -1,21 +1,12 @@
 ---
+import Layout from '../layouts/main.astro'
 import '../styles/global.css'
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Commun'Île</title>
-	</head>
-
-	<body>
-		<div class="grid place-items-center h-screen content-center">
-			<p class="text-neutral-500 font-sans text-8xl">Hello Inter</p>
-			<p class="text-neutral-500 font-rubik text-8xl">Hello Rubik</p>
-			<p class="text-neutral-500 font-pally text-8xl">Hello Pally</p>
-		</div>
-	</body>
-</html>
+<Layout>
+	<main class="grid place-items-center h-screen content-center">
+		<p class="text-neutral-500 font-sans text-8xl">Hello Inter</p>
+		<p class="text-neutral-500 font-rubik text-8xl">Hello Rubik</p>
+		<p class="text-neutral-500 font-pally text-8xl">Hello Pally</p>
+	</main>
+</Layout>
