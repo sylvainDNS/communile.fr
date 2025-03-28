@@ -1,0 +1,82 @@
+---
+description: Astro guidelines
+globs: 
+alwaysApply: true
+---
+
+# Astro guidelines
+
+Refer to Astro's official documentation for detailed information on components, routing, and integrations for best practices.
+
+## Components
+
+- Create .astro files for Astro components.
+- Use framework-specific components (React, Vue, Svelte) only as a last resort.
+- Use PascalCase for component names, but keep the file name in kebab-case.
+- Use Astro's component props combined with TypeScript for data passing.
+- Don't generate usage docs for components
+
+## Routing and pages
+
+- Use Astro's file-based routing system in the src/pages/ directory.
+- Implement proper 404 handling with a 404.astro page.
+
+## Styling
+
+- Use Tailwind CSS 4 for styling
+
+### Tailwind CSS Best Practices
+
+- Use Tailwind utility classes extensively in your Astro components.
+- Leverage Tailwind's responsive design utilities (sm:, md:, lg:, etc.).
+- Utilize Tailwind's color palette and spacing scale for consistency.
+- Implement custom theme extensions in [global.css](mdc:src/styles/global.css) when necessary.
+- Never use the @apply directive
+
+### Typography
+
+- Inter is the main font for headings and body text
+- Pally is the secondary font for special headings
+- Inter is named as `font-sans`
+- Pally is named as `font-pally`
+- Rubik is named as `font-rubik`
+
+## Performance Optimization
+
+- Minimize use of client-side JavaScript; leverage Astro's static generation.
+- Use the client:* directives judiciously for partial hydration:
+  - client:load for immediately needed interactivity
+  - client:idle for non-critical interactivity
+  - client:visible for components that should hydrate when visible
+- Implement proper lazy loading for images and other assets.
+
+## SEO and Meta Tags
+
+- Use Astro's <head> tag for adding meta information.
+- Implement canonical URLs for proper SEO.
+- Use the <SEO> component pattern for reusable SEO setups.
+
+## Integrations and Plugins
+
+- Implement proper configuration for integrations in astro.config.mjs.
+- Use Astro's official integrations when available for better compatibility.
+
+## Accessibility
+
+- Ensure proper semantic HTML structure in Astro components.
+- Implement ARIA attributes where necessary.
+- Ensure keyboard navigation support for interactive elements.
+- Prefer using the <VisuallyHidden> component for hidden content rather than the aria-label attribute.
+
+## Key Conventions
+
+1. Follow Astro's Style Guide for consistent code formatting.
+2. Use TypeScript for enhanced type safety and developer experience.
+3. Implement proper error handling and logging.
+4. Use Astro's Image component for optimized image delivery.
+
+## Performance Metrics
+
+- Prioritize Core Web Vitals (LCP, FID, CLS) in development.
+- Use Lighthouse and WebPageTest for performance auditing.
+- Implement performance budgets and monitoring.
