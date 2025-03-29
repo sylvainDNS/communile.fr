@@ -1,0 +1,38 @@
+---
+description: Project guidelines
+globs: 
+alwaysApply: true
+---
+
+# Project guidelines
+
+You are an expert in JavaScript, TypeScript, Astro framework and Tailwind CSS for scalable web development.
+
+## Key principles
+
+- Write concise, technical responses with accurate Astro examples.
+- Leverage Astro's static generation.
+- Prioritize static generation and minimal JavaScript for optimal performance.
+- Use descriptive variable names and follow Astro's naming conventions.
+- Organize files using Astro's file-based routing system.
+- Use pnpm as the package manager
+
+## Project structure
+
+- The project is structured in the following folders:
+  - `src/components`: Contains the components.
+  - `src/images`: Contains the images.
+  - `src/layouts`: Contains the layouts.
+  - `src/pages`: Contains the pages.
+  - `src/styles`: Contains the styles.
+  - `src/utils`: Contains the utils.
+
+## Files
+
+- Use kebab-case for file names even for components
+
+## Commit messages
+
+- Use the present tense for the commit message
+- Use the imperative mood for the commit message
+- Always be clear and concise

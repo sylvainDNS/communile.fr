@@ -1,0 +1,32 @@
+---
+import Footer from '../components/footer.astro'
+import Header from '../components/header.astro'
+import { SITE_NAME } from '../utils/constants'
+import '../styles/global.css'
+
+interface Props {
+  content?: {
+    title?: string
+  }
+}
+
+const { content } = Astro.props
+
+const title = content?.title ? `${content.title} · ${SITE_NAME}` : SITE_NAME
+---
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body class="bg-neutral-100 p-2 pt-0 flex gap-12 flex-col min-h-screen">
+	  <Header />
+    <main class="flex-grow grid gap-12 place-items-center content-center">
+      <slot />
+    </main>
+    <Footer class="mt-auto" />
+  </body>
+</html>

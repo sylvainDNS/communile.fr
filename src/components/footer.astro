@@ -1,0 +1,119 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+import { Image } from 'astro:assets'
+
+import logo from '../images/communile-logo.png'
+import { PATH, SITE_NAME } from '../utils/constants'
+
+import { cn } from '../utils/style'
+
+import Icon from './icon.astro'
+import Link from './link.astro'
+import VisuallyHidden from './visually-hidden.astro'
+
+type Props = HTMLAttributes<'footer'>
+const { class: className, ...delegated } = Astro.props
+---
+
+<footer class={cn("relative bg-neutral-950 text-white py-12 px-4 space-y-20 [&_a]:hover:text-neutral-300 [&_a]:hover:underline", className)} {...delegated}>
+  <!-- Quarter Circles -->
+  <div role="presentation" aria-hidden="true" class="m-0 absolute top-0 left-0 rounded-br-full bg-blue-600 w-1/3 max-w-32 aspect-square"></div>
+  <div role="presentation" aria-hidden="true" class="m-0 absolute bottom-0 right-0 w-1/2 max-w-[472px] min-w-56 flex">
+    <div class="rounded-tl-full bg-yellow-500 w-1/3 aspect-square self-end"></div>
+    <div class="rounded-tl-full bg-red-500 w-2/3 aspect-square"></div>
+  </div>
+  
+  <div class="space-y-12 relative z-10">
+    <!-- Brand and Mission -->
+    <div class="space-y-5">
+      <h2>
+        <Link href={PATH.HOME} class="font-bold uppercase flex items-center gap-3">
+          <Image src={logo} alt="" aria-hidden="true" role="presentation" width={40} height={40} />
+          {SITE_NAME}
+        </Link>
+      </h2>
+      <p class="text-lg text-balance">
+        Offrir à toutes et tous des espaces ouverts, accessibles et des moments conviviaux, en proposant des produits et services de qualité, à prix juste.
+      </p>
+    </div>
+    
+    <!-- Footer Links -->
+    <div class="grid grid-cols-2 gap-6 font-bold">
+      <!-- Column 1: Locations -->
+      <div class="space-y-8">
+        <h3>
+          <Link href={PATH.HOME}>Commun'île</Link>
+        </h3>
+        <ul class="space-y-4">
+          <li>
+            <Link href={PATH.LE_WATTIGNIES}>Le Wattignies</Link>
+          </li>
+          <li>
+            <Link href={PATH.LES_LANDES_FERTILES}>Les Landes Fertiles</Link>
+          </li>
+          <li>
+            <Link href={PATH.LE_LABO_DIVA}>Le Labo Diva</Link>
+          </li>
+          <li>
+            <Link href={PATH.LE_BARILE}>Le Bar'Île</Link>
+          </li>
+          <li>
+            <Link href={PATH.A_LA_CARTE_POSTALE}>À La Carte Postale</Link>
+          </li>
+        </ul>
+      </div>
+      
+      <!-- Column 2: About -->
+      <div class="space-y-8">
+        <h3>
+          <Link href={PATH.QUI_SOMMES_NOUS}>Qui sommes-nous ?</Link>
+        </h3>
+        <ul class="space-y-4">
+          <li>
+            <Link href={PATH.NOTRE_CONCEPT}>Notre concept</Link>
+          </li>
+          <li>
+            <Link href={PATH.EN_QUELLES_CHIFFRES}>En quelques chiffres</Link>
+          </li>
+          <li>
+            <Link href={PATH.SCIC}>SCIC</Link>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+    
+  <!-- Copyright and Social Links -->
+  <div class="space-y-4 border-t border-b border-white py-8 px-4 relative z-10">
+    <p class="text-xs text-center">Copyright © Commun'île</p>
+    
+    <!-- Social Icons -->
+    <div class="flex flex-wrap gap-7 justify-center">
+      <Link href="#" title="Facebook">
+        <VisuallyHidden>Facebook</VisuallyHidden>
+        <Icon name="facebook" size={20} />
+      </Link>
+      <Link href="#" title="Twitter/X">
+        <VisuallyHidden>Twitter/X</VisuallyHidden>
+        <Icon name="twitter" size={20} />
+      </Link>
+      <Link href="#" title="Instagram">
+        <VisuallyHidden>Instagram</VisuallyHidden>
+        <Icon name="instagram" size={20} />
+      </Link>
+      <Link href="#" title="YouTube">
+        <VisuallyHidden>YouTube</VisuallyHidden>
+        <Icon name="youtube" size={20} />
+      </Link>
+      <Link href="#" title="LinkedIn">
+        <VisuallyHidden>LinkedIn</VisuallyHidden>
+        <Icon name="linkedin" size={20} />
+      </Link>
+      <Link href="#" title="TikTok">
+        <VisuallyHidden>TikTok</VisuallyHidden>
+        <Icon name="tiktok" size={20} />
+      </Link>
+    </div>
+  </div>
+</footer> 
