@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets'
 
 import logo from '../images/communile-logo.png'
-import { SITE_NAME } from '../utils/constants'
+import { PATH, SITE_NAME } from '../utils/constants'
 
 import Button from './button.astro'
 import Icon from './icon.astro'
@@ -11,7 +11,7 @@ import VisuallyHidden from './visually-hidden.astro'
 ---
 
 <header class="bg-white rounded-sm m-2 px-4 py-3 flex items-center justify-between">
-  <Link href="/" class="font-bold uppercase text-neutral-800 hover:text-neutral-700 flex items-center gap-3">
+  <Link href={PATH.HOME} class="font-bold uppercase text-neutral-800 hover:text-neutral-700 flex items-center gap-3">
     <Image src={logo} alt="" aria-hidden="true" role="presentation" width={40} height={40} />
     {SITE_NAME}
   </Link>
