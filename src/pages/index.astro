@@ -1,10 +1,14 @@
 ---
+import Hero from '../components/hero.astro'
 import Layout from '../layouts/main.astro'
-import '../styles/global.css'
+
+import heroImage from '../images/communile-hero.jpg'
 ---
 
 <Layout>
-	<p class="text-neutral-500 font-sans text-8xl">Hello Inter</p>
-	<p class="text-neutral-500 font-rubik text-8xl">Hello Rubik</p>
-	<p class="text-neutral-500 font-pally text-8xl">Hello Pally</p>
+	<Hero
+		title="Archipel de(s) communs"
+		image={heroImage}
+		imageAlt="Un mur peint avec les couleurs du logo. Le fond est bleu, des plantes rouges serpentent le long du mur. En haut, Commun'île est écrit en gros, en jaune. Les différents noms de lieux sont écrits de part et d'autre, en gris. Des photos Polaroid de différents moments de vie sont collées sur le mur."
+	/>
 </Layout>
