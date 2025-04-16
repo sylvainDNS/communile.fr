@@ -41,6 +41,12 @@
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
+@theme inline {
+  --color-primary: var(--color-watt-blue);
+  --color-secondary: var(--color-watt-red);
+  --color-tertiary: var(--color-watt-yellow);
+}
+
 :root {
   @apply antialiased font-sans;
 }
