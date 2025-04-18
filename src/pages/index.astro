@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets'
 
+import Card from '../components/card.astro'
 import Hero from '../components/hero.astro'
 import Icon from '../components/icon.astro'
 import Link from '../components/link.astro'
@@ -15,6 +16,10 @@ import leBarIleCardImage from '../images/le-bar-ile-card.jpg'
 import leLaboDivaCardImage from '../images/le-labo-diva-card.jpg'
 import leWattigniesCardImage from '../images/le-wattignies-card.jpg'
 import lesLandesFertilesCardImage from '../images/les-landes-fertiles-card.jpg'
+
+import illuAccompagnerTransitionImage from '../images/communile-illu-accompagner-transition.png'
+import illuCreerLienImage from '../images/communile-illu-creer-lien.png'
+import illuCreerModeleImage from '../images/communile-illu-creer-modele.png'
 
 import { PATH } from '../utils/constants'
 ---
@@ -161,5 +166,73 @@ import { PATH } from '../utils/constants'
 				</span>
 			</span>
 		</Link>
+	</Section>
+
+	<Section class="space-y-6">
+		<h2 class="text-2xl text-center font-medium font-pally">
+			Commun’Île, c’est quoi ?
+		</h2>
+		<ul class="space-y-3">
+			<li>
+				<Card class="bg-watt-blue text-white relative overflow-hidden">
+					<div class="relative z-10">
+						<h3 class="text-2xl font-medium font-pally">
+							Accompagner la transition alimentaire
+						</h3>
+						<Text class="font-medium">
+							Faire autrement : production, consommation, travail, gouvernance, répartition des richesses... Commun'ile fait le pari d'une économie au service de l'humain et du vivant, et ancré sur son territoire.
+						</Text>
+						<Text class="font-pally text-blue-200 font-bold text-2xl balance">
+							Défendre un modèle de la fourche à la fourchette
+						</Text>
+					</div>
+					<Image
+						src={illuAccompagnerTransitionImage}
+						alt="Illustration de la transition alimentaire"
+						class="absolute bottom-0 right-0"
+					/>
+				</Card>
+			</li>
+			<li>
+				<Card class="bg-watt-yellow text-white relative overflow-hidden">
+					<div class="relative z-10">
+						<h3 class="text-2xl font-medium font-pally mb-3">
+							Créer du lien social et favoriser la citoyenneté
+						</h3>
+						<Text class="font-medium">
+							Casser la croûte, se faire des confidences autour d'un verre, vivre l'émotion d'un concert enjaillé, soutenir des initiatives locales... autant de moments qui permettent de tisser des liens avec celles et ceux qu'on connait jamais assez.
+						</Text>
+						<Text class="font-pally text-yellow-700 font-bold text-2xl balance">
+							Provoquer des rencontres et des échanges
+						</Text>
+					</div>
+					<Image
+					  src={illuCreerLienImage}
+						alt="Illustration de la création de liens sociaux"
+						class="absolute bottom-0 right-0"
+					/>
+				</Card>
+			</li>
+			<li>
+				<Card class="bg-watt-red text-white relative overflow-hidden">
+					<div class="relative z-10">
+						<h3 class="text-2xl font-medium font-pally mb-3">
+							Créer un modèle innovant
+						</h3>
+						<Text class="font-medium">
+							Faire autrement : production, consommation, travail, gouvernance, répartition des richesses... Commun'ile fait le pari d'une économie au service de l'humain et du vivant, et ancré sur son territoire.
+						</Text>
+						<Text class="font-pally text-red-50 font-bold text-2xl balance">
+							Construire une économie alternative et démocratique
+						</Text>
+					</div>
+					<Image
+						src={illuCreerModeleImage}
+						alt="Illustration de la création d'un modèle innovant"
+						class="absolute bottom-0 right-0"
+					/>
+				</Card>
+			</li>
+		</ul>
 	</Section>
 </Layout>

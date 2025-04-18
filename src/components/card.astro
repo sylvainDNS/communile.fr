@@ -1,0 +1,12 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+import { cn } from '../utils/style'
+
+type Props = HTMLAttributes<'article'>
+const { class: className, ...delegated } = Astro.props
+---
+
+<article class={cn('bg-white rounded-2xl w-full p-8', className)} {...delegated}>
+  <slot />
+</article>
