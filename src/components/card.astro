@@ -5,7 +5,7 @@ import { cn } from '../utils/style'
 
 interface Props extends HTMLAttributes<'article'> {
   size?: 'medium' | 'small'
-  radius?: 'rounded' | 'diagonal'
+  radius?: 'rounded' | 'diagonal' | 'top-right'
 }
 
 const {
@@ -23,6 +23,7 @@ const {
 			'p-8 rounded-2xl': size === 'medium',
 			'p-4 rounded-lg': size === 'small',
       'rounded-tl-5xl rounded-br-5xl': radius === 'diagonal',
+      'rounded-tr-5xl': radius === 'top-right',
     },
 		className
 	)}

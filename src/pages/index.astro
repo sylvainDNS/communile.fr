@@ -21,7 +21,8 @@ import illuAccompagnerTransitionImage from '../images/communile-illu-accompagner
 import illuCreerAgirImage from '../images/communile-illu-agir.png'
 import illuCreerLienImage from '../images/communile-illu-creer-lien.png'
 import illuCreerModeleImage from '../images/communile-illu-creer-modele.png'
-
+import illuScicImage from '../images/communile-illu-scic.png'
+import ShapeHexagon01 from '../images/shape-hexagon-01.svg'
 import ShapeHook01 from '../images/shape-hook-01.svg'
 import ShapeHook02 from '../images/shape-hook-02.svg'
 import ShapeWaves01 from '../images/shape-waves-01.svg'
@@ -269,7 +270,7 @@ import { PATH } from '../utils/constants'
 						</Tag>
 						<Text>
 							Comme une évidence, une nécessité
-							<Icon name="users" size="40" class="ml-auto p-2" />
+							<Icon name="users-round" size="40" class="ml-auto p-2" />
 						</Text>
 					</Card>
 				</li>
@@ -367,12 +368,83 @@ import { PATH } from '../utils/constants'
 				<div class="rounded-l-full overflow-hidden h-60 -mr-6">
 					<Image
 						src={illuCreerAgirImage}
-						height={500}
+						width={350}
 						alt="À l'intérieur du Labo Diva, un marché est installé. Des cageots de courges, blettes, patates douces, salade et autres légumes sont disposés sur des tables. Des petites pancartes noires indiquent les prix des légumes."
 						class="h-full w-full object-cover"
 					/>
 				</div>
 			</div>
 		</div>
+	</Section>
+
+	<Section class="bg-transparent relative">
+		<ShapeHexagon01 role="presentation" aria-hidden="true" class="absolute -top-3 -right-2 w-40 h-auto" />
+		<div class="space-y-6 relative z-10">
+			<h2 class="grid grid-rows-3 justify-items-start text-white uppercase font-pally font-bold text-5xl leading-normal -mx-3"> 
+				<span class="inline-block rounded-full bg-primary px-4 -rotate-7 z-10">Le choix</span>
+				<span class="inline-block rounded-full bg-tertiary px-4 -rotate-11 -translate-y-8 translate-x-33">de la</span>
+				<span class="inline-block rounded-full bg-secondary px-4 rotate-4 -translate-y-11 translate-x-2">coopérative</span>
+			</h2>
+			<article class="space-y-4">
+				<h3 class="text-2xl font-medium font-pally">
+					Commun'île est une SCIC : société coopérative d'intérêt collectif.
+				</h3>
+				<Text>
+					Le choix du statut coopératif traduit la volonté de notre collectif de lier projet politique et activité économique, dans le respect de valeurs démocratique. C'est un choix engageant, de faire économie autrement.
+				</Text>
+				<Text>
+					Tu veux devenir sociétaire ? Contactez-nous pour plus d'information à <Link href="mailto:gerance@communile.fr">gerance@communile.fr</Link>
+				</Text>
+				<div class="rounded-2xl overflow-hidden h-72">
+					<Image
+						src={illuScicImage}
+						alt="Une photo prise en plongée dans le Labo Diva. Le plan d'un futur bâtiment recouvre une grande table en bois. Des personnes sont debout autour, et participent à un atelier avec des Lego."
+						class="h-full w-full object-cover"
+						width={330}
+					/>
+				</div>
+			</article>
+
+			<Card size="small" radius="top-right" class="space-y-6">
+				<h3 class="flex items-center gap-2 text-center text-2xl font-medium font-pally">
+					<span class="inline-block bg-neutral-200 rounded-lg p-2">
+						<Icon name="glasses" size="24"/>
+					</span>
+					<span class="mx-auto">
+						Société commerciale à but non lucratif
+					</span>
+				</h3>
+				<Text>
+					La SCIC existe par la constitution d’un capital social. Elle crée un patrimoine commun par la mise en réserves impartageables de ses excédents de gestion.
+				</Text>
+			</Card>
+			<Card size="small" radius="top-right" class="space-y-6">
+				<h3 class="flex items-center gap-2 text-center text-2xl font-medium font-pally">
+					<span class="inline-block bg-neutral-200 rounded-lg p-2">
+						<Icon name="users-round" size="24"/>
+					</span>
+					<span class="mx-auto">
+						Coopérative : 1 personne = 1 voix
+					</span>
+				</h3>
+				<Text>
+					Les coopératives sont caractérisées par des principes et des valeurs universelles : l’humain avant le profit, la prise de décision démocratique, la résilience et le durable...
+				</Text>
+			</Card>
+			<Card size="small" radius="top-right" class="space-y-6">
+				<h3 class="flex items-center gap-2 text-center text-2xl font-medium font-pally">
+					<span class="inline-block bg-neutral-200 rounded-lg p-2">
+						<Icon name="smile" size="24"/>
+					</span>
+					<span class="mx-auto">
+						Intérêt Collectif
+					</span>
+				</h3>
+				<Text>
+					C’est une société où participent à la prise de décisions les salarié·es, les usager·es, les partenaires et les collectivités qui en sont parties prenantes et en détiennent le capital sous forme de parts sociales.
+				</Text>
+			</Card>
+		</div>
+		<ShapeHexagon01 role="presentation" aria-hidden="true" class="absolute -translate-y-16 -left-16 w-80 h-auto" />
 	</Section>
 </Layout>
