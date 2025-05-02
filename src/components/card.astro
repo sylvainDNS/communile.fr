@@ -3,10 +3,30 @@ import type { HTMLAttributes } from 'astro/types'
 
 import { cn } from '../utils/style'
 
-type Props = HTMLAttributes<'article'>
-const { class: className, ...delegated } = Astro.props
+interface Props extends HTMLAttributes<'article'> {
+  size?: 'medium' | 'small'
+  radius?: 'rounded' | 'diagonal'
+}
+
+const {
+  class: className,
+  size = 'medium',
+  radius = 'rounded',
+  ...delegated
+} = Astro.props
 ---
 
-<article class={cn('bg-white rounded-2xl w-full p-8', className)} {...delegated}>
-  <slot />
+<article
+	class={cn(
+  'bg-white w-full',
+		{
+			'p-8 rounded-2xl': size === 'medium',
+			'p-4 rounded-lg': size === 'small',
+      'rounded-tl-5xl rounded-br-5xl': radius === 'diagonal',
+    },
+		className
+	)}
+	{...delegated}
+>
+	<slot />
 </article>

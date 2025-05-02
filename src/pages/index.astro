@@ -21,6 +21,9 @@ import illuAccompagnerTransitionImage from '../images/communile-illu-accompagner
 import illuCreerLienImage from '../images/communile-illu-creer-lien.png'
 import illuCreerModeleImage from '../images/communile-illu-creer-modele.png'
 
+import ShapeWaves01 from '../images/shape-waves-01.svg'
+import ShapeWaves02 from '../images/shape-waves-02.svg'
+
 import { PATH } from '../utils/constants'
 ---
 
@@ -234,5 +237,84 @@ import { PATH } from '../utils/constants'
 				</Card>
 			</li>
 		</ul>
+	</Section>
+
+	<Section class="bg-yellow-500 relative overflow-hidden">
+		<ShapeWaves01 role="presentation" aria-hidden="true" class="absolute top-0 right-0" />
+		<ShapeWaves02 role="presentation" aria-hidden="true" class="absolute bottom-0 left-0" />
+
+		<div class="relative z-10 space-y-6">
+			<h2 class="text-2xl text-center font-medium font-pally text-yellow-900">
+				Nos valeurs
+			</h2>
+			<ul class="space-y-6">
+				<li>
+					<Card size="small" radius="diagonal" class="space-y-2">
+						<Tag>
+							Convivialité
+						</Tag>
+						<Text>
+							Comme un préalable et une première façon de créer du collectif
+							<Icon name="home" size="40" class="ml-auto p-2" />
+						</Text>
+					</Card>
+				</li>
+				<li>
+					<Card size="small" radius="diagonal" class="space-y-2">
+						<Tag>
+							Solidarité
+						</Tag>
+						<Text>
+							Comme une évidence, une nécessité
+							<Icon name="users" size="40" class="ml-auto p-2" />
+						</Text>
+					</Card>
+				</li>
+				<li>
+					<Card size="small" radius="diagonal" class="space-y-2">
+						<Tag>
+							Inclusion
+						</Tag>
+						<Text>
+							Pour être des lieux de vie et d’expérimentation
+							<Icon name="sparkles" size="40" class="ml-auto p-2" />
+						</Text>
+					</Card>
+				</li>
+				<li>
+					<Card size="small" radius="diagonal" class="space-y-2">
+						<Tag>
+							Durabilité
+						</Tag>
+						<Text>
+							Comme un pré-requis non négociable
+							<Icon name="sun" size="40" class="ml-auto p-2" />
+						</Text>
+					</Card>
+				</li>
+				<li>
+					<Card size="small" radius="diagonal" class="space-y-2">
+						<Tag>
+							Ancrage local
+						</Tag>
+						<Text>
+							Pour agir en symbiose avec notre environnement
+							<Icon name="sprout" size="40" class="ml-auto p-2" />
+						</Text>
+					</Card>
+				</li>
+				<li>
+					<Card size="small" radius="diagonal" class="space-y-2">
+						<Tag>
+							Accessibilité
+						</Tag>
+						<Text>
+							Un mantra pour rendre le choix possible à tous les niveaux
+							<Icon name="spell-check" size="40" class="ml-auto p-2" />
+						</Text>
+					</Card>
+				</li>
+			</ul>
+		</div>
 	</Section>
 </Layout>
