@@ -18,9 +18,12 @@ import leWattigniesCardImage from '../images/le-wattignies-card.jpg'
 import lesLandesFertilesCardImage from '../images/les-landes-fertiles-card.jpg'
 
 import illuAccompagnerTransitionImage from '../images/communile-illu-accompagner-transition.png'
+import illuCreerAgirImage from '../images/communile-illu-agir.png'
 import illuCreerLienImage from '../images/communile-illu-creer-lien.png'
 import illuCreerModeleImage from '../images/communile-illu-creer-modele.png'
 
+import ShapeHook01 from '../images/shape-hook-01.svg'
+import ShapeHook02 from '../images/shape-hook-02.svg'
 import ShapeWaves01 from '../images/shape-waves-01.svg'
 import ShapeWaves02 from '../images/shape-waves-02.svg'
 
@@ -315,6 +318,61 @@ import { PATH } from '../utils/constants'
 					</Card>
 				</li>
 			</ul>
+		</div>
+	</Section>
+
+	<Section class="bg-blue-700 overflow-hidden">
+		<h2 class="grid grid-rows-3 justify-items-start text-white uppercase font-pally font-bold text-5xl leading-normal mt-6 mb-2"> 
+			<span class="inline-block rounded-full bg-primary px-4 -rotate-3">Nous avons</span>
+			<span class="inline-block rounded-full bg-secondary px-4 rotate-3 -translate-y-2 translate-x-1 z-10">à cœur</span>
+			<span class="inline-block rounded-full bg-tertiary px-4 -rotate-11 -translate-y-6 translate-x-29">d’agir</span>
+		</h2>
+		
+		<div class="relative">
+			<ShapeHook01 role="presentation" aria-hidden="true" class="absolute -top-6 -right-6" />
+			<ShapeHook02 role="presentation" aria-hidden="true" class="absolute -bottom-8 -left-6" />
+			<div class="space-y-6 relative z-10">
+				<Card size="small" class="flex items-center gap-2">
+					<span class="inline-block bg-neutral-200 rounded-lg p-2">
+						<Icon name="trees" size="24"/>
+					</span>
+					<Text>
+						Par nécessité de sortir nos villes de mouvements infinis de spéculations foncières et de la remettre entre les mains des personnes qui la vivent et la font vivre
+					</Text>
+				</Card>
+				<Card size="small" class="flex items-center gap-2">
+					<span class="inline-block bg-neutral-200 rounded-lg p-2">
+						<Icon name="package-2" size="24"/>
+					</span>
+					<Text>
+						Par envie d’offrir à toutes et tous des espaces collectifs générateurs de liens et qui encouragent l’expérimentation
+					</Text>
+				</Card>
+				<Card size="small" class="flex items-center gap-2">
+					<span class="inline-block bg-neutral-200 rounded-lg p-2">
+						<Icon name="receipt-euro" size="24"/>
+					</span>
+					<Text>
+						Par ambition de donner à toutes et tous le meilleur, au meilleur prix
+					</Text>
+				</Card>
+				<Card size="small" class="flex items-center gap-2">
+					<span class="inline-block bg-neutral-200 rounded-lg p-2">
+						<Icon name="heart-handshake" size="24"/>
+					</span>
+					<Text>
+						Par conviction que notre action ne sera forte que si elle résonne avec le territoire
+					</Text>
+				</Card>
+				<div class="rounded-l-full overflow-hidden h-60 -mr-6">
+					<Image
+						src={illuCreerAgirImage}
+						height={500}
+						alt="À l'intérieur du Labo Diva, un marché est installé. Des cageots de courges, blettes, patates douces, salade et autres légumes sont disposés sur des tables. Des petites pancartes noires indiquent les prix des légumes."
+						class="h-full w-full object-cover"
+					/>
+				</div>
+			</div>
 		</div>
 	</Section>
 </Layout>
