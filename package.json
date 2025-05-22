@@ -11,12 +11,12 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/cloudflare": "^12.5.2",
-    "@tailwindcss/vite": "^4.0.9",
-    "astro": "^5.7.10",
+    "@astrojs/cloudflare": "^12.5.3",
+    "@tailwindcss/vite": "^4.1.7",
+    "astro": "^5.8.0",
     "clsx": "2.1.1",
-    "tailwind-merge": "3.0.2",
-    "tailwindcss": "^4.0.9"
+    "tailwind-merge": "3.3.0",
+    "tailwindcss": "^4.1.7"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4"
