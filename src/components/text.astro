@@ -7,6 +7,6 @@ type Props = HTMLAttributes<'p'>
 const { class: className, ...delegated } = Astro.props
 ---
 
-<p class={cn('not-last:mb-7 leading-snug text-balance', className)} {...delegated}>
+<p class={cn('not-last:mb-7 leading-snug', className)} {...delegated}>
   <slot />
 </p>
