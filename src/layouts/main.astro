@@ -22,13 +22,11 @@ const title = content?.title ? `${content.title} · ${SITE_NAME}` : SITE_NAME
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
   </head>
-  <body class="bg-neutral-100 text-neutral-900 p-2 pt-0 min-h-screen">
-    <div class="space-y-12 max-w-screen-xl mx-auto">
-      <Header />
-      <main class="flex-grow grid gap-12 place-items-center content-center">
+  <body class="bg-neutral-100 text-neutral-900 min-h-screen px-4 pb-4">
+    <Header />
+    <main class="grid grid-cols-1 gap-16 my-16">
         <slot />
-      </main>
-      <Footer class="mt-auto" />
-    </div>
+    </main>
+    <Footer />
   </body>
 </html>

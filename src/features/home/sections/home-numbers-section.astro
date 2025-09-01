@@ -1,0 +1,49 @@
+---
+import Container from '@/components/container.astro'
+import Icon from '@/components/icon.astro'
+import Section from '@/components/section.astro'
+import HomeNumberCard from '../components/home-number-card.astro'
+---
+
+<Section class="bg-transparent">
+    <Container class="space-y-6">
+        <h2 class="text-3xl text-center font-medium font-pally">
+            La coopérative en quelques chiffres
+        </h2>
+
+        <div
+            class="grid grid-cols-1 md:grid-cols-[repeat(auto-fit,minmax(400px,1fr))] gap-4"
+        >
+            <HomeNumberCard class="text-blue-700">
+                <Icon slot="icon" name="hand-platter" />
+                <span slot="number">+18 300</span>
+                <span slot="label">Repas servis</span>
+            </HomeNumberCard>
+            <HomeNumberCard class="text-yellow-500">
+                <Icon slot="icon" name="google" />
+                <span slot="number">4,8/5</span>
+                <span slot="label">Avis Google (+650 avis)</span>
+            </HomeNumberCard>
+            <HomeNumberCard class="text-red-500">
+                <Icon slot="icon" name="vegan" />
+                <span slot="number">70%</span>
+                <span slot="label">Référence bio et locales</span>
+            </HomeNumberCard>
+            <HomeNumberCard class="text-green-600">
+                <Icon slot="icon" name="users-round" />
+                <span slot="number">+100</span>
+                <span slot="label">Sociétaires</span>
+            </HomeNumberCard>
+            <HomeNumberCard class="text-blue-700">
+                <Icon slot="icon" name="calendar-heart" />
+                <span slot="number">+200</span>
+                <span slot="label">Évènements par an</span>
+            </HomeNumberCard>
+            <HomeNumberCard class="text-yellow-500">
+                <Icon slot="icon" name="home" />
+                <span slot="number">+55 000</span>
+                <span slot="label">Personnes accueillis par an</span>
+            </HomeNumberCard>
+        </div>
+    </Container>
+</Section>

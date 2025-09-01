@@ -33,12 +33,15 @@
   --color-watt-green-light: hsla(134, 79%, 93%, 1);
   --color-watt-green: hsla(137, 71%, 36%, 1);
 
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-rubik: "Rubik", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-pally: "Pally", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans:
+    "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-rubik:
+    "Rubik", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-pally:
+    "Pally", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
   --radius-5xl: 2.5rem;
 }
@@ -47,6 +50,8 @@
   --color-primary: var(--color-watt-blue);
   --color-secondary: var(--color-watt-red);
   --color-tertiary: var(--color-watt-yellow);
+
+  --breakpoint-2k: 2000px;
 }
 
 :root {
