@@ -8,6 +8,9 @@ import Button from './button.astro'
 import Icon from './icon.astro'
 import Link from './link.astro'
 import VisuallyHidden from './visually-hidden.astro'
+import NavLink from './nav-link.astro'
+
+const pathname = new URL(Astro.request.url).pathname;
 ---
 
 <header>
@@ -28,10 +31,20 @@ import VisuallyHidden from './visually-hidden.astro'
             />
             {SITE_NAME}
         </Link>
+        <nav class="hidden md:block">
+            <ul class="flex items-center">
+                <li>
+                    <NavLink active={pathname === PATH.HOME} href={PATH.HOME}>Qui sommes-nous ?</NavLink>
+                </li>
+                <li>
+                    <NavLink active={pathname === PATH.LE_WATTIGNIES} href={PATH.LE_WATTIGNIES}>Le Wattignies</NavLink>
+                </li>
+            </ul>
+        </nav>
 
         <Button
             type="button"
-            class="p-2 text-foreground rounded-md hover:bg-background"
+            class="hidden md:block p-2 text-foreground rounded-md hover:bg-background"
         >
             <VisuallyHidden>Menu</VisuallyHidden>
             <Icon name="menu" size={24} />

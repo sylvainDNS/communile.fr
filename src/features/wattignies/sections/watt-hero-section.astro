@@ -1,0 +1,46 @@
+---
+import { Image } from "astro:assets";
+import Container from "@/components/container.astro";
+import Section from "@/components/section.astro";
+import heroImage from "@/images/wattignies-hero.png";
+
+import wattigniesOrnamentImage from "@/images/wattignies-ornament.png";
+---
+
+<Section class="relative bg-white overflow-hidden">
+    <Image
+        src={wattigniesOrnamentImage}
+        alt="l'organisation du Wattignies"
+        aria-hidden="true"
+        class="absolute -top-8 -left-8 opacity-30 w-[300px]"
+        widths={[200, 400, wattigniesOrnamentImage.width]}
+    />
+    <Image
+        src={wattigniesOrnamentImage}
+        alt="l'organisation du Wattignies"
+        aria-hidden="true"
+        class="absolute -bottom-8 -right-8 opacity-30 w-[300px] rotate-180"
+        widths={[200, 400, wattigniesOrnamentImage.width]}
+    />
+    <Container class="py-12">
+        <div class="flex flex-col justify-center">
+            <div>
+                <Image
+                    height={500}
+                    widths={[330, 400, 540, 720, heroImage.width]}
+                    src={heroImage}
+                    alt="le logo du Wattignies"
+                    aria-hidden="true"
+                    class="w-full max-h-[400px] object-cover object-center"
+                />
+            </div>
+            <div>
+                <h1
+                    class="font-pally text-4xl md:text-5xl font-bold text-foreground/90 text-center"
+                >
+                    Bouillon social et culturel
+                </h1>
+            </div>
+        </div>
+    </Container>
+</Section>
