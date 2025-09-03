@@ -1,0 +1,28 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+import { cn } from '../utils/style'
+
+type Props = HTMLAttributes<'span'> & {
+  color?: 'blue' | 'green' | 'red' | 'yellow' | 'neutral'
+}
+
+const { color = 'neutral', class: className, ...delegated } = Astro.props
+---
+
+<span 
+class={cn(
+    'inline-block px-3 py-2 rounded-full font-bold leading-normal text-base',
+    {
+      'bg-watt-blue-light text-watt-blue': color === 'blue',
+      'bg-watt-green-light text-watt-green': color === 'green',
+      'bg-watt-red-light text-watt-red': color === 'red',
+      'bg-watt-yellow-light text-watt-yellow': color === 'yellow',
+      'bg-background text-foreground': color === 'neutral',
+    },
+    className
+  )}
+  {...delegated}
+>
+	<slot />
+</span>

@@ -1,11 +1,11 @@
 {
-  "extends": "astro/tsconfigs/strictest",
+  "extends": "astro/tsconfigs/strict",
+  "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.astro"],
   "compilerOptions": {
-    "verbatimModuleSyntax": true,
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@layouts/*": ["src/layouts/*"]
+      "@/*": ["./src/*"]
     }
-  }
+  },
+  "exclude": ["dist"]
 }

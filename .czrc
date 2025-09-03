@@ -1,0 +1,79 @@
+{
+  "path": "cz-emoji",
+  "config": {
+    "cz-emoji": {
+      "subjectMaxLength": 200,
+      "symbol": true,
+      "skipQuestions": [
+        "issues",
+        "scope",
+        "body",
+        "footer",
+        "breaking",
+        "breakingScope"
+      ],
+      "types": [
+        {
+          "emoji": "✨",
+          "code": ":sparkles:",
+          "description": "Introducing a new feature.",
+          "name": "feature"
+        },
+        {
+          "emoji": "💫",
+          "code": ":dizzy:",
+          "description": "Changing an existing feature.",
+          "name": "change"
+        },
+        {
+          "emoji": "🐛",
+          "code": ":bug:",
+          "description": "Fixing a bug.",
+          "name": "fix"
+        },
+        {
+          "emoji": "💄",
+          "code": ":lipstick:",
+          "description": "Updating the UI and style files.",
+          "name": "ui"
+        },
+        {
+          "emoji": "📈",
+          "code": ":chart_with_upwards_trend:",
+          "description": "Adding analytics or tracking code.",
+          "name": "analytics"
+        },
+        {
+          "emoji": "🚩",
+          "code": ":triangular_flag_on_post:",
+          "description": "Adding, updating, or removing feature flag.",
+          "name": "flag"
+        },
+        {
+          "emoji": "🛠️",
+          "code": ":hammer_and_wrench:",
+          "description": "Refactoring or any technical task.",
+          "name": "chore"
+        },
+        {
+          "emoji": "👷",
+          "code": ":construction_worker:",
+          "description": "Constructing or improving CI/CD.",
+          "name": "cicd"
+        },
+        {
+          "emoji": "🤖",
+          "code": ":robot:",
+          "description": "Add, update automated tests.",
+          "name": "test"
+        },
+        {
+          "emoji": "📝",
+          "code": ":memo:",
+          "description": "Add, update documentation (OAS, HLD, readme, etc).",
+          "name": "docs"
+        }
+      ]
+    }
+  }
+}

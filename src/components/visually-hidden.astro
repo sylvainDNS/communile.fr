@@ -1,0 +1,13 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+import { cn } from '../utils/style'
+
+type Props = HTMLAttributes<'span'>
+
+const { class: className, ...delegated } = Astro.props
+---
+
+<span class={cn("sr-only", className)} {...delegated}>
+  <slot />
+</span>
