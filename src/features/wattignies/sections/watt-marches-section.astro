@@ -1,22 +1,113 @@
 ---
+import { Image } from 'astro:assets'
+import Card from '@/components/card.astro'
 import Container from '@/components/container.astro'
+import HeadingGrid from '@/components/heading-grid.astro'
+import Icon from '@/components/icon.astro'
 import Section from '@/components/section.astro'
-import Tag from '@/components/tag.astro'
 import Text from '@/components/text.astro'
+import illuCreerAgirImage from '@/images/communile-illu-agir.png'
+import ShapeHook01 from '@/images/shape-hook-01.svg'
+import ShapeHook02 from '@/images/shape-hook-02.svg'
+import { cn } from '@/utils/style'
 ---
 
-<Section>
-    <Container class="grid grid-cols-1 gap-6">
-        <p>
-            <Tag color="neutral" class="mr-2">LES</Tag>
-            <Tag color="red">MARCHÉS</Tag>
-        </p>
-        <p class="font-pally text-3xl">des producteur.ices</p>
-        <Text class="text-base max-w-3xl">
-            Chaque mercredi, de 16h30 à 19h30, venez découvrir notre marché bio et local avec les produits de la ferme de notre coopérative et d'autres producteurs.trices locaux. C’est l'occasion de retrouver des légumes frais et de saison, mais aussi une belle sélection d’autres produits : pain, pâtes fraiches, farines, conserves de viande, saucisson, miel, huile, et bien d'autres encore !
-        </Text>
+<Section class="bg-tertiary overflow-hidden relative py-12 pt-24 space-y-8">
+    <Container>
+        <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6"
+        >
+            <HeadingGrid rows={3}>
+                <span
+                    class="inline-block rounded-full bg-primary px-4 -rotate-3"
+                >
+                    LES MARCHÉS DE
+                </span>
+                <span
+                    class="inline-block rounded-full bg-quaternary px-4 rotate-3 -translate-y-2 translate-x-1 z-10"
+                >
+                    DE SAISON
+                </span>
+                <span
+                    class="inline-block rounded-full bg-secondary px-4 -rotate-11 -translate-y-4 md:-translate-y-6 translate-x-10 md:translate-x-20"
+                >
+                    DU WATTIGNIES
+                </span>
+            </HeadingGrid>
+
+            <ShapeHook01
+                role="presentation"
+                aria-hidden="true"
+                class="hidden md:block absolute -top-6 -right-6 text-tertiary-light"
+            />
+            <div class="relative lg:col-span-2">
+                <div class="space-y-6 relative z-10">
+                    <Card size="small" class="space-y-4">
+                        <div class="flex items-center gap-2">
+                            <span
+                                class="inline-block bg-neutral-200 rounded-lg p-2"
+                            >
+                                <Icon name="trees" size="24" />
+                            </span>
+                            <Text class="font-medium text-xl md:text-2xl font-pally">
+                                Quand les créateurices s'invitent au Wattignies
+                            </Text>
+                        </div>
+                        <Text>
+                            Les temps forts du Wattignies sont nos marchés de
+                            saison qui rassemblent l’ensemble des résident.es du
+                            lieu et permettent de valoriser les créateur.ices
+                            autour d’un week-end festif qui attire un large
+                            public.
+                        </Text>
+                    </Card>
+                    <Card size="small" class="space-y-4">
+                        <div class="flex items-center gap-2">
+                            <span
+                                class="inline-block bg-neutral-200 rounded-lg p-2"
+                            >
+                                <Icon name="package-2" size="24" />
+                            </span>
+                            <Text class="font-medium text-xl md:text-2xl font-pally">
+                                En 2024, 5 marchés ont été organisés
+                            </Text>
+                        </div>
+                        <ul class="list-disc list-inside text-lg md:text-xl space-y-2">
+                            <li class="text-balance text-lg md:text-xl">
+                                3 marchés de saison, qui ont permis à plus d’une
+                                cinquantaine d’artistes de s’exposer, passer un
+                                moment convivial et à vivre de leur travail. :
+                                marché de printemps, marché d’automne, et marché
+                                givré
+                            </li>
+                            <li class="text-balance text-lg md:text-xl">
+                                1 marché Latino et 1 marché de créateurices
+                                queer “La Potinerie”
+                            </li>
+                        </ul>
+                    </Card>
+                </div>
+            </div>
+        </div>
+
+        <ShapeHook02
+            role="presentation"
+            aria-hidden="true"
+            class="absolute -bottom-8 -left-6 text-tertiary-light"
+        />
     </Container>
+    <div
+        class={cn(
+            "rounded-l-full overflow-hidden h-60 ml-auto -mr-6 relative z-10 max-w-[90%]",
+            "2k:container 2k:mx-auto 2k:rounded-2xl",
+        )}
+    >
+        <Image
+            src={illuCreerAgirImage}
+            height={240}
+            widths={[330, 400, 540, 720, illuCreerAgirImage.width]}
+            alt="À l'intérieur du Labo Diva, un marché est installé. Des cageots de courges, blettes, patates douces, salade et autres légumes sont disposés sur des tables. Des petites pancartes noires indiquent les prix des légumes."
+            class="h-full w-full object-cover"
+        />
+    </div>
 </Section>
-
-
-

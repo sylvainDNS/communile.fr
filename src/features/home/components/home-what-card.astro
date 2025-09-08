@@ -35,14 +35,17 @@ const {
         <Text class="font-medium text-balance">
             {description}
         </Text>
-        <Text class="mt-auto font-pally text-black/60 font-bold max-w-[240px] text-2xl text-balance">
+        <Text class="md:mt-auto font-pally text-black/60 font-bold md:max-w-[240px] text-2xl text-balance">
             {subtitle}
         </Text>
+    </div>
+    <div class="md:hidden h-[200px]">
+
     </div>
     <Image
         width={200}
         src={image.src}
         alt={image.alt}
-        class={cn("absolute bottom-0 right-0", image.class)}
+        class={cn("md:absolute bottom-0 right-0", image.class)}
     />
 </Card>

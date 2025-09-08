@@ -1,10 +1,10 @@
 ---
-import { Image } from "astro:assets";
-import Container from "@/components/container.astro";
-import Section from "@/components/section.astro";
-import heroImage from "@/images/wattignies-hero.png";
+import { Image } from 'astro:assets'
+import Container from '@/components/container.astro'
+import Section from '@/components/section.astro'
+import heroImage from '@/images/wattignies-hero.png'
 
-import wattigniesOrnamentImage from "@/images/wattignies-ornament.png";
+import wattigniesOrnamentImage from '@/images/wattignies-ornament.png'
 ---
 
 <Section class="relative bg-white overflow-hidden">
@@ -12,14 +12,14 @@ import wattigniesOrnamentImage from "@/images/wattignies-ornament.png";
         src={wattigniesOrnamentImage}
         alt="l'organisation du Wattignies"
         aria-hidden="true"
-        class="absolute -top-8 -left-8 opacity-30 w-[300px]"
+        class="hidden md:block absolute -top-8 -left-8 opacity-30 w-[300px]"
         widths={[200, 400, wattigniesOrnamentImage.width]}
     />
     <Image
         src={wattigniesOrnamentImage}
         alt="l'organisation du Wattignies"
         aria-hidden="true"
-        class="absolute -bottom-8 -right-8 opacity-30 w-[300px] rotate-180"
+        class="hidden md:block absolute -bottom-8 -right-8 opacity-30 w-[300px] rotate-180"
         widths={[200, 400, wattigniesOrnamentImage.width]}
     />
     <Container class="py-12">
@@ -27,11 +27,11 @@ import wattigniesOrnamentImage from "@/images/wattignies-ornament.png";
             <div>
                 <Image
                     height={500}
-                    widths={[330, 400, 540, 720, heroImage.width]}
+                    widths={[350, 400, 540, 720, heroImage.width]}
                     src={heroImage}
                     alt="le logo du Wattignies"
                     aria-hidden="true"
-                    class="w-full max-h-[400px] object-cover object-center"
+                    class="scale-110 md:scale-100 w-full max-h-[400px] object-cover object-center"
                 />
             </div>
             <div>

@@ -1,28 +1,29 @@
 ---
+import { Image } from 'astro:assets'
 import Card from '@/components/card.astro'
 import Container from '@/components/container.astro'
+import HeadingGrid from '@/components/heading-grid.astro'
+import Icon from '@/components/icon.astro'
 import Section from '@/components/section.astro'
 import Text from '@/components/text.astro'
-import Icon from '@/components/icon.astro'
 import wattigniesRestaurantImage from '@/images/wattignies-le-restaurant.png'
-import { Image } from 'astro:assets'
 ---
 
 <Section class="bg-transparent">
     <Container class="flex flex-col lg:flex-row gap-12 lg:items-center">
         <div class="space-y-4">
-            <h2 class="grid grid-rows-2 justify-items-start text-white uppercase font-pally font-bold text-5xl leading-normal">
+            <HeadingGrid rows={2}>
                 <span class="inline-block rounded-full bg-primary px-4 -rotate-7">Le restaurant</span>
                 <span class="inline-block rounded-full bg-secondary px-4 -rotate-5 -translate-y-2 translate-x-1">du Wattignies</span>
-            </h2>
-            <Text class="text-xl lg:max-w-lg mt-12">
+            </HeadingGrid>
+            <Text class="lg:max-w-lg mt-12">
                 Jean et Shymon, les chefs cuisiniers du Wattignies, élaborent chaque semaine des menus végétariens, variés, préparés avec des produits frais issus directement de notre ferme.
             </Text>
-            <Text class="text-xl lg:max-w-lg">
+            <Text class="lg:max-w-lg">
                 De la fourche à la fourchette, nous mettons un point d’honneur à garantir qualité et saveurs. Nos prix, justes et abordables reflètent notre engagement à rendre une cuisine de qualité accessible au plus grand nombre.
             </Text>
             <p class="font-pally font-bold text-2xl">Vous pouvez même prendre à emporter !</p>
-            <Text class="text-xl lg:max-w-lg">
+            <Text class="lg:max-w-lg">
                 Grâce aux Tupperwares mis à disposition et à un système de consigne, il est désormais possible de prendre vos repas à emporter !
             </Text>
         </div>
@@ -33,7 +34,7 @@ import { Image } from 'astro:assets'
                         
                         <Icon name="timer" size="24" />
                     </div>
-                    <p class="font-pally text-foreground/80 font-semibold text-2xl">Retrouvez-nous tous les de <span class="font-bold text-foreground">12h</span> à <span class="font-bold text-foreground">14h</span> ! (sauf le week-end)</p>
+                    <Text class="font-pally text-xl md:text-2xl text-foreground/80 font-semibold">Retrouvez-nous tous les de <span class="font-bold text-foreground">12h</span> à <span class="font-bold text-foreground">14h</span> ! (sauf le week-end)</Text>
                 </div>
             </Card>
             <Image src={wattigniesRestaurantImage} alt="Le restaurant du Wattignies" class="w-full h-full object-cover rounded-2xl" />

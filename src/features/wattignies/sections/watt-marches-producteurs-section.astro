@@ -1,0 +1,48 @@
+---
+import { Image } from 'astro:assets'
+import Container from '@/components/container.astro'
+import HeadingGrid from '@/components/heading-grid.astro'
+import Section from '@/components/section.astro'
+import ShapeHexagon01 from '@/images/shape-hexagon-01.svg'
+import wattigniesMarchesProducteursImage from '@/images/wattignies-producteurs-image.jpg'
+---
+
+<Section class="bg-transparent overflow-hidden relative py-12 pt-24 space-y-8">
+    <ShapeHexagon01 role="presentation" aria-hidden="true" class="absolute left-0 bottom-32 w-80 h-auto" />
+    <ShapeHexagon01 role="presentation" aria-hidden="true" class="absolute left-[calc(50%-100px)] bottom-32 w-32 h-auto" />
+    <ShapeHexagon01 role="presentation" aria-hidden="true" class="absolute right-60 top-10 w-40 h-auto" />
+    <Container class="relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div>
+                <HeadingGrid rows={3}>
+                    <span
+                        class="inline-block rounded-full bg-primary px-4 rotate-3"
+                    >
+                        LES
+                    </span>
+                    <span
+                        class="inline-block bg-secondary rounded-full px-4 -rotate-3 -translate-y-4 translate-x-4 z-10"
+                    >
+                        MARCHÉS10
+                    </span>
+                    <span
+                        class="inline-block text-3xl md:text-5xl py-2 rounded-full whitespace-nowrap bg-tertiary px-4 -rotate-1 -translate-y-4 md:-translate-y-6 z-10"
+                    >
+                        DEs PRODUCTEUR.ICES
+                    </span>
+                </HeadingGrid>
+                <div class="mt-4 space-y-4 md:max-w-xl text-xl text-balance">
+                    <p>
+                        Chaque mercredi, de 16h30 à 19h30, venez découvrir notre marché bio et local avec les produits de la ferme de notre coopérative et d'autres producteurs.trices locaux. 
+                    </p>
+                    <p>
+                        C’est l'occasion de retrouver des légumes frais et de saison, mais aussi une belle sélection d’autres produits : pain, pâtes fraiches, farines, conserves de viande, saucisson, miel, huile, et bien d'autres encore !
+                    </p>
+                </div>
+            </div>
+            <div>
+                <Image src={wattigniesMarchesProducteursImage} alt="Le Wattignies" class="rounded-2xl w-full object-cover" widths={[640, 960, 1280, wattigniesMarchesProducteursImage.width]} />
+            </div>
+        </div>
+    </Container>
+</Section>
