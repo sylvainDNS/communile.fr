@@ -1,0 +1,114 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+import { cn } from '../utils/style'
+import Icon from './icon.astro'
+
+type Props = HTMLAttributes<'details'>
+const { class: className, ...delegated } = Astro.props
+---
+<div class={cn("group/details p-4 px-6 rounded-md", className)} data-details {...delegated}>
+    <button 
+        class="flex items-center w-full text-left"
+        data-details-button
+        aria-expanded="false"
+    >
+        <div class="text-lg font-bold">
+            <slot name="title" />
+        </div>
+        <Icon name="chevron-right" class="ml-auto rotate-90 group-open:rotate-270 transition-transform duration-200" data-details-icon />
+    </button>
+    <div 
+        class="overflow-hidden"
+        data-details-content
+        aria-hidden="true"
+    >
+        <div class="mt-4 leading-normal text-md">
+            <slot name="content" />
+        </div>
+    </div>
+</div>
+
+<script>
+    import { animate, createSpring } from 'animejs'
+
+    // Fonction pour initialiser un composant details
+    function initDetails(detailsElement: HTMLElement) {
+        const button = detailsElement.querySelector('[data-details-button]') as HTMLButtonElement
+        const content = detailsElement.querySelector('[data-details-content]') as HTMLElement
+        if (!button || !content) return
+
+        // Calculer la hauteur naturelle du contenu
+        const naturalHeight = content.scrollHeight
+        
+        // Initialiser l'état fermé
+        content.style.height = '0px'
+        content.style.overflow = 'hidden'
+        
+        // État interne
+        let isOpen = false
+        let isAnimating = false
+        let currentAnimation: any = null
+
+        // Gérer le clic sur le bouton
+        button.addEventListener('click', (e) => {
+            e.preventDefault()
+            
+            // Si une animation est en cours, l'arrêter et basculer l'état
+            if (isAnimating && currentAnimation) {
+                currentAnimation.pause()
+                isAnimating = false
+                isOpen = !isOpen // Bascule l'état
+            }
+            
+            if (isAnimating) return
+            isAnimating = true
+
+            if (isOpen) {
+                // Fermer avec animation spring
+                content.style.height = naturalHeight + 'px'
+                content.offsetHeight // Force reflow
+                
+                currentAnimation = animate(content, {
+                    height: {
+                        to: '0px',
+                        ease: createSpring({ mass: 0.6, stiffness: 300, damping: 25, velocity: 0.2 })
+                    }
+                })
+                
+                currentAnimation.then(() => {
+                    isOpen = false
+                    isAnimating = false
+                    button.setAttribute('aria-expanded', 'false')
+                    content.setAttribute('aria-hidden', 'true')
+                    detailsElement.classList.remove('open')
+                    currentAnimation = null
+                })
+            } else {
+                // Ouvrir avec animation spring
+                currentAnimation = animate(content, {
+                    height: {
+                        to: naturalHeight + 'px',
+                        ease: createSpring({ mass: 0.8, stiffness: 200, damping: 20, velocity: 0.2 })
+                    }
+                })
+                
+                currentAnimation.then(() => {
+                    content.style.height = 'auto'
+                    isOpen = true
+                    isAnimating = false
+                    button.setAttribute('aria-expanded', 'true')
+                    content.setAttribute('aria-hidden', 'false')
+                    detailsElement.classList.add('open')
+                    currentAnimation = null
+                })
+            }
+        })
+    }
+
+    // Initialiser tous les composants details
+    document.addEventListener('DOMContentLoaded', () => {
+        const detailsElements = document.querySelectorAll('[data-details]')
+        detailsElements.forEach((element) => initDetails(element as HTMLElement))
+    })
+</script>

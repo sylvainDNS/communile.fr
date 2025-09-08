@@ -7,47 +7,204 @@ import { PATH, SITE_NAME } from '../utils/constants'
 import Button from './button.astro'
 import Icon from './icon.astro'
 import Link from './link.astro'
-import VisuallyHidden from './visually-hidden.astro'
 import NavLink from './nav-link.astro'
+import VisuallyHidden from './visually-hidden.astro'
 
-const pathname = new URL(Astro.request.url).pathname;
+const pathname = new URL(Astro.request.url).pathname
 ---
 
-<header>
+<header class="fixed inset-x-2 md:inset-x-4 top-2 z-50 rounded-sm bg-white">
     <div
-        class="container mx-auto bg-white rounded-sm m-2 px-4 py-3 flex items-center justify-between"
+        class="container mx-auto px-4 py-3 relative z-50"
     >
-        <Link
-            href={PATH.HOME}
-            class="font-bold uppercase text-neutral-800 hover:text-neutral-700 flex items-center gap-3"
-        >
-            <Image
-                src={logo}
-                alt=""
-                aria-hidden="true"
-                role="presentation"
-                width={40}
-                height={40}
-            />
-            {SITE_NAME}
-        </Link>
-        <nav class="hidden md:block">
-            <ul class="flex items-center">
-                <li>
-                    <NavLink active={pathname === PATH.HOME} href={PATH.HOME}>Qui sommes-nous ?</NavLink>
-                </li>
-                <li>
-                    <NavLink active={pathname === PATH.LE_WATTIGNIES} href={PATH.LE_WATTIGNIES}>Le Wattignies</NavLink>
-                </li>
-            </ul>
-        </nav>
+        <div class="flex items-center justify-between">
+            <Link
+                href={PATH.HOME}
+                class="font-bold uppercase text-neutral-800 hover:text-neutral-700 flex items-center gap-3"
+            >
+                <Image
+                    src={logo}
+                    alt=""
+                    aria-hidden="true"
+                    role="presentation"
+                    width={40}
+                    height={40}
+                />
+                {SITE_NAME}
+            </Link>
+            <nav class="hidden md:block" aria-label="Navigation principale">
+                <ul class="flex items-center">
+                    <li>
+                        <NavLink active={pathname === PATH.HOME} href={PATH.HOME}>Qui sommes-nous ?</NavLink>
+                    </li>
+                    <li>
+                        <NavLink active={pathname === PATH.LE_WATTIGNIES} href={PATH.LE_WATTIGNIES}>Le Wattignies</NavLink>
+                    </li>
+                </ul>
+            </nav>
 
-        <Button
-            type="button"
-            class="hidden md:block p-2 text-foreground rounded-md hover:bg-background"
-        >
-            <VisuallyHidden>Menu</VisuallyHidden>
-            <Icon name="menu" size={24} />
-        </Button>
+            <Button
+                id="mobile-menu-button"
+                aria-controls="mobile-menu"
+                aria-expanded="false"
+                type="button"
+                class="block md:hidden p-2 text-foreground rounded-md hover:bg-background"
+            >
+                <VisuallyHidden>Menu</VisuallyHidden>
+                <Icon name="menu" size={24} />
+            </Button>
+        </div>
+
+        <div id="mobile-overlay" class="fixed left-2 right-2 mt-18 h-[400px]  z-40 hidden md:hidden" style="top: var(--mobile-overlay-top, 0px)">
+            <div id="mobile-panel" role="dialog" aria-modal="true" class="relative h-full w-full flex items-stretch justify-start overflow-hidden">
+                <div class="relative z-10 h-full w-full max-w-md bg-white shadow-xl flex flex-col">
+                    <nav aria-label="Navigation mobile" class="flex-1 pt-2 px-2 overflow-y-auto">
+                        <ul class="space-y-2">
+                            <li>
+                                <NavLink class="flex w-fit bg-watt-red-accent/80 aria-[current=page]:bg-watt-red text-background font-pally font-medium uppercase rotate-2  ring-offset-2 aria-[current=page]:ring-2 aria-[current=page]:ring-watt-red-accent" active={pathname === PATH.HOME} href={PATH.HOME}>
+                                    <span>Qui sommes-nous ?</span>
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink class="flex w-fit bg-watt-blue-accent/50 aria-[current=page]:bg-watt-blue text-background font-pally font-medium uppercase -rotate-1 aria-[current=page]:ring-2 aria-[current=page]:ring-watt-blue-accent ring-offset-2" active={pathname === PATH.LE_WATTIGNIES} href={PATH.LE_WATTIGNIES}>
+                                    <span>Le Wattignies</span>
+                                </NavLink>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <script>
+            import { animate } from 'animejs'
+
+            const btn = document.getElementById('mobile-menu-button') as HTMLElement | null
+            const overlay = document.getElementById('mobile-overlay')
+            const backdrop = document.getElementById('mobile-backdrop')
+            const panel = document.getElementById('mobile-panel')
+            const overlayCloseBtn = document.getElementById('overlay-close-button') as HTMLElement | null
+            const headerRoot = document.currentScript?.closest('header') as HTMLElement | null
+
+            let isOpen = false
+            let focusRestoreEl: HTMLElement | null = null
+
+            function openMenu() {
+                if (isOpen) return
+                isOpen = true
+                focusRestoreEl = (document.activeElement as HTMLElement | null)
+
+                overlay?.classList.remove('hidden')
+                // Position overlay just below header
+                const headerHeight = headerRoot?.getBoundingClientRect().height || 0
+                if (overlay) overlay.style.setProperty('--mobile-overlay-top', `${headerHeight}px`)
+                document.documentElement.classList.add('overflow-hidden')
+                btn?.setAttribute('aria-expanded', 'true')
+
+                // Set initial state using zero-duration animations
+                // Prepare panel to unfold from bottom to top using clip-path
+                animate(panel as any, { clipPath: 'inset(0% 0% 100% 0%)', opacity: 1, duration: 0 })
+                animate(backdrop as any, { opacity: 0, duration: 0 })
+
+                animate(backdrop as any, {
+                    opacity: [0, 1],
+                    duration: 250,
+                    ease: 'ease-out',
+                })
+
+                animate(panel as any, {
+                    clipPath: ['inset(0% 0% 100% 0%)', 'inset(0% 0% 0% 0%)'],
+                    duration: 450,
+                    ease: 'ease-out',
+                })
+
+                morphMenuIcon(btn, true)
+                morphMenuIcon(overlayCloseBtn, true)
+
+                const firstFocusable = overlay?.querySelector('a, button')
+                if (firstFocusable instanceof HTMLElement) firstFocusable.focus()
+            }
+
+            function closeMenu() {
+                if (!isOpen) return
+                isOpen = false
+
+                btn?.setAttribute('aria-expanded', 'false')
+
+                let completed = 0
+                const done = () => {
+                    completed += 1
+                    if (completed >= 2) {
+                        overlay?.classList.add('hidden')
+                        document.documentElement.classList.remove('overflow-hidden')
+                        if (focusRestoreEl instanceof HTMLElement) focusRestoreEl.focus()
+                    }
+                }
+
+                animate(panel as any, {
+                    clipPath: ['inset(0% 0% 0% 0%)', 'inset(0% 0% 100% 0%)'],
+                    duration: 250,
+                    ease: 'ease-in',
+                    onComplete: done,
+                })
+                animate(backdrop as any, {
+                    opacity: [1, 0],
+                    duration: 200,
+                    ease: 'ease-in',
+                    onComplete: done,
+                })
+
+                morphMenuIcon(btn, false)
+                morphMenuIcon(overlayCloseBtn, false)
+            }
+
+            function morphMenuIcon(targetBtn: HTMLElement | null, isX: boolean) {
+                const svg = targetBtn?.querySelector('svg')
+                if (!svg) return
+                const paths = svg.querySelectorAll('path')
+                const middle = paths[0]
+                const top = paths[1]
+                const bottom = paths[2]
+                if (!middle || !top || !bottom) return
+
+                // Ensure transform origin
+                ;[top as any, bottom as any].forEach((el: any) => {
+                    if (el && el.style) el.style.transformOrigin = '50% 50%'
+                })
+
+                animate(middle as any, {
+                    opacity: isX ? 0 : 1,
+                    duration: 200,
+                    ease: 'ease-in-out',
+                })
+
+                animate(top as any, {
+                    y: isX ? 6 : 0,
+                    rotate: isX ? 45 : 0,
+                    duration: 250,
+                    ease: 'spring(1, 80, 14, 0)',
+                })
+
+                animate(bottom as any, {
+                    y: isX ? -6 : 0,
+                    rotate: isX ? -45 : 0,
+                    duration: 250,
+                    ease: 'spring(1, 80, 14, 0)',
+                })
+            }
+
+            btn?.addEventListener('click', () => {
+                if (isOpen) closeMenu()
+                else openMenu()
+            })
+
+            backdrop?.addEventListener('click', closeMenu)
+            overlayCloseBtn?.addEventListener('click', closeMenu)
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && isOpen) {
+                    e.preventDefault()
+                    closeMenu()
+                }
+            })
+        </script>
     </div>
 </header>

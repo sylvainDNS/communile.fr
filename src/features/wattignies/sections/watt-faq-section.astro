@@ -1,19 +1,126 @@
 ---
+import { Image } from 'astro:assets'
 import Card from '@/components/card.astro'
 import Container from '@/components/container.astro'
+import Details from '@/components/details.astro'
+import Icon from '@/components/icon.astro'
+import LeafletMap from '@/components/leaflet-map.astro'
 import Section from '@/components/section.astro'
+import ShapeHook01 from '@/images/shape-hook-01.svg'
+import ShapeHook02 from '@/images/shape-hook-02.svg'
 ---
 
-<Section>
-    <Container class="grid grid-cols-1 gap-4">
-        <h2 class="font-pally text-3xl font-bold">Questions fréquentes</h2>
-        <Card size="small"><p>Comment nous contacter si vous avez des évènements à proposer ?</p></Card>
-        <Card size="small"><p>Quel équipement disponible pour les artistes ?</p></Card>
-        <Card size="small"><p>Quels sont les horaires d’ouverture des résidents ?</p></Card>
-        <Card size="small"><p>Le lieu est-il accessible aux personnes à mobilité réduite ?</p></Card>
-        <Card size="small"><p>Y a-t-il un parking ou des transports en commun à proximité ?</p></Card>
+<Section
+    class="bg-primary-accent overflow-hidden relative py-12 pt-24 space-y-8"
+>
+    <Container>
+        <ShapeHook01
+            role="presentation"
+            aria-hidden="true"
+            class="hidden md:block absolute -top-6 -right-6 text-primary-light"
+        />
+        <ShapeHook02
+            role="presentation"
+            aria-hidden="true"
+            class="absolute -bottom-8 -left-6 text-primary-light"
+        />
+        <div class="flex flex-col lg:flex-row gap-12 lg:gap-16">
+            <div class="relative z-10 space-y-8">
+                <div class="">
+                    <h2
+                        class="text-4xl font-bold font-pally text-center text-background"
+                    >
+                        Questions fréquentes
+                    </h2>
+                </div>
+                <div class="space-y-4">
+                    <Details class="bg-background">
+                        <span slot="title">
+                            Comment nous contacter si vous avez des évènements à
+                            proposer ?
+                        </span>
+                        <span slot="content">
+                            Nous sommes plus confortables de vous répondre par
+                            mail que sur Instagram !
+                            <a
+                                href="mailto:wattignies@communile.fr"
+                                class="text-primary-accent"
+                            >
+                                wattignies@communile.fr
+                            </a>
+                        </span>
+                    </Details>
+                    <Details class="bg-background">
+                        <span slot="title">
+                            Quel équipement disponibles pour vos événements ?
+                        </span>
+                        <span slot="content">
+                            Un écran pour vos projections, un système son
+                            basique équipé de micros filaires.
+                        </span>
+                    </Details>
+                    <Details class="bg-background">
+                        <span slot="title">
+                            Quels sont les horaires d’ouverture des résidents ?
+                        </span>
+                        <span slot="content">
+                            Les horaires d'ouverture du bar sont : 10h00-23h30
+                            du lundi au vendredi et 16h00-23h30 les samedis Sans
+                            compter les ouvertures exceptionnelles !
+                        </span>
+                    </Details>
+                    <Details class="bg-background">
+                        <span slot="title"> Comment réserver le midi ? </span>
+                        <span slot="content">
+                            Par téléphone au <a
+                                href="tel:0228495939"
+                                class="text-primary-accent">0228495939</a
+                            > dans l'idéal en dehors des heures de service !
+                        </span>
+                    </Details>
+                    <Details class="bg-background">
+                        <span slot="title">
+                            Le lieu est-il accessible au personnes à mobilité
+                            réduite ?
+                        </span>
+                        <span slot="content">
+                            Le lieu est entièrement accessible. L'accessibilité
+                            à la scène nécessite une rampe que vous pouvez
+                            demander à l'équipe du bar.
+                        </span>
+                    </Details>
+                    <Details class="bg-background">
+                        <span slot="title">
+                            Y a-t-il un parking ou des transports en commun à
+                            proximité ?
+                        </span>
+                        <span slot="content">
+                            Le tram 2 et 3 s'arrêtent en face. Nous manquons
+                            toujours cruellement de place pour vos vélos
+                        </span>
+                    </Details>
+                </div>
+                <a
+                    href="mailto:wattignies@communile.fr"
+                    class="inline-flex items-center gap-2 bg-background px-6 py-4 rounded-md font-medium"
+                >
+                    <Icon name="mail" class="size-4" />
+                    Contactez-nous
+                </a>
+            </div>
+            <div class="my-auto h-full w-full lg:max-w-xl">
+                <LeafletMap 
+                    height='600px'
+                    zoom={17}
+                    center={[47.20422, -1.546397]}
+                    markers={[
+                        {
+                            position: [47.20422, -1.546397],
+                            popup: 'Le Wattignies'
+                        }
+                    ]}
+                />
+            </div>
+        </div>
     </Container>
 </Section>
-
-
-

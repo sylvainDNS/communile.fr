@@ -1,190 +1,197 @@
 ---
-import Container from "@/components/container.astro";
-import Section from "@/components/section.astro";
-import { Image } from "astro:assets";
-
-// Import des images des cartes
-import lesGirouettesImage from "@/images/wattignies-residents-les-girouettes.jpg";
-import singaImage from "@/images/wattignies-residents-singa.jpg";
-import nippesFriperieImage from "@/images/wattignies-residents-nippes-friperie.jpg";
-import marcelChineImage from "@/images/wattignies-residents-marcel-chine.jpg";
-import sergeDeZolaImage from "@/images/wattignies-residents-serge-de-zola.jpg";
-import laBrocanteVerteImage from "@/images/wattignies-residents-la-brocante-verte.jpg";
-import latelierDuWattImage from "@/images/wattignies-residents-latelier-du-watt.jpg";
-import laClocheImage from "@/images/wattignies-residents-la-cloche.jpg";
-import desHistoiresDeSiegesImage from "@/images/wattignies-residents-des-histoires-de-sieges.jpg";
-import lesCoursiersNantaisImage from "@/images/wattignies-residents-les-coursiers-nantais.jpg";
-import coopcycleImage from "@/images/wattignies-residents-coopcycle.jpg";
-import etMaDoucheImage from "@/images/wattignies-residents-et-ma-douche.jpg";
-
-// Import de l'étoile décorative
-import starImage from "@/images/wattignies-residents-star.svg";
-
+import { Image } from 'astro:assets'
+import Container from '@/components/container.astro'
+import HeadingGrid from '@/components/heading-grid.astro'
+import Section from '@/components/section.astro'
 // Import du composant factorisé
-import WattResidentsCard from "@/features/wattignies/components/watt-residents-card.astro";
+import WattResidentsCard from '@/features/wattignies/components/watt-residents-card.astro'
+import coopcycleImage from '@/images/wattignies-residents-coopcycle.jpg'
+import desHistoiresDeSiegesImage from '@/images/wattignies-residents-des-histoires-de-sieges.jpg'
+import etMaDoucheImage from '@/images/wattignies-residents-et-ma-douche.jpg'
+import laBrocanteVerteImage from '@/images/wattignies-residents-la-brocante-verte.jpg'
+import laClocheImage from '@/images/wattignies-residents-la-cloche.jpg'
+import latelierDuWattImage from '@/images/wattignies-residents-latelier-du-watt.jpg'
+import lesCoursiersNantaisImage from '@/images/wattignies-residents-les-coursiers-nantais.jpg'
+// Import des images des cartes
+import lesGirouettesImage from '@/images/wattignies-residents-les-girouettes.jpg'
+import marcelChineImage from '@/images/wattignies-residents-marcel-chine.jpg'
+import nippesFriperieImage from '@/images/wattignies-residents-nippes-friperie.jpg'
+import sergeDeZolaImage from '@/images/wattignies-residents-serge-de-zola.jpg'
+import singaImage from '@/images/wattignies-residents-singa.jpg'
+// Import de l'étoile décorative
+import starImage from '@/images/wattignies-residents-star.svg'
 ---
 
 <Section class="relative bg-white overflow-hidden">
-  <!-- Decorative elements -->
-  <Image 
-    src={starImage} 
-    alt="" 
-    aria-hidden="true"
-    class="absolute top-24 right-16 w-[356px] h-[356px]"
-    width={356}
-    height={356}
-  />
-  <Image 
-    src={starImage} 
-    alt="" 
-    aria-hidden="true"
-    class="absolute bottom-24 -left-16 w-60 h-60"
-    width={240}
-    height={240}
-  />
-  <Image 
-    src={starImage} 
-    alt="" 
-    aria-hidden="true"
-    class="absolute top-16 left-0 w-[178px] h-[178px]"
-    width={178}
-    height={178}
-  />
-  <Image 
-    src={starImage} 
-    alt="" 
-    aria-hidden="true"
-    class="absolute bottom-16 right-16 w-[178px] h-[178px]"
-    width={178}
-    height={178}
-  />    
+    <Container class="relative z-20 py-12 md:py-24 space-y-16">
+        <!-- LES STRUCTURES RÉSIDENTES -->
+        <div class="text-center space-y-8">
+            <div class="space-y-16 pb-4">
+                <div class="inline-flex">
+                    <HeadingGrid rows={2}>
+                        <span
+                            class="inline-block rounded-full bg-primary px-2 -rotate-7"
+                            >Les structures</span
+                        >
+                        <span
+                            class="inline-block rounded-full bg-secondary px-4 rotate-4 translate-y-4 translate-x-1"
+                            >résidentes</span
+                        >
+                    </HeadingGrid>
+                </div>
+            </div>
 
-  <Container class="relative z-20 py-24 space-y-16">
-    <!-- LES STRUCTURES RÉSIDENTES -->
-    <div class="text-center space-y-16">
-      <div class="space-y-16 pb-8">
-        <div class="inline-flex px-4 py-2 bg-watt-blue rounded-full">
-          <span class="font-pally text-4xl md:text-5xl font-bold text-white">LES STRUCTURES</span>
+            <div
+                class="relative mt-32 md:mt-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-max mx-auto gap-6"
+            >
+                <Image
+                    src={starImage}
+                    alt=""
+                    aria-hidden="true"
+                    class="absolute -top-28 -left-24 w-60 h-60"
+                    width={240}
+                    height={240}
+                />
+                <Image
+                    src={starImage}
+                    alt=""
+                    aria-hidden="true"
+                    class="absolute -bottom-[183px] -right-[183px] w-[356px] h-[356px]"
+                    width={356}
+                    height={356}
+                />
+                <WattResidentsCard
+                    image={lesGirouettesImage}
+                    title="LES GIROUETTES"
+                    description="Recyclerie créative"
+                    tagColor="green"
+                    alt="Les Girouettes - Recyclerie créative"
+                />
+
+                <WattResidentsCard
+                    image={singaImage}
+                    title="SINGA"
+                    description="Association engagée pour l'inclusion des personnes migrantes"
+                    tagColor="blue"
+                    alt="SINGA - Association pour l'inclusion des migrants"
+                />
+
+                <WattResidentsCard
+                    image={nippesFriperieImage}
+                    title="NIPPES FRIPERIE"
+                    description="Mode & vintage"
+                    tagColor="red"
+                    alt="Nippes Friperie - Mode & vintage"
+                />
+
+                <WattResidentsCard
+                    image={marcelChineImage}
+                    title="MARCEL CHINE"
+                    description="Brocante d'objets et de mobilier spécifiques"
+                    tagColor="yellow"
+                    alt="Marcel Chine - Brocante d'objets et mobilier"
+                />
+
+                <WattResidentsCard
+                    image={sergeDeZolaImage}
+                    title="SERGE DE ZOLA"
+                    description="Disquaire, disque vinyle, cd et bd"
+                    tagColor="green"
+                    alt="Serge de Zola - Disquaire, vinyles, CD et BD"
+                />
+
+                <WattResidentsCard
+                    image={laBrocanteVerteImage}
+                    title="LA BROCANTE VERTE"
+                    description="Ressourcerie de plantes par une activité d'insertion"
+                    tagColor="blue"
+                    alt="La Brocante Verte - Ressourcerie de plantes"
+                />
+
+                <WattResidentsCard
+                    image={latelierDuWattImage}
+                    title="L'ATELIER DU WATT"
+                    description="Service de réparation et d'entretien de vélos"
+                    tagColor="red"
+                    alt="L'Atelier du Watt - Réparation et entretien de vélos"
+                />
+
+                <WattResidentsCard
+                    image={laClocheImage}
+                    title="LA CLOCHE"
+                    description="Association œuvrant à créer des liens sociaux et à soutenir la réinsertion des personnes en grande précarité"
+                    tagColor="yellow"
+                    alt="La Cloche - Association de réinsertion sociale"
+                />
+
+                <WattResidentsCard
+                    image={desHistoiresDeSiegesImage}
+                    title="DES HISTOIRES DE SIÉGES"
+                    description="Tapissier.ère décorateur.ices"
+                    tagColor="green"
+                    alt="Des Histoires de Sièges - Tapissier décorateur"
+                />
+            </div>
         </div>
-        <div class="inline-flex px-4 py-2 bg-watt-red rounded-full">
-          <span class="font-pally text-4xl md:text-5xl font-bold text-white">RÉSIDENTES</span>
+
+        <!-- LES RÉSIDENT.ES DU WATT -->
+        <div class="text-center space-y-8">
+            <div class="inline-flex">
+                <HeadingGrid rows={3}>
+                    <span
+                        class="inline-block rounded-full bg-primary px-4 -rotate-7 z-20"
+                    >
+                        Les résident.es
+                    </span>
+                    <span
+                        class="inline-block text-3xl md:text-5xl rounded-full bg-secondary px-4 py-2 md:py-2 rotate-2 translate-y-2 md:-translate-x-8"
+                    >
+                        dans les coulisses
+                    </span>
+                    <span
+                        class="inline-block rounded-full bg-tertiary px-4 -rotate-7 translate-y-2 translate-x-20 md:translate-x-44"
+                    >
+                        du Watt
+                    </span>
+                </HeadingGrid>
+            </div>
+
+            <div
+                class="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-max mx-auto gap-6"
+            >
+                <Image
+                    src={starImage}
+                    alt=""
+                    aria-hidden="true"
+                    class="absolute -bottom-24 -right-20 w-[178px] h-[178px]"
+                    width={178}
+                    height={178}
+                />
+
+                <WattResidentsCard
+                    image={lesCoursiersNantaisImage}
+                    title="LES COURSIERS NANTAIS/NAO FOOD"
+                    description="Collectif de cousier.ères à vélo"
+                    tagColor="green"
+                    alt="Les Coursiers Nantais/NAO Food - Collectif de coursiers à vélo"
+                />
+
+                <WattResidentsCard
+                    image={coopcycleImage}
+                    title="COOPCYCLE"
+                    description="Fédération de coopératives de livraison et de logistique à vélo"
+                    tagColor="blue"
+                    alt="COOPCYCLE - Fédération de coopératives de livraison"
+                />
+
+                <WattResidentsCard
+                    image={etMaDoucheImage}
+                    title="ET MA DOUCHE"
+                    description="Association engagée dans la lutte contre les inégalités sanitaires"
+                    tagColor="red"
+                    alt="Et Ma Douche - Lutte contre les inégalités sanitaires"
+                />
+            </div>
         </div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-max mx-auto gap-6">
-        <WattResidentsCard
-          image={lesGirouettesImage}
-          title="LES GIROUETTES"
-          description="Recyclerie créative"
-          tagColor="green"
-          alt="Les Girouettes - Recyclerie créative"
-        />
-
-        <WattResidentsCard
-          image={singaImage}
-          title="SINGA"
-          description="Association engagée pour l'inclusion des personnes migrantes"
-          tagColor="blue"
-          alt="SINGA - Association pour l'inclusion des migrants"
-        />
-
-        <WattResidentsCard
-          image={nippesFriperieImage}
-          title="NIPPES FRIPERIE"
-          description="Mode & vintage"
-          tagColor="red"
-          alt="Nippes Friperie - Mode & vintage"
-        />
-
-        <WattResidentsCard
-          image={marcelChineImage}
-          title="MARCEL CHINE"
-          description="Brocante d'objets et de mobilier spécifiques"
-          tagColor="yellow"
-          alt="Marcel Chine - Brocante d'objets et mobilier"
-        />
-
-        <WattResidentsCard
-          image={sergeDeZolaImage}
-          title="SERGE DE ZOLA"
-          description="Disquaire, disque vinyle, cd et bd"
-          tagColor="green"
-          alt="Serge de Zola - Disquaire, vinyles, CD et BD"
-        />
-
-        <WattResidentsCard
-          image={laBrocanteVerteImage}
-          title="LA BROCANTE VERTE"
-          description="Ressourcerie de plantes par une activité d'insertion"
-          tagColor="blue"
-          alt="La Brocante Verte - Ressourcerie de plantes"
-        />
-
-        <WattResidentsCard
-          image={latelierDuWattImage}
-          title="L'ATELIER DU WATT"
-          description="Service de réparation et d'entretien de vélos"
-          tagColor="red"
-          alt="L'Atelier du Watt - Réparation et entretien de vélos"
-        />
-
-        <WattResidentsCard
-          image={laClocheImage}
-          title="LA CLOCHE"
-          description="Association œuvrant à créer des liens sociaux et à soutenir la réinsertion des personnes en grande précarité"
-          tagColor="yellow"
-          alt="La Cloche - Association de réinsertion sociale"
-        />
-
-        <WattResidentsCard
-          image={desHistoiresDeSiegesImage}
-          title="DES HISTOIRES DE SIÉGES"
-          description="Tapissier.ère décorateur.ices"
-          tagColor="green"
-          alt="Des Histoires de Sièges - Tapissier décorateur"
-        />
-      </div>
-    </div>
-
-    <!-- LES RÉSIDENT.ES DU WATT -->
-    <div class="text-center space-y-16">
-      <div class="space-y-16 pb-16">
-        <div class="inline-flex px-4 py-2 bg-watt-red rounded-full">
-          <span class="font-pally text-4xl md:text-5xl font-bold text-white">LES RÉSIDENT.ES</span>
-        </div>
-        <div class="inline-flex px-4 py-2 bg-watt-blue rounded-full">
-          <span class="font-pally text-4xl md:text-5xl font-bold text-white">DU WATT</span>
-        </div>
-        <div class="inline-flex px-4 py-2 bg-watt-yellow rounded-full">
-          <span class="font-pally text-4xl md:text-5xl font-bold text-white">DANS LES COULISSES</span>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-max mx-auto gap-6">
-        <WattResidentsCard
-          image={lesCoursiersNantaisImage}
-          title="LES COURSIERS NANTAIS/NAO FOOD"
-          description="Collectif de cousier.ères à vélo"
-          tagColor="green"
-          alt="Les Coursiers Nantais/NAO Food - Collectif de coursiers à vélo"
-        />
-
-        <WattResidentsCard
-          image={coopcycleImage}
-          title="COOPCYCLE"
-          description="Fédération de coopératives de livraison et de logistique à vélo"
-          tagColor="blue"
-          alt="COOPCYCLE - Fédération de coopératives de livraison"
-        />
-
-        <WattResidentsCard
-          image={etMaDoucheImage}
-          title="ET MA DOUCHE"
-          description="Association engagée dans la lutte contre les inégalités sanitaires"
-          tagColor="red"
-          alt="Et Ma Douche - Lutte contre les inégalités sanitaires"
-        />
-      </div>
-    </div>
-  </Container>
+    </Container>
 </Section>

@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets'
 import Container from '@/components/container.astro'
+import HeadingGrid from '@/components/heading-grid.astro'
 import Icon from '@/components/icon.astro'
 import Link from '@/components/link.astro'
 import Section from '@/components/section.astro'
@@ -16,10 +17,10 @@ import { PATH } from '@/utils/constants'
 <Section>
     <Container class="space-y-3 grid grid-cols-1 md:grid-cols-3"> 
     <div class="space-y-3 max-w-md">
-        <h2 class="grid grid-rows-2 justify-items-start text-white uppercase font-pally font-bold text-5xl leading-normal">
+        <HeadingGrid rows={2}>
             <span class="inline-block rounded-full bg-primary px-4 -rotate-7">Nos</span>
             <span class="inline-block rounded-full bg-secondary px-8 rotate-4 -translate-y-2 translate-x-1">lieux</span>
-        </h2>
+        </HeadingGrid>
         
         <div class="max-w-sm text-xl">
             <Text>

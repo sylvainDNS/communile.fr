@@ -1,33 +1,32 @@
 ---
-import Card from "@/components/card.astro";
-import Icon from "@/components/icon.astro";
-import Container from "@/components/container.astro";
-import Section from "@/components/section.astro";
-import Text from "@/components/text.astro";
-import wattigniesBarProgImage from "@/images/wattignies-le-bar.png";
-import { Image } from "astro:assets";
+import { Image } from 'astro:assets'
+import Card from '@/components/card.astro'
+import Container from '@/components/container.astro'
+import HeadingGrid from '@/components/heading-grid.astro'
+import Icon from '@/components/icon.astro'
+import Section from '@/components/section.astro'
+import Text from '@/components/text.astro'
+import wattigniesBarProgImage from '@/images/wattignies-le-bar.png'
 ---
 
 <Section class="bg-transparent">
     <Container class="flex flex-col lg:flex-row-reverse gap-12 items-start">
         <div class="space-y-6">
-            <h2
-                class="grid grid-rows-2 justify-items-start text-white uppercase font-pally font-bold text-5xl leading-normal"
-            >
+            <HeadingGrid rows={3}>
                 <span
                     class="inline-block rounded-full bg-primary px-4 -rotate-7 z-20"
                     >LE BAR</span
                 >
                 <span
-                    class="inline-block rounded-full bg-tertiary px-4 -rotate-12 -translate-y-13 translate-x-34 z-10"
+                    class="inline-block rounded-full bg-tertiary px-4 -rotate-12 -translate-y-4 md:-translate-y-13 -translate-x-2 md:translate-x-34 z-10"
                     >ET LA PROG</span
                 >
                 <span
-                    class="inline-block rounded-full bg-secondary px-4 rotate-5 -translate-y-10 translate-x-1 z-30"
+                    class="inline-block rounded-full bg-secondary px-4 rotate-5 md:-translate-y-10 translate-x-1 z-30"
                     >DU WATTIGNIES</span
                 >
-            </h2>
-            <Text class="text-xl text-balance">
+            </HeadingGrid>
+            <Text class="mt-8 md:mt-0 text-balance">
                 Le Wattignies propose une programmation culturelle accessible
                 (entrée gratuite), engagée et éclectique tout au long de
                 l'année. Concert d'un groupe local, atelier d'initiation au
@@ -36,7 +35,7 @@ import { Image } from "astro:assets";
                 long de l'année pour mettre les artistes et collectif
                 locales.aux à l'honneur.
             </Text>
-            <Text class="text-xl text-balance">
+            <Text class="text-balance">
                 Vous voulez proposer une idée de concert, d'atelier ou tout
                 autre type d'évènement ? Contactez-nous !
             </Text>
@@ -47,11 +46,11 @@ import { Image } from "astro:assets";
                     >
                         <Icon name="glass-water" size="24" />
                     </div>
-                    <span class="font-pally font-medium text-2xl"
+                    <span class="font-pally font-medium text-xl md:text-2xl"
                         >Des fournisseurs sélectionnés avec soin</span
                     >
                 </div>
-                <Text class="text-xl text-balance"
+                <Text class="text-balance"
                     >Vous y serez accueilli.es par notre équipe de choc de
                     barmaides et barmen qui proposent une carte remplie de
                     références locales et parfois des recettes maison : thé

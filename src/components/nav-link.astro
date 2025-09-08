@@ -1,19 +1,19 @@
 ---
-import type { HTMLAttributes } from "astro/types";
+import type { HTMLAttributes } from 'astro/types'
 
-import { cn } from "../utils/style";
-import Link from "./link.astro";
+import { cn } from '../utils/style'
+import Link from './link.astro'
 
-interface Props extends HTMLAttributes<"a"> {
-    active?: boolean;
+interface Props extends HTMLAttributes<'a'> {
+  active?: boolean
 }
 
-const { class: className, active, ...delegated } = Astro.props;
+const { class: className, active, ...delegated } = Astro.props
 ---
 
 <Link
     aria-current={active ? "page" : undefined}
-    class={cn(className, 'aria-[current=page]:bg-neutral-200 px-4 py-2 rounded-md')}
+    class={cn('aria-[current=page]:bg-neutral-200 px-4 py-2 rounded-2xl', className)}
     {...delegated}
 >
     <slot />
