@@ -1,0 +1,18 @@
+---
+import LandesAvisSection from '@/features/landes-fertiles/sections/landes-avis-section.astro'
+import LandesFaqSection from '@/features/landes-fertiles/sections/landes-faq-section.astro'
+import LandesFarmLifeSection from '@/features/landes-fertiles/sections/landes-farm-life-section.astro'
+import LandesFindSection from '@/features/landes-fertiles/sections/landes-find-section.astro'
+import LandesHeroSection from '@/features/landes-fertiles/sections/landes-hero-section.astro'
+import LandesPartnersSection from '@/features/landes-fertiles/sections/landes-partners-section.astro'
+import Layout from '../layouts/main.astro'
+---
+
+<Layout theme="landes-fertiles" content={{ title: 'Les Landes Fertiles' }}>
+	<LandesHeroSection />
+	<LandesPartnersSection />
+	<LandesFindSection />
+	<LandesFarmLifeSection />
+    <LandesAvisSection />
+    <LandesFaqSection />
+</Layout>

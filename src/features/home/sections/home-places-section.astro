@@ -2,9 +2,9 @@
 import Badge from '@/components/badge.astro'
 import Container from '@/components/container.astro'
 import HeadingBadges from '@/components/heading-badges.astro'
+import PlaceCard from '@/components/place-card.astro'
 import Section from '@/components/section.astro'
 import Text from '@/components/text.astro'
-import HomePlaceCard from '@/features/home/components/home-place-card.astro'
 import leBarIleCardImage from '@/images/le-bar-ile-card.jpg'
 import leLaboDivaCardImage from '@/images/le-labo-diva-card.jpg'
 import leWattigniesCardImage from '@/images/le-wattignies-card.jpg'
@@ -34,7 +34,7 @@ import { PATH } from '@/utils/constants'
     </div>
 
     <div class="col-span-2 grid grid-cols-1 md:grid-cols-2 gap-3">
-        <HomePlaceCard
+        <PlaceCard
             href={PATH.LE_WATTIGNIES}
             image={leWattigniesCardImage}
             imageAlt="Le Wattignies - bar et restaurant avec une façade vitrée, un comptoir bleu et des tables"
@@ -49,9 +49,9 @@ import { PATH } from '@/utils/constants'
                     Toute la semaine de 10h à 17h
                 </span>
             </div>
-        </HomePlaceCard>
+        </PlaceCard>
 
-        <HomePlaceCard
+        <PlaceCard
             href={PATH.LES_LANDES_FERTILES}
             image={lesLandesFertilesCardImage}
             imageAlt="Les Landes Fertiles - 2 personnes travaillent sur des plants de tomates"
@@ -66,9 +66,9 @@ import { PATH } from '@/utils/constants'
                     Toute la semaine de 10h à 17h
                 </span>
             </div>
-        </HomePlaceCard>
+        </PlaceCard>
         
-        <HomePlaceCard
+        <PlaceCard
             href={PATH.LE_LABO_DIVA}
             image={leLaboDivaCardImage}
             imageAlt="Le Labo Diva - Un bar intérieur composé de lattes de bois peintes en vert, jaune, blanc ou orange."
@@ -83,9 +83,9 @@ import { PATH } from '@/utils/constants'
                     Toute la semaine de 10h à 17h
                 </span>
             </div>
-        </HomePlaceCard>
+        </PlaceCard>
 
-        <HomePlaceCard
+        <PlaceCard
             href={PATH.LE_BAR_ILE}
             image={leBarIleCardImage}
             imageAlt="Le Bar Ile - Une terrasse d'un bar, les murs extérieurs sont bleus foncés. Un marché est installé avec des légumes."
@@ -100,7 +100,7 @@ import { PATH } from '@/utils/constants'
                     Toute la semaine de 10h à 17h
                 </span>
             </div>
-        </HomePlaceCard>
+        </PlaceCard>
   </div>
 </Container>
 </Section>

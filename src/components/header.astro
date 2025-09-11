@@ -11,11 +11,28 @@ import NavLink from './nav-link.astro'
 import VisuallyHidden from './visually-hidden.astro'
 
 const pathname = new URL(Astro.request.url).pathname
+
+const links = [
+  {
+    label: 'Qui sommes-nous ?',
+    href: PATH.HOME,
+  },
+  {
+    label: 'Le Wattignies',
+    href: PATH.LE_WATTIGNIES,
+  },
+  {
+    label: 'Les Landes Fertiles',
+    href: PATH.LES_LANDES_FERTILES,
+  },
+]
 ---
 
-<header class="fixed inset-x-2 md:inset-x-4 top-2 z-50 rounded-md bg-white">
+<header
+    class="fixed inset-x-2 md:inset-x-4 top-2 z-50 rounded-md bg-white max-w-2k mx-auto"
+>
     <div class="container mx-auto px-4 py-3 relative z-50">
-        <div class="flex items-center justify-between">
+        <div class="grid grid-cols-2 md:grid-cols-[1fr_auto_1fr] items-center">
             <Link
                 href={PATH.HOME}
                 class="font-bold uppercase text-neutral-800 hover:text-neutral-700 flex items-center gap-3"
@@ -31,33 +48,35 @@ const pathname = new URL(Astro.request.url).pathname
                 {SITE_NAME}
             </Link>
             <nav class="hidden md:block" aria-label="Navigation principale">
-                <ul class="flex items-center">
-                    <li>
-                        <NavLink
-                            active={pathname === PATH.HOME}
-                            href={PATH.HOME}>Qui sommes-nous ?</NavLink
-                        >
-                    </li>
-                    <li>
-                        <NavLink
-                            active={pathname === PATH.LE_WATTIGNIES}
-                            href={PATH.LE_WATTIGNIES}>Le Wattignies</NavLink
-                        >
-                    </li>
+                <ul class="flex items-center gap-0.5">
+                    {
+                        links.map((link) => (
+                            <li>
+                                <NavLink
+                                    active={pathname === link.href}
+                                    href={link.href}
+                                >
+                                    {link.label}
+                                </NavLink>
+                            </li>
+                        ))
+                    }
                 </ul>
             </nav>
 
-            <Button
-                id="mobile-menu-button"
-                aria-controls="mobile-menu"
-                aria-expanded="false"
-                type="button"
-                variant="ghost"
-                class="block md:hidden p-2 text-foreground rounded-sm hover:bg-background"
-            >
-                <VisuallyHidden>Menu</VisuallyHidden>
-                <Icon name="menu" size={24} />
-            </Button>
+            <div class="justify-self-end">
+                <Button
+                    id="mobile-menu-button"
+                    aria-controls="mobile-overlay"
+                    aria-expanded="false"
+                    type="button"
+                    variant="ghost"
+                    class="block md:hidden p-2 text-foreground rounded-sm hover:bg-background"
+                >
+                    <VisuallyHidden>Menu</VisuallyHidden>
+                    <Icon name="menu" size={24} />
+                </Button>
+            </div>
         </div>
 
         <div
@@ -81,22 +100,18 @@ const pathname = new URL(Astro.request.url).pathname
                         <ul
                             class="space-y-2 flex flex-col justify-center items-center gap-2 text-xl"
                         >
-                            <li>
-                                <NavLink
-                                    active={pathname === PATH.HOME}
-                                    href={PATH.HOME}
-                                >
-                                    <span>Qui sommes-nous ?</span>
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink
-                                    active={pathname === PATH.LE_WATTIGNIES}
-                                    href={PATH.LE_WATTIGNIES}
-                                >
-                                    <span>Le Wattignies</span>
-                                </NavLink>
-                            </li>
+                            {
+                                links.map((link) => (
+                                    <li>
+                                        <NavLink
+                                            active={pathname === link.href}
+                                            href={link.href}
+                                        >
+                                            {link.label}
+                                        </NavLink>
+                                    </li>
+                                ))
+                            }
                         </ul>
                     </nav>
                 </div>
@@ -164,7 +179,7 @@ const pathname = new URL(Astro.request.url).pathname
                 animate(panel, {
                     clipPath: ["inset(0% 0% 100% 0%)", "inset(0% 0% 0% 0%)"],
                     duration: 300,
-                    ease: 'inExpo'
+                    ease: "inExpo",
                 });
 
                 morphMenuIcon(btn, true);

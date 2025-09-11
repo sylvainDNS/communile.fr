@@ -23,15 +23,10 @@ Refer to Astro's official documentation for detailed information on components, 
 
 ## Styling
 
-- Use Tailwind CSS 4 for styling
-
-### Tailwind CSS Best Practices
-
-- Use Tailwind utility classes extensively in your Astro components.
-- Leverage Tailwind's responsive design utilities (sm:, md:, lg:, etc.).
-- Utilize Tailwind's color palette and spacing scale for consistency.
-- Implement custom theme extensions in [global.css](mdc:src/styles/global.css) when necessary.
-- Never use the @apply directive
+- Tailwind CSS 4 via `@tailwindcss/vite` plugin.
+- Use utilities only; never use the `@apply` directive in new code.
+- Use CSS variables/tokens defined in [global.css](mdc:src/styles/global.css) with `@theme`/`@theme inline`.
+- Leverage responsive design utilities (sm:, md:, lg:, etc.) and spacing scale.
 
 ### Typography
 
@@ -49,6 +44,7 @@ Refer to Astro's official documentation for detailed information on components, 
   - client:idle for non-critical interactivity
   - client:visible for components that should hydrate when visible
 - Implement proper lazy loading for images and other assets.
+- Use `astro:assets` `<Image />` for responsive images with `widths`.
 
 ## SEO and Meta Tags
 
@@ -58,8 +54,8 @@ Refer to Astro's official documentation for detailed information on components, 
 
 ## Integrations and Plugins
 
-- Implement proper configuration for integrations in astro.config.mjs.
-- Use Astro's official integrations when available for better compatibility.
+- Configure integrations in `astro.config.mjs`. This project uses Tailwind via `@tailwindcss/vite` and Cloudflare adapter.
+- Prefer official integrations when available for compatibility.
 
 ## Accessibility
 
@@ -67,6 +63,16 @@ Refer to Astro's official documentation for detailed information on components, 
 - Implement ARIA attributes where necessary.
 - Ensure keyboard navigation support for interactive elements.
 - Prefer using the <VisuallyHidden> component for hidden content rather than the aria-label attribute.
+
+## Sections/Components Pattern
+
+- Compose sections as `Section` → `Container` → `Heading`/`Text` + content.
+- Manage variants with CVA; compose class names with `cn()` from `src/utils/style.ts`.
+
+## Navigation & Theming
+
+- Use `PATH` from `src/utils/constants.ts` for routes.
+- Set `data-theme` via `layouts/main.astro` with the `theme` prop.
 
 ## Key Conventions
 

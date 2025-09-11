@@ -1,11 +1,11 @@
 ---
 import { Image } from 'astro:assets'
-import Button from '@/components/button.astro'
+import Badge from '@/components/badge.astro'
 import Container from '@/components/container.astro'
 import HeadingBadges from '@/components/heading-badges.astro'
 import Section from '@/components/section.astro'
+import SpotlightCard from '@/components/spotlight-card.astro'
 // Import du composant factorisé
-import WattResidentsCard from '@/features/wattignies/components/watt-residents-card.astro'
 import coopcycleImage from '@/images/wattignies-residents-coopcycle.jpg'
 import desHistoiresDeSiegesImage from '@/images/wattignies-residents-des-histoires-de-sieges.jpg'
 import etMaDoucheImage from '@/images/wattignies-residents-et-ma-douche.jpg'
@@ -30,13 +30,15 @@ import starImage from '@/images/wattignies-residents-star.svg'
             <div class="space-y-16 pb-4">
                 <div class="inline-flex">
                     <HeadingBadges rows={2}>
-                        <span
-                            class="inline-block rounded-full bg-primary px-2 -rotate-7"
-                            >Les structures</span
+                        <Badge
+                            variant="primary"
+                            class="-rotate-7"
+                            size="heading">Les structures</Badge
                         >
-                        <span
-                            class="inline-block rounded-full bg-secondary px-4 rotate-4 translate-y-4 translate-x-1"
-                            >résidentes</span
+                        <Badge
+                            variant="secondary"
+                            class="rotate-4 translate-y-4 translate-x-1"
+                            size="heading">résidentes</Badge
                         >
                     </HeadingBadges>
                 </div>
@@ -61,7 +63,7 @@ import starImage from '@/images/wattignies-residents-star.svg'
                     width={356}
                     height={356}
                 />
-                <WattResidentsCard
+                <SpotlightCard
                     image={lesGirouettesImage}
                     title="LES GIROUETTES"
                     description="Recyclerie créative"
@@ -69,7 +71,7 @@ import starImage from '@/images/wattignies-residents-star.svg'
                     alt="Les Girouettes - Recyclerie créative"
                 />
 
-                <WattResidentsCard
+                <SpotlightCard
                     image={singaImage}
                     title="SINGA"
                     description="Association engagée pour l'inclusion des personnes migrantes"
@@ -77,7 +79,7 @@ import starImage from '@/images/wattignies-residents-star.svg'
                     alt="SINGA - Association pour l'inclusion des migrants"
                 />
 
-                <WattResidentsCard
+                <SpotlightCard
                     image={nippesFriperieImage}
                     title="NIPPES FRIPERIE"
                     description="Mode & vintage"
@@ -85,7 +87,7 @@ import starImage from '@/images/wattignies-residents-star.svg'
                     alt="Nippes Friperie - Mode & vintage"
                 />
 
-                <WattResidentsCard
+                <SpotlightCard
                     image={marcelChineImage}
                     title="MARCEL CHINE"
                     description="Brocante d'objets et de mobilier spécifiques"
@@ -93,7 +95,7 @@ import starImage from '@/images/wattignies-residents-star.svg'
                     alt="Marcel Chine - Brocante d'objets et mobilier"
                 />
 
-                <WattResidentsCard
+                <SpotlightCard
                     image={sergeDeZolaImage}
                     title="SERGE DE ZOLA"
                     description="Disquaire, disque vinyle, cd et bd"
@@ -101,7 +103,7 @@ import starImage from '@/images/wattignies-residents-star.svg'
                     alt="Serge de Zola - Disquaire, vinyles, CD et BD"
                 />
 
-                <WattResidentsCard
+                <SpotlightCard
                     image={laBrocanteVerteImage}
                     title="LA BROCANTE VERTE"
                     description="Ressourcerie de plantes par une activité d'insertion"
@@ -109,7 +111,7 @@ import starImage from '@/images/wattignies-residents-star.svg'
                     alt="La Brocante Verte - Ressourcerie de plantes"
                 />
 
-                <WattResidentsCard
+                <SpotlightCard
                     image={latelierDuWattImage}
                     title="L'ATELIER DU WATT"
                     description="Service de réparation et d'entretien de vélos"
@@ -117,7 +119,7 @@ import starImage from '@/images/wattignies-residents-star.svg'
                     alt="L'Atelier du Watt - Réparation et entretien de vélos"
                 />
 
-                <WattResidentsCard
+                <SpotlightCard
                     image={laClocheImage}
                     title="LA CLOCHE"
                     description="Association œuvrant à créer des liens sociaux et à soutenir la réinsertion des personnes en grande précarité"
@@ -125,7 +127,7 @@ import starImage from '@/images/wattignies-residents-star.svg'
                     alt="La Cloche - Association de réinsertion sociale"
                 />
 
-                <WattResidentsCard
+                <SpotlightCard
                     image={desHistoiresDeSiegesImage}
                     title="DES HISTOIRES DE SIÉGES"
                     description="Tapissier.ère décorateur.ices"
@@ -139,21 +141,30 @@ import starImage from '@/images/wattignies-residents-star.svg'
         <div class="text-center space-y-8">
             <div class="inline-flex">
                 <HeadingBadges rows={3}>
-                    <span
-                        class="inline-block rounded-full bg-primary px-4 -rotate-7 z-20"
+                    <Badge
+                        size="heading"
+                        variant="primary"
+                        rotation="-7"
+                        class="-rotate-7 z-20"
                     >
                         Les résident.es
-                    </span>
-                    <span
-                        class="inline-block text-3xl md:text-5xl rounded-full bg-secondary px-4 py-2 md:py-2 rotate-2 translate-y-2 md:-translate-x-8"
+                    </Badge>
+                    <Badge
+                        size="heading"
+                        variant="secondary"
+                        rotation="2"
+                        class="translate-y-2 md:-translate-x-8"
                     >
                         dans les coulisses
-                    </span>
-                    <span
-                        class="inline-block rounded-full bg-tertiary px-4 -rotate-7 translate-y-2 translate-x-20 md:translate-x-44"
+                    </Badge>
+                    <Badge
+                        size="heading"
+                        variant="tertiary"
+                        rotation="-7"
+                        class="translate-y-2 translate-x-20 md:translate-x-44"
                     >
                         du Watt
-                    </span>
+                    </Badge>
                 </HeadingBadges>
             </div>
 
@@ -169,7 +180,7 @@ import starImage from '@/images/wattignies-residents-star.svg'
                     height={178}
                 />
 
-                <WattResidentsCard
+                <SpotlightCard
                     image={lesCoursiersNantaisImage}
                     title="LES COURSIERS NANTAIS/NAO FOOD"
                     description="Collectif de cousier.ères à vélo"
@@ -179,7 +190,7 @@ import starImage from '@/images/wattignies-residents-star.svg'
                     href="https://www.lescoursiersnantais.fr/"
                 />
 
-                <WattResidentsCard
+                <SpotlightCard
                     image={coopcycleImage}
                     title="COOPCYCLE"
                     description="Fédération de coopératives de livraison et de logistique à vélo"
@@ -188,7 +199,7 @@ import starImage from '@/images/wattignies-residents-star.svg'
                     href="https://coopcycle.org/fr/"
                 />
 
-                <WattResidentsCard
+                <SpotlightCard
                     image={etMaDoucheImage}
                     title="ET MA DOUCHE"
                     description="Association engagée dans la lutte contre les inégalités sanitaires"

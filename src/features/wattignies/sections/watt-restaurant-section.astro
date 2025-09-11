@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets'
+import Badge from '@/components/badge.astro'
 import Card from '@/components/card.astro'
 import Container from '@/components/container.astro'
 import HeadingBadges from '@/components/heading-badges.astro'
@@ -13,8 +14,8 @@ import wattigniesRestaurantImage from '@/images/wattignies-le-restaurant.png'
     <Container class="flex flex-col lg:flex-row gap-12 lg:items-center">
         <div class="space-y-4">
             <HeadingBadges rows={2}>
-                <span class="inline-block rounded-full bg-primary px-4 -rotate-7">Le restaurant</span>
-                <span class="inline-block rounded-full bg-secondary px-4 -rotate-5 -translate-y-2 translate-x-1">du Wattignies</span>
+                <Badge size="heading" variant="primary" rotation="-7" class="-rotate-7">Le restaurant</Badge>
+                <Badge size="heading" variant="secondary" rotation="-5" class="-rotate-5 -translate-y-2 translate-x-1">du Wattignies</Badge>
             </HeadingBadges>
             <Text class="lg:max-w-lg mt-12">
                 Jean et Shymon, les chefs cuisiniers du Wattignies, élaborent chaque semaine des menus végétariens, variés, préparés avec des produits frais issus directement de notre ferme.

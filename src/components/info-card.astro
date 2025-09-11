@@ -1,0 +1,17 @@
+---
+import Card from './card.astro'
+---
+
+<Card class="space-y-4 p-4 pr-8 rounded-lg rounded-tr-[64px] w-fit">
+    <div class="flex items-center gap-4">
+        <div class="size-10 rounded-lg bg-neutral-200 flex items-center justify-center">
+            <slot name="icon" />
+        </div>
+        <div class="font-pally font-medium text-xl md:text-2xl">
+            <slot name="title" />
+        </div>
+    </div>
+    <div>
+        <slot name="description" />
+    </div>
+</Card>

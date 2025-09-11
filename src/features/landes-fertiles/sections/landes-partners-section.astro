@@ -1,0 +1,120 @@
+---
+import { Image } from 'astro:assets'
+import Badge from '@/components/badge.astro'
+import Container from '@/components/container.astro'
+import HeadingBadges from '@/components/heading-badges.astro'
+import Section from '@/components/section.astro'
+import SpotlightCard from '@/components/spotlight-card.astro'
+import partenaire1Image from '@/images/landes-partenaire-1.jpg'
+import partenaire2Image from '@/images/landes-partenaire-2.jpg'
+import partenaire3Image from '@/images/landes-partenaire-3.jpg'
+import partenaire4Image from '@/images/landes-partenaire-4.jpg'
+import partenaire5Image from '@/images/landes-partenaire-5.jpg'
+import partenaire6Image from '@/images/landes-partenaire-6.jpg'
+import partenaire7Image from '@/images/landes-partenaire-7.jpg'
+import landesPartenaireDecoration from '@/images/landes-partenaire-decoration.svg'
+
+type Partner = {
+  image: ImageMetadata
+  title: string
+  description: string
+  tagColor: 'blue' | 'green' | 'red' | 'yellow' | 'neutral'
+}
+
+const partners: Partner[] = [
+  {
+    image: partenaire1Image,
+    title: 'LA FERME DE L’ALOUETTE',
+    description:
+      'Ferme bio en polyculture (élevage, maraîchage, céréales) et boulangerie (Corcoué-sur-Logne)',
+    tagColor: 'green',
+  },
+  {
+    image: partenaire2Image,
+    title: 'LA FERME DE L’ANFRENIÈRE',
+    description:
+      'Céréalier bio, boulanger et pastier proposant une large gamme de produits : pain, pates, ravioles, farine... (Saint Mars de Coutais)',
+    tagColor: 'blue',
+  },
+  {
+    image: partenaire3Image,
+    title: 'FRANCK JAFFREDO',
+    description:
+      'Friperie vintaélever bovin bio qui propose viande et produits transformés issus de sa production : confitures et gelées, saucissons... (Legé)ge',
+    tagColor: 'red',
+  },
+  {
+    image: partenaire4Image,
+    title: 'CROC’EN THYM',
+    description:
+      'Agriculture urbaine permaculturelle : plantes aromatiques, fleurs combustibles, fruits de saison en délices sucrés (Rezé)',
+    tagColor: 'yellow',
+  },
+  {
+    image: partenaire5Image,
+    title: 'LA FERME DES DEUX FEUILLES',
+    description: 'Maraîchage bio de légumes (Bouguenais-Rezé)',
+    tagColor: 'green',
+  },
+  {
+    image: partenaire6Image,
+    title: 'LE VERGER DE BELLE-COUR',
+    description: 'Verger bio proposant pommes et poires (Montbert)',
+    tagColor: 'blue',
+  },
+  {
+    image: partenaire7Image,
+    title: 'L’ESAT BIOCAT',
+    description: 'Maraîchage bio : fruits et légumes (Gétigné)',
+    tagColor: 'red',
+  },
+]
+---
+
+<Section class="relative bg-white overflow-hidden">
+    <Image
+        src={landesPartenaireDecoration}
+        alt=""
+        aria-hidden="true"
+        class="absolute bottom-0 right-0 rotate-180"
+        widths={[50, 100]}
+    />
+    <Image
+        src={landesPartenaireDecoration}
+        alt=""
+        aria-hidden="true"
+        class="absolute left-0 top-0"
+        widths={[50, 100]}
+    />
+    <Container padding="md" class="relative z-10">
+        <!-- NOS PARTENAIRES -->
+        <div class="text-center space-y-8">
+            <div class="space-y-16 pb-4">
+                <div class="inline-flex">
+                    <HeadingBadges rows={2}>
+                        <Badge size="heading" variant="primary" rotation="-7" class="px-3">Nos</Badge>
+                        <Badge size="heading" variant="secondary" rotation="4" class="px-3">
+                            partenaires
+                        </Badge>
+                    </HeadingBadges>
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="mt-32 md:mt-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-max mx-auto gap-6"
+        >
+           
+
+            {partners.map((partner) => (
+                <SpotlightCard
+                    image={partner.image}
+                    title={partner.title}
+                    description={partner.description}
+                    tagColor={partner.tagColor}
+                    alt={partner.title}
+                />
+            ))}
+        </div>
+    </Container>
+</Section>
