@@ -2,18 +2,22 @@
 import { Image } from 'astro:assets'
 
 import Container from '@/components/container.astro'
+import Heading from '@/components/heading.astro'
 import Section from '@/components/section.astro'
 import heroImage from '@/images/communile-hero.jpg'
-import { cn } from '@/utils/style'
 ---
 
-<Section class={cn("bg-transparent p-0 flex flex-col items-center w-full")}>
+<Section variant="transparent" spacing="none" class="flex flex-col items-center w-full">
     <Container class="space-y-6">
-        <h1
-            class="font-pally text-4xl md:text-5xl font-bold text-foreground/90 text-center"
+        <Heading 
+            as="h1" 
+            size="2xl" 
+            weight="bold" 
+            align="center" 
+            color="muted"
         >
             {"Archipel de(s) communs"}
-        </h1>
+        </Heading>
 
         <div class="w-full relative rounded-2xl overflow-hidden">
             <Image

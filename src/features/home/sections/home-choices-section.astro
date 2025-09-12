@@ -1,17 +1,18 @@
 ---
 import { Image } from 'astro:assets'
-import Card from '@/components/card.astro'
+import Badge from '@/components/badge.astro'
 import Container from '@/components/container.astro'
-import HeadingGrid from '@/components/heading-grid.astro'
-import Icon from '@/components/icon.astro'
+import Heading from '@/components/heading.astro'
+import HeadingBadges from '@/components/heading-badges.astro'
 import Link from '@/components/link.astro'
 import Section from '@/components/section.astro'
 import Text from '@/components/text.astro'
+import HomeIconTextCard from '@/features/home/components/home-icon-text-card.astro'
 import illuScicImage from '@/images/communile-illu-scic.png'
 import ShapeHexagon01 from '@/images/shape-hexagon-01.svg'
 ---
 
-<Section class="bg-transparent">
+<Section variant="transparent">
     <Container>
     <ShapeHexagon01 role="presentation" aria-hidden="true" class="absolute -top-3 -right-2 w-40 h-auto" />
         <div class="relative z-10 gap-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-[260px_auto_50%]">
@@ -26,19 +27,19 @@ import ShapeHexagon01 from '@/images/shape-hexagon-01.svg'
             </div>
 
             <div class="max-w-[400px] pl-4 justify-self-center">
-                <HeadingGrid rows={3}>
-                    <span class="inline-block rounded-full bg-primary px-4 -rotate-7 z-10">Le choix</span>
-                    <span class="inline-block rounded-full bg-tertiary px-4 -rotate-11 -translate-y-8 translate-x-33">de la</span>
-                    <span class="inline-block rounded-full bg-secondary px-4 rotate-4 -translate-y-11 translate-x-2">coopérative</span>
-                </HeadingGrid>
+                <HeadingBadges rows={3}>
+                    <Badge variant="primary" rotation="-7" zIndex="10" size="heading">Le choix</Badge>
+                    <Badge variant="tertiary" rotation="-11" class="-translate-y-6 translate-x-33" size="heading">de la</Badge>
+                    <Badge variant="secondary" rotation="4" class="-translate-y-6 translate-x-2" size="heading">coopérative</Badge>
+                </HeadingBadges>
                 <article class="space-y-4">
                     <h3 class="text-2xl font-medium font-pally">
                         Commun'île est une SCIC : société coopérative d'intérêt collectif.
                     </h3>
-                    <Text>
+                    <Text size="base">
                         Le choix du statut coopératif traduit la volonté de notre collectif de lier projet politique et activité économique, dans le respect de valeurs démocratique. C'est un choix engageant, de faire économie autrement.
                     </Text>
-                    <Text>
+                    <Text size="base">
                         Tu veux devenir sociétaire ? Contactez-nous pour plus d'information à <Link href="mailto:gerance@communile.fr">gerance@communile.fr</Link>
                     </Text>
                 </article>
@@ -46,45 +47,24 @@ import ShapeHexagon01 from '@/images/shape-hexagon-01.svg'
 
 
             <div class="space-y-4 md:col-span-2 xl:col-span-1">
-                <Card size="small" radius="top-right" class="space-y-6">
-                    <h3 class="flex items-center gap-2 text-center text-2xl font-medium font-pally">
-                        <span class="inline-block bg-neutral-200 rounded-lg p-2">
-                            <Icon name="glasses" size="24"/>
-                        </span>
-                        <span class="mx-auto">
-                            Société commerciale à but non lucratif
-                        </span>
-                    </h3>
-                    <Text>
-                        La SCIC existe par la constitution d’un capital social. Elle crée un patrimoine commun par la mise en réserves impartageables de ses excédents de gestion.
-                    </Text>
-                </Card>
-                <Card size="small" radius="top-right" class="space-y-6">
-                    <h3 class="flex items-center gap-2 text-center text-2xl font-medium font-pally">
-                        <span class="inline-block bg-neutral-200 rounded-lg p-2">
-                            <Icon name="users-round" size="24"/>
-                        </span>
-                        <span class="mx-auto">
-                            Coopérative : 1 personne = 1 voix
-                        </span>
-                    </h3>
-                    <Text>
-                        Les coopératives sont caractérisées par des principes et des valeurs universelles : l’humain avant le profit, la prise de décision démocratique, la résilience et le durable...
-                    </Text>
-                </Card>
-                <Card size="small" radius="top-right" class="space-y-6">
-                    <h3 class="flex items-center gap-2 text-center text-2xl font-medium font-pally">
-                        <span class="inline-block bg-neutral-200 rounded-lg p-2">
-                            <Icon name="smile" size="24"/>
-                        </span>
-                        <span class="mx-auto">
-                            Intérêt Collectif
-                        </span>
-                    </h3>
-                    <Text>
-                        C’est une société où participent à la prise de décisions les salarié·es, les usager·es, les partenaires et les collectivités qui en sont parties prenantes et en détiennent le capital sous forme de parts sociales.
-                    </Text>
-                </Card>
+                <HomeIconTextCard 
+                    iconName="glasses" 
+                    title="Société commerciale à but non lucratif"
+                >
+                    La SCIC existe par la constitution d'un capital social. Elle crée un patrimoine commun par la mise en réserves impartageables de ses excédents de gestion.
+                </HomeIconTextCard>
+                <HomeIconTextCard 
+                    iconName="users-round" 
+                    title="Coopérative : 1 personne = 1 voix"
+                >
+                    Les coopératives sont caractérisées par des principes et des valeurs universelles : l'humain avant le profit, la prise de décision démocratique, la résilience et le durable...
+                </HomeIconTextCard>
+                <HomeIconTextCard 
+                    iconName="smile" 
+                    title="Intérêt Collectif"
+                >
+                    C'est une société où participent à la prise de décisions les salarié·es, les usager·es, les partenaires et les collectivités qui en sont parties prenantes et en détiennent le capital sous forme de parts sociales.
+                </HomeIconTextCard>
             </div>
         </div>
     </Container>

@@ -1,5 +1,6 @@
 ---
 import Container from '@/components/container.astro'
+import Heading from '@/components/heading.astro'
 import Icon from '@/components/icon.astro'
 import Section from '@/components/section.astro'
 import ShapeWaves01 from '@/images/shape-waves-01.svg'
@@ -7,7 +8,7 @@ import ShapeWaves02 from '@/images/shape-waves-02.svg'
 import HomeNumberCard from '../components/home-number-card.astro'
 ---
 
-<Section class="bg-white overflow-hidden">
+<Section overflow="hidden">
     <Container>
         <ShapeWaves01
             role="presentation"
@@ -20,9 +21,9 @@ import HomeNumberCard from '../components/home-number-card.astro'
             class="absolute bottom-0 left-0 text-neutral-200"
         />
         <div class="relative z-10 py-6 space-y-6">
-            <h2 class="text-4xl text-center font-medium font-pally">
+            <Heading as="h2" size="2xl" align="center">
                 La coopérative en quelques chiffres
-            </h2>
+            </Heading>
 
             <div
                 class="grid grid-cols-1 md:grid-cols-[repeat(auto-fit,minmax(400px,1fr))] gap-4"

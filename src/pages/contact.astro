@@ -1,6 +1,7 @@
 ---
 import Card from '../components/card.astro'
 import Container from '../components/container.astro'
+import Heading from '../components/heading.astro'
 import LeafletMap from '../components/leaflet-map.astro'
 import Section from '../components/section.astro'
 import Text from '../components/text.astro'
@@ -10,13 +11,13 @@ import Layout from '../layouts/main.astro'
 <Layout content={{ title: "Contact" }}>
   <Container>
     <Section>
-      <h1 class="text-3xl font-bold text-center mb-8">Contactez-nous</h1>
+      <Heading as="h1" size="xl" weight="bold" align="center" spacing="xl">Contactez-nous</Heading>
       
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <!-- Informations de contact -->
         <div class="space-y-6">
           <Card>
-            <h2 class="text-xl font-semibold mb-4">Nos coordonnées</h2>
+            <Heading as="h2" size="base" weight="semibold" font="sans">Nos coordonnées</Heading>
             <div class="space-y-3">
               <div>
                 <Text class="font-semibold">Adresse :</Text>
@@ -34,7 +35,7 @@ import Layout from '../layouts/main.astro'
           </Card>
 
           <Card>
-            <h2 class="text-xl font-semibold mb-4">Horaires d'ouverture</h2>
+            <Heading as="h2" size="base" weight="semibold" font="sans">Horaires d'ouverture</Heading>
             <div class="space-y-2">
               <Text>Lundi - Vendredi : 9h00 - 18h00</Text>
               <Text>Samedi : 10h00 - 16h00</Text>
@@ -46,7 +47,7 @@ import Layout from '../layouts/main.astro'
         <!-- Carte interactive -->
         <div>
           <Card>
-            <h2 class="text-xl font-semibold mb-4">Notre localisation</h2>
+            <Heading as="h2" size="base" weight="semibold" font="sans">Notre localisation</Heading>
             <LeafletMap 
               id="contact-map"
               height="400px"

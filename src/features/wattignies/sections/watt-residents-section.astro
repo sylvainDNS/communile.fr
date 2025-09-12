@@ -1,7 +1,8 @@
 ---
 import { Image } from 'astro:assets'
+import Button from '@/components/button.astro'
 import Container from '@/components/container.astro'
-import HeadingGrid from '@/components/heading-grid.astro'
+import HeadingBadges from '@/components/heading-badges.astro'
 import Section from '@/components/section.astro'
 // Import du composant factorisé
 import WattResidentsCard from '@/features/wattignies/components/watt-residents-card.astro'
@@ -22,13 +23,13 @@ import singaImage from '@/images/wattignies-residents-singa.jpg'
 import starImage from '@/images/wattignies-residents-star.svg'
 ---
 
-<Section class="relative bg-white overflow-hidden">
+<Section overflow="hidden" class="relative">
     <Container class="relative z-20 py-12 md:py-24 space-y-16">
         <!-- LES STRUCTURES RÉSIDENTES -->
         <div class="text-center space-y-8">
             <div class="space-y-16 pb-4">
                 <div class="inline-flex">
-                    <HeadingGrid rows={2}>
+                    <HeadingBadges rows={2}>
                         <span
                             class="inline-block rounded-full bg-primary px-2 -rotate-7"
                             >Les structures</span
@@ -37,7 +38,7 @@ import starImage from '@/images/wattignies-residents-star.svg'
                             class="inline-block rounded-full bg-secondary px-4 rotate-4 translate-y-4 translate-x-1"
                             >résidentes</span
                         >
-                    </HeadingGrid>
+                    </HeadingBadges>
                 </div>
             </div>
 
@@ -137,7 +138,7 @@ import starImage from '@/images/wattignies-residents-star.svg'
         <!-- LES RÉSIDENT.ES DU WATT -->
         <div class="text-center space-y-8">
             <div class="inline-flex">
-                <HeadingGrid rows={3}>
+                <HeadingBadges rows={3}>
                     <span
                         class="inline-block rounded-full bg-primary px-4 -rotate-7 z-20"
                     >
@@ -153,7 +154,7 @@ import starImage from '@/images/wattignies-residents-star.svg'
                     >
                         du Watt
                     </span>
-                </HeadingGrid>
+                </HeadingBadges>
             </div>
 
             <div
@@ -174,6 +175,8 @@ import starImage from '@/images/wattignies-residents-star.svg'
                     description="Collectif de cousier.ères à vélo"
                     tagColor="green"
                     alt="Les Coursiers Nantais/NAO Food - Collectif de coursiers à vélo"
+                    class="[&_[data-slot='title']]:text-xl [&_[data-slot='title']]:py-2.5"
+                    href="https://www.lescoursiersnantais.fr/"
                 />
 
                 <WattResidentsCard
@@ -182,6 +185,7 @@ import starImage from '@/images/wattignies-residents-star.svg'
                     description="Fédération de coopératives de livraison et de logistique à vélo"
                     tagColor="blue"
                     alt="COOPCYCLE - Fédération de coopératives de livraison"
+                    href="https://coopcycle.org/fr/"
                 />
 
                 <WattResidentsCard
@@ -190,6 +194,7 @@ import starImage from '@/images/wattignies-residents-star.svg'
                     description="Association engagée dans la lutte contre les inégalités sanitaires"
                     tagColor="red"
                     alt="Et Ma Douche - Lutte contre les inégalités sanitaires"
+                    href="https://etmadouche.fr/"
                 />
             </div>
         </div>

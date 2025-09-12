@@ -1,6 +1,4 @@
 ---
-import { Image } from 'astro:assets'
-import Card from '@/components/card.astro'
 import Container from '@/components/container.astro'
 import Details from '@/components/details.astro'
 import Icon from '@/components/icon.astro'
@@ -11,7 +9,7 @@ import ShapeHook02 from '@/images/shape-hook-02.svg'
 ---
 
 <Section
-    class="bg-primary-accent overflow-hidden relative py-12 pt-24 space-y-8"
+    variant="accent" overflow="hidden" spacing="large" class="relative pt-24 space-y-8"
 >
     <Container>
         <ShapeHook01

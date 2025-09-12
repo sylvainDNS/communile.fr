@@ -1,5 +1,6 @@
 ---
 import Container from '@/components/container.astro'
+import Heading from '@/components/heading.astro'
 import Section from '@/components/section.astro'
 import HomeWhatCard from '@/features/home/components/home-what-card.astro'
 import illuAccompagnerTransitionImage from '@/images/communile-illu-accompagner-transition.png'
@@ -7,12 +8,12 @@ import illuCreerLienImage from '@/images/communile-illu-creer-lien.png'
 import illuCreerModeleImage from '@/images/communile-illu-creer-modele.png'
 ---
 
-<Section class="py-12">
-    <Container class="space-y-6">
-    <h2 class="text-2xl text-center font-medium font-pally">
+<Section spacing="medium">
+    <Container>
+    <Heading as="h2" size="lg" align="center">
         Commun'Île, c'est quoi ?
-    </h2>
-    <ul class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-12">
+    </Heading>
+    <ul class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-12 mt-6">
         <li>
             <HomeWhatCard   
                 title="Accompagner la transition alimentaire"

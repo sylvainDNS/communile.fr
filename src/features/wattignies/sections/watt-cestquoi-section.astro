@@ -1,19 +1,20 @@
 ---
 import { Image } from 'astro:assets'
 import Container from '@/components/container.astro'
+import Heading from '@/components/heading.astro'
 import Section from '@/components/section.astro'
 import Text from '@/components/text.astro'
 import wattigniesWhatImage from '@/images/wattignies-what.png'
 ---
 
-<Section class="bg-primary">
+<Section variant="primary">
     <Container class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
         <div class="space-y-6 text-white">
-            <h2 class="font-pally mt-6 text-3xl md:text-4xl font-bold">Le Wattignies, c’est quoi ?</h2>
-            <Text class="text-xl md:text-2xl max-w-sm font-semibold mt-12">
-                Tier-lieu social où la solidarité et l’inclusion occupent une place centrale
+            <Heading as="h2" size="xl" weight="bold" color="white" class="mt-6">Le Wattignies, c'est quoi ?</Heading>
+            <Text size="lg" weight="semibold" color="white" class="max-w-sm mt-12">
+                Tier-lieu social où la solidarité et l'inclusion occupent une place centrale
             </Text>
-            <Text class="text-xl">
+            <Text size="base" color="white">
                 Ce lieu est porté par un collectif de 12 structures résidentes de l'économie sociale et solidaire - de l'action sociale, de l'alimentation durable, de la mobilité douce, de l'artisanat et du réemploi - animé par Commun'île
             </Text>
             <p class="font-pally font-bold text-2xl">Et il n’attend que vous !</p>

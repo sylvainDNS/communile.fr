@@ -1,0 +1,110 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import { cva, type VariantProps } from 'class-variance-authority'
+import Card from '@/components/card.astro'
+import Icon from '@/components/icon.astro'
+import Text from '@/components/text.astro'
+import { cn } from '@/utils/style'
+
+const iconContainerVariants = cva('inline-block rounded-lg p-2', {
+  variants: {
+    variant: {
+      default: 'bg-neutral-200',
+      primary: 'bg-primary/10 text-primary',
+      secondary: 'bg-secondary/10 text-secondary',
+      tertiary: 'bg-tertiary/10 text-tertiary',
+    },
+    size: {
+      sm: 'p-1',
+      md: 'p-2',
+      lg: 'p-3',
+    },
+  },
+  defaultVariants: {
+    variant: 'default',
+    size: 'md',
+  },
+})
+
+const titleVariants = cva(
+  'flex items-center gap-2 text-center font-medium font-pally',
+  {
+    variants: {
+      size: {
+        sm: 'text-lg',
+        md: 'text-xl',
+        lg: 'text-2xl',
+      },
+    },
+    defaultVariants: {
+      size: 'lg',
+    },
+  }
+)
+
+interface Props extends HTMLAttributes<'article'> {
+  iconName:
+    | 'menu'
+    | 'timer'
+    | 'arrow-up-right'
+    | 'calendar-heart'
+    | 'facebook'
+    | 'glasses'
+    | 'glass-water'
+    | 'google'
+    | 'hand-platter'
+    | 'heart-handshake'
+    | 'home'
+    | 'instagram'
+    | 'chevron-right'
+    | 'linkedin'
+    | 'mail'
+    | 'package-2'
+    | 'receipt-euro'
+    | 'smile'
+    | 'sparkles'
+    | 'spell-check'
+    | 'sprout'
+    | 'sun'
+    | 'tiktok'
+    | 'trees'
+    | 'twitter'
+    | 'users-round'
+    | 'vegan'
+    | 'youtube'
+  title: string
+  iconSize?: string
+  iconVariant?: VariantProps<typeof iconContainerVariants>['variant']
+  iconSizeVariant?: VariantProps<typeof iconContainerVariants>['size']
+  titleSize?: VariantProps<typeof titleVariants>['size']
+  cardSize?: 'small' | 'medium'
+  cardRadius?: 'rounded' | 'diagonal' | 'top-right'
+}
+
+const {
+  iconName,
+  title,
+  iconSize = '24',
+  iconVariant = 'default',
+  iconSizeVariant = 'md',
+  titleSize = 'lg',
+  cardSize = 'small',
+  cardRadius = 'top-right',
+  class: className,
+  ...delegated
+} = Astro.props
+---
+
+<Card size={cardSize} radius={cardRadius} class={cn("space-y-6", className)} {...delegated}>
+  <h3 class={titleVariants({ size: titleSize })}>
+    <span class={iconContainerVariants({ variant: iconVariant, size: iconSizeVariant })}>
+      <Icon name={iconName} size={iconSize} />
+    </span>
+    <span>
+      {title}
+    </span>
+  </h3>
+  <Text size="base">
+    <slot />
+  </Text>
+</Card>

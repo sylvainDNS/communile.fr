@@ -1,39 +1,48 @@
 ---
 import { Image } from 'astro:assets'
-import Card from '@/components/card.astro'
+import Badge from '@/components/badge.astro'
 import Container from '@/components/container.astro'
-import HeadingGrid from '@/components/heading-grid.astro'
-import Icon from '@/components/icon.astro'
+import HeadingBadges from '@/components/heading-badges.astro'
 import Section from '@/components/section.astro'
-import Text from '@/components/text.astro'
+import WattMarchesCard from '@/features/wattignies/components/watt-marches-card.astro'
 import illuCreerAgirImage from '@/images/communile-illu-agir.png'
 import ShapeHook01 from '@/images/shape-hook-01.svg'
 import ShapeHook02 from '@/images/shape-hook-02.svg'
 import { cn } from '@/utils/style'
 ---
 
-<Section class="bg-tertiary overflow-hidden relative py-12 pt-24 space-y-8">
+<Section variant="tertiary" overflow="hidden" spacing="large" class="relative pt-24 space-y-8">
     <Container>
         <div
             class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6"
         >
-            <HeadingGrid rows={3}>
-                <span
-                    class="inline-block rounded-full bg-primary px-4 -rotate-3"
+            <HeadingBadges rows={3}>
+                <Badge
+                    variant="primary"
+                    rotation="-3"
+                    size="heading"
                 >
                     LES MARCHÉS DE
-                </span>
-                <span
-                    class="inline-block rounded-full bg-quaternary px-4 rotate-3 -translate-y-2 translate-x-1 z-10"
+                </Badge>
+                <Badge
+                    variant="quaternary"
+                    rotation="3"
+                    class="-translate-y-2 translate-x-1 z-10"
+                    class="z-20"
+                    size="heading"
                 >
                     DE SAISON
-                </span>
-                <span
-                    class="inline-block rounded-full bg-secondary px-4 -rotate-11 -translate-y-4 md:-translate-y-6 translate-x-10 md:translate-x-20"
+                </Badge>
+                <Badge
+                    variant="secondary"
+                    rotation="-11"
+                    class="-translate-y-4 md:-translate-y-2 translate-x-10 md:translate-x-18"
+                    size="heading"
                 >
+                
                     DU WATTIGNIES
-                </span>
-            </HeadingGrid>
+                </Badge>
+            </HeadingBadges>
 
             <ShapeHook01
                 role="presentation"
@@ -42,50 +51,34 @@ import { cn } from '@/utils/style'
             />
             <div class="relative lg:col-span-2">
                 <div class="space-y-6 relative z-10">
-                    <Card size="small" class="space-y-4">
-                        <div class="flex items-center gap-2">
-                            <span
-                                class="inline-block bg-neutral-200 rounded-lg p-2"
-                            >
-                                <Icon name="trees" size="24" />
-                            </span>
-                            <Text class="font-medium text-xl md:text-2xl font-pally">
-                                Quand les créateurices s'invitent au Wattignies
-                            </Text>
-                        </div>
-                        <Text>
-                            Les temps forts du Wattignies sont nos marchés de
-                            saison qui rassemblent l’ensemble des résident.es du
-                            lieu et permettent de valoriser les créateur.ices
-                            autour d’un week-end festif qui attire un large
-                            public.
-                        </Text>
-                    </Card>
-                    <Card size="small" class="space-y-4">
-                        <div class="flex items-center gap-2">
-                            <span
-                                class="inline-block bg-neutral-200 rounded-lg p-2"
-                            >
-                                <Icon name="package-2" size="24" />
-                            </span>
-                            <Text class="font-medium text-xl md:text-2xl font-pally">
-                                En 2024, 5 marchés ont été organisés
-                            </Text>
-                        </div>
-                        <ul class="list-disc list-inside text-lg md:text-xl space-y-2">
-                            <li class="text-balance text-lg md:text-xl">
-                                3 marchés de saison, qui ont permis à plus d’une
-                                cinquantaine d’artistes de s’exposer, passer un
-                                moment convivial et à vivre de leur travail. :
-                                marché de printemps, marché d’automne, et marché
-                                givré
-                            </li>
-                            <li class="text-balance text-lg md:text-xl">
-                                1 marché Latino et 1 marché de créateurices
-                                queer “La Potinerie”
-                            </li>
-                        </ul>
-                    </Card>
+                    <WattMarchesCard
+                        iconName="trees"
+                        title="Quand les créateurices s'invitent au Wattignies"
+                    >
+                        Les temps forts du Wattignies sont nos marchés de
+                        saison qui rassemblent l'ensemble des résident.es du
+                        lieu et permettent de valoriser les créateur.ices
+                        autour d'un week-end festif qui attire un large
+                        public.
+                    </WattMarchesCard>
+                    <WattMarchesCard
+                        iconName="package-2"
+                        title="En 2024, 5 marchés ont été organisés"
+                        hasList={true}
+                        hasDescription={false}
+                    >
+                        <li>
+                            3 marchés de saison, qui ont permis à plus d'une
+                            cinquantaine d'artistes de s'exposer, passer un
+                            moment convivial et à vivre de leur travail. :
+                            marché de printemps, marché d'automne, et marché
+                            givré
+                        </li>
+                        <li>
+                            1 marché Latino et 1 marché de créateurices
+                            queer "La Potinerie"
+                        </li>
+                    </WattMarchesCard>
                 </div>
             </div>
         </div>

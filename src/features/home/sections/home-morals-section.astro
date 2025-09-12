@@ -1,15 +1,12 @@
 ---
-import Card from '@/components/card.astro'
 import Container from '@/components/container.astro'
-import Icon from '@/components/icon.astro'
 import Section from '@/components/section.astro'
-import Tag from '@/components/tag.astro'
-import Text from '@/components/text.astro'
+import HomeMoralsCard from '@/features/home/components/home-morals-card.astro'
 import ShapeWaves01 from '@/images/shape-waves-01.svg'
 import ShapeWaves02 from '@/images/shape-waves-02.svg'
 ---
 
-<Section class="bg-tertiary overflow-hidden">
+<Section variant="tertiary" overflow="hidden">
     <Container>
         <ShapeWaves01
             role="presentation"
@@ -29,98 +26,24 @@ import ShapeWaves02 from '@/images/shape-waves-02.svg'
                 Nos valeurs
             </h2>
             <ul class="flex flex-wrap md:[&>*]:flex-[33%] gap-6">
-                <li>
-                    <Card
-                        size="small"
-                        radius="diagonal"
-                        class="space-y-2 h-full"
-                    >
-                        <Tag> Convivialité </Tag>
-                        <Text>
-                            Comme un préalable et une première façon de créer du
-                            collectif
-                            <Icon name="home" size="40" class="ml-auto p-2" />
-                        </Text>
-                    </Card>
-                </li>
-                <li>
-                    <Card
-                        size="small"
-                        radius="diagonal"
-                        class="space-y-2 h-full"
-                    >
-                        <Tag> Solidarité </Tag>
-                        <Text>
-                            Comme une évidence, une nécessité
-                            <Icon
-                                name="users-round"
-                                size="40"
-                                class="ml-auto p-2"
-                            />
-                        </Text>
-                    </Card>
-                </li>
-                <li>
-                    <Card
-                        size="small"
-                        radius="diagonal"
-                        class="space-y-2 h-full"
-                    >
-                        <Tag> Inclusion </Tag>
-                        <Text>
-                            Pour être des lieux de vie et d’expérimentation
-                            <Icon
-                                name="sparkles"
-                                size="40"
-                                class="ml-auto p-2"
-                            />
-                        </Text>
-                    </Card>
-                </li>
-                <li>
-                    <Card
-                        size="small"
-                        radius="diagonal"
-                        class="space-y-2 h-full"
-                    >
-                        <Tag> Durabilité </Tag>
-                        <Text>
-                            Comme un pré-requis non négociable
-                            <Icon name="sun" size="40" class="ml-auto p-2" />
-                        </Text>
-                    </Card>
-                </li>
-                <li>
-                    <Card
-                        size="small"
-                        radius="diagonal"
-                        class="space-y-2 h-full"
-                    >
-                        <Tag> Ancrage local </Tag>
-                        <Text>
-                            Pour agir en symbiose avec notre environnement
-                            <Icon name="sprout" size="40" class="ml-auto p-2" />
-                        </Text>
-                    </Card>
-                </li>
-                <li>
-                    <Card
-                        size="small"
-                        radius="diagonal"
-                        class="space-y-2 h-full"
-                    >
-                        <Tag> Accessibilité </Tag>
-                        <Text>
-                            Un mantra pour rendre le choix possible à tous les
-                            niveaux
-                            <Icon
-                                name="spell-check"
-                                size="40"
-                                class="ml-auto p-2"
-                            />
-                        </Text>
-                    </Card>
-                </li>
+                <HomeMoralsCard tagLabel="Convivialité" iconName="home">
+                    Comme un préalable et une première façon de créer du collectif
+                </HomeMoralsCard>
+                <HomeMoralsCard tagLabel="Solidarité" iconName="users-round">
+                    Comme une évidence, une nécessité
+                </HomeMoralsCard>
+                <HomeMoralsCard tagLabel="Inclusion" iconName="sparkles">
+                    Pour être des lieux de vie et d'expérimentation
+                </HomeMoralsCard>
+                <HomeMoralsCard tagLabel="Durabilité" iconName="sun">
+                    Comme un pré-requis non négociable
+                </HomeMoralsCard>
+                <HomeMoralsCard tagLabel="Ancrage local" iconName="sprout">
+                    Pour agir en symbiose avec notre environnement
+                </HomeMoralsCard>
+                <HomeMoralsCard tagLabel="Accessibilité" iconName="spell-check">
+                    Un mantra pour rendre le choix possible à tous les niveaux
+                </HomeMoralsCard>
             </ul>
         </div>
     </Container>
