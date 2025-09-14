@@ -14,10 +14,10 @@ const { color = 'neutral', class: className, ...delegated } = Astro.props
 class={cn(
     'inline-block px-3 py-2 rounded-full font-bold leading-normal text-base',
     {
-      'bg-watt-blue-light text-watt-blue': color === 'blue',
-      'bg-watt-green-light text-watt-green': color === 'green',
-      'bg-watt-red-light text-watt-red': color === 'red',
-      'bg-watt-yellow-light text-watt-yellow': color === 'yellow',
+      'bg-gradient-to-bl to-primary-light from-[color-mix(in_oklab,var(--theme-primary)_15%,var(--color-white))] text-primary': color === 'blue',
+      'bg-gradient-to-bl to-quaternary-light from-[color-mix(in_oklab,var(--theme-quaternary)_15%,var(--color-white))] text-quaternary': color === 'green',
+      'bg-gradient-to-bl to-tertiary-light from-[color-mix(in_oklab,var(--theme-tertiary)_15%,var(--color-white))] text-tertiary': color === 'yellow',
+      'bg-gradient-to-bl to-secondary-light from-[color-mix(in_oklab,var(--theme-secondary)_15%,var(--color-white))] text-secondary': color === 'red',
       'bg-background text-foreground': color === 'neutral',
     },
     className

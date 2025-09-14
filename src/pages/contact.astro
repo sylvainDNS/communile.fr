@@ -1,0 +1,69 @@
+---
+import Card from '../components/card.astro'
+import Container from '../components/container.astro'
+import Heading from '../components/heading.astro'
+import LeafletMap from '../components/leaflet-map.astro'
+import Section from '../components/section.astro'
+import Text from '../components/text.astro'
+import Layout from '../layouts/main.astro'
+---
+
+<Layout content={{ title: "Contact" }}>
+  <Container>
+    <Section>
+      <Heading as="h1" size="xl" weight="bold" align="center" spacing="xl">Contactez-nous</Heading>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- Informations de contact -->
+        <div class="space-y-6">
+          <Card>
+            <Heading as="h2" size="base" weight="semibold" font="sans">Nos coordonnées</Heading>
+            <div class="space-y-3">
+              <div>
+                <Text class="font-semibold">Adresse :</Text>
+                <Text>Le Wattignies<br>Rue de Wattignies, 59000 Lille</Text>
+              </div>
+              <div>
+                <Text class="font-semibold">Email :</Text>
+                <Text>contact@communile.fr</Text>
+              </div>
+              <div>
+                <Text class="font-semibold">Téléphone :</Text>
+                <Text>03 20 XX XX XX</Text>
+              </div>
+            </div>
+          </Card>
+
+          <Card>
+            <Heading as="h2" size="base" weight="semibold" font="sans">Horaires d'ouverture</Heading>
+            <div class="space-y-2">
+              <Text>Lundi - Vendredi : 9h00 - 18h00</Text>
+              <Text>Samedi : 10h00 - 16h00</Text>
+              <Text>Dimanche : Fermé</Text>
+            </div>
+          </Card>
+        </div>
+
+        <!-- Carte interactive -->
+        <div>
+          <Card>
+            <Heading as="h2" size="base" weight="semibold" font="sans">Notre localisation</Heading>
+            <LeafletMap 
+              id="contact-map"
+              height="400px"
+              center={[50.6292, 3.0573]}
+              zoom={15}
+              markers={[
+                {
+                  position: [50.6292, 3.0573],
+                  popup: '<strong>Le Wattignies</strong><br>Rue de Wattignies<br>59000 Lille'
+                }
+              ]}
+              class="rounded-lg overflow-hidden"
+            />
+          </Card>
+        </div>
+      </div>
+    </Section>
+  </Container>
+</Layout>

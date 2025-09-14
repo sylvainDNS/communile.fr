@@ -1,0 +1,60 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import Card from '@/components/card.astro'
+import Icon from '@/components/icon.astro'
+import Text from '@/components/text.astro'
+import { cn } from '@/utils/style'
+
+interface Props extends HTMLAttributes<'article'> {
+  iconName:
+    | 'menu'
+    | 'timer'
+    | 'arrow-up-right'
+    | 'calendar-heart'
+    | 'facebook'
+    | 'glasses'
+    | 'glass-water'
+    | 'google'
+    | 'hand-platter'
+    | 'heart-handshake'
+    | 'home'
+    | 'instagram'
+    | 'chevron-right'
+    | 'linkedin'
+    | 'mail'
+    | 'package-2'
+    | 'receipt-euro'
+    | 'smile'
+    | 'sparkles'
+    | 'spell-check'
+    | 'sprout'
+    | 'sun'
+    | 'tiktok'
+    | 'trees'
+    | 'twitter'
+    | 'users-round'
+    | 'vegan'
+    | 'youtube'
+  iconSize?: string
+  iconClass?: string
+}
+
+const {
+  iconName,
+  iconSize = '24',
+  iconClass,
+  class: className,
+  ...delegated
+} = Astro.props
+---
+
+<Card size="small" class={cn("flex items-center gap-2", className)} {...delegated}>
+  <span
+    class={cn("inline-block bg-neutral-200 rounded-lg p-2", iconClass)}
+  >
+    <Icon name={iconName} size={iconSize} />
+  </span>
+  <Text>
+    <slot />
+  </Text>
+</Card>

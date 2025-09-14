@@ -1,0 +1,45 @@
+---
+import { Image } from 'astro:assets'
+import Tag from '@/components/tag.astro'
+import { cn } from '@/utils/style'
+
+interface Props {
+  image: ImageMetadata
+  title: string
+  description: string
+  tagColor: 'blue' | 'green' | 'red' | 'yellow' | 'neutral'
+  alt: string
+  class?: string
+  href?: string
+}
+
+const {
+  image,
+  title,
+  description,
+  tagColor,
+  alt,
+  class: className,
+  href,
+} = Astro.props
+---
+<a href={href} target="_blank" class="cursor-pointer">
+    <div class={cn("group/residents relative w-full max-w-[400px] h-[260px] rounded overflow-hidden", className)}>
+    <Image 
+        src={image} 
+        alt={alt} 
+        class="w-full h-full object-cover group-hover/residents:scale-105 transition-transform duration-300 group-hover/residents:-rotate-2"
+        width={404}
+        height={260}
+    />
+    <div class="absolute top-4 left-4 z-50 group-hover/residents:rotate-1 transition-transform duration-300">
+        <Tag data-slot="title" color={tagColor} class="text-xl md:text-2xl font-pally font-medium whitespace-nowrap">{title}</Tag>
+    </div>
+    <div class="absolute bottom-4 left-4 right-4">
+        <div class="bg-black/80 rounded p-2">
+        <p class="text-white text-center font-inter font-medium text-sm md:text-base">{description}</p>
+        </div>
+    </div>
+    </div>
+</a>
+

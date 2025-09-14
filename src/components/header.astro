@@ -7,34 +7,273 @@ import { PATH, SITE_NAME } from '../utils/constants'
 import Button from './button.astro'
 import Icon from './icon.astro'
 import Link from './link.astro'
+import NavLink from './nav-link.astro'
 import VisuallyHidden from './visually-hidden.astro'
+
+const pathname = new URL(Astro.request.url).pathname
 ---
 
-<header>
-    <div
-        class="container mx-auto bg-white rounded-sm m-2 px-4 py-3 flex items-center justify-between"
-    >
-        <Link
-            href={PATH.HOME}
-            class="font-bold uppercase text-neutral-800 hover:text-neutral-700 flex items-center gap-3"
-        >
-            <Image
-                src={logo}
-                alt=""
-                aria-hidden="true"
-                role="presentation"
-                width={40}
-                height={40}
-            />
-            {SITE_NAME}
-        </Link>
+<header class="fixed inset-x-2 md:inset-x-4 top-2 z-50 rounded-md bg-white">
+    <div class="container mx-auto px-4 py-3 relative z-50">
+        <div class="flex items-center justify-between">
+            <Link
+                href={PATH.HOME}
+                class="font-bold uppercase text-neutral-800 hover:text-neutral-700 flex items-center gap-3"
+            >
+                <Image
+                    src={logo}
+                    alt=""
+                    aria-hidden="true"
+                    role="presentation"
+                    width={40}
+                    height={40}
+                />
+                {SITE_NAME}
+            </Link>
+            <nav class="hidden md:block" aria-label="Navigation principale">
+                <ul class="flex items-center">
+                    <li>
+                        <NavLink
+                            active={pathname === PATH.HOME}
+                            href={PATH.HOME}>Qui sommes-nous ?</NavLink
+                        >
+                    </li>
+                    <li>
+                        <NavLink
+                            active={pathname === PATH.LE_WATTIGNIES}
+                            href={PATH.LE_WATTIGNIES}>Le Wattignies</NavLink
+                        >
+                    </li>
+                </ul>
+            </nav>
 
-        <Button
-            type="button"
-            class="p-2 text-foreground rounded-md hover:bg-background"
+            <Button
+                id="mobile-menu-button"
+                aria-controls="mobile-menu"
+                aria-expanded="false"
+                type="button"
+                variant="ghost"
+                class="block md:hidden p-2 text-foreground rounded-sm hover:bg-background"
+            >
+                <VisuallyHidden>Menu</VisuallyHidden>
+                <Icon name="menu" size={24} />
+            </Button>
+        </div>
+
+        <div
+            id="mobile-overlay"
+            class="fixed left-2 right-2 mt-4 shadow-xl h-[calc(100vh-var(--mobile-overlay-top)-calc(var(--spacing)*5))] z-40 hidden md:hidden md:data-[visible=true]:hidden data-[visible=true]:block"
+            style="top: var(--mobile-overlay-top, 0px)"
         >
-            <VisuallyHidden>Menu</VisuallyHidden>
-            <Icon name="menu" size={24} />
-        </Button>
+            <div
+                id="mobile-panel"
+                role="dialog"
+                aria-modal="true"
+                class="relative h-full w-full flex items-stretch justify-start overflow-hidden"
+            >
+                <div
+                    class="relative z-10 h-full w-full max-w-md bg-white rounded-md flex flex-col"
+                >
+                    <nav
+                        aria-label="Navigation mobile"
+                        class="flex justify-center items-center flex-1 pt-2 px-2 overflow-y-auto"
+                    >
+                        <ul
+                            class="space-y-2 flex flex-col justify-center items-center gap-2 text-xl"
+                        >
+                            <li>
+                                <NavLink
+                                    active={pathname === PATH.HOME}
+                                    href={PATH.HOME}
+                                >
+                                    <span>Qui sommes-nous ?</span>
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink
+                                    active={pathname === PATH.LE_WATTIGNIES}
+                                    href={PATH.LE_WATTIGNIES}
+                                >
+                                    <span>Le Wattignies</span>
+                                </NavLink>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <script>
+            import { icons } from "@/utils/icons";
+            import { animate, createSpring, svg } from "animejs";
+
+            const btn = document.getElementById(
+                "mobile-menu-button",
+            ) as HTMLElement | null;
+
+            const overlay = document.getElementById("mobile-overlay");
+            const panel = document.getElementById("mobile-panel");
+            const headerRoot = document.querySelector("header");
+
+            let isOpen = false;
+            let focusRestoreEl: HTMLElement | null = null;
+
+            // Icon paths from the icon component
+            const menuIconPaths = icons.menu.paths;
+            const crossIconPaths = icons.cross.paths;
+
+            // Create reusable target path elements for morphing (simpler and faster than recreating each time)
+            function createPathEl(d: string) {
+                const el = document.createElementNS(
+                    "http://www.w3.org/2000/svg",
+                    "path",
+                );
+                el.setAttribute("d", d);
+                return el;
+            }
+
+            const menuTargets = menuIconPaths.map(createPathEl);
+            const crossTargets = crossIconPaths.map(createPathEl);
+
+            function openMenu() {
+                if (isOpen) return;
+                isOpen = true;
+                focusRestoreEl = document.activeElement as HTMLElement | null;
+
+                overlay?.setAttribute("data-visible", "true");
+                // Position overlay just below header
+                const headerHeight =
+                    headerRoot?.getBoundingClientRect().height || 0;
+                if (overlay)
+                    overlay.style.setProperty(
+                        "--mobile-overlay-top",
+                        `${headerHeight}px`,
+                    );
+                btn?.setAttribute("aria-expanded", "true");
+
+                if (!panel) return;
+
+                // Set initial state using zero-duration animations
+                // Prepare panel to unfold from bottom to top using clip-path
+                // animate(panel, {
+                //     clipPath: "inset(0% 0% 100% 0%)",
+                //     ease: createSpring({ mass: 2, stiffness: 100, damping: 20, velocity: 0.2 }),
+                //     opacity: 1,
+                //     duration: 0,
+                // });
+
+                animate(panel, {
+                    clipPath: ["inset(0% 0% 100% 0%)", "inset(0% 0% 0% 0%)"],
+                    duration: 300,
+                    ease: 'inExpo'
+                });
+
+                morphMenuIcon(btn, true);
+
+                const firstFocusable = overlay?.querySelector("a, button");
+                if (firstFocusable instanceof HTMLElement)
+                    firstFocusable.focus();
+            }
+
+            function closeMenu() {
+                if (!isOpen) return;
+                isOpen = false;
+
+                btn?.setAttribute("aria-expanded", "false");
+
+                let completed = 0;
+                const done = () => {
+                    completed += 1;
+                    if (completed >= 2) {
+                        overlay?.setAttribute("data-visible", "false");
+                        if (focusRestoreEl instanceof HTMLElement)
+                            focusRestoreEl.focus();
+                    }
+                };
+
+                if (!panel) return;
+
+                animate(panel, {
+                    clipPath: ["inset(0% 0% 0% 0%)", "inset(0% 0% 100% 0%)"],
+                    duration: 250,
+                    ease: "inBack",
+                    onComplete: done,
+                });
+
+                morphMenuIcon(btn, false);
+            }
+
+            function morphMenuIcon(
+                targetBtn: HTMLElement | null,
+                isX: boolean,
+            ) {
+                const svgElement = targetBtn?.querySelector("svg");
+                if (!svgElement) return;
+                const paths = svgElement.querySelectorAll("path");
+
+                if (paths.length < 3) return;
+
+                const middle = paths[0];
+                const top = paths[1];
+                const bottom = paths[2];
+
+                if (isX) {
+                    // Morph to cross icon
+                    // Hide middle line
+                    animate(middle, {
+                        opacity: 0,
+                        duration: 150,
+                        ease: "ease-in-out",
+                    });
+
+                    // Morph top line to first diagonal
+                    animate(top, {
+                        d: svg.morphTo(crossTargets[0]),
+                        duration: 260,
+                        ease: "ease-in-out",
+                    });
+
+                    // Morph bottom line to second diagonal
+                    animate(bottom, {
+                        d: svg.morphTo(crossTargets[1]),
+                        duration: 260,
+                        ease: "ease-in-out",
+                    });
+                } else {
+                    // Morph back to menu icon
+                    // Show middle line
+                    animate(middle, {
+                        opacity: 1,
+                        duration: 150,
+                        ease: "ease-in-out",
+                    });
+
+                    // Morph first diagonal back to top line
+                    animate(top, {
+                        d: svg.morphTo(menuTargets[1]),
+                        duration: 260,
+                        ease: "ease-in-out",
+                    });
+
+                    // Morph second diagonal back to bottom line
+                    animate(bottom, {
+                        d: svg.morphTo(menuTargets[2]),
+                        duration: 260,
+                        ease: "ease-in-out",
+                    });
+                }
+            }
+
+            btn?.addEventListener("click", () => {
+                if (isOpen) closeMenu();
+                else openMenu();
+            });
+
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape" && isOpen) {
+                    e.preventDefault();
+                    closeMenu();
+                }
+            });
+        </script>
     </div>
 </header>

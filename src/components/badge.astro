@@ -1,0 +1,84 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import { cva, type VariantProps } from 'class-variance-authority'
+
+import { cn } from '../utils/style'
+
+const badgeVariants = cva('inline-block font-pally font-bold', {
+  variants: {
+    variant: {
+      primary: 'bg-primary text-white',
+      secondary: 'bg-secondary text-white',
+      tertiary: 'bg-tertiary text-white',
+      quaternary: 'bg-quaternary text-white',
+      neutral: 'bg-neutral-200 text-neutral-800',
+      white: 'bg-white text-neutral-800',
+    },
+    shape: {
+      pill: 'rounded-full',
+      rounded: 'rounded-lg',
+      square: 'rounded-md',
+    },
+    size: {
+      sm: 'px-2 py-1 text-sm',
+      md: 'px-4 py-2 text-base',
+      lg: 'px-6 py-3 text-lg',
+      xl: 'px-8 py-4 text-xl',
+      '2xl': 'px-4 py-2 text-3xl md:text-5xl',
+      heading: 'px-4 py-2 text-4xl md:text-5xl whitespace-nowrap',
+    },
+    rotation: {
+      none: '',
+      '1': 'rotate-1',
+      '2': 'rotate-2',
+      '3': 'rotate-3',
+      '4': 'rotate-4',
+      '5': 'rotate-5',
+      '7': 'rotate-7',
+      '-1': '-rotate-1',
+      '-2': '-rotate-2',
+      '-3': '-rotate-3',
+      '-4': '-rotate-4',
+      '-5': '-rotate-5',
+      '-7': '-rotate-7',
+      '-11': '-rotate-11',
+      '-12': '-rotate-12',
+    },
+    position: {
+      static: '',
+      relative: 'relative',
+      absolute: 'absolute',
+    },
+    zIndex: {
+      auto: '',
+      '10': 'z-10',
+      '20': 'z-20',
+      '30': 'z-30',
+    },
+  },
+  defaultVariants: {
+    variant: 'primary',
+    shape: 'pill',
+    size: 'md',
+    rotation: 'none',
+    position: 'static',
+    zIndex: 'auto',
+  },
+})
+
+type Props = HTMLAttributes<'span'> & VariantProps<typeof badgeVariants>
+const {
+  class: className,
+  variant,
+  shape,
+  size,
+  rotation,
+  position,
+  zIndex,
+  ...delegated
+} = Astro.props
+---
+
+<span class={cn(badgeVariants({ variant, shape, size, rotation, position, zIndex }), className)} {...delegated}>
+  <slot />
+</span>

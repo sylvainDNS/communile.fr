@@ -1,0 +1,17 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+import { cn } from '../utils/style'
+
+type Props = HTMLAttributes<'div'> & {
+  rows: number
+}
+
+const { rows, class: className, ...delegated } = Astro.props
+---
+
+<h2 style={{
+    '--rows': rows,
+}} class={cn("h-fit m-auto grid grid-rows-[var(--rows)] justify-items-start text-background uppercase font-pally font-bold text-4xl md:text-5xl leading-normal", className)} {...delegated}>
+    <slot />
+</h2>

@@ -1,0 +1,47 @@
+---
+import { Image } from 'astro:assets'
+import Container from '@/components/container.astro'
+import Section from '@/components/section.astro'
+import Text from '@/components/text.astro'
+import wattigniesAvisProfil from '@/images/wattignies-avis-profiles.png'
+import WattigniesAvisQuotes from '@/images/wattignies-avis-quotes.svg'
+import { cn } from '@/utils/style'
+---
+
+<Section class="py-24">
+    <Container class={cn("max-w-4xl space-y-20 md:space-y-16")}>
+        <div class="flex justify-center md:justify-start">
+            <Image
+                src={wattigniesAvisProfil}
+                alt="Jonathan de l’atelier du Watt."
+                class="rounded-full size-40 md:size-36 md:-translate-x-4"
+            />
+        </div>
+        <div class="mx-auto space-y-8">
+            <div class="relative max-w-4xl">
+                <WattigniesAvisQuotes class="absolute left-0 -top-16 md:-top-8 text-primary" />
+                <Text size="base" class="not-last:mb-0 px-4 md:px-24">
+                    Le Wattignies en un mot ? <b class="font-semibold">REUNIR</b
+                    >
+                </Text>
+                <Text size="base" class="px-4 mt-2 md:px-24">
+                    Je trouve qu'il y a une solidarité entre acteurs, qu'il y a
+                    un partage d'expériences et d'idées. Ça m'arrive souvent de
+                    demander aux autres leurs avis sur ce que je fais, ça permet
+                    d'avoir un regard extérieur à notre activité. Le côté social
+                    me plaît également beaucoup : les cafés repères de La Cloche
+                    et l’hébergement du camping-car d’EtMaDouche? C'est cet aura
+                    autour du Wattignies que j'apprécie beaucoup.
+                </Text>
+                <WattigniesAvisQuotes
+                    class="rotate-180 text-secondary absolute -bottom-12 right-0 md:right-12"
+                />
+            </div>
+        </div>
+        <div>
+            <Text class="text-center font-pally font-medium text-xl md:text-2xl">
+                Le Wattignies vu part : Jonathan de l’atelier du Watt.
+            </Text>
+        </div>
+    </Container>
+</Section>

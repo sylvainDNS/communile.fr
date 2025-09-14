@@ -1,0 +1,116 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+import { cn } from '../utils/style'
+import Icon from './icon.astro'
+
+type Props = HTMLAttributes<'details'>
+const { class: className, ...delegated } = Astro.props
+---
+<div class={cn("group/details rounded-md", className)} data-details {...delegated}>
+    <button 
+        class="group/details-button flex items-center w-full text-left px-6 py-4"
+        data-details-button
+        aria-expanded="false"
+    >
+        <div class="text-xl font-bold">
+            <slot name="title" />
+        </div>
+        <Icon name="chevron-right" class="ml-auto rotate-90 group-aria-[expanded=true]/details-button:rotate-270 transition-transform duration-200" data-details-icon />
+    </button>
+    <div 
+        class="overflow-hidden "
+        data-details-content
+        aria-hidden="true"
+    >
+        <div class="mt-4 leading-normal text-lg px-6 pb-6">
+            <slot name="content" />
+        </div>
+    </div>
+</div>
+
+<script>
+    import { animate, createSpring } from 'animejs'
+
+    // Fonction pour initialiser un composant details
+    function initDetails(detailsElement: HTMLElement) {
+        const button = detailsElement.querySelector('[data-details-button]') as HTMLButtonElement
+        const content = detailsElement.querySelector('[data-details-content]') as HTMLElement
+        if (!button || !content) return
+
+        // Calculer la hauteur naturelle du contenu
+        const naturalHeight = content.scrollHeight
+        
+        // Initialiser l'état fermé
+        content.style.height = '0px'
+        content.style.overflow = 'hidden'
+        
+        // État interne
+        let isOpen = false
+        let isAnimating = false
+        let currentAnimation: any = null
+
+        // Gérer le clic sur le bouton
+        button.addEventListener('click', (e) => {
+            e.preventDefault()
+            
+            // Si une animation est en cours, l'arrêter et basculer l'état
+            if (isAnimating && currentAnimation) {
+                currentAnimation.pause()
+                isAnimating = false
+                isOpen = !isOpen // Bascule l'état
+            }
+            
+            if (isAnimating) return
+            isAnimating = true
+
+            if (isOpen) {
+                // Fermer avec animation spring
+                button.setAttribute('aria-expanded', 'false')
+                content.setAttribute('aria-hidden', 'true')
+                detailsElement.classList.remove('open')
+                
+                content.style.height = naturalHeight + 'px'
+                content.offsetHeight // Force reflow
+                
+                currentAnimation = animate(content, {
+                    height: {
+                        to: '0px',
+                        ease: createSpring({ mass: 2, stiffness: 100, damping: 20, velocity: 0.2 })
+                    }
+                })
+                
+                currentAnimation.then(() => {
+                    isOpen = false
+                    isAnimating = false
+                    currentAnimation = null
+                })
+            } else {
+                // Ouvrir avec animation spring
+                button.setAttribute('aria-expanded', 'true')
+                content.setAttribute('aria-hidden', 'false')
+                detailsElement.classList.add('open')
+                
+                currentAnimation = animate(content, {
+                    height: {
+                        to: naturalHeight + 'px',
+                        ease: createSpring({ mass: 2, stiffness: 100, damping: 20, velocity: 0.2 })
+                    }
+                })
+                
+                currentAnimation.then(() => {
+                    content.style.height = 'auto'
+                    isOpen = true
+                    isAnimating = false
+                    currentAnimation = null
+                })
+            }
+        })
+    }
+
+    // Initialiser tous les composants details
+    document.addEventListener('DOMContentLoaded', () => {
+        const detailsElements = document.querySelectorAll('[data-details]')
+        detailsElements.forEach((element) => initDetails(element as HTMLElement))
+    })
+</script>

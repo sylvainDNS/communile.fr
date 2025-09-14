@@ -1,11 +1,10 @@
 ---
-import { Image } from 'astro:assets'
+import Badge from '@/components/badge.astro'
 import Container from '@/components/container.astro'
-import Icon from '@/components/icon.astro'
-import Link from '@/components/link.astro'
+import HeadingBadges from '@/components/heading-badges.astro'
 import Section from '@/components/section.astro'
-import Tag from '@/components/tag.astro'
 import Text from '@/components/text.astro'
+import HomePlaceCard from '@/features/home/components/home-place-card.astro'
 import leBarIleCardImage from '@/images/le-bar-ile-card.jpg'
 import leLaboDivaCardImage from '@/images/le-labo-diva-card.jpg'
 import leWattigniesCardImage from '@/images/le-wattignies-card.jpg'
@@ -15,145 +14,93 @@ import { PATH } from '@/utils/constants'
 
 <Section>
     <Container class="space-y-3 grid grid-cols-1 md:grid-cols-3"> 
-    <div class="space-y-3 max-w-md">
-        <h2 class="grid grid-rows-2 justify-items-start text-white uppercase font-pally font-bold text-5xl leading-normal">
-            <span class="inline-block rounded-full bg-primary px-4 -rotate-7">Nos</span>
-            <span class="inline-block rounded-full bg-secondary px-8 rotate-4 -translate-y-2 translate-x-1">lieux</span>
-        </h2>
+    <div class="space-y-4 max-w-md">
+        <HeadingBadges rows={2}>
+            <Badge rotation="-7" size="heading">Nos</Badge>
+            <Badge variant="secondary" rotation="4" class="-translate-y-2 translate-x-1" size="heading">lieux</Badge>
+        </HeadingBadges>
         
-        <div class="max-w-sm text-xl">
-            <Text>
+        <div class="max-w-sm mt-4">
+            <Text size="base">
                 Commun'île c'est avant tout une histoire de lieux et de personnes qui les composent. 
             </Text>
-            <Text>
+            <Text size="base">
                 Des lieux où chacun·e pourra toujours bien manger, boire un coup et passer du bon temps. 
             </Text>
-            <Text>
+            <Text size="base">
                 Des lieux où règne le respect : celui des client·e·s d'un jour et de toujours, celui des travailleur·euse·s, des produits, de notre quartier, de notre ville.
             </Text>
         </div>
     </div>
 
     <div class="col-span-2 grid grid-cols-1 md:grid-cols-2 gap-3">
-        <Link
+        <HomePlaceCard
             href={PATH.LE_WATTIGNIES}
-            class="block relative rounded-2xl overflow-hidden group"
+            image={leWattigniesCardImage}
+            imageAlt="Le Wattignies - bar et restaurant avec une façade vitrée, un comptoir bleu et des tables"
+            tagColor="blue"
+            tagText="Le Wattignies"
         >
-            <Image
-                src={leWattigniesCardImage}
-                alt="Le Wattignies - bar et restaurant avec une façade vitrée, un comptoir bleu et des tables"
-                class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
-                widths={[330, 400, 540, 720, leWattigniesCardImage.width]}
-            />
-            <span class="group-hover:opacity-0 transition-opacity duration-300">
-                <Tag color="blue" class="absolute top-4 left-4 uppercase">
-                    Le Wattignies
-                </Tag>
-                <span class="absolute bg-white rounded-full p-2 bottom-4 right-4">
-                    <Icon name="arrow-up-right" size="40" />
+            <div slot="hover-content">
+                <span class="font-bold text-2xl">
+                    Horaires d'ouverture
                 </span>
-            </span>
-            <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute inset-0 p-4 bg-black/80 text-white text-center">
-                <span class="flex flex-col justify-between h-1/2">
-                    <span class="font-bold text-2xl">
-                        >Horaires d’ouverture
-                    </span>
-                    <span class="font-medium">
-                        Toute la semaine de 10h à 17h
-                    </span>
+                <span class="font-medium">
+                    Toute la semaine de 10h à 17h
                 </span>
-            </span>
-        </Link>
+            </div>
+        </HomePlaceCard>
 
-        <Link 
+        <HomePlaceCard
             href={PATH.LES_LANDES_FERTILES}
-            class="block relative rounded-2xl overflow-hidden group"
+            image={lesLandesFertilesCardImage}
+            imageAlt="Les Landes Fertiles - 2 personnes travaillent sur des plants de tomates"
+            tagColor="red"
+            tagText="Les Landes Fertiles"
         >
-            <Image
-                src={lesLandesFertilesCardImage}
-                alt="Les Landes Fertiles - 2 personnes travaillent sur des plants de tomates"
-                class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
-                widths={[330, 400, 540, 720, lesLandesFertilesCardImage.width]}
-            />
-            <span class="group-hover:opacity-0 transition-opacity duration-300">
-                <Tag color="red" class="absolute top-4 left-4 uppercase">
-                    Les Landes Fertiles
-                </Tag>
-                <span class="absolute bg-white rounded-full p-2 bottom-4 right-4">
-                    <Icon name="arrow-up-right" size="40" />
+            <div slot="hover-content">
+                <span class="font-bold text-2xl">
+                    Horaires d'ouverture
                 </span>
-            </span>
-            <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute inset-0 p-4 bg-black/80 text-white text-center">
-                <span class="flex flex-col justify-between h-1/2">
-                    <span class="font-bold text-2xl">
-                        Horaires d’ouverture
-                    </span>
-                    <span class="font-medium">
-                        Toute la semaine de 10h à 17h
-                    </span>
+                <span class="font-medium">
+                    Toute la semaine de 10h à 17h
                 </span>
-            </span>
-        </Link>
+            </div>
+        </HomePlaceCard>
         
-        <Link
+        <HomePlaceCard
             href={PATH.LE_LABO_DIVA}
-            class="block relative rounded-2xl overflow-hidden group"
+            image={leLaboDivaCardImage}
+            imageAlt="Le Labo Diva - Un bar intérieur composé de lattes de bois peintes en vert, jaune, blanc ou orange."
+            tagColor="green"
+            tagText="Le Labo Diva"
         >
-            <Image
-                src={leLaboDivaCardImage}
-                alt="Le Labo Diva - Un bar intérieur composé de lattes de bois peintes en vert, jaune, blanc ou orange."
-                class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
-                widths={[330, 400, 540, 720, leLaboDivaCardImage.width]}
-            />
-            <span class="group-hover:opacity-0 transition-opacity duration-300">
-                <Tag color="green" class="absolute top-4 left-4 uppercase">
-                    Le Labo Diva
-                </Tag>
-                <span class="absolute bg-white rounded-full p-2 bottom-4 right-4">
-                    <Icon name="arrow-up-right" size="40" />
+            <div slot="hover-content">
+                <span class="font-bold text-2xl">
+                    Horaires d'ouverture
                 </span>
-            </span>
-            <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute inset-0 p-4 bg-black/80 text-white text-center">
-                <span class="flex flex-col justify-between h-1/2">
-                    <span class="font-bold text-2xl">
-                        Horaires d'ouverture
-                    </span>
-                    <span class="font-medium">
-                        Toute la semaine de 10h à 17h
-                    </span>
+                <span class="font-medium">
+                    Toute la semaine de 10h à 17h
                 </span>
-            </span>
-        </Link>
+            </div>
+        </HomePlaceCard>
 
-        <Link
+        <HomePlaceCard
             href={PATH.LE_BAR_ILE}
-            class="block relative rounded-2xl overflow-hidden group"
+            image={leBarIleCardImage}
+            imageAlt="Le Bar Ile - Une terrasse d'un bar, les murs extérieurs sont bleus foncés. Un marché est installé avec des légumes."
+            tagColor="blue"
+            tagText="Le Bar'Île"
         >
-            <Image
-                src={leBarIleCardImage}
-                alt="Le Bar Ile - Une terrasse d'un bar, les murs extérieurs sont bleus foncés. Un marché est installé avec des légumes."
-                class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
-                widths={[330, 400, 540, 720, leBarIleCardImage.width]}
-            />
-            <span class="group-hover:opacity-0 transition-opacity duration-300">
-                <Tag color="blue" class="absolute top-4 left-4 uppercase">
-                    Le Bar’Île
-                </Tag>
-                <span class="absolute bg-white rounded-full p-2 bottom-4 right-4">
-                    <Icon name="arrow-up-right" size="40" />
+            <div slot="hover-content">
+                <span class="font-bold text-2xl">
+                    Horaires d'ouverture
                 </span>
-            </span>
-            <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute inset-0 p-4 bg-black/80 text-white text-center">
-                <span class="flex flex-col justify-between h-1/2">
-                    <span class="font-bold text-2xl">
-                        Horaires d’ouverture
-                    </span>
-                    <span class="font-medium">
-                        Toute la semaine de 10h à 17h
-                    </span>
+                <span class="font-medium">
+                    Toute la semaine de 10h à 17h
                 </span>
-            </span>
-        </Link>
+            </div>
+        </HomePlaceCard>
   </div>
 </Container>
 </Section>

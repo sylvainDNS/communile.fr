@@ -1,0 +1,20 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+import { cn } from '../utils/style'
+import Link from './link.astro'
+
+interface Props extends HTMLAttributes<'a'> {
+  active?: boolean
+}
+
+const { class: className, active, ...delegated } = Astro.props
+---
+
+<Link
+    aria-current={active ? "page" : undefined}
+    class={cn('aria-[current=page]:bg-gradient-to-br  from-neutral-200/80 via-50% via-neutral-200/30 to-neutral-200 aria-[current=page]:text-foreground px-4 py-2 rounded-2xl', className)}
+    {...delegated}
+>
+    <slot />
+</Link>
