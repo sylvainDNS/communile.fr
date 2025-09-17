@@ -38,8 +38,9 @@ const { class: className, ...delegated } = Astro.props
         const content = detailsElement.querySelector('[data-details-content]') as HTMLElement
         if (!button || !content) return
 
-        // Calculer la hauteur naturelle du contenu
-        const naturalHeight = content.scrollHeight
+        // Fonction pour calculer la hauteur naturelle du contenu
+        const getNaturalHeight = () => content.scrollHeight
+        let naturalHeight = getNaturalHeight()
         
         // Initialiser l'état fermé
         content.style.height = '0px'
@@ -50,9 +51,35 @@ const { class: className, ...delegated } = Astro.props
         let isAnimating = false
         let currentAnimation: any = null
 
+        // Fonction pour mettre à jour la hauteur naturelle
+        const updateNaturalHeight = () => {
+            naturalHeight = getNaturalHeight()
+        }
+
+        // Écouter le resize pour recalculer la hauteur naturelle
+        const resizeObserver = new ResizeObserver(() => {
+            updateNaturalHeight()
+        })
+        resizeObserver.observe(content)
+
+        // Écouter aussi le resize de la fenêtre
+        const handleWindowResize = () => {
+            updateNaturalHeight()
+        }
+        window.addEventListener('resize', handleWindowResize)
+
+        // Fonction de nettoyage
+        const cleanup = () => {
+            resizeObserver.disconnect()
+            window.removeEventListener('resize', handleWindowResize)
+        }
+
         // Gérer le clic sur le bouton
         button.addEventListener('click', (e) => {
             e.preventDefault()
+            
+            // Recalculer la hauteur naturelle avant l'animation
+            updateNaturalHeight()
             
             // Si une animation est en cours, l'arrêter et basculer l'état
             if (isAnimating && currentAnimation) {
@@ -76,7 +103,8 @@ const { class: className, ...delegated } = Astro.props
                 currentAnimation = animate(content, {
                     height: {
                         to: '0px',
-                        ease: createSpring({ mass: 2, stiffness: 100, damping: 20, velocity: 0.2 })
+                        ease: 'inBack',
+                        duration: 300
                     }
                 })
                 
@@ -94,7 +122,7 @@ const { class: className, ...delegated } = Astro.props
                 currentAnimation = animate(content, {
                     height: {
                         to: naturalHeight + 'px',
-                        ease: createSpring({ mass: 2, stiffness: 100, damping: 20, velocity: 0.2 })
+                        ease: createSpring({ stiffness: 150, damping: 15, velocity: 0.2 })
                     }
                 })
                 
@@ -106,6 +134,9 @@ const { class: className, ...delegated } = Astro.props
                 })
             }
         })
+
+        // Exposer la fonction de nettoyage sur l'élément pour un nettoyage manuel si nécessaire
+        ;(detailsElement as any).cleanup = cleanup
     }
 
     // Initialiser tous les composants details

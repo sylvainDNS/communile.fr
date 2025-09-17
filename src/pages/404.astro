@@ -1,0 +1,86 @@
+---
+import Badge from '@/components/badge.astro'
+import Container from '@/components/container.astro'
+import Heading from '@/components/heading.astro'
+import HeadingBadges from '@/components/heading-badges.astro'
+import NavLink from '@/components/nav-link.astro'
+import Section from '@/components/section.astro'
+import Text from '@/components/text.astro'
+import MainLayout from '@/layouts/main.astro'
+import { PATH } from '@/utils/constants'
+
+const links: Array<{ label: string; href: string }> = [
+  { label: 'Accueil', href: PATH.HOME },
+  { label: 'Le Wattignies', href: PATH.LE_WATTIGNIES },
+  { label: 'Les Landes Fertiles', href: PATH.LES_LANDES_FERTILES },
+  { label: 'Contact', href: '/contact' },
+]
+---
+
+<MainLayout content={{ title: 'Page non trouvée' }} theme="default">
+  <Section spacing="large">
+    <Container class="py-16 flex flex-col items-center justify-center text-center">
+      <div class="gap-3 justify-items-center">
+        <Badge id="badge404" size="2xl" variant="primary" rotation="-7" class="translate-x-2 px-3">4</Badge>
+        <Badge id="badge404" size="2xl" variant="secondary" rotation="3" class="px-2">0</Badge>
+        <Badge id="badge404" size="2xl" variant="tertiary" rotation="-2" class="-translate-x-2 px-3">4</Badge>
+      </div>
+
+      <Heading as="h1" size="xl" class="mt-8">Page non trouvée</Heading>
+      <Text size="xl">Oups&nbsp;! La page que vous cherchez n’existe pas ou a été déplacée.</Text>
+      <div class="mt-8">
+        <NavLink href={PATH.HOME} class="bg-primary text-background">Retour à l’accueil</NavLink>
+      </div>
+    </Container>
+  </Section>
+
+  <script>
+    import { animate, createSpring } from 'animejs'
+
+    const badges = document.querySelectorAll('#badge404')
+    
+    if (badges.length) {
+      // Animation d'entrée : les lettres volent depuis différentes directions
+      animate(badges, {
+        translateX: [
+          (el, i) => i === 0 ? -80 : i === 1 ? 0 : 80, // Mouvement horizontal plus doux
+          0
+        ],
+        translateY: [
+          (el, i) => i === 0 ? -60 : i === 1 ? -80 : -40, // Mouvement vertical plus doux
+          0
+        ],
+        rotate: [
+          (el, i) => i === 0 ? -30 : i === 1 ? 0 : 30, // Rotations plus douces
+          0
+        ],
+        scale: [0.5, 1],
+        opacity: [0, 1],
+        duration: 1000,
+        delay: (el, i) => i * 150, // Délai plus court
+        ease: createSpring({ 
+          mass: 1.2, 
+          stiffness: 80, 
+          damping: 25, 
+          velocity: 0.3 
+        }),
+      })
+
+      // Animation continue : flottement très doux
+      setTimeout(() => {
+        animate(badges, {
+          translateY: [0, -4, 0],
+          rotate: [0, 1, 0],
+          duration: 4000,
+          delay: (el, i) => i * 600,
+          loop: true,
+          direction: 'alternate',
+          ease: 'easeInOutSine',
+        })
+      }, 1200)
+    }
+  </script>
+
+</MainLayout>
+
+

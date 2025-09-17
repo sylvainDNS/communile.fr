@@ -8,7 +8,7 @@ const textVariants = cva('not-last:mb-7', {
   variants: {
     size: {
       sm: 'text-sm',
-      base: 'text-base md:text-lg',
+      base: 'text-base text-lg',
       lg: 'text-lg md:text-xl',
       xl: 'text-xl md:text-2xl',
       '2xl': 'text-2xl md:text-3xl',
@@ -36,7 +36,7 @@ const textVariants = cva('not-last:mb-7', {
     },
   },
   defaultVariants: {
-    size: 'lg',
+    size: 'base',
     weight: 'normal',
     leading: 'snug',
     color: 'default',

@@ -26,6 +26,7 @@
   --color-foreground: var(--foreground);
   --color-background: var(--background);
 
+  /* Wattignies */
   --color-watt-blue: oklch(0.5605 0.2414 266.27);
   --color-watt-blue-accent: oklch(0.4827 0.2923 265.07);
 
@@ -37,6 +38,21 @@
 
   --color-watt-green: hsla(137, 71%, 36%, 1);
   --color-watt-green-accent: var(--color-green-600);
+
+  /* Landes Fertiles */
+  --color-landes-fertiles-grey: oklch(0.3752 0.0394 256.85);
+  --color-landes-fertiles-grey-accent: oklch(0.2961 0.2045 255.09);
+
+  --color-landes-fertiles-red: oklch(0.4761 0.194 29.08);
+  --color-landes-fertiles-red-accent: oklch(0.3976 0.2045 28.91);
+
+  --color-landes-fertiles-neutral: oklch(0.1292 0.0415 265.15);
+  --color-landes-fertiles-neutral-accent: oklch(0.0501 0.0086 264.05);
+
+  --color-landes-fertiles-green: oklch(0.2718 0.1589 135.68);
+  --color-landes-fertiles-green-accent: oklch(0.1927 0.2681 134.9);
+
+  --spacing-2k: 2000px;
   --breakpoint-2k: 2000px;
 
   --font-sans:
@@ -136,10 +152,14 @@
   }
 
   [data-theme="landes-fertiles"] {
-    --theme-primary: var(--color-watt-blue);
-    --theme-secondary: var(--color-watt-red);
-    --theme-tertiary: var(--color-watt-yellow);
-    --theme-quaternary: var(--color-watt-green);
+    --theme-primary: var(--color-landes-fertiles-grey);
+    --theme-primary-accent: var(--color-landes-fertiles-grey-accent);
+    --theme-secondary: var(--color-landes-fertiles-red);
+    --theme-secondary-accent: var(--color-landes-fertiles-red-accent);
+    --theme-tertiary: var(--color-landes-fertiles-neutral);
+    --theme-tertiary-accent: var(--color-landes-fertiles-neutral-accent);
+    --theme-quaternary: var(--color-landes-fertiles-green);
+    --theme-quaternary-accent: var(--color-landes-fertiles-green-accent);
   }
 
   [data-theme="labo-diva"] {
