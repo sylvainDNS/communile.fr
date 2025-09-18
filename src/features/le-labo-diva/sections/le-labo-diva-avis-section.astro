@@ -1,0 +1,45 @@
+---
+import Container from '@/components/container.astro'
+import Section from '@/components/section.astro'
+import Text from '@/components/text.astro'
+import AvisProfile from '@/images/avis-profile.svg'
+import AvisQuotes from '@/images/avis-quotes.svg'
+import { cn } from '@/utils/style'
+---
+
+<Section class="py-24">
+    <Container class={cn("max-w-4xl space-y-20 md:space-y-16")}>
+        <div class="flex justify-center md:justify-start">
+            <AvisProfile class="text-secondary" />
+        </div>
+        <div class="mx-auto space-y-8">
+            <div class="relative max-w-4xl">
+                <AvisQuotes
+                    class="absolute left-0 -top-16 md:-top-8 text-primary"
+                />
+                <Text size="base" class="px-4 mt-2 md:px-24">
+                    Le Labo Diva en un mot ? RASSURANT - d'avoir un modèle
+                    capable de produire sa propre cuisine durable dans un
+                    équilibre économique. Nous aimons le lieu : généreux,
+                    chaleureux, authentique. Nous aimons sa cuisine abordable et
+                    savoureuse adaptée à notre panier quotidien. Nous utilisons
+                    sa salle de réunion qui est très agréable. Nous aimons nous
+                    installer dans un coin pour un rendez-vous de travail, ou
+                    bien nous retrouver en équipe pour un moment convivial.
+                    Enfin nous aimons l'équipe, nos voisin.e.s préféré.e.s!
+                </Text>
+                <AvisQuotes
+                    class="rotate-180 text-secondary absolute -bottom-12 right-0 md:right-12"
+                />
+            </div>
+        </div>
+        <div>
+            <Text
+                class="text-center font-pally font-medium text-xl md:text-2xl"
+            >
+                Le Labo Diva vu par : l’Atelier Campo - Paysagiste , usager et
+                voisin !
+            </Text>
+        </div>
+    </Container>
+</Section>

@@ -4,20 +4,22 @@ import Container from '@/components/container.astro'
 import Heading from '@/components/heading.astro'
 import Section from '@/components/section.astro'
 import Text from '@/components/text.astro'
-import wattigniesWhatImage from '@/images/wattignies-what.png'
+import wattigniesWhatImage from '../images/wattignies-what.png'
+import WattigniesWhatOrnament from '../images/wattignies-what-ornament.svg'
 ---
 
-<Section variant="primary">
-    <Container class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+<Section variant="primary" class="overflow-hidden">
+    <WattigniesWhatOrnament class="absolute bottom-0 left-0" />
+    <Container class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start z-20 relative">
         <div class="space-y-6 text-white">
             <Heading as="h2" size="xl" weight="bold" color="white" class="mt-6">Le Wattignies, c'est quoi ?</Heading>
-            <Text size="lg" weight="semibold" color="white" class="max-w-sm mt-12">
+            <Text size="xl" weight="semibold" color="white" class="max-w-sm mt-12">
                 Tier-lieu social où la solidarité et l'inclusion occupent une place centrale
             </Text>
-            <Text size="base" color="white">
+            <Text size="base" color="white" class="max-w-xl">
                 Ce lieu est porté par un collectif de 12 structures résidentes de l'économie sociale et solidaire - de l'action sociale, de l'alimentation durable, de la mobilité douce, de l'artisanat et du réemploi - animé par Commun'île
             </Text>
-            <p class="font-pally font-bold text-2xl">Et il n’attend que vous !</p>
+            <Text font="pally" size="xl" weight="semibold" class="max-w-sm">Et il n’attend que vous !</Text>
         </div>
         <div class="grid grid-cols-1 gap-4">
             <Image src={wattigniesWhatImage} alt="Le Wattignies" class="rounded-2xl w-full aspect-[16/9] object-cover" widths={[640, 960, 1280, wattigniesWhatImage.width]} />

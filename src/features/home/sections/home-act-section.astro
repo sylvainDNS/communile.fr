@@ -1,11 +1,9 @@
 ---
 import { Image } from 'astro:assets'
 import Badge from '@/components/badge.astro'
-import Card from '@/components/card.astro'
 import Container from '@/components/container.astro'
 import HeadingBadges from '@/components/heading-badges.astro'
 import Section from '@/components/section.astro'
-import Text from '@/components/text.astro'
 import HomeActCard from '@/features/home/components/home-act-card.astro'
 import illuCreerAgirImage from '@/images/communile-illu-agir.png'
 import ShapeHook01 from '@/images/shape-hook-01.svg'
@@ -48,7 +46,7 @@ import { cn } from '@/utils/style'
             <ShapeHook01
                 role="presentation"
                 aria-hidden="true"
-                class="hidden md:block absolute -top-6 -right-6 text-primary"
+                class="absolute -top-6 -right-6 text-primary"
             />
             <div class="relative lg:col-span-2">
                 <div class="space-y-6 relative z-10">

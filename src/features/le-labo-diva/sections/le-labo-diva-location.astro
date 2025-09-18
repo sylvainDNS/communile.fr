@@ -1,0 +1,139 @@
+---
+import { Image } from 'astro:assets'
+import Badge from '@/components/badge.astro'
+import Container from '@/components/container.astro'
+import HeadingBadges from '@/components/heading-badges.astro'
+import Icon from '@/components/icon.astro'
+import InfoCard from '@/components/info-card.astro'
+import Section from '@/components/section.astro'
+import Text from '@/components/text.astro'
+import ShapeHexagon01 from '@/images/shape-hexagon-01.svg'
+import leLaboDivaLocationImage from '../images/le-labo-diva-location.png'
+
+const badgesLocation = [
+  'Salle de 45m2',
+  'Vidéo-projecteur',
+  'Paperboard',
+  'Wifi',
+  'Petit déjeuner',
+  'Collation',
+  'Déjeuner',
+  'À partir de >20€ HT/heure',
+  'À partir de 75€ HT/ demi-journée',
+  'À partir de 140€ HT/ journée',
+]
+
+const badgesPrivatisation = [
+  '200 personnes',
+  'Sono',
+  'Micro',
+  'Vidéo-projecteur',
+  'Petit déjeuner',
+  'Collation',
+  'Déjeuner',
+  'Apéritif',
+  'Cocktail sur demande',
+]
+---
+
+<Section variant="transparent">
+    <ShapeHexagon01
+    role="presentation"
+    aria-hidden="true"
+    class="absolute bottom-1/4 left-0 size-[300px] text-secondary-light"
+/>
+<ShapeHexagon01
+    role="presentation"
+    aria-hidden="true"
+    class="absolute top-0 right-1/5 size-[160px] text-secondary-light"
+/>
+    <Container class="flex flex-col gap-12 relative z-20">
+        <div class="flex-1 flex flex-col md:flex-row justify-between gap-12 ">
+            <div>
+                <HeadingBadges rows={3}>
+                    <Badge variant="primary" rotation="-7" size="heading">
+                        PRIVATISATION
+                    </Badge>
+                    <Badge
+                        variant="secondary"
+                        rotation="-2"
+                        class="z-50"
+                        size="heading"
+                        class="translate-y-0.5"
+                    >
+                        ET LOCATION
+                    </Badge>
+                </HeadingBadges>
+                <div class="max-w-sm mt-8">
+                    <Text>
+                        En plein coeur de l'Ile de Nantes, un lieu convivial et
+                        chaleureux qui vous accueille pour tous vos projets !
+                    </Text>
+                    <Text font="pally" weight="medium" size="xl">
+                        Besoin d’un service traiteur pour votre évènement ?
+                    </Text>
+                    <Text>
+                        La location d'une salle ou du lieu peut être combinée
+                        avec notre offre traiteur : accueil café, collation,
+                        déjeuner dans l'espace principal, apéritif... Tout cela
+                        avec les bons légumes bios de notre ferme !
+                    </Text>
+                    <Text>
+                        Vous voulez en savoir plus ?
+                        <br />
+                        <a
+                            class="underline text-primary"
+                            href=""
+                            download
+                            target="_blank"
+                            >Télécharger notre plaquette détaillée !</a
+                        >
+                    </Text>
+                </div>
+            </div>
+            <div class="flex flex-col gap-8 max-w-5xl">
+                <InfoCard>
+                    <Icon name="heart-handshake" size="24" slot="icon" />
+                    <Text font="pally" size="xl" weight="medium" slot="title">Location d'une salle au Labo</Text>
+                    <div slot="description">
+                        <Text>
+                            Une salle équipée de 45m2 pouvant accueillir de 5 à 30 personnes selon le format et à la disposition de la salle. Idéal pour vos évènements professionnels ponctuels (réunion, AG, formation...), vos évènements réguliers (cours de danse, session de chant,...) ou tout autre projet !
+                        </Text>
+                        <div class="flex flex-wrap gap-2">
+                            {badgesLocation.map((badge) => (
+                                <Badge variant="neutral" size="md">
+                                    {badge}
+                                </Badge>
+                            ))}
+                        </div>
+                    </div>
+                </InfoCard>
+                <InfoCard>
+                    <Icon name="heart-handshake" size="24" slot="icon" />
+                    <Text font="pally" size="xl" weight="medium" slot="title">Privatisation du Labo Diva </Text>
+                    <div slot="description">
+                        <Text>
+                            Un espace de plus de 200m2, convivial, lumineux et chaleureux. Il peut accueillir jusqu'à 200 personnes en journée et/ou en soirée, et est entièrement modulable selon vos besoins. Devis personnalisé établi sur demande, en fonction du projet.
+                        </Text>
+                        <div class="flex flex-wrap gap-2">
+                            {badgesPrivatisation.map((badge) => (
+                                <Badge variant="neutral" size="md">
+                                    {badge}
+                                </Badge>
+                            ))}
+                        </div>
+                    </div>
+                </InfoCard>
+            </div>
+        </div>
+
+        <div class="flex-1">
+            <Image
+                src={leLaboDivaLocationImage}
+                alt="Le bar du Wattignies"
+                class="w-full h-full rounded-2xl object-cover max-h-[380px]"
+                widths={[330, 500, leLaboDivaLocationImage.width]}
+            />
+        </div>
+    </Container>
+</Section>

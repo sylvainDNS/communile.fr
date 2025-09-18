@@ -2,7 +2,7 @@
 import type { HTMLAttributes } from 'astro/types'
 import { cva, type VariantProps } from 'class-variance-authority'
 
-import { cn } from '../utils/style'
+import { cn } from '@/utils/style'
 
 const textVariants = cva('not-last:mb-7', {
   variants: {
@@ -34,12 +34,17 @@ const textVariants = cva('not-last:mb-7', {
       tertiary: 'text-tertiary',
       white: 'text-white',
     },
+    font: {
+      pally: 'font-pally',
+      rubik: 'font-rubik',
+    },
   },
   defaultVariants: {
     size: 'base',
     weight: 'normal',
     leading: 'snug',
     color: 'default',
+    font: 'rubik',
   },
 })
 
@@ -50,10 +55,11 @@ const {
   weight,
   leading,
   color,
+  font,
   ...delegated
 } = Astro.props
 ---
 
-<p class={cn(textVariants({ size, weight, leading, color }), className)} {...delegated}>
+<p class={cn(textVariants({ size, weight, leading, color, font }), className)} {...delegated}>
   <slot />
 </p>

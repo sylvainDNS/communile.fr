@@ -1,0 +1,24 @@
+---
+import LaboDivaAvisSection from '@/features/le-labo-diva/sections/le-labo-diva-avis-section.astro'
+import LaboDivaCantineSection from '@/features/le-labo-diva/sections/le-labo-diva-cantine-section.astro'
+import LaboDivaCoworkingSection from '@/features/le-labo-diva/sections/le-labo-diva-coworking-section.astro'
+import LaboDivaFaqSection from '@/features/le-labo-diva/sections/le-labo-diva-faq-section.astro'
+import LaboDivaHeroSection from '@/features/le-labo-diva/sections/le-labo-diva-hero-section.astro'
+import LaboDivaLeCafeBarSection from '@/features/le-labo-diva/sections/le-labo-diva-le-cafe-bar-section.astro'
+import LaboDivaLeMarcheSection from '@/features/le-labo-diva/sections/le-labo-diva-le-marche-section.astro'
+import LaboDivaLocationSection from '@/features/le-labo-diva/sections/le-labo-diva-location.astro'
+import LaboDivaWhatSection from '@/features/le-labo-diva/sections/le-labo-diva-what-section.astro'
+import Layout from '../layouts/main.astro'
+---
+
+<Layout theme="labo-diva" content={{ title: 'Les labo-diva Fertiles' }}>
+	<LaboDivaHeroSection />
+    <LaboDivaWhatSection />
+    <LaboDivaCantineSection />
+    <LaboDivaLeMarcheSection />
+    <LaboDivaLeCafeBarSection />
+    <LaboDivaAvisSection />
+    <LaboDivaLocationSection />
+    <LaboDivaCoworkingSection />
+    <LaboDivaFaqSection />
+</Layout>

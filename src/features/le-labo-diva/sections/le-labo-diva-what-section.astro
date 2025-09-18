@@ -1,0 +1,30 @@
+---
+import { Image } from 'astro:assets'
+import Container from '@/components/container.astro'
+import Heading from '@/components/heading.astro'
+import Section from '@/components/section.astro'
+import Text from '@/components/text.astro'
+import leLaboDivaWhatImage from '../images/le-labo-diva-what.png'
+import LeLaboDivaWhatOrnament from '../images/le-labo-diva-what-ornament.svg'
+---
+
+<Section variant="primary" class="overflow-hidden">
+    <LeLaboDivaWhatOrnament class="absolute bottom-0 left-0" />
+    <Container class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start z-20 relative">
+        <div class="my-auto space-y-6 text-white">
+            <Heading as="h2" size="xl" weight="bold" color="white" class="mt-6">Le Labo Diva, c’est quoi ?</Heading>
+            <Text size="xl" weight="semibold" color="white" class="max-w-sm mt-12">
+                Le Labo Diva est un lieu de vie au coeur du quartier de la création
+            </Text>
+            <Text size="base" color="white" class="max-w-xl">
+                Un espace unique qui a trouvé sa place sur l’archipel des communs de Commun’île, au pied de la grue jaune. Avec son ambiance chaleureuse et lumineuse, le Labo Diva offre une variété de services qui sauront plaire à toustes ! Qu’il s’agisse de déguster de bons produits locaux et bios tout droit venus des Landes Fertiles, participer à un débat, s’initier à la danse ou au théâtre, chacun•e y trouvera son bonheur !            </Text>
+            <Text font="pally" size="xl" weight="semibold" class="max-w-md">Lieu de partage, d’inspiration et de rencontres, où le quotidien se transforme en expériences collectives.</Text>
+        </div>
+        <div class="grid grid-cols-1 gap-4">
+            <Image src={leLaboDivaWhatImage} alt="Le Wattignies" class="rounded-2xl w-full object-cover" widths={[640, 960, 1280, leLaboDivaWhatImage.width]} />
+        </div>
+    </Container>
+</Section>
+
+
+
