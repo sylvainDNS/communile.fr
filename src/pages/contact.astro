@@ -8,12 +8,12 @@ import Text from '../components/text.astro'
 import Layout from '../layouts/main.astro'
 ---
 
-<Layout content={{ title: "Contact" }} theme="default">
+<Layout content={{ title: 'Contact' }} theme="default">
   <Container>
     <Section>
       <Heading as="h1" size="xl" weight="bold" align="center" spacing="xl">Contactez-nous</Heading>
-      
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+      <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
         <!-- Informations de contact -->
         <div class="space-y-6">
           <Card>
@@ -21,7 +21,7 @@ import Layout from '../layouts/main.astro'
             <div class="space-y-3">
               <div>
                 <Text class="font-semibold">Adresse :</Text>
-                <Text>Le Wattignies<br>Rue de Wattignies, 59000 Lille</Text>
+                <Text>Le Wattignies<br />Rue de Wattignies, 59000 Lille</Text>
               </div>
               <div>
                 <Text class="font-semibold">Email :</Text>
@@ -48,7 +48,7 @@ import Layout from '../layouts/main.astro'
         <div>
           <Card>
             <Heading as="h2" size="base" weight="semibold" font="sans">Notre localisation</Heading>
-            <LeafletMap 
+            <LeafletMap
               id="contact-map"
               height="400px"
               center={[50.6292, 3.0573]}
@@ -56,10 +56,10 @@ import Layout from '../layouts/main.astro'
               markers={[
                 {
                   position: [50.6292, 3.0573],
-                  popup: '<strong>Le Wattignies</strong><br>Rue de Wattignies<br>59000 Lille'
-                }
+                  popup: '<strong>Le Wattignies</strong><br>Rue de Wattignies<br>59000 Lille',
+                },
               ]}
-              class="rounded-lg overflow-hidden"
+              class="overflow-hidden rounded-lg"
             />
           </Card>
         </div>

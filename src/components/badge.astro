@@ -1,6 +1,7 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
-import { cva, type VariantProps } from 'class-variance-authority'
+import type { VariantProps } from 'class-variance-authority'
+import { cva } from 'class-variance-authority'
 
 import { cn } from '../utils/style'
 
@@ -67,16 +68,7 @@ const badgeVariants = cva('inline-block font-pally font-medium', {
 })
 
 type Props = HTMLAttributes<'span'> & VariantProps<typeof badgeVariants>
-const {
-  class: className,
-  variant,
-  shape,
-  size,
-  rotation,
-  position,
-  zIndex,
-  ...delegated
-} = Astro.props
+const { class: className, variant, shape, size, rotation, position, zIndex, ...delegated } = Astro.props
 ---
 
 <span class={cn(badgeVariants({ variant, shape, size, rotation, position, zIndex }), className)} {...delegated}>

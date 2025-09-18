@@ -1,16 +1,12 @@
-export const get = (selector: string, all?: boolean) =>
-  all ? document?.querySelectorAll(selector) : document?.querySelector(selector)
+export function get(selector: string, all?: boolean) {
+  return all ? document?.querySelectorAll(selector) : document?.querySelector(selector)
+}
 
-export const on = (
-  selector: string | HTMLElement | Document,
-  event: string,
-  callback: (event: Event) => void,
-  all?: boolean
-) => {
+export function on(selector: string | HTMLElement | Document, event: string, callback: (event: Event) => void, all?: boolean) {
   if (all) {
     const elements = document.querySelectorAll(selector as string)
 
-    elements?.forEach(element => {
+    elements?.forEach((element) => {
       element.addEventListener(event, callback)
     })
 

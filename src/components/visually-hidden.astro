@@ -8,6 +8,6 @@ type Props = HTMLAttributes<'span'>
 const { class: className, ...delegated } = Astro.props
 ---
 
-<span class={cn("sr-only", className)} {...delegated}>
+<span class={cn('sr-only', className)} {...delegated}>
   <slot />
 </span>

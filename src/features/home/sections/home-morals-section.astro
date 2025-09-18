@@ -7,44 +7,30 @@ import ShapeWaves02 from '@/images/shape-waves-02.svg'
 ---
 
 <Section variant="tertiary" overflow="hidden">
-    <Container>
-        <ShapeWaves01
-            role="presentation"
-            aria-hidden="true"
-            class="absolute top-0 right-0 text-tertiary-accent"
-        />
-        <ShapeWaves02
-            role="presentation"
-            aria-hidden="true"
-            class="absolute bottom-0 left-0 text-tertiary-accent"
-        />
+  <Container>
+    <ShapeWaves01 role="presentation" aria-hidden="true" class="absolute top-0 right-0 text-tertiary-accent" />
+    <ShapeWaves02 role="presentation" aria-hidden="true" class="absolute bottom-0 left-0 text-tertiary-accent" />
 
-        <div class="relative z-10 py-6 space-y-6">
-            <h2
-                class="text-4xl text-center font-medium font-pally text-foreground/70"
-            >
-                Nos valeurs
-            </h2>
-            <ul class="flex flex-wrap md:[&>*]:flex-[33%] gap-6">
-                <HomeMoralsCard tagLabel="Convivialité" iconName="home">
-                    Comme un préalable et une première façon de créer du collectif
-                </HomeMoralsCard>
-                <HomeMoralsCard tagLabel="Solidarité" iconName="users-round">
-                    Comme une évidence, une nécessité
-                </HomeMoralsCard>
-                <HomeMoralsCard tagLabel="Inclusion" iconName="sparkles">
-                    Pour être des lieux de vie et d'expérimentation
-                </HomeMoralsCard>
-                <HomeMoralsCard tagLabel="Durabilité" iconName="sun">
-                    Comme un pré-requis non négociable
-                </HomeMoralsCard>
-                <HomeMoralsCard tagLabel="Ancrage local" iconName="sprout">
-                    Pour agir en symbiose avec notre environnement
-                </HomeMoralsCard>
-                <HomeMoralsCard tagLabel="Accessibilité" iconName="spell-check">
-                    Un mantra pour rendre le choix possible à tous les niveaux
-                </HomeMoralsCard>
-            </ul>
-        </div>
-    </Container>
+    <div class="relative z-10 space-y-6 py-6">
+      <h2 class="text-center font-pally text-4xl font-medium text-foreground/70">Nos valeurs</h2>
+      <ul class="flex flex-wrap gap-6 md:[&>*]:flex-[33%]">
+        <HomeMoralsCard tagLabel="Convivialité" iconName="home">
+          Comme un préalable et une première façon de créer du collectif
+        </HomeMoralsCard>
+        <HomeMoralsCard tagLabel="Solidarité" iconName="users-round">
+          Comme une évidence, une nécessité
+        </HomeMoralsCard>
+        <HomeMoralsCard tagLabel="Inclusion" iconName="sparkles">
+          Pour être des lieux de vie et d'expérimentation
+        </HomeMoralsCard>
+        <HomeMoralsCard tagLabel="Durabilité" iconName="sun"> Comme un pré-requis non négociable </HomeMoralsCard>
+        <HomeMoralsCard tagLabel="Ancrage local" iconName="sprout">
+          Pour agir en symbiose avec notre environnement
+        </HomeMoralsCard>
+        <HomeMoralsCard tagLabel="Accessibilité" iconName="spell-check">
+          Un mantra pour rendre le choix possible à tous les niveaux
+        </HomeMoralsCard>
+      </ul>
+    </div>
+  </Container>
 </Section>

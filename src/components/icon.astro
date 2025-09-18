@@ -11,14 +11,7 @@ export interface Props {
   fill?: boolean
 }
 
-const {
-  name,
-  size = 24,
-  class: className,
-  color = 'currentColor',
-  title,
-  fill = false,
-} = Astro.props
+const { name, size = 24, class: className, color = 'currentColor', title, fill = false } = Astro.props
 
 const sizeStyle = typeof size === 'number' ? `${size}px` : size
 
@@ -33,19 +26,18 @@ const iconType = fill ? 'fill' : selectedIcon.type || 'stroke'
   viewBox={selectedIcon.viewBox}
   fill={iconType === 'fill' ? color : 'none'}
   stroke={iconType === 'stroke' ? color : 'none'}
-  class={cn(
-    iconType === 'stroke' ? 'stroke-2' : '',
-    className
-  )}
-  aria-hidden={title ? "false" : "true"}
-  role={title ? "img" : "presentation"}
+  class={cn(iconType === 'stroke' ? 'stroke-2' : '', className)}
+  aria-hidden={title ? 'false' : 'true'}
+  role={title ? 'img' : 'presentation'}
 >
   {title && <title>{title}</title>}
-  {selectedIcon.paths.map(path => (
-    <path
-      stroke-linecap={iconType === 'stroke' ? "round" : undefined}
-      stroke-linejoin={iconType === 'stroke' ? "round" : undefined}
-      d={path}
-    />
-  ))}
-</svg> 
+  {
+    selectedIcon.paths.map((path) => (
+      <path
+        stroke-linecap={iconType === 'stroke' ? 'round' : undefined}
+        stroke-linejoin={iconType === 'stroke' ? 'round' : undefined}
+        d={path}
+      />
+    ))
+  }
+</svg>

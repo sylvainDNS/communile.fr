@@ -23,10 +23,10 @@ const title = content?.title ? `${content.title} · ${SITE_NAME}` : SITE_NAME
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
   </head>
-  <body data-theme={theme} class="bg-background text-foreground min-h-screen px-2 md:px-4 pb-4">
+  <body data-theme={theme} class="min-h-screen bg-background px-2 pb-4 text-foreground md:px-4">
     <Header />
-    <main class="grid grid-cols-1 gap-8 my-4 mt-22 max-w-2k mx-auto">
-        <slot />
+    <main class="mx-auto my-4 mt-22 grid max-w-2k grid-cols-1 gap-8">
+      <slot />
     </main>
     <Footer />
   </body>

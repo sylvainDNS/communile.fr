@@ -1,6 +1,7 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
-import { cva, type VariantProps } from 'class-variance-authority'
+import type { VariantProps } from 'class-variance-authority'
+import { cva } from 'class-variance-authority'
 import Card from '@/components/card.astro'
 import Icon from '@/components/icon.astro'
 import Text from '@/components/text.astro'
@@ -94,25 +95,34 @@ const {
 } = Astro.props
 ---
 
-<Card size={cardSize} class={cn("space-y-4", className)} {...delegated}>
+<Card size={cardSize} class={cn('space-y-4', className)} {...delegated}>
   <div class="flex items-center gap-2">
-    <span class={iconContainerVariants({ variant: iconVariant, size: iconSizeVariant })}>
+    <span
+      class={iconContainerVariants({
+        variant: iconVariant,
+        size: iconSizeVariant,
+      })}
+    >
       <Icon name={iconName} size={iconSize} />
     </span>
     <Text class={titleVariants({ size: titleSize })}>
       {title}
     </Text>
   </div>
-  
-  {hasDescription && !hasList && (
-    <Text size="base">
-      <slot />
-    </Text>
-  )}
-  
-  {hasList && (
-    <ul class="list-disc list-inside text-base md:text-lg space-y-2">
-      <slot />
-    </ul>
-  )}
+
+  {
+    hasDescription && !hasList && (
+      <Text size="base">
+        <slot />
+      </Text>
+    )
+  }
+
+  {
+    hasList && (
+      <ul class="list-inside list-disc space-y-2 text-base md:text-lg">
+        <slot />
+      </ul>
+    )
+  }
 </Card>

@@ -13,37 +13,29 @@ export interface Props {
   class?: string
 }
 
-const {
-  href,
-  image,
-  imageAlt,
-  tagColor,
-  tagText,
-  class: className = '',
-} = Astro.props
+const { href, image, imageAlt, tagColor, tagText, class: className = '' } = Astro.props
 ---
 
-<Link
-    href={href}
-    class={`block relative rounded-2xl overflow-hidden group ${className}`}
->
-    <Image
-        src={image}
-        alt={imageAlt}
-        class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
-        widths={[330, 400, 540, 720, image.width]}
-    />
-    <span class="group-hover:opacity-0 transition-opacity duration-300">
-        <Tag color={tagColor} class="absolute top-4 left-4 uppercase">
-            {tagText}
-        </Tag>
-        <span class="absolute bg-white rounded-full p-2 bottom-4 right-4">
-            <Icon name="arrow-up-right" size="40" />
-        </span>
+<Link href={href} class={`block relative rounded-2xl overflow-hidden group ${className}`}>
+  <Image
+    src={image}
+    alt={imageAlt}
+    class="h-64 w-full object-cover transition-transform duration-300 group-hover:scale-105"
+    widths={[330, 400, 540, 720, image.width]}
+  />
+  <span class="transition-opacity duration-300 group-hover:opacity-0">
+    <Tag color={tagColor} class="absolute top-4 left-4 uppercase">
+      {tagText}
+    </Tag>
+    <span class="absolute right-4 bottom-4 rounded-full bg-white p-2">
+      <Icon name="arrow-up-right" size="40" />
     </span>
-    <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute inset-0 p-4 bg-black/80 text-white text-center">
-        <span class="flex flex-col justify-between h-1/2">
-            <slot name="hover-content" />
-        </span>
+  </span>
+  <span
+    class="absolute inset-0 bg-black/80 p-4 text-center text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+  >
+    <span class="flex h-1/2 flex-col justify-between">
+      <slot name="hover-content" />
     </span>
+  </span>
 </Link>

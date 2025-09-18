@@ -10,57 +10,37 @@ import leLaboDivaLeMarcheImage from '../images/le-labo-diva-le-marche.png'
 ---
 
 <Section variant="transparent">
-    <ShapeHexagon01
-        role="presentation"
-        aria-hidden="true"
-        class="absolute -bottom-1/4 left-0 size-[300px] text-secondary-light"
-    />
-    <ShapeHexagon01
-        role="presentation"
-        aria-hidden="true"
-        class="absolute top-0 right-1/5 size-[160px] text-secondary-light"
-    />
-    <Container class="relative z-10 flex flex-col md:flex-row gap-12 items-start">
-        <div class="flex-1 my-auto">
-            <HeadingBadges rows={3}>
-                <Badge
-                    variant="primary"
-                    rotation="-2"
-                    class="z-20"
-                    size="heading"
-                >
-                    Le
-                </Badge>
-                <Badge
-                    variant="secondary"
-                    rotation="-7"
-                    class="-translate-y-4 z-30"
-                    size="heading"
-                >
-                MARCHÉ
-                </Badge>
-                <Badge
-                variant="tertiary"
-                rotation="-2"
-                class="-translate-y-5 z-50"
-                size="heading"
-            >
-            Du Labo Diva
-            </Badge>
-            </HeadingBadges>
-        
-            <Text class="mt-8 max-w-xl">
-                Tous les mardis de 16h30 à 19h30, retrouvez les maraîchères de la ferme de notre coopérative : Les Landes Fertiles, avec leurs produits de saison, bios et locaux !
-            </Text>
-        </div>
+  <ShapeHexagon01
+    role="presentation"
+    aria-hidden="true"
+    class="absolute -bottom-1/4 left-0 size-[300px] text-secondary-light"
+  />
+  <ShapeHexagon01
+    role="presentation"
+    aria-hidden="true"
+    class="absolute top-0 right-1/5 size-[160px] text-secondary-light"
+  />
+  <Container class="relative z-10 flex flex-col items-start gap-12 md:flex-row">
+    <div class="my-auto flex-1">
+      <HeadingBadges rows={3}>
+        <Badge variant="primary" rotation="-2" class="z-20" size="heading"> Le </Badge>
+        <Badge variant="secondary" rotation="-7" class="z-30 -translate-y-4" size="heading"> MARCHÉ </Badge>
+        <Badge variant="tertiary" rotation="-2" class="z-50 -translate-y-5" size="heading"> Du Labo Diva </Badge>
+      </HeadingBadges>
 
-        <div class="flex flex-1 w-full">
-            <Image
-                src={leLaboDivaLeMarcheImage}
-                alt="Le bar du Wattignies"
-                class="w-full h-full object-cover"
-                widths={[330, 400, 540, leLaboDivaLeMarcheImage.width]}
-            />
-        </div>
-    </Container>
+      <Text class="mt-8 max-w-xl">
+        Tous les mardis de 16h30 à 19h30, retrouvez les maraîchères de la ferme de notre coopérative : Les Landes
+        Fertiles, avec leurs produits de saison, bios et locaux !
+      </Text>
+    </div>
+
+    <div class="flex w-full flex-1">
+      <Image
+        src={leLaboDivaLeMarcheImage}
+        alt="Le bar du Wattignies"
+        class="h-full w-full object-cover"
+        widths={[330, 400, 540, leLaboDivaLeMarcheImage.width]}
+      />
+    </div>
+  </Container>
 </Section>

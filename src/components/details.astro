@@ -7,141 +7,146 @@ import Icon from './icon.astro'
 type Props = HTMLAttributes<'details'>
 const { class: className, ...delegated } = Astro.props
 ---
-<div class={cn("group/details rounded-md", className)} data-details {...delegated}>
-    <button 
-        class="group/details-button flex items-center w-full text-left px-6 py-4"
-        data-details-button
-        aria-expanded="false"
-    >
-        <div class="text-xl font-bold">
-            <slot name="title" />
-        </div>
-        <Icon name="chevron-right" class="ml-auto rotate-90 group-aria-[expanded=true]/details-button:rotate-270 transition-transform duration-200" data-details-icon />
-    </button>
-    <div 
-        class="overflow-hidden "
-        data-details-content
-        aria-hidden="true"
-    >
-        <div class="mt-4 leading-normal text-lg px-6 pb-6">
-            <slot name="content" />
-        </div>
+
+<div class={cn('group/details rounded-md', className)} data-details {...delegated}>
+  <button
+    class="group/details-button flex w-full items-center px-6 py-4 text-left"
+    data-details-button
+    aria-expanded="false"
+  >
+    <div class="text-xl font-bold">
+      <slot name="title" />
     </div>
+    <Icon
+      name="chevron-right"
+      class="ml-auto rotate-90 transition-transform duration-200 group-aria-[expanded=true]/details-button:rotate-270"
+      data-details-icon
+    />
+  </button>
+  <div class="overflow-hidden" data-details-content aria-hidden="true">
+    <div class="mt-4 px-6 pb-6 text-lg leading-normal">
+      <slot name="content" />
+    </div>
+  </div>
 </div>
 
 <script>
-    import { animate, createSpring } from 'animejs'
+  import { animate, createSpring } from 'animejs'
 
-    // Fonction pour initialiser un composant details
-    function initDetails(detailsElement: HTMLElement) {
-        const button = detailsElement.querySelector('[data-details-button]') as HTMLButtonElement
-        const content = detailsElement.querySelector('[data-details-content]') as HTMLElement
-        if (!button || !content) return
+  // Étendre HTMLElement pour inclure la propriété cleanup
+  interface HTMLElementWithCleanup extends HTMLElement {
+    cleanup?: () => void
+  }
 
-        // Fonction pour calculer la hauteur naturelle du contenu
-        const getNaturalHeight = () => content.scrollHeight
-        let naturalHeight = getNaturalHeight()
-        
-        // Initialiser l'état fermé
-        content.style.height = '0px'
-        content.style.overflow = 'hidden'
-        
-        // État interne
-        let isOpen = false
-        let isAnimating = false
-        let currentAnimation: any = null
+  // Fonction pour initialiser un composant details
+  function initDetails(detailsElement: HTMLElementWithCleanup) {
+    const button = detailsElement.querySelector('[data-details-button]') as HTMLButtonElement
+    const content = detailsElement.querySelector('[data-details-content]') as HTMLElement
+    if (!button || !content) return
 
-        // Fonction pour mettre à jour la hauteur naturelle
-        const updateNaturalHeight = () => {
-            naturalHeight = getNaturalHeight()
-        }
+    // Fonction pour calculer la hauteur naturelle du contenu
+    const getNaturalHeight = () => content.scrollHeight
+    let naturalHeight = getNaturalHeight()
 
-        // Écouter le resize pour recalculer la hauteur naturelle
-        const resizeObserver = new ResizeObserver(() => {
-            updateNaturalHeight()
-        })
-        resizeObserver.observe(content)
+    // Initialiser l'état fermé
+    content.style.height = '0px'
+    content.style.overflow = 'hidden'
 
-        // Écouter aussi le resize de la fenêtre
-        const handleWindowResize = () => {
-            updateNaturalHeight()
-        }
-        window.addEventListener('resize', handleWindowResize)
+    // État interne
+    let isOpen = false
+    let isAnimating = false
+    let currentAnimation: any = null
 
-        // Fonction de nettoyage
-        const cleanup = () => {
-            resizeObserver.disconnect()
-            window.removeEventListener('resize', handleWindowResize)
-        }
-
-        // Gérer le clic sur le bouton
-        button.addEventListener('click', (e) => {
-            e.preventDefault()
-            
-            // Recalculer la hauteur naturelle avant l'animation
-            updateNaturalHeight()
-            
-            // Si une animation est en cours, l'arrêter et basculer l'état
-            if (isAnimating && currentAnimation) {
-                currentAnimation.pause()
-                isAnimating = false
-                isOpen = !isOpen // Bascule l'état
-            }
-            
-            if (isAnimating) return
-            isAnimating = true
-
-            if (isOpen) {
-                // Fermer avec animation spring
-                button.setAttribute('aria-expanded', 'false')
-                content.setAttribute('aria-hidden', 'true')
-                detailsElement.classList.remove('open')
-                
-                content.style.height = naturalHeight + 'px'
-                content.offsetHeight // Force reflow
-                
-                currentAnimation = animate(content, {
-                    height: {
-                        to: '0px',
-                        ease: 'inBack',
-                        duration: 300
-                    }
-                })
-                
-                currentAnimation.then(() => {
-                    isOpen = false
-                    isAnimating = false
-                    currentAnimation = null
-                })
-            } else {
-                // Ouvrir avec animation spring
-                button.setAttribute('aria-expanded', 'true')
-                content.setAttribute('aria-hidden', 'false')
-                detailsElement.classList.add('open')
-                
-                currentAnimation = animate(content, {
-                    height: {
-                        to: naturalHeight + 'px',
-                        ease: createSpring({ stiffness: 150, damping: 15, velocity: 0.2 })
-                    }
-                })
-                
-                currentAnimation.then(() => {
-                    content.style.height = 'auto'
-                    isOpen = true
-                    isAnimating = false
-                    currentAnimation = null
-                })
-            }
-        })
-
-        // Exposer la fonction de nettoyage sur l'élément pour un nettoyage manuel si nécessaire
-        ;(detailsElement as any).cleanup = cleanup
+    // Fonction pour mettre à jour la hauteur naturelle
+    const updateNaturalHeight = () => {
+      naturalHeight = getNaturalHeight()
     }
 
-    // Initialiser tous les composants details
-    document.addEventListener('DOMContentLoaded', () => {
-        const detailsElements = document.querySelectorAll('[data-details]')
-        detailsElements.forEach((element) => initDetails(element as HTMLElement))
+    // Écouter le resize pour recalculer la hauteur naturelle
+    const resizeObserver = new ResizeObserver(() => {
+      updateNaturalHeight()
     })
+    resizeObserver.observe(content)
+
+    // Écouter aussi le resize de la fenêtre
+    const handleWindowResize = () => {
+      updateNaturalHeight()
+    }
+    window.addEventListener('resize', handleWindowResize)
+
+    // Fonction de nettoyage
+    const cleanup = () => {
+      resizeObserver.disconnect()
+      window.removeEventListener('resize', handleWindowResize)
+    }
+
+    // Gérer le clic sur le bouton
+    button.addEventListener('click', (e) => {
+      e.preventDefault()
+
+      // Recalculer la hauteur naturelle avant l'animation
+      updateNaturalHeight()
+
+      // Si une animation est en cours, l'arrêter et basculer l'état
+      if (isAnimating && currentAnimation) {
+        currentAnimation.pause()
+        isAnimating = false
+        isOpen = !isOpen // Bascule l'état
+      }
+
+      if (isAnimating) return
+      isAnimating = true
+
+      if (isOpen) {
+        // Fermer avec animation spring
+        button.setAttribute('aria-expanded', 'false')
+        content.setAttribute('aria-hidden', 'true')
+        detailsElement.classList.remove('open')
+
+        content.style.height = `${naturalHeight}px`
+
+        currentAnimation = animate(content, {
+          height: {
+            to: '0px',
+            ease: 'inBack',
+            duration: 300,
+          },
+        })
+
+        currentAnimation.then(() => {
+          isOpen = false
+          isAnimating = false
+          currentAnimation = null
+        })
+      } else {
+        // Ouvrir avec animation spring
+        button.setAttribute('aria-expanded', 'true')
+        content.setAttribute('aria-hidden', 'false')
+        detailsElement.classList.add('open')
+
+        currentAnimation = animate(content, {
+          height: {
+            to: `${naturalHeight}px`,
+            ease: createSpring({ stiffness: 150, damping: 15, velocity: 0.2 }),
+          },
+        })
+
+        currentAnimation.then(() => {
+          content.style.height = 'auto'
+          isOpen = true
+          isAnimating = false
+          currentAnimation = null
+        })
+      }
+    })
+
+    // Exposer la fonction de nettoyage sur l'élément pour un nettoyage manuel si nécessaire
+    detailsElement.cleanup = cleanup
+  }
+
+  // Initialiser tous les composants details
+  document.addEventListener('DOMContentLoaded', () => {
+    const detailsElements = document.querySelectorAll('[data-details]')
+    detailsElements.forEach((element) => initDetails(element as HTMLElementWithCleanup))
+  })
 </script>

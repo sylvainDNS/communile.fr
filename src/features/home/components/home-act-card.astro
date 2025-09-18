@@ -39,19 +39,11 @@ interface Props extends HTMLAttributes<'article'> {
   iconClass?: string
 }
 
-const {
-  iconName,
-  iconSize = '24',
-  iconClass,
-  class: className,
-  ...delegated
-} = Astro.props
+const { iconName, iconSize = '24', iconClass, class: className, ...delegated } = Astro.props
 ---
 
-<Card size="small" class={cn("flex items-center gap-2", className)} {...delegated}>
-  <span
-    class={cn("inline-block bg-neutral-200 rounded-lg p-2", iconClass)}
-  >
+<Card size="small" class={cn('flex items-center gap-2', className)} {...delegated}>
+  <span class={cn('inline-block bg-neutral-200 rounded-lg p-2', iconClass)}>
     <Icon name={iconName} size={iconSize} />
   </span>
   <Text>

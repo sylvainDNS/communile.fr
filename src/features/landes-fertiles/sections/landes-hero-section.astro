@@ -6,39 +6,37 @@ import landesHeroDecoration from '../images/landes-hero-decoration.svg'
 import landesHeroLogo from '../images/landes-hero-logo.jpg'
 ---
 
-<Section class="relative bg-white overflow-hidden">
-    <Image
-        src={landesHeroDecoration}
-        alt="l'organisation des Landes Fertiles"
-        aria-hidden="true"
-        class="hidden md:block absolute bottom-0 left-0 w-[300px]"
-        widths={[200, 400, landesHeroDecoration.width]}
-    />
-    <Image
-        src={landesHeroDecoration}
-        alt="l'organisation des Landes Fertiles"
-        aria-hidden="true"
-        class="hidden md:block absolute top-0 right-0 rotate-180 w-[300px]"
-        widths={[200, 400, landesHeroDecoration.width]}
-    />
-    <Container>
-        <div class="flex flex-col justify-between gap-12">
-            <div>
-                <Image
-                    widths={[350, 400, 500, landesHeroLogo.width]}
-                    src={landesHeroLogo}
-                    alt="le logo des Landes Fertiles"
-                    aria-hidden="true"
-                    class="mx-auto"
-                />
-            </div>
-            <div>
-                <h1
-                    class="font-pally text-4xl md:text-5xl font-bold text-foreground/90 text-center"
-                >
-                    Micro-ferme maraîchère bio
-                </h1>
-            </div>
-        </div>
-    </Container>
+<Section class="relative overflow-hidden bg-white">
+  <Image
+    src={landesHeroDecoration}
+    alt="l'organisation des Landes Fertiles"
+    aria-hidden="true"
+    class="absolute bottom-0 left-0 hidden w-[300px] md:block"
+    widths={[200, 400, landesHeroDecoration.width]}
+  />
+  <Image
+    src={landesHeroDecoration}
+    alt="l'organisation des Landes Fertiles"
+    aria-hidden="true"
+    class="absolute top-0 right-0 hidden w-[300px] rotate-180 md:block"
+    widths={[200, 400, landesHeroDecoration.width]}
+  />
+  <Container>
+    <div class="flex flex-col justify-between gap-12">
+      <div>
+        <Image
+          widths={[350, 400, 500, landesHeroLogo.width]}
+          src={landesHeroLogo}
+          alt="le logo des Landes Fertiles"
+          aria-hidden="true"
+          class="mx-auto"
+        />
+      </div>
+      <div>
+        <h1 class="text-center font-pally text-4xl font-bold text-foreground/90 md:text-5xl">
+          Micro-ferme maraîchère bio
+        </h1>
+      </div>
+    </div>
+  </Container>
 </Section>
