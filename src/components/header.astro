@@ -119,7 +119,7 @@ const links = [
         </div>
         <script>
             import { icons } from "@/utils/icons";
-            import { animate, createSpring, svg } from "animejs";
+            import { animate, svg } from "animejs";
 
             const btn = document.getElementById(
                 "mobile-menu-button",
@@ -166,15 +166,6 @@ const links = [
                 btn?.setAttribute("aria-expanded", "true");
 
                 if (!panel) return;
-
-                // Set initial state using zero-duration animations
-                // Prepare panel to unfold from bottom to top using clip-path
-                // animate(panel, {
-                //     clipPath: "inset(0% 0% 100% 0%)",
-                //     ease: createSpring({ mass: 2, stiffness: 100, damping: 20, velocity: 0.2 }),
-                //     opacity: 1,
-                //     duration: 0,
-                // });
 
                 animate(panel, {
                     clipPath: ["inset(0% 0% 100% 0%)", "inset(0% 0% 0% 0%)"],

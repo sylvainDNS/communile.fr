@@ -109,18 +109,14 @@ const {
     }
   }
 
-  // Fonction pour initialiser la carte
   function initMap() {
     try {
-      // Vérifier si Leaflet est disponible
       if (typeof L === 'undefined') {
         throw new Error('Leaflet library not loaded')
       }
 
-      // Créer la carte
       const map = L.map(mapConfig.id).setView(mapConfig.center, mapConfig.zoom)
 
-      // Configurer les contrôles
       if (!mapConfig.controls.scrollWheelZoom) map.scrollWheelZoom.disable()
       if (!mapConfig.controls.dragging) map.dragging.disable()
       if (!mapConfig.controls.touchZoom) map.touchZoom.disable()
@@ -128,13 +124,11 @@ const {
       if (!mapConfig.controls.boxZoom) map.boxZoom.disable()
       if (!mapConfig.controls.keyboard) map.keyboard.disable()
 
-      // Ajouter la couche de tuiles
       L.tileLayer(mapConfig.tileLayer.url, {
         maxZoom: mapConfig.tileLayer.maxZoom,
         attribution: mapConfig.tileLayer.attribution
       }).addTo(map)
 
-      // Ajouter les marqueurs
       mapConfig.markers.forEach((markerData) => {
         const marker = L.marker(markerData.position).addTo(map)
         
@@ -143,13 +137,11 @@ const {
         }
       })
 
-      // Masquer le skeleton et afficher la carte
       const skeleton = document.getElementById(`${id}-skeleton`)
       if (skeleton) {
         skeleton.style.display = 'none'
       }
 
-      // Ajuster la taille de la carte après le chargement
       setTimeout(() => {
         map.invalidateSize()
       }, 100)
@@ -157,7 +149,6 @@ const {
     } catch (error) {
       console.error('Erreur lors de l\'initialisation de la carte:', error)
       
-      // Masquer le skeleton et afficher l'erreur
       const skeleton = document.getElementById(`${id}-skeleton`)
       const errorDiv = document.getElementById(`${id}-error`)
       
@@ -169,16 +160,13 @@ const {
     }
   }
 
-  // Fonction pour charger Leaflet dynamiquement
   function loadLeaflet() {
     return new Promise((resolve, reject) => {
-      // Vérifier si Leaflet est déjà chargé
       if (typeof L !== 'undefined') {
         resolve(L)
         return
       }
 
-      // Charger le CSS
       const cssLink = document.createElement('link')
       cssLink.rel = 'stylesheet'
       cssLink.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css'
@@ -186,14 +174,12 @@ const {
       cssLink.crossOrigin = ''
       document.head.appendChild(cssLink)
 
-      // Charger le JavaScript
       const script = document.createElement('script')
       script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js'
       script.integrity = 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo='
       script.crossOrigin = ''
       
       script.onload = () => {
-        // Attendre un peu pour que Leaflet soit complètement initialisé
         setTimeout(() => resolve(L), 100)
       }
       
@@ -205,7 +191,6 @@ const {
     })
   }
 
-  // Initialiser la carte quand le DOM est prêt
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
       loadLeaflet()
