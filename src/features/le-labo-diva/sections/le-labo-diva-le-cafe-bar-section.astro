@@ -1,0 +1,85 @@
+---
+import { Image } from 'astro:assets'
+import Badge from '@/components/badge.astro'
+import Container from '@/components/container.astro'
+import HeadingBadges from '@/components/heading-badges.astro'
+import Section from '@/components/section.astro'
+import Text from '@/components/text.astro'
+import ShapeHexagon01 from '@/images/shape-hexagon-01.svg'
+import leLaboDivaCafeBarImage from '../images/le-labo-diva-le-cafe-bar.png'
+---
+
+<Section variant="transparent">
+    <ShapeHexagon01
+        role="presentation"
+        aria-hidden="true"
+        class="absolute top-0 right-0 size-[160px] text-secondary-light"
+    />
+    <ShapeHexagon01
+        role="presentation"
+        aria-hidden="true"
+        class="absolute bottom-0 left-1/4 size-[160px] text-secondary-light"
+    />
+    <Container class="flex flex-col md:flex-row-reverse gap-12 relative z-20">
+        <div class="flex-1">
+            <HeadingBadges rows={3}>
+                <Badge
+                    variant="primary"
+                    rotation="-2"
+                    class="z-20"
+                    size="heading"
+                >
+                    Le
+                </Badge>
+                <Badge
+                    variant="secondary"
+                    rotation="-7"
+                    class="-translate-y-4 z-30"
+                    size="heading"
+                >
+                    CAFÉ-BAR
+                </Badge>
+                <Badge
+                    variant="tertiary"
+                    rotation="-2"
+                    class="-translate-y-5 z-50"
+                    size="heading"
+                >
+                    Du Labo Diva
+                </Badge>
+            </HeadingBadges>
+            <div class="max-w-xl mt-8">
+                <Text>
+                    L'après-midi au Labo Diva règne une ambiance chaleureuse.
+                    C'est l'endroit parfait pour travailler, papoter ou
+                    découvrir une exposition d'art, tout en profitant d'une
+                    large carte de boissons et de grignottes (on vous recommande
+                    chaudement les cookies !).
+                </Text>
+                <Text>
+                    Le Labo Diva propose une programmation culturelle variée,
+                    avec de nombreux événements gratuits et accessibles à
+                    tous•tes. Au programme : tables rondes et conférences,
+                    initiations à la danse, ateliers créatifs, spectacles de
+                    stand up, soirées jeux, marchés de créateur•ices et
+                    friperies.
+                </Text>
+                <Text>
+                    Le Labo Diva accueille également des groupes : pots de
+                    départ, anniversaires, regroupements associatifs, rédactions
+                    ouvertes…
+                </Text>
+                <Text> Vous avez une idée ou envie ? </Text>
+            </div>
+        </div>
+
+        <div class="flex-1">
+            <Image
+                src={leLaboDivaCafeBarImage}
+                alt="Le bar du Wattignies"
+                class="w-full h-full rounded-2xl object-cover"
+                widths={[330, 400, 540, leLaboDivaCafeBarImage.width]}
+            />
+        </div>
+    </Container>
+</Section>

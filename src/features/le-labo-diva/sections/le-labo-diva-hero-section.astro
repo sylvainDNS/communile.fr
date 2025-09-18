@@ -1,0 +1,43 @@
+---
+import { Image } from 'astro:assets'
+import Container from '@/components/container.astro'
+import Section from '@/components/section.astro'
+import leLaboDivaHeroDecoration from '../images/le-labo-diva-hero-decoration.svg'
+import leLaboDivaHeroLogo from '../images/le-labo-diva-hero-logo.jpg'
+---
+
+<Section class="relative bg-white overflow-hidden">
+    <Image
+        src={leLaboDivaHeroDecoration}
+        alt="l'organisation des Landes Fertiles"
+        aria-hidden="true"
+        class="hidden md:block absolute bottom-0 left-0 w-[300px]"
+        widths={[200, 400, leLaboDivaHeroDecoration.width]}
+    />
+    <Image
+        src={leLaboDivaHeroDecoration}
+        alt="l'organisation des Landes Fertiles"
+        aria-hidden="true"
+        class="hidden md:block absolute top-0 right-0 rotate-180 w-[300px]"
+        widths={[200, 400, leLaboDivaHeroDecoration.width]}
+    />
+    <Container>
+        <div class="flex flex-col justify-between gap-12">
+            <div>
+                <Image
+                    widths={[350, 400, 500, leLaboDivaHeroLogo.width]}
+                    src={leLaboDivaHeroLogo}
+                    alt="le logo des Landes Fertiles"
+                    aria-hidden="true"
+                    class="mx-auto"
+                />
+            </div>
+            <div>
+                <h1
+                    class="font-pally text-4xl md:text-5xl font-bold text-foreground/90 text-center"
+                >
+                A boire et à manger, à voir et à danser                </h1>
+            </div>
+        </div>
+    </Container>
+</Section>

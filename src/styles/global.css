@@ -52,6 +52,22 @@
   --color-landes-fertiles-green: oklch(0.2718 0.1589 135.68);
   --color-landes-fertiles-green-accent: oklch(0.1927 0.2681 134.9);
 
+  /* Le Labo Diva */
+
+  --color-le-labo-diva-green: oklch(0.5997 0.1049 186.55);
+  --color-le-labo-diva-green-accent: oklch(0.4415 0.0747 189.15);
+
+  --color-le-labo-diva-yellow: oklch(0.8341 0.1634 80.48);
+  --color-le-labo-diva-yellow-accent: oklch(0.8913 0.1725 87.3809);
+
+  --color-le-labo-diva-green-dark: oklch(0.4415 0.0747 189.15);
+  --color-le-labo-diva-green-dark-accent: oklch(0.3311 0.056 189.15);
+
+  --color-le-labo-diva-neutral: oklch(0.1292 0.0415 265.15);
+  --color-le-labo-diva-neutral-accent: oklch(0.0501 0.0086 264.05);
+
+  /* Common */
+
   --spacing-2k: 2000px;
   --breakpoint-2k: 2000px;
 
@@ -163,10 +179,14 @@
   }
 
   [data-theme="labo-diva"] {
-    --theme-primary: var(--color-watt-blue);
-    --theme-secondary: var(--color-watt-red);
-    --theme-tertiary: var(--color-watt-yellow);
-    --theme-quaternary: var(--color-watt-green);
+    --theme-primary: var(--color-le-labo-diva-green);
+    --theme-primary-accent: var(--color-le-labo-diva-green-accent);
+    --theme-secondary: var(--color-le-labo-diva-yellow);
+    --theme-secondary-accent: var(--color-le-labo-diva-yellow-accent);
+    --theme-tertiary: var(--color-le-labo-diva-green-dark);
+    --theme-tertiary-accent: var(--color-le-labo-diva-green-dark-accent);
+    --theme-quaternary: var(--color-le-labo-diva-neutral);
+    --theme-quaternary-accent: var(--color-le-labo-diva-neutral-accent);
   }
 
   [data-theme="bar-ile"] {

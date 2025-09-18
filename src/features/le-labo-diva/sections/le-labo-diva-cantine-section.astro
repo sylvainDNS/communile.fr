@@ -1,0 +1,63 @@
+---
+import { Image } from 'astro:assets'
+import Badge from '@/components/badge.astro'
+import Container from '@/components/container.astro'
+import HeadingBadges from '@/components/heading-badges.astro'
+import Icon from '@/components/icon.astro'
+import InfoCard from '@/components/info-card.astro'
+import Section from '@/components/section.astro'
+import Text from '@/components/text.astro'
+import ShapeHexagon01 from '@/images/shape-hexagon-01.svg'
+import leLaboDivaLaCantineImage from '../images/le-labo-diva-la-cantine.png'
+---
+
+<Section variant="transparent">
+    <ShapeHexagon01
+        role="presentation"
+        aria-hidden="true"
+        class="absolute top-0 right-0 size-[160px] text-secondary-light"
+    />
+    <Container class="flex flex-col md:flex-row-reverse gap-12 items-start">
+        <div class="my-auto">
+            <HeadingBadges rows={3}>
+                <Badge
+                    variant="secondary"
+                    rotation="-7"
+                    class="z-20"
+                    size="heading"
+                >
+                    La cantine
+                </Badge>
+                <Badge
+                    variant="primary"
+                    rotation="-4"
+                    class="-translate-y-2 z-30"
+                    size="heading"
+                >
+                du labo diva
+                </Badge>
+            </HeadingBadges>
+            <Text class="mt-8 text-balance">
+                Grâce à Véro et Thierno, qui sont aux fourneaux, 
+                le Labo Diva vous propose une cantine ouverte du mardi a
+                u vendredi de 12h à 14h, avec des assiettes végétariennes et de saison,
+                 offrant un excellent rapport qualité/prix.
+                 <br> Le menu change chaque semaine pour toujours plus de variété. Que ce soit pour manger sur place ou à emporter, nous mettons un point d’honneur à offrir une alimentation gourmande et accessible au plus grand nombre.
+            </Text>
+            <InfoCard>
+                <Icon name="grape" size="24" slot="icon" />
+                <Text size="xl" weight="medium" font="pally" slot="title">Envie d’un brunch ?</Text>
+                <Text slot="description" class="max-w-2xl text-balance">Une fois par mois, le Labo Diva vous invite à son Brunch 100% vegan ! <br> Au programme : une assiette salée, une assiette sucrée, du thé et du café à volonté, ainsi qu'un verre de "potion magique", notre boisson fraîche maison.</Text>
+            </InfoCard>
+        </div>
+
+        <div class="flex w-full max-w-2xl">
+            <Image
+                src={leLaboDivaLaCantineImage}
+                alt="La cantine du Labo Diva"
+                class="w-full h-full"
+                widths={[330, 400, 540, leLaboDivaLaCantineImage.width]}
+            />
+        </div>
+    </Container>
+</Section>
