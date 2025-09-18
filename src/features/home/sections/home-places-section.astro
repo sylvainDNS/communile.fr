@@ -13,94 +13,77 @@ import lesLandesFertilesCardImage from '../images/les-landes-fertiles-card.jpg'
 ---
 
 <Section>
-    <Container class="space-y-3 grid grid-cols-1 md:grid-cols-3"> 
-    <div class="space-y-4 max-w-md">
-        <HeadingBadges rows={2}>
-            <Badge rotation="-7" size="heading">Nos</Badge>
-            <Badge variant="secondary" rotation="4" class="-translate-y-2 translate-x-1" size="heading">lieux</Badge>
-        </HeadingBadges>
-        
-        <div class="max-w-sm mt-4">
-            <Text size="base">
-                Commun'île c'est avant tout une histoire de lieux et de personnes qui les composent. 
-            </Text>
-            <Text size="base">
-                Des lieux où chacun·e pourra toujours bien manger, boire un coup et passer du bon temps. 
-            </Text>
-            <Text size="base">
-                Des lieux où règne le respect : celui des client·e·s d'un jour et de toujours, celui des travailleur·euse·s, des produits, de notre quartier, de notre ville.
-            </Text>
-        </div>
+  <Container class="grid grid-cols-1 space-y-3 md:grid-cols-3">
+    <div class="max-w-md space-y-4">
+      <HeadingBadges rows={2}>
+        <Badge rotation="-7" size="heading">Nos</Badge>
+        <Badge variant="secondary" rotation="4" class="translate-x-1 -translate-y-2" size="heading">lieux</Badge>
+      </HeadingBadges>
+
+      <div class="mt-4 max-w-sm">
+        <Text size="base"> Commun'île c'est avant tout une histoire de lieux et de personnes qui les composent. </Text>
+        <Text size="base">
+          Des lieux où chacun·e pourra toujours bien manger, boire un coup et passer du bon temps.
+        </Text>
+        <Text size="base">
+          Des lieux où règne le respect : celui des client·e·s d'un jour et de toujours, celui des travailleur·euse·s,
+          des produits, de notre quartier, de notre ville.
+        </Text>
+      </div>
     </div>
 
-    <div class="col-span-2 grid grid-cols-1 md:grid-cols-2 gap-3">
-        <PlaceCard
-            href={PATH.LE_WATTIGNIES}
-            image={leWattigniesCardImage}
-            imageAlt="Le Wattignies - bar et restaurant avec une façade vitrée, un comptoir bleu et des tables"
-            tagColor="blue"
-            tagText="Le Wattignies"
-        >
-            <div slot="hover-content">
-                <span class="font-bold text-2xl">
-                    Horaires d'ouverture
-                </span>
-                <span class="font-medium">
-                    Toute la semaine de 10h à 17h
-                </span>
-            </div>
-        </PlaceCard>
+    <div class="col-span-2 grid grid-cols-1 gap-3 md:grid-cols-2">
+      <PlaceCard
+        href={PATH.LE_WATTIGNIES}
+        image={leWattigniesCardImage}
+        imageAlt="Le Wattignies - bar et restaurant avec une façade vitrée, un comptoir bleu et des tables"
+        tagColor="blue"
+        tagText="Le Wattignies"
+      >
+        <div slot="hover-content">
+          <span class="text-2xl font-bold"> Horaires d'ouverture </span>
+          <span class="font-medium"> Toute la semaine de 10h à 17h </span>
+        </div>
+      </PlaceCard>
 
-        <PlaceCard
-            href={PATH.LES_LANDES_FERTILES}
-            image={lesLandesFertilesCardImage}
-            imageAlt="Les Landes Fertiles - 2 personnes travaillent sur des plants de tomates"
-            tagColor="red"
-            tagText="Les Landes Fertiles"
-        >
-            <div slot="hover-content">
-                <span class="font-bold text-2xl">
-                    Horaires d'ouverture
-                </span>
-                <span class="font-medium">
-                    Toute la semaine de 10h à 17h
-                </span>
-            </div>
-        </PlaceCard>
-        
-        <PlaceCard
-            href={PATH.LE_LABO_DIVA}
-            image={leLaboDivaCardImage}
-            imageAlt="Le Labo Diva - Un bar intérieur composé de lattes de bois peintes en vert, jaune, blanc ou orange."
-            tagColor="green"
-            tagText="Le Labo Diva"
-        >
-            <div slot="hover-content">
-                <span class="font-bold text-2xl">
-                    Horaires d'ouverture
-                </span>
-                <span class="font-medium">
-                    Toute la semaine de 10h à 17h
-                </span>
-            </div>
-        </PlaceCard>
+      <PlaceCard
+        href={PATH.LES_LANDES_FERTILES}
+        image={lesLandesFertilesCardImage}
+        imageAlt="Les Landes Fertiles - 2 personnes travaillent sur des plants de tomates"
+        tagColor="red"
+        tagText="Les Landes Fertiles"
+      >
+        <div slot="hover-content">
+          <span class="text-2xl font-bold"> Horaires d'ouverture </span>
+          <span class="font-medium"> Toute la semaine de 10h à 17h </span>
+        </div>
+      </PlaceCard>
 
-        <PlaceCard
-            href={PATH.LE_BAR_ILE}
-            image={leBarIleCardImage}
-            imageAlt="Le Bar Ile - Une terrasse d'un bar, les murs extérieurs sont bleus foncés. Un marché est installé avec des légumes."
-            tagColor="blue"
-            tagText="Le Bar'Île"
-        >
-            <div slot="hover-content">
-                <span class="font-bold text-2xl">
-                    Horaires d'ouverture
-                </span>
-                <span class="font-medium">
-                    Toute la semaine de 10h à 17h
-                </span>
-            </div>
-        </PlaceCard>
-  </div>
-</Container>
+      <PlaceCard
+        href={PATH.LE_LABO_DIVA}
+        image={leLaboDivaCardImage}
+        imageAlt="Le Labo Diva - Un bar intérieur composé de lattes de bois peintes en vert, jaune, blanc ou orange."
+        tagColor="green"
+        tagText="Le Labo Diva"
+      >
+        <div slot="hover-content">
+          <span class="text-2xl font-bold"> Horaires d'ouverture </span>
+          <span class="font-medium"> Toute la semaine de 10h à 17h </span>
+        </div>
+      </PlaceCard>
+
+      <PlaceCard
+        href={PATH.LE_BAR_ILE}
+        image={leBarIleCardImage}
+        imageAlt="Le Bar Ile - Une terrasse d'un bar, les murs extérieurs sont bleus foncés. Un marché est installé avec des légumes."
+        tagColor="blue"
+        tagText="Le Bar'Île"
+      >
+        <div slot="hover-content">
+          <span class="text-2xl font-bold"> Horaires d'ouverture </span>
+          <span class="font-medium"> Toute la semaine de 10h à 17h </span>
+        </div>
+      </PlaceCard>
+    </div>
+  </Container>
 </Section>

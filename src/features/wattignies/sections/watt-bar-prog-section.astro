@@ -11,74 +11,53 @@ import wattigniesBarProgImage from '../images/wattignies-le-bar.png'
 ---
 
 <Section variant="transparent">
-    <Container class="flex flex-col lg:flex-row-reverse gap-12 items-start">
-        <div class="space-y-6">
-            <HeadingBadges rows={3}>
-                <Badge
-                    variant="primary"
-                    rotation="-7"
-                    class="z-20"
-                    size="heading"
-                >
-                    LE BAR
-                </Badge>
-                <Badge
-                    variant="tertiary"
-                    rotation="-12"
-                    class="-translate-y-4 md:-translate-y-13 -translate-x-2 md:translate-x-34 z-10"
-                    size="heading"
-                    >ET LA PROG
-                </Badge>
-                <Badge
-                    variant="secondary"
-                    rotation="5"
-                    class="md:-translate-y-10 translate-x-1 z-30"
-                    size="heading"
-                    >DU WATTIGNIES
-                </Badge>
-            </HeadingBadges>
-            <Text size="base" class="mt-8 md:mt-0 text-balance">
-                Le Wattignies propose une programmation culturelle accessible
-                (entrée gratuite), engagée et éclectique tout au long de
-                l'année. Concert d'un groupe local, atelier d'initiation au
-                cirque, jam latino, bal trad, concert de rap féministe ou encore
-                tournoi de belotte ... en 2024 c'était 156 évènements tout au
-                long de l'année pour mettre les artistes et collectif
-                locales.aux à l'honneur.
-            </Text>
-            <Text size="base" class="text-balance">
-                Vous voulez proposer une idée de concert, d'atelier ou tout
-                autre type d'évènement ? Contactez-nous !
-            </Text>
-            <div>
-                <Card class="space-y-4 w-fit">
-                    <div class="flex items-center gap-4">
-                        <div
-                            class="size-10 rounded-xl bg-neutral-200 flex items-center justify-center"
-                        >
-                            <Icon name="glass-water" size="24" />
-                        </div>
-                        <span class="font-pally font-medium text-xl md:text-2xl"
-                            >Des fournisseurs sélectionnés avec soin</span
-                        >
-                    </div>
-                    <Text size="base" class="max-w-xl"
-                        >Vous y serez accueilli.es par notre équipe de choc de
-                        barmaides et barmen qui proposent une carte remplie de
-                        références locales et parfois des recettes maison : thé
-                        glacé, vin chaud en hiver...
-                    </Text>
-                </Card>
+  <Container class="flex flex-col items-start gap-12 lg:flex-row-reverse">
+    <div class="space-y-6">
+      <HeadingBadges rows={3}>
+        <Badge variant="primary" rotation="-7" class="z-20" size="heading"> LE BAR </Badge>
+        <Badge
+          variant="tertiary"
+          rotation="-12"
+          class="z-10 -translate-x-2 -translate-y-4 md:translate-x-34 md:-translate-y-13"
+          size="heading"
+          >ET LA PROG
+        </Badge>
+        <Badge variant="secondary" rotation="5" class="z-30 translate-x-1 md:-translate-y-10" size="heading"
+          >DU WATTIGNIES
+        </Badge>
+      </HeadingBadges>
+      <Text size="base" class="mt-8 text-balance md:mt-0">
+        Le Wattignies propose une programmation culturelle accessible (entrée gratuite), engagée et éclectique tout au
+        long de l'année. Concert d'un groupe local, atelier d'initiation au cirque, jam latino, bal trad, concert de rap
+        féministe ou encore tournoi de belotte ... en 2024 c'était 156 évènements tout au long de l'année pour mettre
+        les artistes et collectif locales.aux à l'honneur.
+      </Text>
+      <Text size="base" class="text-balance">
+        Vous voulez proposer une idée de concert, d'atelier ou tout autre type d'évènement ? Contactez-nous !
+      </Text>
+      <div>
+        <Card class="w-fit space-y-4">
+          <div class="flex items-center gap-4">
+            <div class="flex size-10 items-center justify-center rounded-xl bg-neutral-200">
+              <Icon name="glass-water" size="24" />
             </div>
-        </div>
+            <span class="font-pally text-xl font-medium md:text-2xl">Des fournisseurs sélectionnés avec soin</span>
+          </div>
+          <Text size="base" class="max-w-xl"
+            >Vous y serez accueilli.es par notre équipe de choc de barmaides et barmen qui proposent une carte remplie
+            de références locales et parfois des recettes maison : thé glacé, vin chaud en hiver...
+          </Text>
+        </Card>
+      </div>
+    </div>
 
-        <div class="flex w-full">
-            <Image
-                src={wattigniesBarProgImage}
-                alt="Le bar du Wattignies"
-                class="w-full h-full object-cover max-h-[400px] lg:max-h-max rounded-2xl"
-                widths={[330, 400, 540, wattigniesBarProgImage.width]}
-            />
-        </div>
-    </Container>
+    <div class="flex w-full">
+      <Image
+        src={wattigniesBarProgImage}
+        alt="Le bar du Wattignies"
+        class="h-full max-h-[400px] w-full rounded-2xl object-cover lg:max-h-max"
+        widths={[330, 400, 540, wattigniesBarProgImage.width]}
+      />
+    </div>
+  </Container>
 </Section>

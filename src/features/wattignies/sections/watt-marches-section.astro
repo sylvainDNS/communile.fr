@@ -11,95 +11,61 @@ import { cn } from '@/utils/style'
 import illuCreerAgirImage from '../../../images/communile-illu-agir.png'
 ---
 
-<Section variant="tertiary" overflow="hidden" spacing="large" class="relative pt-24 space-y-8">
-    <Container>
-        <div
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6"
+<Section variant="tertiary" overflow="hidden" spacing="large" class="relative space-y-8 pt-24">
+  <Container>
+    <div class="grid grid-cols-1 gap-y-6 md:grid-cols-2 lg:grid-cols-3">
+      <HeadingBadges rows={3}>
+        <Badge variant="primary" rotation="-3" size="heading"> LES MARCHÉS DE </Badge>
+        <Badge variant="quaternary" rotation="3" class="z-20 translate-x-1 -translate-y-2" size="heading">
+          DE SAISON
+        </Badge>
+        <Badge
+          variant="secondary"
+          rotation="-11"
+          class="translate-x-10 -translate-y-4 md:translate-x-18 md:-translate-y-2"
+          size="heading"
         >
-            <HeadingBadges rows={3}>
-                <Badge
-                    variant="primary"
-                    rotation="-3"
-                    size="heading"
-                >
-                    LES MARCHÉS DE
-                </Badge>
-                <Badge
-                    variant="quaternary"
-                    rotation="3"
-                    class="-translate-y-2 translate-x-1 z-20"
-                    size="heading"
-                >
-                    DE SAISON
-                </Badge>
-                <Badge
-                    variant="secondary"
-                    rotation="-11"
-                    class="-translate-y-4 md:-translate-y-2 translate-x-10 md:translate-x-18"
-                    size="heading"
-                >
-                
-                    DU WATTIGNIES
-                </Badge>
-            </HeadingBadges>
+          DU WATTIGNIES
+        </Badge>
+      </HeadingBadges>
 
-            <ShapeHook01
-                role="presentation"
-                aria-hidden="true"
-                class="absolute -top-6 -right-6 text-tertiary-light"
-            />
-            <div class="relative lg:col-span-2">
-                <div class="space-y-6 relative z-10">
-                    <WattMarchesCard
-                        iconName="trees"
-                        title="Quand les créateurices s'invitent au Wattignies"
-                    >
-                        Les temps forts du Wattignies sont nos marchés de
-                        saison qui rassemblent l'ensemble des résident.es du
-                        lieu et permettent de valoriser les créateur.ices
-                        autour d'un week-end festif qui attire un large
-                        public.
-                    </WattMarchesCard>
-                    <WattMarchesCard
-                        iconName="package-2"
-                        title="En 2024, 5 marchés ont été organisés"
-                        hasList={true}
-                        hasDescription={false}
-                    >
-                        <li>
-                            3 marchés de saison, qui ont permis à plus d'une
-                            cinquantaine d'artistes de s'exposer, passer un
-                            moment convivial et à vivre de leur travail. :
-                            marché de printemps, marché d'automne, et marché
-                            givré
-                        </li>
-                        <li>
-                            1 marché Latino et 1 marché de créateurices
-                            queer "La Potinerie"
-                        </li>
-                    </WattMarchesCard>
-                </div>
-            </div>
+      <ShapeHook01 role="presentation" aria-hidden="true" class="absolute -top-6 -right-6 text-tertiary-light" />
+      <div class="relative lg:col-span-2">
+        <div class="relative z-10 space-y-6">
+          <WattMarchesCard iconName="trees" title="Quand les créateurices s'invitent au Wattignies">
+            Les temps forts du Wattignies sont nos marchés de saison qui rassemblent l'ensemble des résident.es du lieu
+            et permettent de valoriser les créateur.ices autour d'un week-end festif qui attire un large public.
+          </WattMarchesCard>
+          <WattMarchesCard
+            iconName="package-2"
+            title="En 2024, 5 marchés ont été organisés"
+            hasList={true}
+            hasDescription={false}
+          >
+            <li>
+              3 marchés de saison, qui ont permis à plus d'une cinquantaine d'artistes de s'exposer, passer un moment
+              convivial et à vivre de leur travail. : marché de printemps, marché d'automne, et marché givré
+            </li>
+            <li>1 marché Latino et 1 marché de créateurices queer "La Potinerie"</li>
+          </WattMarchesCard>
         </div>
-
-        <ShapeHook02
-            role="presentation"
-            aria-hidden="true"
-            class="absolute -bottom-8 -left-6 text-tertiary-light"
-        />
-    </Container>
-    <div
-        class={cn(
-            "rounded-l-full overflow-hidden h-60 ml-auto -mr-6 relative z-10 max-w-[90%]",
-            "2k:container 2k:mx-auto 2k:rounded-2xl",
-        )}
-    >
-        <Image
-            src={illuCreerAgirImage}
-            height={240}
-            widths={[330, 400, 540, 720, illuCreerAgirImage.width]}
-            alt="À l'intérieur du Labo Diva, un marché est installé. Des cageots de courges, blettes, patates douces, salade et autres légumes sont disposés sur des tables. Des petites pancartes noires indiquent les prix des légumes."
-            class="h-full w-full object-cover"
-        />
+      </div>
     </div>
+
+    <ShapeHook02 role="presentation" aria-hidden="true" class="absolute -bottom-8 -left-6 text-tertiary-light" />
+  </Container>
+  <div
+    class={cn(
+      'rounded-l-full overflow-hidden h-60 ml-auto -mr-6 relative z-10 max-w-[90%]',
+      '2k:container 2k:mx-auto 2k:rounded-2xl',
+    )}
+  >
+    <Image
+      src={illuCreerAgirImage}
+      height={240}
+      widths={[330, 400, 540, 720, illuCreerAgirImage.width]}
+      alt="À l'intérieur du Labo Diva, un marché est installé. Des cageots de courges, blettes, patates douces, salade et autres légumes sont disposés sur des tables. Des petites pancartes noires indiquent les prix des légumes."
+      class="h-full w-full object-cover"
+    />
+  </div>
 </Section>

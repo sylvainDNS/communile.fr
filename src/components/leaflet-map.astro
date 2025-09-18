@@ -37,8 +37,7 @@ const {
   markers = [],
   tileLayer = {
     url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-    attribution:
-      '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     maxZoom: 19,
   },
   showControls = true,
@@ -55,64 +54,79 @@ const {
 
 <div class={cn('relative', className)}>
   <!-- Skeleton de chargement -->
-  <div 
+  <div
     id={`${id}-skeleton`}
-    class="absolute inset-0 bg-gray-200 animate-pulse rounded-lg flex items-center justify-center z-10"
+    class="absolute inset-0 z-10 flex animate-pulse items-center justify-center rounded-lg bg-gray-200"
     style={{ height }}
   >
     <div class="text-center">
-      <div class="w-8 h-8 border-4 border-gray-300 border-t-blue-600 rounded-full animate-spin mx-auto mb-2"></div>
-      <p class="text-gray-600 text-sm">{loadingText}</p>
+      <div class="mx-auto mb-2 h-8 w-8 animate-spin rounded-full border-4 border-gray-300 border-t-blue-600"></div>
+      <p class="text-sm text-gray-600">{loadingText}</p>
     </div>
   </div>
 
   <!-- Conteneur de la carte -->
-  <div 
-    id={id}
-    class="w-full rounded-lg"
-    style={{ height }}
-  ></div>
+  <div id={id} class="w-full rounded-lg" style={{ height }}></div>
 
   <!-- Message d'erreur (caché par défaut) -->
-  <div 
+  <div
     id={`${id}-error`}
-    class="absolute inset-0 bg-red-50 border border-red-200 rounded-lg items-center justify-center z-20 hidden"
+    class="absolute inset-0 z-20 hidden items-center justify-center rounded-lg border border-red-200 bg-red-50"
     style={{ height }}
   >
     <div class="text-center">
-      <div class="w-8 h-8 text-red-500 mb-2">
+      <div class="mb-2 h-8 w-8 text-red-500">
         <svg fill="currentColor" viewBox="0 0 20 20">
-          <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+          <path
+            fill-rule="evenodd"
+            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+            clip-rule="evenodd"></path>
         </svg>
       </div>
-      <p class="text-red-600 text-sm">{errorText}</p>
+      <p class="text-sm text-red-600">{errorText}</p>
     </div>
   </div>
 </div>
 
-<script define:vars={{ id, center, zoom, markers, tileLayer, showControls, scrollWheelZoom, dragging, touchZoom, doubleClickZoom, boxZoom, keyboard }}>
+<script
+  define:vars={{
+    id,
+    center,
+    zoom,
+    markers,
+    tileLayer,
+    showControls,
+    scrollWheelZoom,
+    dragging,
+    touchZoom,
+    doubleClickZoom,
+    boxZoom,
+    keyboard,
+  }}
+  is:inline
+>
   // Configuration de la carte
   const mapConfig = {
     id: document.getElementById(id),
-    center: center,
-    zoom: zoom,
-    markers: markers,
-    tileLayer: tileLayer,
+    center,
+    zoom,
+    markers,
+    tileLayer,
     controls: {
-      showControls: showControls,
-      scrollWheelZoom: scrollWheelZoom,
-      dragging: dragging,
-      touchZoom: touchZoom,
-      doubleClickZoom: doubleClickZoom,
-      boxZoom: boxZoom,
-      keyboard: keyboard
-    }
+      showControls,
+      scrollWheelZoom,
+      dragging,
+      touchZoom,
+      doubleClickZoom,
+      boxZoom,
+      keyboard,
+    },
   }
 
   function initMap() {
     try {
       if (typeof L === 'undefined') {
-        throw new Error('Leaflet library not loaded')
+        throw new TypeError('Leaflet library not loaded')
       }
 
       const map = L.map(mapConfig.id).setView(mapConfig.center, mapConfig.zoom)
@@ -126,12 +140,12 @@ const {
 
       L.tileLayer(mapConfig.tileLayer.url, {
         maxZoom: mapConfig.tileLayer.maxZoom,
-        attribution: mapConfig.tileLayer.attribution
+        attribution: mapConfig.tileLayer.attribution,
       }).addTo(map)
 
       mapConfig.markers.forEach((markerData) => {
         const marker = L.marker(markerData.position).addTo(map)
-        
+
         if (markerData.popup) {
           marker.bindPopup(markerData.popup)
         }
@@ -145,13 +159,10 @@ const {
       setTimeout(() => {
         map.invalidateSize()
       }, 100)
-
-    } catch (error) {
-      console.error('Erreur lors de l\'initialisation de la carte:', error)
-      
+    } catch {
       const skeleton = document.getElementById(`${id}-skeleton`)
       const errorDiv = document.getElementById(`${id}-error`)
-      
+
       if (skeleton) skeleton.style.display = 'none'
       if (errorDiv) {
         errorDiv.classList.remove('hidden')
@@ -178,15 +189,15 @@ const {
       script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js'
       script.integrity = 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo='
       script.crossOrigin = ''
-      
+
       script.onload = () => {
         setTimeout(() => resolve(L), 100)
       }
-      
+
       script.onerror = () => {
         reject(new Error('Failed to load Leaflet library'))
       }
-      
+
       document.head.appendChild(script)
     })
   }
@@ -195,11 +206,10 @@ const {
     document.addEventListener('DOMContentLoaded', () => {
       loadLeaflet()
         .then(() => initMap())
-        .catch((error) => {
-          console.error('Erreur lors du chargement de Leaflet:', error)
+        .catch((_error) => {
           const skeleton = document.getElementById(`${id}-skeleton`)
           const errorDiv = document.getElementById(`${id}-error`)
-          
+
           if (skeleton) skeleton.style.display = 'none'
           if (errorDiv) {
             errorDiv.classList.remove('hidden')
@@ -210,11 +220,10 @@ const {
   } else {
     loadLeaflet()
       .then(() => initMap())
-      .catch((error) => {
-        console.error('Erreur lors du chargement de Leaflet:', error)
+      .catch((_error) => {
         const skeleton = document.getElementById(`${id}-skeleton`)
         const errorDiv = document.getElementById(`${id}-error`)
-        
+
         if (skeleton) skeleton.style.display = 'none'
         if (errorDiv) {
           errorDiv.classList.remove('hidden')

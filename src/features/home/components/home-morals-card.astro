@@ -1,6 +1,7 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
-import { cva, type VariantProps } from 'class-variance-authority'
+import type { VariantProps } from 'class-variance-authority'
+import { cva } from 'class-variance-authority'
 import Card from '@/components/card.astro'
 import Icon from '@/components/icon.astro'
 import Tag from '@/components/tag.astro'
@@ -75,8 +76,8 @@ const {
 ---
 
 <li class={className} {...delegated}>
-  <Card size="small" radius="diagonal" class="space-y-2 h-full">
-    <Tag color={tagColor} class="font-pally font-medium text-foreground/80 text-2xl">{tagLabel}</Tag>
+  <Card size="small" radius="diagonal" class="h-full space-y-2">
+    <Tag color={tagColor} class="font-pally text-2xl font-medium text-foreground/80">{tagLabel}</Tag>
     <Text size="base">
       <slot />
       <Icon name={iconName} size={iconSize} class={iconVariants({ position: iconPosition, size: iconSizeVariant })} />

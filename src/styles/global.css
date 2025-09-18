@@ -1,8 +1,8 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-@import "./fonts/pally.css";
-@import "./fonts/inter.css";
-@import "./fonts/rubik.css";
+@import './fonts/pally.css';
+@import './fonts/inter.css';
+@import './fonts/rubik.css';
 
 :root {
   --background: oklch(96.8% 0.007 247.896);
@@ -72,14 +72,14 @@
   --breakpoint-2k: 2000px;
 
   --font-sans:
-    "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   --font-rubik:
-    "Rubik", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    'Rubik', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   --font-pally:
-    "Pally", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    'Pally', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
   --radius-5xl: 2.5rem;
 }
@@ -143,10 +143,10 @@
 
 @layer base {
   html {
-    @apply antialiased font-sans;
+    @apply font-sans antialiased;
   }
 
-  [data-theme="default"] {
+  [data-theme='default'] {
     --theme-primary: var(--color-watt-blue);
     --theme-primary-accent: var(--color-watt-blue-accent);
     --theme-secondary: var(--color-watt-red);
@@ -156,7 +156,7 @@
     --theme-quaternary: var(--color-watt-green);
   }
 
-  [data-theme="wattignies"] {
+  [data-theme='wattignies'] {
     --theme-primary: var(--color-watt-blue);
     --theme-primary-accent: var(--color-watt-blue-accent);
     --theme-secondary: var(--color-watt-red);
@@ -167,7 +167,7 @@
     --theme-quaternary-accent: var(--color-watt-green-accent);
   }
 
-  [data-theme="landes-fertiles"] {
+  [data-theme='landes-fertiles'] {
     --theme-primary: var(--color-landes-fertiles-grey);
     --theme-primary-accent: var(--color-landes-fertiles-grey-accent);
     --theme-secondary: var(--color-landes-fertiles-red);
@@ -178,7 +178,7 @@
     --theme-quaternary-accent: var(--color-landes-fertiles-green-accent);
   }
 
-  [data-theme="labo-diva"] {
+  [data-theme='labo-diva'] {
     --theme-primary: var(--color-le-labo-diva-green);
     --theme-primary-accent: var(--color-le-labo-diva-green-accent);
     --theme-secondary: var(--color-le-labo-diva-yellow);
@@ -189,7 +189,7 @@
     --theme-quaternary-accent: var(--color-le-labo-diva-neutral-accent);
   }
 
-  [data-theme="bar-ile"] {
+  [data-theme='bar-ile'] {
     --theme-primary: var(--color-watt-blue);
     --theme-secondary: var(--color-watt-red);
     --theme-tertiary: var(--color-watt-yellow);

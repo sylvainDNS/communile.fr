@@ -2,16 +2,16 @@
 import Card from './card.astro'
 ---
 
-<Card class="space-y-4 p-4 pr-8 rounded-lg rounded-tr-[64px] w-full md:w-fit">
-    <div class="flex items-center gap-4">
-        <div class="size-10 rounded-lg bg-neutral-200 flex items-center justify-center">
-            <slot name="icon" />
-        </div>
-        <div class="font-pally font-medium text-xl md:text-2xl">
-            <slot name="title" />
-        </div>
+<Card class="w-full space-y-4 rounded-lg rounded-tr-[64px] p-4 pr-8 md:w-fit">
+  <div class="flex items-center gap-4">
+    <div class="flex size-10 items-center justify-center rounded-lg bg-neutral-200">
+      <slot name="icon" />
     </div>
-    <div>
-        <slot name="description" />
+    <div class="font-pally text-xl font-medium md:text-2xl">
+      <slot name="title" />
     </div>
+  </div>
+  <div>
+    <slot name="description" />
+  </div>
 </Card>

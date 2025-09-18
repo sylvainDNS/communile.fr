@@ -1,6 +1,7 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
-import { cva, type VariantProps } from 'class-variance-authority'
+import type { VariantProps } from 'class-variance-authority'
+import { cva } from 'class-variance-authority'
 
 import { cn } from '../utils/style'
 
@@ -63,17 +64,7 @@ type Props = HTMLAttributes<'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'> &
     as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
   }
 
-const {
-  class: className,
-  as: Tag = 'h2',
-  size,
-  weight,
-  font,
-  align,
-  color,
-  spacing,
-  ...delegated
-} = Astro.props
+const { class: className, as: Tag = 'h2', size, weight, font, align, color, spacing, ...delegated } = Astro.props
 ---
 
 <Tag class={cn(headingVariants({ size, weight, font, align, color, spacing }), className)} {...delegated}>

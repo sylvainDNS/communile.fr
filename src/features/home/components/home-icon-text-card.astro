@@ -1,6 +1,7 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
-import { cva, type VariantProps } from 'class-variance-authority'
+import type { VariantProps } from 'class-variance-authority'
+import { cva } from 'class-variance-authority'
 import Card from '@/components/card.astro'
 import Icon from '@/components/icon.astro'
 import Text from '@/components/text.astro'
@@ -26,21 +27,18 @@ const iconContainerVariants = cva('inline-block rounded-lg p-2', {
   },
 })
 
-const titleVariants = cva(
-  'flex items-center gap-2 text-center font-medium font-pally',
-  {
-    variants: {
-      size: {
-        sm: 'text-lg',
-        md: 'text-xl',
-        lg: 'text-2xl',
-      },
+const titleVariants = cva('flex items-center gap-2 text-center font-medium font-pally', {
+  variants: {
+    size: {
+      sm: 'text-lg',
+      md: 'text-xl',
+      lg: 'text-2xl',
     },
-    defaultVariants: {
-      size: 'lg',
-    },
-  }
-)
+  },
+  defaultVariants: {
+    size: 'lg',
+  },
+})
 
 interface Props extends HTMLAttributes<'article'> {
   iconName:
@@ -95,9 +93,14 @@ const {
 } = Astro.props
 ---
 
-<Card size={cardSize} radius={cardRadius} class={cn("space-y-6", className)} {...delegated}>
+<Card size={cardSize} radius={cardRadius} class={cn('space-y-6', className)} {...delegated}>
   <h3 class={titleVariants({ size: titleSize })}>
-    <span class={iconContainerVariants({ variant: iconVariant, size: iconSizeVariant })}>
+    <span
+      class={iconContainerVariants({
+        variant: iconVariant,
+        size: iconSizeVariant,
+      })}
+    >
       <Icon name={iconName} size={iconSize} />
     </span>
     <span>
