@@ -76,6 +76,17 @@
   --color-le-bar-ile-neutral: oklch(0.1292 0.0415 265.15);
   --color-le-bar-ile-neutral-accent: oklch(0.0501 0.0086 264.05);
 
+
+  /* À La Carte Postale */
+  --color-la-carte-postale-alacp-blue: oklch(0.6622 0.1782 273.07);
+  --color-la-carte-postale-alacp-blue-accent: oklch(0.5002 0.2496 272.75);
+
+  --color-la-carte-postale-alcp-yellow: oklch(0.8328 0.171572 82.0575);
+  --color-la-carte-postale-alcp-yellow-accent: oklch(0.7596 0.171572 82.0575);
+
+  --color-la-carte-postale-neutral: oklch(0.1292 0.0415 265.15);
+  --color-la-carte-postale-neutral-accent: oklch(0.0501 0.0086 264.05);
+
   /* Common */
 
   --spacing-2k: 2000px;
@@ -206,5 +217,12 @@
     --theme-secondary-accent: var(--color-le-bar-ile-orange-accent);
     --theme-tertiary: var(--color-le-bar-ile-neutral);
     --theme-tertiary-accent: var(--color-le-bar-ile-neutral-accent);
+  }
+
+  [data-theme='la-carte-postale'] {
+    --theme-primary: var(--color-la-carte-postale-alacp-blue);
+    --theme-primary-accent: var(--color-la-carte-postale-alacp-blue-accent);
+    --theme-secondary: var(--color-la-carte-postale-alcp-yellow);
+    --theme-secondary-accent: var(--color-la-carte-postale-alcp-yellow-accent);
   }
 }
