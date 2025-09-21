@@ -1,0 +1,39 @@
+---
+import { Image } from 'astro:assets'
+import Container from '@/components/container.astro'
+import Heading from '@/components/heading.astro'
+import Section from '@/components/section.astro'
+import Text from '@/components/text.astro'
+import LaCartePostaleWhatOrnament from '../images/la-carte-postale-what-ornament.svg'
+import laCartePostaleWhatImage from '../images/la-carte-postale-what.png'
+---
+
+<Section variant="primary" class="overflow-hidden">
+  <LaCartePostaleWhatOrnament class="absolute bottom-0 left-0 text-primary-accent" />
+  <Container class="relative z-20 grid grid-cols-1 items-start gap-12 lg:grid-cols-2">
+    <div class="my-auto space-y-6 text-white">
+      <Heading as="h2" size="xl" weight="bold" color="white" class="mt-6"> À La Carte Postale, c’est quoi? </Heading>
+      <Text size="xl" weight="semibold" color="white" class="mt-12 max-w-sm">
+        Cantine du midi et restaurant de partage: un espace acceuillant, pour faire vivre la cuisine sous toutes ses
+        formes
+      </Text>
+      <Text size="base" color="white" class="max-w-xl">
+        Ouvert en semaine (du lundi au vendredi), pour un café , un repas le midi, ou une animation; A la Carte Postale
+        déploie le champ des possibles, autour du projet alimentaire de la coopérative ! Garanti donc avec les bons
+        légumes de la ferme !
+      </Text>
+      <Text font="pally" size="xl" weight="semibold" class="max-w-md">
+        Le dernier né de la coopérative, une brique supplémentaire pour solidifier notre plaidoyer en faveur d’une
+        alimentation plus végétale et locale !
+      </Text>
+    </div>
+    <div class="grid grid-cols-1 gap-4">
+      <Image
+        src={laCartePostaleWhatImage}
+        alt="Le Wattignies"
+        class="w-full rounded-2xl object-cover"
+        widths={[640, 960, 1280, laCartePostaleWhatImage.width]}
+      />
+    </div>
+  </Container>
+</Section>

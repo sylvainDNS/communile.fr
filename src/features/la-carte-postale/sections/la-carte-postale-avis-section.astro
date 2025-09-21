@@ -1,0 +1,34 @@
+---
+import Container from '@/components/container.astro'
+import Section from '@/components/section.astro'
+import Text from '@/components/text.astro'
+import AvisProfile from '@/images/avis-profile.svg'
+import AvisQuotes from '@/images/avis-quotes.svg'
+import { cn } from '@/utils/style'
+---
+
+<Section class="py-24">
+  <Container class={cn('max-w-4xl space-y-20 md:space-y-16')}>
+    <div class="flex justify-center md:justify-start">
+      <AvisProfile class="text-secondary" />
+    </div>
+    <div class="mx-auto space-y-8">
+      <div class="relative max-w-4xl">
+        <AvisQuotes class="absolute -top-16 left-0 text-primary md:-top-8" />
+        <Text size="base" class="mt-2 px-4 md:px-24">
+          A la Carte Postale c’est le nouveau lieu de la coopérative Commun’ile: au menu, une synthèse des belles idées
+          déjà à l’oeuvre dans nos autres lieux ! A titre personnel, c’est un plaisir en même temps qu’un défi joyeux de
+          participer collectivement à l’ouverture d’un nouveau lieu ! J’ai hâte de faire chauffer les fourneaux, de
+          mettre le feu aux tables, pour une fois que je suis légitimé par le petit nom du lieu lui même “A la Carte
+          Postale- Midi Timbré ! ”
+        </Text>
+        <AvisQuotes class="absolute right-0 -bottom-12 rotate-180 text-secondary md:right-12" />
+      </div>
+    </div>
+    <div>
+      <Text class="text-center font-pally text-xl font-medium md:text-2xl">
+        Vu par Max "le cuisinier timbré qui vous retrouvera dès Avril 2025"
+      </Text>
+    </div>
+  </Container>
+</Section>
