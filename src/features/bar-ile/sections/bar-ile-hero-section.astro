@@ -1,0 +1,42 @@
+---
+import { Image } from 'astro:assets'
+import Container from '@/components/container.astro'
+import Section from '@/components/section.astro'
+import barIleHeroDecoration from '../images/bar-ile-hero-decoration.svg'
+import barIleHeroLogo from '../images/bar-ile-hero-logo.jpg'
+---
+
+<Section class="relative overflow-hidden bg-white">
+  <Image
+    src={barIleHeroDecoration}
+    alt="l'organisation des Landes Fertiles"
+    aria-hidden="true"
+    class="absolute top-0 left-0 hidden w-[300px] md:block"
+    widths={[200, 400, barIleHeroDecoration.width]}
+  />
+  <Image
+    src={barIleHeroDecoration}
+    alt="l'organisation des Landes Fertiles"
+    aria-hidden="true"
+    class="absolute bottom-0 right-0 hidden w-[300px] rotate-180 md:block"
+    widths={[200, 400, barIleHeroDecoration.width]}
+  />
+  <Container>
+    <div class="flex flex-col justify-between gap-12">
+      <div>
+        <Image
+          widths={[350, 400, 500, barIleHeroLogo.width]}
+          src={barIleHeroLogo}
+          alt="le logo des Landes Fertiles"
+          aria-hidden="true"
+          class="mx-auto"
+        />
+      </div>
+      <div>
+        <h1 class="text-center font-pally text-4xl font-bold text-foreground/90 md:text-5xl">
+          A boire et à manger, à voir et à danser
+        </h1>
+      </div>
+    </div>
+  </Container>
+</Section>
