@@ -103,6 +103,8 @@
     'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
   --radius-5xl: 2.5rem;
+
+  --shadow-header: 0 4px 40px -10px rgba(0, 0, 0, 0.03), 0 2px 32px -5px rgba(0, 0, 0, 0.04);
 }
 
 @theme inline {
