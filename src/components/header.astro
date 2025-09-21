@@ -40,9 +40,9 @@ const links = [
 ]
 ---
 
-<header class="fixed inset-x-2 top-2 z-50 mx-auto max-w-2k rounded-md bg-white md:inset-x-4">
+<header class="fixed inset-x-2 top-2 z-50 mx-auto max-w-2k rounded-md bg-white md:inset-x-4 shadow-header">
   <div class="relative z-50 container mx-auto px-4 py-3">
-    <div class="grid grid-cols-2 items-center md:grid-cols-[1fr_auto_1fr]">
+    <div class="grid grid-cols-2 items-center xl:grid-cols-[1fr_auto_1fr]">
       <Link
         href={PATH.HOME}
         class="flex items-center gap-3 font-bold text-neutral-800 uppercase hover:text-neutral-700"
@@ -50,7 +50,7 @@ const links = [
         <Image src={logo} alt="" aria-hidden="true" role="presentation" width={40} height={40} />
         {SITE_NAME}
       </Link>
-      <nav class="hidden md:block" aria-label="Navigation principale">
+      <nav class="hidden xl:block" aria-label="Navigation principale">
         <ul class="flex items-center gap-0.5">
           {
             links.map((link) => (
@@ -71,7 +71,7 @@ const links = [
           aria-expanded="false"
           type="button"
           variant="ghost"
-          class="block rounded-sm p-2 text-foreground hover:bg-background md:hidden"
+          class="block rounded-sm p-2 text-foreground hover:bg-background xl:hidden"
         >
           <VisuallyHidden>Menu</VisuallyHidden>
           <Icon name="menu" size={24} />
@@ -81,14 +81,14 @@ const links = [
 
     <div
       id="mobile-overlay"
-      class="fixed right-2 left-2 z-40 mt-4 hidden h-[calc(100vh-var(--mobile-overlay-top)-calc(var(--spacing)*5))] shadow-xl data-[visible=true]:block md:hidden md:data-[visible=true]:hidden"
+      class="fixed right-2 left-2 md:right-4 md:left-4 z-40 mt-4 hidden h-[calc(100vh-var(--mobile-overlay-top)-calc(var(--spacing)*5))] data-[visible=true]:block xl:hidden xl:data-[visible=true]:hidden shadow-header"
       style="top: var(--mobile-overlay-top, 0px)"
     >
       <div
         id="mobile-panel"
         role="dialog"
         aria-modal="true"
-        class="relative flex h-full w-full items-stretch justify-start overflow-hidden"
+        class="relative flex h-full w-full items-stretch justify-end overflow-hidden"
       >
         <div class="relative z-10 flex h-full w-full max-w-md flex-col rounded-md bg-white">
           <nav aria-label="Navigation mobile" class="flex flex-1 items-center justify-center overflow-y-auto px-2 pt-2">
