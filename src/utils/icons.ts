@@ -60,7 +60,6 @@ export const icons = {
     ],
     type: 'stroke',
   },
-
   'heart-handshake': {
     viewBox: '0 0 24 24',
     paths: [

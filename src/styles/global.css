@@ -65,6 +65,16 @@
 
   --color-le-labo-diva-neutral: oklch(0.1292 0.0415 265.15);
   --color-le-labo-diva-neutral-accent: oklch(0.0501 0.0086 264.05);
+  
+  /* Le Bar ILE */
+  --color-le-bar-ile-blue: oklch(0.3546 0.1298 258.19);
+  --color-le-bar-ile-blue-accent: oklch(0.266 0.092 256.83);
+
+  --color-le-bar-ile-orange: oklch(0.772 0.1738 64.55);
+  --color-le-bar-ile-orange-accent: oklch(0.6765 0.1738 64.55);
+
+  --color-le-bar-ile-neutral: oklch(0.1292 0.0415 265.15);
+  --color-le-bar-ile-neutral-accent: oklch(0.0501 0.0086 264.05);
 
   /* Common */
 
@@ -190,9 +200,11 @@
   }
 
   [data-theme='bar-ile'] {
-    --theme-primary: var(--color-watt-blue);
-    --theme-secondary: var(--color-watt-red);
-    --theme-tertiary: var(--color-watt-yellow);
-    --theme-quaternary: var(--color-watt-green);
+    --theme-primary: var(--color-le-bar-ile-blue);
+    --theme-primary-accent: var(--color-le-labo-diva-green-accent);
+    --theme-secondary: var(--color-le-bar-ile-orange);
+    --theme-secondary-accent: var(--color-le-bar-ile-orange-accent);
+    --theme-tertiary: var(--color-le-bar-ile-neutral);
+    --theme-tertiary-accent: var(--color-le-bar-ile-neutral-accent);
   }
 }

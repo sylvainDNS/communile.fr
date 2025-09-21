@@ -1,0 +1,67 @@
+---
+import Container from '@/components/container.astro'
+import Details from '@/components/details.astro'
+import Icon from '@/components/icon.astro'
+import LeafletMap from '@/components/leaflet-map.astro'
+import Section from '@/components/section.astro'
+import ShapeHook01 from '@/images/shape-hook-01.svg'
+import ShapeHook02 from '@/images/shape-hook-02.svg'
+---
+
+<Section variant="secondary" overflow="hidden" spacing="large" class="relative space-y-8 pt-24">
+  <Container>
+    <ShapeHook01 role="presentation" aria-hidden="true" class="absolute -top-6 -right-6 text-secondary-light" />
+    <ShapeHook02 role="presentation" aria-hidden="true" class="absolute -bottom-8 -left-6 text-secondary-light" />
+    <div class="flex flex-col gap-12 lg:flex-row lg:gap-16">
+      <div class="relative z-10 space-y-8">
+        <div class="">
+          <h2 class="text-center font-pally text-4xl font-bold text-background">Questions fréquentes</h2>
+        </div>
+        <div class="space-y-4">
+          <Details class="bg-background">
+            <span slot="title">Quels sont vos horaires d'ouverture ?</span>
+            <span slot="content">
+              Le restaurant du midi est ouvert du lundi au vendredi de 11h à 15h : réservation fortement conseillée !<br
+              />
+              Le bar du mardi au vendredi à partir de 17h30 et jusqu'à 22h30 les mardis et mercredi et jusqu'à 2h les jeudis
+              et vendredis.
+            </span>
+          </Details>
+          <Details class="bg-background">
+            <span slot="title">Est-ce qu'on peut proposer de la programmation (concert, spectacle...) ?</span>
+            <span slot="content">
+              Oui, on est super preneuses.eurs de nouvelles idées, formats et artistes ! Contactez-nous !
+            </span>
+          </Details>
+          <Details class="bg-background">
+            <span slot="title">Est-ce qu'on peut privatiser le lieu ?</span>
+            <span slot="content">
+              Oui ! Selon les horaires de votre évènement et de notre activité courante, cela se discute !
+              Contactez-nous !
+            </span>
+          </Details>
+        </div>
+        <a
+          href="mailto:wattignies@communile.fr"
+          class="inline-flex items-center gap-2 rounded-md bg-background px-6 py-4 font-medium"
+        >
+          <Icon name="mail" class="size-4" />
+          Contactez-nous
+        </a>
+      </div>
+      <div class="my-auto h-full w-full lg:max-w-xl">
+        <LeafletMap
+          height="600px"
+          zoom={16}
+          center={[47.204802, -1.548481]}
+          markers={[
+            {
+              position: [47.204802, -1.548481],
+              popup: 'Le Bar’île',
+            },
+          ]}
+        />
+      </div>
+    </div>
+  </Container>
+</Section>

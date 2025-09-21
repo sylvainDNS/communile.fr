@@ -1,0 +1,35 @@
+---
+import Container from '@/components/container.astro'
+import Section from '@/components/section.astro'
+import Text from '@/components/text.astro'
+import AvisProfile from '@/images/avis-profile.svg'
+import AvisQuotes from '@/images/avis-quotes.svg'
+import { cn } from '@/utils/style'
+---
+
+<Section class="py-24">
+  <Container class={cn('max-w-4xl space-y-20 md:space-y-16')}>
+    <div class="flex justify-center md:justify-start">
+      <AvisProfile class="text-secondary" />
+    </div>
+    <div class="mx-auto space-y-8">
+      <div class="relative max-w-4xl">
+        <AvisQuotes class="absolute -top-16 left-0 text-primary md:-top-8" />
+        <Text size="base" class="mt-2 px-4 md:px-24">
+          Le Bar’île en un mot : J’ADORE. <br /> Mon conseil : “RE-SER-VEZ” si vous ne voulez pas vous casser les dents!
+          Ma première expérience au restaurant : l'inventivité dans les saveurs, le plaisir communicatif du personnel dans
+          l'explication des ingrédients et l'ambiance générale du lieu m’ont immédiatement conquis. Depuis, je viens chaque
+          semaine. Je suis un follower sur les réseaux sociaux, j'adore ! Lorsque ma fille a dû effectuer son stage de 3ème,
+          il m'apparaissait comme une évidence que le Bar’ile était le lieu idéal : valeurs, bienveillance, goût dans la
+          transmission, soin apporté aux préparations. Elle a été emballée par son stage.
+        </Text>
+        <AvisQuotes class="absolute right-0 -bottom-12 rotate-180 text-secondary md:right-12" />
+      </div>
+    </div>
+    <div>
+      <Text class="text-center font-pally text-xl font-medium md:text-2xl">
+        Le Bar’ile vu par : Jean-Christophe, un habitué du Bar’ile, devenu sociétaire !
+      </Text>
+    </div>
+  </Container>
+</Section>
