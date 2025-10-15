@@ -8,9 +8,7 @@ import { PATH, SITE_NAME } from '../utils/constants'
 import { cn } from '../utils/style'
 
 import Container from './container.astro'
-import Icon from './icon.astro'
 import Link from './link.astro'
-import VisuallyHidden from './visually-hidden.astro'
 
 type Props = HTMLAttributes<'footer'>
 const { class: className, ...delegated } = Astro.props
@@ -94,34 +92,10 @@ const { class: className, ...delegated } = Astro.props
     <!-- Copyright and Social Links -->
     <div class="relative z-10 space-y-4 border-t border-b border-white px-4 py-8">
       <p class="text-center text-xs">Copyright © Commun'île</p>
-
-      <!-- Social Icons -->
-      <div class="flex flex-wrap justify-center gap-7">
-        <Link href="#" title="Facebook">
-          <VisuallyHidden>Facebook</VisuallyHidden>
-          <Icon name="facebook" size={20} />
-        </Link>
-        <Link href="#" title="Twitter/X">
-          <VisuallyHidden>Twitter/X</VisuallyHidden>
-          <Icon name="twitter" size={20} />
-        </Link>
-        <Link href="#" title="Instagram">
-          <VisuallyHidden>Instagram</VisuallyHidden>
-          <Icon name="instagram" size={20} />
-        </Link>
-        <Link href="#" title="YouTube">
-          <VisuallyHidden>YouTube</VisuallyHidden>
-          <Icon name="youtube" size={20} />
-        </Link>
-        <Link href="#" title="LinkedIn">
-          <VisuallyHidden>LinkedIn</VisuallyHidden>
-          <Icon name="linkedin" size={20} />
-        </Link>
-        <Link href="#" title="TikTok">
-          <VisuallyHidden>TikTok</VisuallyHidden>
-          <Icon name="tiktok" size={20} />
-        </Link>
-      </div>
+      <p class="text-center text-xs">
+        Fait avec ♥️ par Manon Gauthier, <Link href="https://www.netoun.com/" target="_blank">Nicolas COULONNIER</Link>
+        & <Link href="https://sylvaindenyse.me/" target="_blank">Sylvain DENYSE</Link>
+      </p>
     </div>
   </Container>
 </footer>

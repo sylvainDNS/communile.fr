@@ -10,6 +10,7 @@ import leBarIleCardImage from '../images/le-bar-ile-card.webp'
 import leLaboDivaCardImage from '../images/le-labo-diva-card.webp'
 import leWattigniesCardImage from '../images/le-wattignies-card.webp'
 import lesLandesFertilesCardImage from '../images/les-landes-fertiles-card.webp'
+import laCartePostaleCardImage from '../images/la-carte-postale-card.webp'
 ---
 
 <Section>
@@ -37,12 +38,12 @@ import lesLandesFertilesCardImage from '../images/les-landes-fertiles-card.webp'
         href={PATH.LE_WATTIGNIES}
         image={leWattigniesCardImage}
         imageAlt="Le Wattignies - bar et restaurant avec une façade vitrée, un comptoir bleu et des tables"
-        tagColor="blue"
+        tagColor="yellow"
         tagText="Le Wattignies"
       >
-        <div slot="hover-content">
-          <span class="text-2xl font-bold"> Horaires d'ouverture </span>
-          <span class="font-medium"> Toute la semaine de 10h à 17h </span>
+        <div slot="hover-content" class="grid h-full">
+          <p class="text-2xl font-bold">Horaires d'ouverture</p>
+          <p class="font-medium">10h00 - 23h00 du lundi au vendredi <br /> 16h00 - 23h00 samedi</p>
         </div>
       </PlaceCard>
 
@@ -53,9 +54,9 @@ import lesLandesFertilesCardImage from '../images/les-landes-fertiles-card.webp'
         tagColor="red"
         tagText="Les Landes Fertiles"
       >
-        <div slot="hover-content">
+        <div slot="hover-content" class="grid h-full">
           <span class="text-2xl font-bold"> Horaires d'ouverture </span>
-          <span class="font-medium"> Toute la semaine de 10h à 17h </span>
+          <span class="font-medium"> Toute la semaine de 10h00 à 17h00 </span>
         </div>
       </PlaceCard>
 
@@ -66,9 +67,9 @@ import lesLandesFertilesCardImage from '../images/les-landes-fertiles-card.webp'
         tagColor="green"
         tagText="Le Labo Diva"
       >
-        <div slot="hover-content">
+        <div slot="hover-content" class="grid h-full">
           <span class="text-2xl font-bold"> Horaires d'ouverture </span>
-          <span class="font-medium"> Toute la semaine de 10h à 17h </span>
+          <span class="font-medium"> 12h00 - 22h00 du mardi au samedi </span>
         </div>
       </PlaceCard>
 
@@ -79,9 +80,28 @@ import lesLandesFertilesCardImage from '../images/les-landes-fertiles-card.webp'
         tagColor="blue"
         tagText="Le Bar'Île"
       >
-        <div slot="hover-content">
+        <div slot="hover-content" class="grid h-full">
           <span class="text-2xl font-bold"> Horaires d'ouverture </span>
-          <span class="font-medium"> Toute la semaine de 10h à 17h </span>
+          <span class="font-medium">
+            <strong>Lundi :</strong> 10h00 - 14h00 <br />
+            <strong>Mardi :</strong> 10h00 - 14h00 / 17h30 - 22h30 <br />
+            <strong>Mercredi :</strong> 10h00 - 14h00 / 17h30 - 22h30 <br />
+            <strong>Jeudi :</strong> 10h00 - 14h00 / 17h30 - 2h00 <br />
+            <strong>Vendredi :</strong> 10h00 - 14h00 / 17h30 - 2h00
+          </span>
+        </div>
+      </PlaceCard>
+      <PlaceCard
+        href={PATH.A_LA_CARTE_POSTALE}
+        image={laCartePostaleCardImage}
+        imageAlt="À La Carte Postale - Des cartes postales sont suspendues au plafond"
+        tagColor="yellow"
+        tagText="À La Carte Postale"
+        class="md:mx-auto md:col-span-2 md:w-1/2"
+      >
+        <div slot="hover-content" class="grid h-full">
+          <span class="text-2xl font-bold"> Horaires d'ouverture </span>
+          <span class="font-medium"> 10h00 - 17h00 du lundi au vendredi </span>
         </div>
       </PlaceCard>
     </div>
