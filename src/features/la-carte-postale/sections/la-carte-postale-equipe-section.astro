@@ -1,0 +1,28 @@
+---
+import { Image } from 'astro:assets'
+import Container from '@/components/container.astro'
+import Heading from '@/components/heading.astro'
+import Section from '@/components/section.astro'
+import Text from '@/components/text.astro'
+import laCartePostaleEquipeImage from '../images/la-carte-postale-equipe.webp'
+---
+
+<Section variant="secondary" class="py-16">
+  <Container class="space-y-8 flex flex-col">
+    <div class="space-y-8 text-center">
+      <Heading as="h2" size="xl" weight="bold" class="mb-4 text-center"> Notre équipe </Heading>
+      <Text size="lg" class="max-w-2xl mx-auto">
+        L'équipe vous accueille avec le sourire pour vous faire découvrir notre cuisine du midi et notre espace
+        convivial.
+      </Text>
+    </div>
+    <div class="flex justify-center">
+      <Image
+        src={laCartePostaleEquipeImage}
+        alt="L'équipe d'À la Carte Postale"
+        class="w-full max-w-4xl rounded-2xl object-cover shadow-lg"
+        widths={[640, 960, 1280, laCartePostaleEquipeImage.width]}
+      />
+    </div>
+  </Container>
+</Section>
