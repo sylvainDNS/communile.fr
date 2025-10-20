@@ -1,4 +1,4 @@
-export const SITE_NAME = 'Commun’Île'
+export const SITE_NAME = 'Commun\'île'
 
 export const PATH = {
   HOME: '/',

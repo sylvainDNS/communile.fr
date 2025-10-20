@@ -27,27 +27,27 @@ import barIleLeRestaurantImage from '../images/bar-ile-le-restaurant.webp'
     <div class="my-auto relative z-20">
       <HeadingBadges rows={3}>
         <Badge variant="primary" rotation="-7" class="z-20" size="heading">LE RESTAURANT</Badge>
-        <Badge variant="secondary" rotation="-4" class="z-30" size="heading" class="translate-y-0.5 z-40 overflow-auto">
-          DU BAR’ÎLE
+        <Badge variant="secondary" rotation="-4" class="z-40 translate-y-0.5 leading-[1.2] py-2" size="heading">
+          DU BAR'ÎLE
         </Badge>
       </HeadingBadges>
       <div class="mt-12 text-balance">
         <Text>Le Bar'ile c'est une équipe du midi du lundi au vendredi. </Text>
         <Text
-          >Mathilde et Candice en cuisine mélangent souvenirs de voyage, saisonnalité de la ferme et essai d'accord et
-          de technique.
+          >Mathilde et son·sa alternant·e en cuisine mélangent souvenirs de voyage, saisonnalité de la ferme et essai
+          d'accord et de technique.
         </Text>
         <Text
           >Gaga, en salle vous accueille toujours avec la patate, une répartie sans limite et une rapidité conviviale.
         </Text>
-        <Text>Réservation fortement conseillée !</Text>
+        <Text>Réservation fortement conseillée ! 02 40 47 86 12</Text>
       </div>
     </div>
 
     <div class="grid grid-cols-1 gap-6 max-w-3xl relative z-20">
       <InfoCard>
         <Icon name="smile" size="24" slot="icon" />
-        <Text size="xl" weight="medium" font="pally" slot="title">Du lundi au mercredi : une carte tournante</Text>
+        <Text size="xl" weight="medium" font="pally" slot="title">Du lundi au vendredi : une carte tournante</Text>
         <Text slot="description">
           Le Bar'île propose une carte végétarienne avec une unique option carné en quantité limité. Le tout qui change
           toutes les semaines.
@@ -56,11 +56,11 @@ import barIleLeRestaurantImage from '../images/bar-ile-le-restaurant.webp'
       <InfoCard>
         <Icon name="smile" size="24" slot="icon" />
         <Text size="xl" weight="medium" font="pally" slot="title">
-          Le jeudi et vendredi, place au "Totalum chikichiki boum" !
+          "Le Totalum Chikichiki boum" est un concept propre au bar'île.
         </Text>
         <Text slot="description">
           Mais kesako ? Un menu unique surprise en 6 temps entièrement végétarien sur le temps du midi au prix unique de
-          18 euros.
+          18 euros. Suivez-nous sur nos réseaux sociaux pour plus d'informations sur la date du prochain Totalum.
         </Text>
       </InfoCard>
       <InfoCard>
@@ -86,7 +86,7 @@ import barIleLeRestaurantImage from '../images/bar-ile-le-restaurant.webp'
   <Container>
     <Image
       src={barIleLeRestaurantImage}
-      alt="La cantine du Labo Diva"
+      alt="Mathilde et son·sa alternant·e en cuisine"
       class="h-full w-full"
       widths={[330, 400, 540, barIleLeRestaurantImage.width]}
     />
