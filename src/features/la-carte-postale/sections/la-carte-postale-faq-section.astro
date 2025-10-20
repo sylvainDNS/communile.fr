@@ -21,23 +21,89 @@ import ShapeHook02 from '@/images/shape-hook-02.svg'
           <Details class="bg-background">
             <span slot="title">Quels sont vos horaires d'ouverture ?</span>
             <span slot="content">
-              Le restaurant du midi est ouvert du lundi au vendredi de 11h à 15h : réservation fortement conseillée !<br
-              />
-              Le bar du mardi au vendredi à partir de 17h30 et jusqu'à 22h30 les mardis et mercredi et jusqu'à 2h les jeudis
-              et vendredis.
+              Nous vous accueillons du lundi au jeudi de 9h à 17h et de 9h à 15h le vendredi. Pour un café le matin ou
+              l'après-midi ou un repas de 12h à 14h. Réservation grandement conseillée au 07 59 55 78 14.
             </span>
           </Details>
           <Details class="bg-background">
             <span slot="title">Est-ce qu'on peut proposer de la programmation (concert, spectacle...) ?</span>
             <span slot="content">
-              Oui, on est super preneuses.eurs de nouvelles idées, formats et artistes ! Contactez-nous !
+              Pour événement privé/en autonomie le soir et le week-end ok et pour le moment pas de bar le soir...
             </span>
           </Details>
           <Details class="bg-background">
             <span slot="title">Est-ce qu'on peut privatiser le lieu ?</span>
             <span slot="content">
               Oui ! Selon les horaires de votre évènement et de notre activité courante, cela se discute !
-              Contactez-nous !
+              Contactez-nous ! Voir la plaquette d'information.
+            </span>
+          </Details>
+          <Details class="bg-background">
+            <span slot="title">Vous souhaitez venir manger avec un groupe ?</span>
+            <span slot="content">
+              <div class="space-y-4">
+                <p><strong>Dans votre mail de réservation merci de préciser :</strong></p>
+                <p>
+                  <strong>1 →</strong> A quelle date et combien de personnes souhaitent manger ? Il y a t-il des allergies
+                  alimentaires ?
+                </p>
+                <p>
+                  <strong>2 → Le mode de paiement des repas :</strong><br />
+                  Est ce que chaque personne payera individuellement ? Une personne payera pour tout le groupe ? Ou le règlement
+                  sera par virement bancaire par la suite ?
+                </p>
+                <p>
+                  Si les personnes payent individuellement et souhaitent une facture il faudra passer chercher une
+                  feuille à votre arrivée pour inscrire vos mail sur une feuille et faciliter l'envoi des factures au
+                  moment de l'encaissement.
+                </p>
+                <p>
+                  Si vous souhaitez régler par virement bancaire, merci de me faire parvenir vos informations de
+                  facturation (contact, siret, adresse)
+                </p>
+                <p>
+                  <strong>3 → Un devis ?</strong><br />
+                  Si vous souhaitez un devis merci de me préciser dans votre mail : le nombre de repas, leur formule E-P-D
+                  végétarienne (14,50€) ou carné (15,50€), est ce qu'il y aura des boissons au choix à la carte (3€) ou des
+                  cafés (1€) en plus ?
+                </p>
+                <p>
+                  <strong>4 → Une facture ?</strong><br />
+                  Si vous souhaitez une facture nominative au nom de votre structure merci de me le préciser, elle vous sera
+                  envoyé dans les 24h après votre passage. Sinon une facture non nominative pourra vous être envoyée immédiatement
+                  par mail une fois le paiement CB effectué.
+                </p>
+                <p>
+                  <strong>Vous êtes un groupe de plus de 20 personnes ?</strong><br />
+                  Nous pouvons vous envoyer le menu la semaine précédent votre venue afin que les personnes choisissent ce
+                  qu'elles souhaitent manger et que la cuisine puisse anticiper le nombre de plats (au cas où tout le monde
+                  souhaite manger le même plat !)
+                </p>
+                <p>
+                  <strong>Vous souhaitez privatiser la salle le midi ?</strong><br />
+                  C'est possible, le coût de la privatisation correspond au delta de notre activité sur un midi d'ouverture
+                  classique par rapport au nombre de personnes dans votre groupe et vous sera communiqué sur devis.<br
+                  />
+                  Exemple: si vous êtes 90 personnes nous compterons 30 repas supplémentaires en guise de location de salle
+                  car notre jauge est à 120 personnes le midi.
+                </p>
+                <div class="mt-4 p-4 bg-gray-50 rounded-lg">
+                  <p><strong>Nos tarifs :</strong></p>
+                  <p>
+                    Entrée - Plat - Dessert 14,50€<br />
+                    Entrée - Plat 11€<br />
+                    Plat - Dessert 12€<br />
+                    (+1€ Option viande et poisson en fonction de la carte du jour)
+                  </p>
+                  <p>
+                    Entrée 2,50€<br />
+                    Plat Végétarien 8,50€<br />
+                    Plat viande ou poisson 9,50€<br />
+                    Dessert 3,50€
+                  </p>
+                  <p>Le café est à 1€ le thé à 2€</p>
+                </div>
+              </div>
             </span>
           </Details>
         </div>
@@ -53,11 +119,11 @@ import ShapeHook02 from '@/images/shape-hook-02.svg'
         <LeafletMap
           height="600px"
           zoom={16}
-          center={[47.204802, -1.548481]}
+          center={[47.207252502441406, -1.559303]}
           markers={[
             {
-              position: [47.204802, -1.548481],
-              popup: 'Le Bar’île',
+              position: [47.207252502441406, -1.559303],
+              popup: 'À La Carte Postale',
             },
           ]}
         />

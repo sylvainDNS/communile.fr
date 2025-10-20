@@ -14,7 +14,7 @@ const { class: className, ...delegated } = Astro.props
     data-details-button
     aria-expanded="false"
   >
-    <div class="text-xl font-bold">
+    <div class="text-lg md:text-xl font-bold">
       <slot name="title" />
     </div>
     <Icon
@@ -24,7 +24,7 @@ const { class: className, ...delegated } = Astro.props
     />
   </button>
   <div class="overflow-hidden" data-details-content aria-hidden="true">
-    <div class="mt-4 px-6 pb-6 text-lg leading-normal">
+    <div class="mt-4 px-6 pb-6 text-base md:text-lg leading-normal">
       <slot name="content" />
     </div>
   </div>
