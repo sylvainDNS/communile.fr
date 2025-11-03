@@ -21,6 +21,31 @@ const title = content?.title ? `${content.title} · ${SITE_NAME}` : SITE_NAME
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>{title}</title>
+    {
+      import.meta.env.PROD && (
+        <script
+          is:inline
+          slot="head"
+          defer
+          data-domain="communile.fr"
+          data-api="/mix/load/event"
+          src="/mix/load/script.js"
+        ></script>
+
+        <script>
+          declare global {
+            interface Window {
+              plausible: any
+            }
+          }
+
+          window.plausible =
+            window.plausible ||
+            function () {
+              ;(window.plausible.q = window.plausible.q || []).push(arguments)
+            }
+        </script>
+    )}
   </head>
   <body data-theme={theme} class="min-h-screen bg-background px-2 pb-4 text-foreground md:px-4">
     <Header />
