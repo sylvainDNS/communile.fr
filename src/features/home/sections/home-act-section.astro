@@ -1,0 +1,62 @@
+---
+import { Image } from 'astro:assets'
+import Badge from '@/components/badge.astro'
+import Container from '@/components/container.astro'
+import HeadingBadges from '@/components/heading-badges.astro'
+import Section from '@/components/section.astro'
+import HomeActCard from '@/features/home/components/home-act-card.astro'
+import illuCreerAgirImage from '@/images/communile-illu-agir.webp'
+import ShapeHook01 from '@/images/shape-hook-01.svg'
+import ShapeHook02 from '@/images/shape-hook-02.svg'
+import { cn } from '@/utils/style'
+---
+
+<Section variant="accent" overflow="hidden" class="relative">
+  <Container>
+    <div class="mb-14 grid grid-cols-1 gap-y-6 md:grid-cols-2 lg:grid-cols-3">
+      <HeadingBadges rows={3}>
+        <Badge variant="primary" size="heading" rotation="-3" class="translate-x-1 -translate-y-2"> Nous avons </Badge>
+        <Badge variant="secondary" size="heading" rotation="3" class="z-10 translate-x-1 -translate-y-2">
+          à cœur
+        </Badge>
+        <Badge variant="tertiary" size="heading" rotation="-11" class="translate-x-29 -translate-y-6"> d'agir </Badge>
+      </HeadingBadges>
+
+      <ShapeHook01 role="presentation" aria-hidden="true" class="absolute -top-6 -right-6 text-primary" />
+      <div class="relative lg:col-span-2">
+        <div class="relative z-10 space-y-6">
+          <HomeActCard iconName="trees">
+            Par nécessité de sortir nos villes de mouvements infinis de spéculations foncières et de la remettre entre
+            les mains des personnes qui la vivent et la font vivre
+          </HomeActCard>
+          <HomeActCard iconName="package-2">
+            Par envie d'offrir à toutes et tous des espaces collectifs générateurs de liens et qui encouragent
+            l'expérimentation
+          </HomeActCard>
+          <HomeActCard iconName="receipt-euro">
+            Par ambition de donner à toutes et tous le meilleur, au meilleur prix
+          </HomeActCard>
+          <HomeActCard iconName="heart-handshake">
+            Par conviction que notre action ne sera forte que si elle résonne avec le territoire
+          </HomeActCard>
+        </div>
+      </div>
+    </div>
+
+    <ShapeHook02 role="presentation" aria-hidden="true" class="absolute -bottom-8 -left-6 text-primary" />
+  </Container>
+  <div
+    class={cn(
+      'rounded-l-full overflow-hidden h-60 ml-auto -mr-6 relative z-10 max-w-[90%]',
+      '2k:container 2k:mx-auto 2k:rounded-2xl',
+    )}
+  >
+    <Image
+      src={illuCreerAgirImage}
+      height={240}
+      widths={[330, 400, 540, 720, illuCreerAgirImage.width]}
+      alt="À l'intérieur du Labo Diva, un marché est installé. Des cageots de courges, blettes, patates douces, salade et autres légumes sont disposés sur des tables. Des petites pancartes noires indiquent les prix des légumes."
+      class="h-full w-full object-cover"
+    />
+  </div>
+</Section>

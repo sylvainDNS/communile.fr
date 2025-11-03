@@ -1,0 +1,86 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import type { VariantProps } from 'class-variance-authority'
+import { cva } from 'class-variance-authority'
+import Card from '@/components/card.astro'
+import Icon from '@/components/icon.astro'
+import Tag from '@/components/tag.astro'
+import Text from '@/components/text.astro'
+
+const iconVariants = cva('p-2', {
+  variants: {
+    position: {
+      'top-right': 'ml-auto',
+      'bottom-right': 'ml-auto mt-auto',
+      center: 'mx-auto',
+    },
+    size: {
+      sm: 'p-1',
+      md: 'p-2',
+      lg: 'p-3',
+    },
+  },
+  defaultVariants: {
+    position: 'top-right',
+    size: 'md',
+  },
+})
+
+interface Props extends HTMLAttributes<'li'> {
+  tagLabel: string
+  iconName:
+    | 'menu'
+    | 'timer'
+    | 'arrow-up-right'
+    | 'calendar-heart'
+    | 'facebook'
+    | 'glasses'
+    | 'glass-water'
+    | 'google'
+    | 'hand-platter'
+    | 'heart-handshake'
+    | 'home'
+    | 'instagram'
+    | 'chevron-right'
+    | 'linkedin'
+    | 'mail'
+    | 'package-2'
+    | 'receipt-euro'
+    | 'smile'
+    | 'sparkles'
+    | 'spell-check'
+    | 'sprout'
+    | 'sun'
+    | 'tiktok'
+    | 'trees'
+    | 'twitter'
+    | 'users-round'
+    | 'vegan'
+    | 'youtube'
+  iconSize?: string
+  iconPosition?: VariantProps<typeof iconVariants>['position']
+  iconSizeVariant?: VariantProps<typeof iconVariants>['size']
+  tagColor?: 'blue' | 'green' | 'red' | 'yellow' | 'neutral'
+}
+
+const {
+  tagLabel,
+  iconName,
+  iconSize = '40',
+  iconPosition = 'top-right',
+  iconSizeVariant = 'md',
+  tagColor = 'neutral',
+  class: className,
+  ...delegated
+} = Astro.props
+---
+
+<li class={className} {...delegated}>
+  <Card size="small" radius="diagonal" class="h-full space-y-2">
+    <Tag color={tagColor} class="font-pally text-2xl font-medium text-foreground/80">{tagLabel}</Tag>
+    <Text size="base">
+      <slot />
+      <Icon name={iconName} size={iconSize} class={iconVariants({ position: iconPosition, size: iconSizeVariant })} />
+    </Text>
+  </Card>
+</li>

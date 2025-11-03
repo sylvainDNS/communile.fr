@@ -1,0 +1,44 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import type { VariantProps } from 'class-variance-authority'
+import { cva } from 'class-variance-authority'
+
+import { cn } from '../utils/style'
+
+const sectionVariants = cva('relative w-full isolate py-8', {
+  variants: {
+    variant: {
+      default: 'bg-white rounded-md',
+      transparent: 'bg-transparent',
+      primary: 'bg-primary rounded-md',
+      secondary: 'bg-secondary rounded-md',
+      accent: 'bg-primary-accent rounded-md',
+      tertiary: 'bg-tertiary rounded-md',
+      dark: 'bg-neutral-950 rounded-md',
+    },
+    spacing: {
+      none: 'p-0',
+      small: 'py-6',
+      medium: 'py-12',
+      large: 'py-16',
+      'extra-large': 'py-24',
+    },
+    overflow: {
+      visible: '',
+      hidden: 'overflow-hidden',
+    },
+  },
+  defaultVariants: {
+    variant: 'default',
+    overflow: 'visible',
+    spacing: 'medium',
+  },
+})
+
+type Props = HTMLAttributes<'section'> & VariantProps<typeof sectionVariants>
+const { class: className, variant, spacing, overflow, ...delegated } = Astro.props
+---
+
+<section class={cn(sectionVariants({ variant, spacing, overflow }), className)} {...delegated}>
+  <slot />
+</section>

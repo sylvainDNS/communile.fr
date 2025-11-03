@@ -1,0 +1,48 @@
+---
+import { Image } from 'astro:assets'
+import Badge from '@/components/badge.astro'
+import Container from '@/components/container.astro'
+import HeadingBadges from '@/components/heading-badges.astro'
+
+import Section from '@/components/section.astro'
+import Text from '../../../components/text.astro'
+import landesFarmLifeImage from '../images/landes-farm-life.webp'
+---
+
+<Section class="bg-transparent">
+  <Container class="grid grid-cols-1 items-start gap-12 md:grid-cols-[auto_1fr]">
+    <div class="flex flex-col items-start space-y-6">
+      <div>
+        <HeadingBadges rows={3}>
+          <Badge size="heading" variant="primary" rotation="-7" class="px-4">PARTICIPER À</Badge>
+          <Badge size="heading" variant="secondary" rotation="-4" class="translate-x-4">LA VIE DE</Badge>
+          <Badge size="heading" variant="tertiary" rotation="-7" class="translate-x-24 -translate-y-5">LA FERME</Badge>
+        </HeadingBadges>
+      </div>
+      <div class="max-w-xl">
+        <Text>
+          Vous souhaitez donner un coup de main à la ferme? Vous pouvez joindre Elia et Tanguy, ou toute autre personne
+          à Commun'Île qui se chargera de passer le message ! Nous recevons de temps en temps des coups de main, en
+          fonction des disponibilités des personnes, avec une préférence pour le jeudi. L'important, c'est d'être
+          autonome sur le moyen de transport, et nous on s'occupe du reste.
+        </Text>
+
+        <Text> On a généralement des chantiers pour tous les goûts, et on propose un repas partagé le midi. </Text>
+
+        <Text>
+          Petit détail qui a son importance : pour être bénévole à la ferme, il faut être sociétaire de Commun'île. Nous
+          sommes là pour en discuter si besoin !
+        </Text>
+      </div>
+    </div>
+
+    <div class="justify-self-center">
+      <Image
+        src={landesFarmLifeImage}
+        alt="Productions des Landes Fertiles"
+        class="h-full w-full max-w-[500px] rounded-2xl object-cover md:min-w-[400px]"
+        widths={[330, 400, 540, landesFarmLifeImage.width]}
+      />
+    </div>
+  </Container>
+</Section>

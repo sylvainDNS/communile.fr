@@ -1,0 +1,36 @@
+---
+import { Image } from 'astro:assets'
+import Container from '@/components/container.astro'
+import Heading from '@/components/heading.astro'
+import Section from '@/components/section.astro'
+import Text from '@/components/text.astro'
+import BarIleWhatOrnament from '../images/bar-ile-what-ornament.svg'
+import barIleWhatImage from '../images/bar-ile-what.webp'
+---
+
+<Section variant="primary" class="overflow-hidden">
+  <BarIleWhatOrnament class="absolute bottom-0 left-0" />
+  <Container class="relative z-20 grid grid-cols-1 items-start gap-12 lg:grid-cols-2">
+    <div class="my-auto space-y-6 text-white">
+      <Heading as="h2" size="xl" weight="bold" color="white" class="mt-6">Le Bar’île, c’est quoi ?</Heading>
+      <Text size="xl" weight="semibold" color="white" class="mt-12 max-w-sm">
+        Bistro de quartier et bar d'habitué·es : un lieu simple et chaleureux !
+      </Text>
+      <Text size="base" color="white" class="max-w-xl">
+        Une cuisine généreuse, une convivialité sans limite, un lieu ouvert où fleurissent nombres d’événements
+        culturels et d’animations dé-jantées !
+      </Text>
+      <Text font="pally" size="xl" weight="semibold" class="max-w-md">
+        Il est le premier lieu de la coopérative à avoir ouvert ses portes sur l'Île de Nantes.
+      </Text>
+    </div>
+    <div class="grid grid-cols-1 gap-4">
+      <Image
+        src={barIleWhatImage}
+        alt="Le Wattignies"
+        class="w-full rounded-2xl object-cover"
+        widths={[640, 960, 1280, barIleWhatImage.width]}
+      />
+    </div>
+  </Container>
+</Section>

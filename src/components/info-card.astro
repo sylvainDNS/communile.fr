@@ -1,0 +1,25 @@
+---
+import Card from './card.astro'
+import type { HTMLAttributes } from 'astro/types'
+import { cn } from '@/utils/style'
+
+interface Props extends HTMLAttributes<'article'> {
+  class?: string
+}
+
+const { class: className, ...delegated } = Astro.props
+---
+
+<Card class={cn('w-full space-y-4 rounded-lg rounded-tr-[64px] p-4 pr-8 md:w-fit', className)} {...delegated}>
+  <div class="flex items-center gap-4">
+    <div class="flex size-10 items-center justify-center rounded-lg bg-neutral-200">
+      <slot name="icon" />
+    </div>
+    <div class="font-pally text-xl font-medium md:text-2xl">
+      <slot name="title" />
+    </div>
+  </div>
+  <div>
+    <slot name="description" />
+  </div>
+</Card>

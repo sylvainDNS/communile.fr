@@ -1,0 +1,56 @@
+---
+import Container from '@/components/container.astro'
+import Heading from '@/components/heading.astro'
+import Icon from '@/components/icon.astro'
+import Section from '@/components/section.astro'
+import ShapeWaves01 from '@/images/shape-waves-01.svg'
+import ShapeWaves02 from '@/images/shape-waves-02.svg'
+import HomeNumberCard from '../components/home-number-card.astro'
+---
+
+<Section overflow="hidden">
+  <Container>
+    <ShapeWaves01
+      role="presentation"
+      aria-hidden="true"
+      class="absolute top-0 right-0 hidden text-neutral-200 md:block"
+    />
+    <ShapeWaves02 role="presentation" aria-hidden="true" class="absolute bottom-0 left-0 text-neutral-200" />
+    <div class="relative z-10 space-y-6 py-6">
+      <Heading as="h2" size="2xl" align="center"> La coopérative en quelques chiffres </Heading>
+
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-[repeat(auto-fit,minmax(400px,1fr))]">
+        <HomeNumberCard class="text-blue-700">
+          <Icon slot="icon" name="hand-platter" />
+          <span slot="number">+18 300</span>
+          <span slot="label">Repas servis</span>
+        </HomeNumberCard>
+        <HomeNumberCard class="text-yellow-500">
+          <Icon slot="icon" name="google" />
+          <span slot="number">4,8/5</span>
+          <span slot="label">Avis Google (+650 avis)</span>
+        </HomeNumberCard>
+        <HomeNumberCard class="text-red-500">
+          <Icon slot="icon" name="vegan" />
+          <span slot="number">70%</span>
+          <span slot="label">Référence bio et locales</span>
+        </HomeNumberCard>
+        <HomeNumberCard class="text-green-600">
+          <Icon slot="icon" name="users-round" />
+          <span slot="number">+100</span>
+          <span slot="label">Sociétaires</span>
+        </HomeNumberCard>
+        <HomeNumberCard class="text-blue-700">
+          <Icon slot="icon" name="calendar-heart" />
+          <span slot="number">+200</span>
+          <span slot="label">Évènements par an</span>
+        </HomeNumberCard>
+        <HomeNumberCard class="text-yellow-500">
+          <Icon slot="icon" name="home" />
+          <span slot="number">+55 000</span>
+          <span slot="label">Personnes accueillis par an</span>
+        </HomeNumberCard>
+      </div>
+    </div>
+  </Container>
+</Section>

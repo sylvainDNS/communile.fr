@@ -1,0 +1,49 @@
+---
+description: Project guidelines
+globs: 
+alwaysApply: true
+---
+
+# Project guidelines
+
+You are an expert in JavaScript, TypeScript, Astro framework and Tailwind CSS for scalable web development.
+
+## Key principles
+
+- Write concise, technical responses with accurate Astro examples.
+- Leverage Astro's static generation with minimal client-side JavaScript.
+- Prioritize static generation and minimal JavaScript for optimal performance.
+- Use descriptive variable names and follow Astro's naming conventions.
+- Organize files using Astro's file-based routing system.
+- Use pnpm as the package manager
+ - Use `astro:assets` `<Image />` for optimized images.
+ - Prefer `.astro` components; only hydrate framework components when needed.
+
+## Project structure
+
+- The project is structured in the following folders:
+  - `src/components`: Contains the components.
+  - `src/images`: Contains the images.
+  - `src/layouts`: Contains the layouts.
+  - `src/pages`: Contains the pages.
+  - `src/styles`: Contains the styles.
+  - `src/utils`: Contains the utils.
+  - `src/features/<feature>/{components,sections}`: Feature-specific code.
+
+## Files
+
+- Use kebab-case for file names even for components
+ - Components are used in PascalCase in code.
+ - All `.astro` components define and type `Props`, destructuring from `Astro.props`.
+
+## Commit messages
+
+- Use the present tense for the commit message
+- Use the imperative mood for the commit message
+- Always be clear and concise
+
+## Playbooks
+
+- Create a page using `src/layouts/main.astro`, pass `content.title` and `theme`.
+- Create sections under `src/features/<feature>/sections` using the pattern `Section → Container → Heading/Text + content`.
+- Add icons in `src/utils/icons.ts` and use `components/icon.astro` with `title` for a11y.

@@ -1,0 +1,88 @@
+---
+import Container from '@/components/container.astro'
+import Details from '@/components/details.astro'
+import Icon from '@/components/icon.astro'
+import LeafletMap from '@/components/leaflet-map.astro'
+import Section from '@/components/section.astro'
+import ShapeHook01 from '@/images/shape-hook-01.svg'
+import ShapeHook02 from '@/images/shape-hook-02.svg'
+---
+
+<Section variant="accent" overflow="hidden" spacing="large" class="relative space-y-8 pt-24">
+  <Container>
+    <ShapeHook01 role="presentation" aria-hidden="true" class="absolute -top-6 -right-6 text-primary-light" />
+    <ShapeHook02 role="presentation" aria-hidden="true" class="absolute -bottom-8 -left-6 text-primary-light" />
+    <div class="flex flex-col gap-12 lg:flex-row lg:gap-16">
+      <div class="relative z-10 space-y-8">
+        <div class="">
+          <h2 class="text-center font-pally text-4xl font-bold text-background">Questions fréquentes</h2>
+        </div>
+        <div class="space-y-4">
+          <Details class="bg-background">
+            <span slot="title"> Comment nous contacter si vous avez des évènements à proposer ? </span>
+            <span slot="content">
+              Nous sommes plus confortables de vous répondre par mail que sur Instagram !
+              <a href="mailto:wattignies@communile.fr" class="text-primary-accent"> wattignies@communile.fr </a>
+            </span>
+          </Details>
+          <Details class="bg-background">
+            <span slot="title"> Quel équipement disponibles pour vos événements ? </span>
+            <span slot="content">
+              Un écran pour vos projections, un système son basique équipé de micros filaires.
+            </span>
+          </Details>
+          <Details class="bg-background">
+            <span slot="title"> Quels sont les horaires d’ouverture des résidents ? </span>
+            <span slot="content">
+              Les puciers (Serge Zola, Marcel Chine, Nippes Fripe) vous accueillent de 14h00 à 19h00 du mardi au samedi.
+              Les Girouettes vous accueillent de 14h00 à 19h00 du mercredi au samedi. Singa vous accueille de 14h00 à
+              19h00 du mercredi au samedi. La Brocante Verte vous accueille de 14h00 à 19h00 du mardi au vendredi.
+              L'Atelier du Watt vous accueille de 9h00 à 18h00 du mardi au samedi. Catherine des Histoires de Sièges
+              vous accueille uniquement sur rendez-vous.
+            </span>
+          </Details>
+          <Details class="bg-background">
+            <span slot="title"> Comment réserver le midi ? </span>
+            <span slot="content">
+              Par téléphone au <a href="tel:0228495939" class="text-primary-accent">0228495939</a> dans l'idéal en dehors
+              des heures de service !
+            </span>
+          </Details>
+          <Details class="bg-background">
+            <span slot="title"> Le lieu est-il accessible au personnes à mobilité réduite ? </span>
+            <span slot="content">
+              Le lieu est entièrement accessible. L'accessibilité à la scène nécessite une rampe que vous pouvez
+              demander à l'équipe du bar.
+            </span>
+          </Details>
+          <Details class="bg-background">
+            <span slot="title"> Y a-t-il un parking ou des transports en commun à proximité ? </span>
+            <span slot="content">
+              Le tram 2 et 3 s'arrêtent en face. Nous manquons toujours cruellement de place pour vos vélos
+            </span>
+          </Details>
+        </div>
+        <a
+          href="mailto:wattignies@communile.fr"
+          class="inline-flex items-center gap-2 rounded-md bg-background px-6 py-4 font-medium"
+        >
+          <Icon name="mail" class="size-4" />
+          Contactez-nous
+        </a>
+      </div>
+      <div class="my-auto h-full w-full lg:max-w-xl">
+        <LeafletMap
+          height="600px"
+          zoom={17}
+          center={[47.20422, -1.546397]}
+          markers={[
+            {
+              position: [47.20422, -1.546397],
+              popup: 'Le Wattignies',
+            },
+          ]}
+        />
+      </div>
+    </div>
+  </Container>
+</Section>

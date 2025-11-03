@@ -1,0 +1,75 @@
+---
+import { Image } from 'astro:assets'
+import Badge from '@/components/badge.astro'
+import Container from '@/components/container.astro'
+import HeadingBadges from '@/components/heading-badges.astro'
+import Link from '@/components/link.astro'
+import Section from '@/components/section.astro'
+import Text from '@/components/text.astro'
+import HomeIconTextCard from '@/features/home/components/home-icon-text-card.astro'
+import ShapeHexagon01 from '@/images/shape-hexagon-01.svg'
+import illuScicImage from '../images/communile-illu-scic.webp'
+---
+
+<Section variant="transparent">
+  <Container>
+    <ShapeHexagon01 role="presentation" aria-hidden="true" class="absolute -top-3 -right-2 h-auto w-40" />
+    <div class="relative z-10 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-[260px_auto_50%]">
+      <div
+        class="order-last mx-auto aspect-square w-full max-w-[400px] overflow-hidden rounded-2xl md:order-first md:aspect-auto"
+      >
+        <Image
+          src={illuScicImage}
+          alt="Une photo prise en plongée dans le Labo Diva. Le plan d'un futur bâtiment recouvre une grande table en bois. Des personnes sont debout autour, et participent à un atelier avec des Lego."
+          class="h-full w-full object-cover"
+          width={260}
+        />
+      </div>
+
+      <div class="max-w-[400px] justify-self-center pl-4">
+        <HeadingBadges rows={3}>
+          <Badge variant="primary" rotation="-7" zIndex="10" size="heading">Le choix</Badge>
+          <Badge variant="tertiary" rotation="-11" class="translate-x-33 -translate-y-6" size="heading">de la</Badge>
+          <Badge variant="secondary" rotation="4" class="translate-x-2 -translate-y-6" size="heading">coopérative</Badge
+          >
+        </HeadingBadges>
+        <article class="space-y-4">
+          <h3 class="font-pally text-2xl font-medium">
+            Commun'île est une SCIC : société coopérative d'intérêt collectif.
+          </h3>
+          <Text size="base">
+            Le choix du statut coopératif traduit la volonté de notre collectif de lier projet politique et activité
+            économique, dans le respect de valeurs démocratique. C'est un choix engageant, de faire économie autrement.
+          </Text>
+          <Text size="base">
+            Tu veux devenir sociétaire ? Contactez-nous pour plus d'information à <Link
+              href="mailto:gerance@communile.fr">gerance@communile.fr</Link
+            >
+          </Text>
+        </article>
+      </div>
+
+      <div class="space-y-4 md:col-span-2 xl:col-span-1">
+        <HomeIconTextCard iconName="glasses" title="Société commerciale à but non lucratif">
+          La SCIC existe par la constitution d'un capital social. Elle crée un patrimoine commun par la mise en réserves
+          impartageables de ses excédents de gestion.
+        </HomeIconTextCard>
+        <HomeIconTextCard iconName="users-round" title="Coopérative : 1 personne = 1 voix">
+          Les coopératives sont caractérisées par des principes et des valeurs universelles : l'humain avant le profit,
+          la prise de décision démocratique, la résilience et le durable...
+        </HomeIconTextCard>
+        <HomeIconTextCard iconName="smile" title="Intérêt Collectif">
+          C'est une société où participent à la prise de décisions les salarié·es, les usager·es, les partenaires et les
+          collectivités qui en sont parties prenantes et en détiennent le capital sous forme de parts sociales.
+        </HomeIconTextCard>
+      </div>
+    </div>
+  </Container>
+  <ShapeHexagon01
+    role="presentation"
+    aria-hidden="true"
+    class="absolute bottom-0 -left-16 h-auto w-80 translate-y-16"
+  />
+</Section>
+
+<style></style>

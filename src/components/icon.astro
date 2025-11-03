@@ -1,0 +1,43 @@
+---
+import { icons } from '@/utils/icons'
+import { cn } from '@/utils/style'
+
+export interface Props {
+  name: keyof typeof icons
+  size?: string | number
+  class?: string
+  color?: string
+  title?: string
+  fill?: boolean
+}
+
+const { name, size = 24, class: className, color = 'currentColor', title, fill = false } = Astro.props
+
+const sizeStyle = typeof size === 'number' ? `${size}px` : size
+
+const selectedIcon = icons[name]
+const iconType = fill ? 'fill' : selectedIcon.type || 'stroke'
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width={sizeStyle}
+  height={sizeStyle}
+  viewBox={selectedIcon.viewBox}
+  fill={iconType === 'fill' ? color : 'none'}
+  stroke={iconType === 'stroke' ? color : 'none'}
+  class={cn(iconType === 'stroke' ? 'stroke-2' : '', className)}
+  aria-hidden={title ? 'false' : 'true'}
+  role={title ? 'img' : 'presentation'}
+>
+  {title && <title>{title}</title>}
+  {
+    selectedIcon.paths.map((path) => (
+      <path
+        stroke-linecap={iconType === 'stroke' ? 'round' : undefined}
+        stroke-linejoin={iconType === 'stroke' ? 'round' : undefined}
+        d={path}
+      />
+    ))
+  }
+</svg>

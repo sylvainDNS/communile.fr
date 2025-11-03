@@ -1,0 +1,54 @@
+---
+import { Image } from 'astro:assets'
+import Badge from '@/components/badge.astro'
+import Container from '@/components/container.astro'
+import HeadingBadges from '@/components/heading-badges.astro'
+import Section from '@/components/section.astro'
+import Text from '@/components/text.astro'
+import ShapeHexagon01 from '@/images/shape-hexagon-01.svg'
+import wattigniesMarchesProducteursImage from '../images/wattignies-producteurs-image.webp'
+---
+
+<Section variant="transparent" overflow="hidden" spacing="large" class="relative space-y-8 pt-24">
+  <ShapeHexagon01 role="presentation" aria-hidden="true" class="absolute bottom-32 left-0 h-auto w-80" />
+  <ShapeHexagon01
+    role="presentation"
+    aria-hidden="true"
+    class="absolute bottom-32 left-[calc(50%-100px)] h-auto w-32"
+  />
+  <ShapeHexagon01 role="presentation" aria-hidden="true" class="absolute top-10 right-60 h-auto w-40" />
+  <Container class="relative z-10">
+    <div class="grid grid-cols-1 gap-12 md:grid-cols-2">
+      <div>
+        <HeadingBadges rows={3}>
+          <Badge variant="primary" rotation="3" class="z-20" size="heading"> LES </Badge>
+          <Badge variant="secondary" rotation="-3" class="z-10 translate-x-4 -translate-y-3" size="heading">
+            MARCHÉS
+          </Badge>
+          <Badge variant="tertiary" rotation="-1" class="z-10 -translate-y-4 md:-translate-y-4" size="heading">
+            DEs PRODUCTEUR.ICES
+          </Badge>
+        </HeadingBadges>
+        <div class="mt-8 max-w-2xl space-y-4 text-balance">
+          <Text size="base">
+            Chaque mercredi, de 16h30 à 19h30, venez découvrir notre marché bio et local avec les produits de la ferme
+            de notre coopérative et d'autres producteurs.trices locaux.
+          </Text>
+          <Text size="base">
+            C’est l'occasion de retrouver des légumes frais et de saison, mais aussi une belle sélection d’autres
+            produits : pain, pâtes fraiches, farines, conserves de viande, saucisson, miel, huile, et bien d'autres
+            encore !
+          </Text>
+        </div>
+      </div>
+      <div>
+        <Image
+          src={wattigniesMarchesProducteursImage}
+          alt="Le Wattignies"
+          class="w-full rounded-2xl object-cover"
+          widths={[640, 960, 1280, wattigniesMarchesProducteursImage.width]}
+        />
+      </div>
+    </div>
+  </Container>
+</Section>

@@ -1,0 +1,65 @@
+---
+import Badge from '@/components/badge.astro'
+import Container from '@/components/container.astro'
+import Heading from '@/components/heading.astro'
+import NavLink from '@/components/nav-link.astro'
+import Section from '@/components/section.astro'
+import Text from '@/components/text.astro'
+import MainLayout from '@/layouts/main.astro'
+import { PATH } from '@/utils/constants'
+---
+
+<MainLayout content={{ title: 'Page non trouvée' }} theme="default">
+  <Section spacing="large">
+    <Container class="flex flex-col items-center justify-center py-16 text-center">
+      <div class="justify-items-center gap-3">
+        <Badge id="badge404" size="2xl" variant="primary" rotation="-7" class="translate-x-2 px-3">4</Badge>
+        <Badge id="badge404" size="2xl" variant="secondary" rotation="3" class="px-2">0</Badge>
+        <Badge id="badge404" size="2xl" variant="tertiary" rotation="-2" class="-translate-x-2 px-3">4</Badge>
+      </div>
+
+      <Heading as="h1" size="xl" class="mt-8">Page non trouvée</Heading>
+      <Text size="xl">Oups&nbsp;! La page que vous cherchez n’existe pas ou a été déplacée.</Text>
+      <div class="mt-8">
+        <NavLink href={PATH.HOME} class="bg-primary text-background">Retour à l’accueil</NavLink>
+      </div>
+    </Container>
+  </Section>
+
+  <script>
+    import { animate, createSpring } from 'animejs'
+
+    const badges = document.querySelectorAll('#badge404')
+
+    if (badges.length) {
+      animate(badges, {
+        translateX: [(_el, i) => (i === 0 ? -80 : i === 1 ? 0 : 80), 0],
+        translateY: [(_el, i) => (i === 0 ? -60 : i === 1 ? -80 : -40), 0],
+        rotate: [(_el, i) => (i === 0 ? -30 : i === 1 ? 0 : 30), 0],
+        scale: [0.5, 1],
+        opacity: [0, 1],
+        duration: 1000,
+        delay: (_el, i) => i * 150, // Délai plus court
+        ease: createSpring({
+          mass: 1.2,
+          stiffness: 80,
+          damping: 25,
+          velocity: 0.3,
+        }),
+      })
+
+      // Animation continue : flottement très doux
+      setTimeout(() => {
+        animate(badges, {
+          translateY: [0, -4, 0],
+          rotate: [0, 1, 0],
+          duration: 4000,
+          delay: (_el, i) => i * 600,
+          loop: true,
+          direction: 'alternate',
+          ease: 'easeInOutSine',
+        })
+      }, 1200)
+    }
+  </script>
+</MainLayout>

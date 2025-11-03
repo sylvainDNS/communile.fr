@@ -1,0 +1,230 @@
+@import 'tailwindcss';
+
+@import './fonts/pally.css';
+@import './fonts/inter.css';
+@import './fonts/rubik.css';
+
+:root {
+  --background: oklch(96.8% 0.007 247.896);
+  --foreground: oklch(0.145 0 0);
+}
+
+@theme inline {
+  --color-neutral-100: var(--color-slate-100);
+  --color-neutral-200: var(--color-slate-200);
+  --color-neutral-300: var(--color-slate-300);
+  --color-neutral-400: var(--color-slate-400);
+  --color-neutral-500: var(--color-slate-500);
+  --color-neutral-600: var(--color-slate-600);
+  --color-neutral-700: var(--color-slate-700);
+  --color-neutral-800: var(--color-slate-800);
+  --color-neutral-900: var(--color-slate-900);
+  --color-neutral-950: var(--color-slate-950);
+}
+
+@theme {
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+
+  /* Wattignies */
+  --color-watt-blue: oklch(0.5605 0.2414 266.27);
+  --color-watt-blue-accent: oklch(0.4827 0.2923 265.07);
+
+  --color-watt-yellow: oklch(0.8408 0.1725 84.2);
+  --color-watt-yellow-accent: oklch(0.8982 0.181764 97.3809);
+
+  --color-watt-red: hsla(0, 100%, 57%, 1);
+  --color-watt-red-accent: var(--color-red-600);
+
+  --color-watt-green: hsla(137, 71%, 36%, 1);
+  --color-watt-green-accent: var(--color-green-600);
+
+  /* Landes Fertiles */
+  --color-landes-fertiles-grey: oklch(0.3752 0.0394 256.85);
+  --color-landes-fertiles-grey-accent: oklch(0.2961 0.2045 255.09);
+
+  --color-landes-fertiles-red: oklch(0.4761 0.194 29.08);
+  --color-landes-fertiles-red-accent: oklch(0.3976 0.2045 28.91);
+
+  --color-landes-fertiles-neutral: oklch(0.1292 0.0415 265.15);
+  --color-landes-fertiles-neutral-accent: oklch(0.0501 0.0086 264.05);
+
+  --color-landes-fertiles-green: oklch(0.2718 0.1589 135.68);
+  --color-landes-fertiles-green-accent: oklch(0.1927 0.2681 134.9);
+
+  /* Le Labo Diva */
+
+  --color-le-labo-diva-green: oklch(0.5997 0.1049 186.55);
+  --color-le-labo-diva-green-accent: oklch(0.4415 0.0747 189.15);
+
+  --color-le-labo-diva-yellow: oklch(0.8341 0.1634 80.48);
+  --color-le-labo-diva-yellow-accent: oklch(0.8913 0.1725 87.3809);
+
+  --color-le-labo-diva-green-dark: oklch(0.4415 0.0747 189.15);
+  --color-le-labo-diva-green-dark-accent: oklch(0.3311 0.056 189.15);
+
+  --color-le-labo-diva-neutral: oklch(0.1292 0.0415 265.15);
+  --color-le-labo-diva-neutral-accent: oklch(0.0501 0.0086 264.05);
+  
+  /* Le Bar ILE */
+  --color-le-bar-ile-blue: oklch(0.3546 0.1298 258.19);
+  --color-le-bar-ile-blue-accent: oklch(0.266 0.092 256.83);
+
+  --color-le-bar-ile-orange: oklch(0.772 0.1738 64.55);
+  --color-le-bar-ile-orange-accent: oklch(0.6765 0.1738 64.55);
+
+  --color-le-bar-ile-neutral: oklch(0.1292 0.0415 265.15);
+  --color-le-bar-ile-neutral-accent: oklch(0.0501 0.0086 264.05);
+
+
+  /* À La Carte Postale */
+  --color-la-carte-postale-alacp-blue: oklch(0.6622 0.1782 273.07);
+  --color-la-carte-postale-alacp-blue-accent: oklch(0.5002 0.2496 272.75);
+
+  --color-la-carte-postale-alcp-yellow: oklch(0.8328 0.171572 82.0575);
+  --color-la-carte-postale-alcp-yellow-accent: oklch(0.7596 0.171572 82.0575);
+
+  --color-la-carte-postale-neutral: oklch(0.1292 0.0415 265.15);
+  --color-la-carte-postale-neutral-accent: oklch(0.0501 0.0086 264.05);
+
+  /* Common */
+
+  --spacing-2k: 2000px;
+  --breakpoint-2k: 2000px;
+
+  --font-sans:
+    'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-rubik:
+    'Rubik', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-pally:
+    'Pally', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  --radius-5xl: 2.5rem;
+
+  --shadow-header: 0 4px 40px -10px rgba(0, 0, 0, 0.03), 0 2px 32px -5px rgba(0, 0, 0, 0.04);
+}
+
+@theme inline {
+  --color-primary: var(--theme-primary);
+  --color-primary-accent: var(--theme-primary-accent);
+
+  --color-primary-light: color-mix(
+    in oklab,
+    var(--theme-primary) 30%,
+    var(--color-white)
+  );
+  --color-primary-dark: color-mix(
+    in oklab,
+    var(--theme-primary) 70%,
+    var(--color-white)
+  );
+
+  --color-secondary: var(--theme-secondary);
+  --color-secondary-accent: var(--theme-secondary-accent);
+  --color-secondary-light: color-mix(
+    in oklab,
+    var(--theme-secondary) 30%,
+    var(--color-white)
+  );
+  --color-secondary-dark: color-mix(
+    in oklab,
+    var(--theme-secondary) 70%,
+    var(--color-white)
+  );
+
+  --color-tertiary: var(--theme-tertiary);
+  --color-tertiary-accent: var(--theme-tertiary-accent);
+  --color-tertiary-light: color-mix(
+    in oklab,
+    var(--theme-tertiary) 30%,
+    var(--color-white)
+  );
+  --color-tertiary-dark: color-mix(
+    in oklab,
+    var(--theme-tertiary) 70%,
+    var(--color-white)
+  );
+
+  --color-quaternary: var(--theme-quaternary);
+  --color-quaternary-accent: var(--theme-quaternary-accent);
+  --color-quaternary-light: color-mix(
+    in oklab,
+    var(--theme-quaternary) 30%,
+    var(--color-white)
+  );
+  --color-quaternary-dark: color-mix(
+    in oklab,
+    var(--theme-quaternary) 70%,
+    var(--color-white)
+  );
+
+  --color-quinary: var(--theme-quinary);
+}
+
+@layer base {
+  html {
+    @apply font-sans antialiased;
+  }
+
+  [data-theme='default'] {
+    --theme-primary: var(--color-watt-blue);
+    --theme-primary-accent: var(--color-watt-blue-accent);
+    --theme-secondary: var(--color-watt-red);
+    --theme-secondary-accent: var(--color-watt-red-accent);
+    --theme-tertiary: var(--color-watt-yellow);
+    --theme-tertiary-accent: var(--color-watt-yellow-accent);
+    --theme-quaternary: var(--color-watt-green);
+  }
+
+  [data-theme='wattignies'] {
+    --theme-primary: var(--color-watt-blue);
+    --theme-primary-accent: var(--color-watt-blue-accent);
+    --theme-secondary: var(--color-watt-red);
+    --theme-secondary-accent: var(--color-watt-red-accent);
+    --theme-tertiary: var(--color-watt-yellow);
+    --theme-tertiary-accent: var(--color-watt-yellow-accent);
+    --theme-quaternary: var(--color-watt-green);
+    --theme-quaternary-accent: var(--color-watt-green-accent);
+  }
+
+  [data-theme='landes-fertiles'] {
+    --theme-primary: var(--color-landes-fertiles-grey);
+    --theme-primary-accent: var(--color-landes-fertiles-grey-accent);
+    --theme-secondary: var(--color-landes-fertiles-red);
+    --theme-secondary-accent: var(--color-landes-fertiles-red-accent);
+    --theme-tertiary: var(--color-landes-fertiles-neutral);
+    --theme-tertiary-accent: var(--color-landes-fertiles-neutral-accent);
+    --theme-quaternary: var(--color-landes-fertiles-green);
+    --theme-quaternary-accent: var(--color-landes-fertiles-green-accent);
+  }
+
+  [data-theme='labo-diva'] {
+    --theme-primary: var(--color-le-labo-diva-green);
+    --theme-primary-accent: var(--color-le-labo-diva-green-accent);
+    --theme-secondary: var(--color-le-labo-diva-yellow);
+    --theme-secondary-accent: var(--color-le-labo-diva-yellow-accent);
+    --theme-tertiary: var(--color-le-labo-diva-green-dark);
+    --theme-tertiary-accent: var(--color-le-labo-diva-green-dark-accent);
+    --theme-quaternary: var(--color-le-labo-diva-neutral);
+    --theme-quaternary-accent: var(--color-le-labo-diva-neutral-accent);
+  }
+
+  [data-theme='bar-ile'] {
+    --theme-primary: var(--color-le-bar-ile-blue);
+    --theme-primary-accent: var(--color-le-labo-diva-green-accent);
+    --theme-secondary: var(--color-le-bar-ile-orange);
+    --theme-secondary-accent: var(--color-le-bar-ile-orange-accent);
+    --theme-tertiary: var(--color-le-bar-ile-neutral);
+    --theme-tertiary-accent: var(--color-le-bar-ile-neutral-accent);
+  }
+
+  [data-theme='la-carte-postale'] {
+    --theme-primary: var(--color-la-carte-postale-alacp-blue);
+    --theme-primary-accent: var(--color-la-carte-postale-alacp-blue-accent);
+    --theme-secondary: var(--color-la-carte-postale-alcp-yellow);
+    --theme-secondary-accent: var(--color-la-carte-postale-alcp-yellow-accent);
+  }
+}

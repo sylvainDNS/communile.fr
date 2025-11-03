@@ -1,0 +1,34 @@
+---
+import { Image } from 'astro:assets'
+import Container from '@/components/container.astro'
+import Heading from '@/components/heading.astro'
+import Section from '@/components/section.astro'
+import Text from '@/components/text.astro'
+import WattigniesWhatOrnament from '../images/wattignies-what-ornament.svg'
+import wattigniesWhatImage from '../images/wattignies-what.webp'
+---
+
+<Section variant="primary" class="overflow-hidden">
+  <WattigniesWhatOrnament class="absolute bottom-0 left-0" />
+  <Container class="relative z-20 grid grid-cols-1 items-start gap-12 lg:grid-cols-2">
+    <div class="space-y-6 text-white">
+      <Heading as="h2" size="xl" weight="bold" color="white" class="mt-6">Le Wattignies, c'est quoi ?</Heading>
+      <Text size="xl" weight="semibold" color="white" class="mt-12 max-w-sm">
+        Tiers-lieu social où la solidarité et l'inclusion occupent une place centrale
+      </Text>
+      <Text size="base" color="white" class="max-w-xl">
+        Ce lieu est porté par un collectif de 12 structures résidentes de l'économie sociale et solidaire - de l'action
+        sociale, de l'alimentation durable, de la mobilité douce, de l'artisanat et du réemploi - animé par Commun'île
+      </Text>
+      <Text font="pally" size="xl" weight="semibold" class="max-w-sm">Et il n’attend que vous !</Text>
+    </div>
+    <div class="grid grid-cols-1 gap-4">
+      <Image
+        src={wattigniesWhatImage}
+        alt="Le Wattignies"
+        class="aspect-[16/9] w-full rounded-2xl object-cover"
+        widths={[640, 960, 1280, wattigniesWhatImage.width]}
+      />
+    </div>
+  </Container>
+</Section>

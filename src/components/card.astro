@@ -1,0 +1,28 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+import { cn } from '../utils/style'
+
+interface Props extends HTMLAttributes<'article'> {
+  size?: 'medium' | 'small'
+  radius?: 'rounded' | 'diagonal' | 'top-right'
+}
+
+const { class: className, size = 'medium', radius = 'rounded', ...delegated } = Astro.props
+---
+
+<article
+  class={cn(
+    'bg-white w-full',
+    {
+      'p-8 rounded-2xl': size === 'medium',
+      'p-4 rounded-lg': size === 'small',
+      'rounded-tl-5xl rounded-br-5xl': radius === 'diagonal',
+      'rounded-tr-5xl': radius === 'top-right',
+    },
+    className,
+  )}
+  {...delegated}
+>
+  <slot />
+</article>

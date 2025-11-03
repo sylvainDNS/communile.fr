@@ -1,0 +1,40 @@
+---
+import { Image } from 'astro:assets'
+import Icon from '@/components/icon.astro'
+import Link from '@/components/link.astro'
+import Tag from '@/components/tag.astro'
+import type { ComponentProps } from 'astro/types'
+
+export interface Props {
+  href: string
+  image: ImageMetadata
+  imageAlt: string
+  tagColor: ComponentProps<typeof Tag>['color']
+  tagText: string
+  class?: string
+}
+
+const { href, image, imageAlt, tagColor, tagText, class: className = '' } = Astro.props
+---
+
+<Link href={href} class={`block relative rounded-2xl overflow-hidden group ${className}`}>
+  <Image
+    src={image}
+    alt={imageAlt}
+    class="h-64 w-full object-cover transition-transform duration-300 group-hover:scale-105"
+    widths={[330, 400, 540, 720, image.width]}
+  />
+  <span class="transition-opacity duration-300 group-hover:opacity-0">
+    <Tag color={tagColor} class="absolute top-4 left-4 uppercase">
+      {tagText}
+    </Tag>
+    <span class="absolute right-4 bottom-4 rounded-full bg-white p-2">
+      <Icon name="arrow-up-right" size="40" />
+    </span>
+  </span>
+  <span
+    class="absolute inset-0 bg-black/80 p-4 text-center text-white opacity-0 transition-opacity duration-300 not-empty:group-hover:opacity-100"
+  >
+    <slot name="hover-content" />
+  </span>
+</Link>

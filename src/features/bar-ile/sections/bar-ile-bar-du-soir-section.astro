@@ -1,0 +1,65 @@
+---
+import { Image } from 'astro:assets'
+import Badge from '@/components/badge.astro'
+import Container from '@/components/container.astro'
+import HeadingBadges from '@/components/heading-badges.astro'
+import Icon from '@/components/icon.astro'
+import InfoCard from '@/components/info-card.astro'
+import Section from '@/components/section.astro'
+import Text from '@/components/text.astro'
+import ShapeHexagon01 from '@/images/shape-hexagon-01.svg'
+import barIleLeBarDuSoirImage from '../images/bar-ile-le-bar-du-soir.webp'
+---
+
+<Section variant="transparent">
+  <ShapeHexagon01
+    role="presentation"
+    aria-hidden="true"
+    class="absolute top-0 right-0 size-[160px] text-secondary-light"
+  />
+  <Container class="flex flex-col items-start gap-12 md:flex-row-reverse">
+    <div class="my-auto">
+      <HeadingBadges rows={3}>
+        <Badge variant="secondary" rotation="-7" class="z-20" size="heading">LE BAR</Badge>
+        <Badge variant="primary" rotation="-4" class="z-30 -translate-y-2" size="heading">DU SOIR</Badge>
+      </HeadingBadges>
+      <Text class="mt-8 text-balance">
+        A 17h30, place au soir : ambiance chaleureuse, intimiste au comptoir avec Antoine notre barman toujours prêt à
+        dégainer. Vous pouvez choisir parmi une carte remplie de boissons locales : kéfir fait à Rezé, vins du
+        département, Brasserie de Bouffay , brasserie de Ouest Coast ...
+      </Text>
+      <div class="md:mt-24 space-y-6">
+        <InfoCard class="max-w-5xl">
+          <Icon name="grape" size="24" slot="icon" />
+          <Text size="xl" weight="medium" font="pally" slot="title">
+            Bar'île propose une programmation culturelle et festive avec les incontournables mensuels
+          </Text>
+          <Text slot="description" class="text-balance">
+            Karaoké live (Not Fucking Jukebox de Francois), Blindtest dingo by Miky, Jam de Jazz ou encore les Lait
+            chauds pour leur théâtre d'impro !
+          </Text>
+        </InfoCard>
+
+        <InfoCard class="max-w-5xl">
+          <Icon name="calendar-heart" size="24" slot="icon" />
+          <Text size="xl" weight="medium" font="pally" slot="title">
+            Et surtout des événements ponctuels complètement inédits
+          </Text>
+          <Text slot="description" class="text-balance">
+            Marathon de moules frites ou de raclette, soirées à thème (genre fête de Noël le soir de Halloween). On est
+            ouvert au suggestion et à vous aider à lancer une soirée retournée !
+          </Text>
+        </InfoCard>
+      </div>
+    </div>
+
+    <div class="flex w-full max-w-2xl">
+      <Image
+        src={barIleLeBarDuSoirImage}
+        alt="La cantine du Labo Diva"
+        class="h-full w-full"
+        widths={[330, 400, 540, barIleLeBarDuSoirImage.width]}
+      />
+    </div>
+  </Container>
+</Section>

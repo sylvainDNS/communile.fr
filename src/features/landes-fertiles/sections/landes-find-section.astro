@@ -1,0 +1,68 @@
+---
+import { Image } from 'astro:assets'
+import Badge from '@/components/badge.astro'
+import Container from '@/components/container.astro'
+import HeadingBadges from '@/components/heading-badges.astro'
+import Icon from '@/components/icon.astro'
+import InfoCard from '@/components/info-card.astro'
+import Section from '@/components/section.astro'
+import { icons } from '@/utils/icons'
+import Text from '../../../components/text.astro'
+import landesProductionsImage from '../images/landes-fertiles-productions.webp'
+
+type InfoCardType = {
+  icon: keyof typeof icons
+  title: string
+  description: string
+}
+
+const infoCards: InfoCardType[] = [
+  {
+    icon: 'smile',
+    title: 'Les marchés de producteur·ices',
+    description: 'Tous les mardis au Labo Diva : 16h30-19h30 et tous les mercredis au Wattignies : 16h30-19h30',
+  },
+  {
+    icon: 'smile',
+    title: 'Dans nos restaurants',
+    description:
+      "Nos cuisinier·es utilisent les produits que nous cultivons dans les plats gourmands de nos 4 restaurants sur l'île de Nantes. À retrouver au Wattignies, au Bar'île, À la Carte Postale et au Labo Diva.",
+  },
+]
+---
+
+<Section class="bg-transparent">
+  <Container class="grid grid-cols-1 items-start gap-12 md:grid-cols-[auto_1fr]">
+    <div class="order-[1] flex flex-col items-start space-y-6 md:order-[2]">
+      <div>
+        <HeadingBadges rows={3}>
+          <Badge size="heading" variant="primary" rotation="-7" class="px-4">Où trouver</Badge>
+          <Badge size="heading" variant="secondary" rotation="-4" class="translate-x-4">Nos</Badge>
+          <Badge size="heading" variant="tertiary" rotation="-7" class="translate-x-24 -translate-y-6">LÉGUMES</Badge>
+        </HeadingBadges>
+      </div>
+      {
+        infoCards.map((infoCard) => (
+          <InfoCard>
+            <Icon name={infoCard.icon} size="24" slot="icon" />
+            <Text size="xl" weight="medium" slot="title">
+              {infoCard.title}
+            </Text>
+            <Text slot="description" class="max-w-3xl">
+              {infoCard.description}
+            </Text>
+          </InfoCard>
+        ))
+      }
+    </div>
+
+    <div class="order-[2] md:order-[0]">
+      <Image
+        src={landesProductionsImage}
+        alt="Productions des Landes Fertiles"
+        class="h-full w-full max-w-[500px] rounded-2xl object-cover md:min-w-[400px]"
+        widths={[330, 400, 540, landesProductionsImage.width]}
+      />
+    </div>
+  </Container>
+</Section>

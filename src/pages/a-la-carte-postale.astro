@@ -1,0 +1,20 @@
+---
+import LaCarePostaleFaqSection from '@/features/la-carte-postale/sections/la-carte-postale-faq-section.astro'
+import LaCarePostaleHeroSection from '@/features/la-carte-postale/sections/la-carte-postale-hero-section.astro'
+import LaCarePostaleRestaurantSection from '@/features/la-carte-postale/sections/la-carte-postale-restaurant-section.astro'
+import LaCarePostaleWhatSection from '@/features/la-carte-postale/sections/la-carte-postale-what-section.astro'
+import Layout from '../layouts/main.astro'
+import LaCarePostaleAvisSection from '@/features/la-carte-postale/sections/la-carte-postale-avis-section.astro'
+import LaCarePostaleEquipeSection from '@/features/la-carte-postale/sections/la-carte-postale-equipe-section.astro'
+import LaCarePostaleInstagramSection from '@/features/la-carte-postale/sections/la-carte-postale-instagram-section.astro'
+---
+
+<Layout theme="la-carte-postale" content={{ title: 'Le Bar ILE' }}>
+  <LaCarePostaleHeroSection />
+  <LaCarePostaleWhatSection />
+  <LaCarePostaleRestaurantSection />
+  <LaCarePostaleEquipeSection />
+  <LaCarePostaleAvisSection />
+  <LaCarePostaleFaqSection />
+  <LaCarePostaleInstagramSection />
+</Layout>

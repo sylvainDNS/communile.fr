@@ -1,0 +1,63 @@
+---
+import { Image } from 'astro:assets'
+import Badge from '@/components/badge.astro'
+import Card from '@/components/card.astro'
+import Container from '@/components/container.astro'
+import HeadingBadges from '@/components/heading-badges.astro'
+import Icon from '@/components/icon.astro'
+import Section from '@/components/section.astro'
+import Text from '@/components/text.astro'
+import wattigniesBarProgImage from '../images/wattignies-le-bar.webp'
+---
+
+<Section variant="transparent">
+  <Container class="flex flex-col items-start gap-12 lg:flex-row-reverse">
+    <div class="space-y-6">
+      <HeadingBadges rows={3}>
+        <Badge variant="primary" rotation="-7" class="z-20" size="heading"> LE BAR </Badge>
+        <Badge
+          variant="tertiary"
+          rotation="-12"
+          class="z-10 -translate-x-2 -translate-y-4 md:translate-x-34 md:-translate-y-13"
+          size="heading"
+          >ET LA PROG
+        </Badge>
+        <Badge variant="secondary" rotation="5" class="z-30 translate-x-1 md:-translate-y-10" size="heading"
+          >DU WATTIGNIES
+        </Badge>
+      </HeadingBadges>
+      <Text size="base" class="mt-8 text-balance md:mt-0">
+        Le Wattignies propose une programmation culturelle accessible (entrée gratuite), engagée et éclectique tout au
+        long de l'année. Concert d'un groupe local, atelier d'initiation au cirque, jam latino, bal trad, concert de rap
+        féministe ou encore tournoi de belote ... en 2024 c'était 156 évènements tout au long de l'année pour mettre les
+        artistes et les collectifs locaux à l'honneur.
+      </Text>
+      <Text size="base" class="text-balance">
+        Vous voulez proposer une idée de concert, d'atelier ou tout autre type d'évènement ? Contactez-nous !
+      </Text>
+      <div>
+        <Card class="w-fit space-y-4">
+          <div class="flex items-center gap-4">
+            <div class="flex size-10 items-center justify-center rounded-xl bg-neutral-200">
+              <Icon name="glass-water" size="24" />
+            </div>
+            <span class="font-pally text-xl font-medium md:text-2xl">Des fournisseurs sélectionnés avec soin</span>
+          </div>
+          <Text size="base" class="max-w-xl">
+            Vous y serez accueilli·es par notre équipe de choc de barmaids qui proposent une carte remplie de références
+            locales et parfois des recettes maison : thé glacé, vin chaud en hiver...
+          </Text>
+        </Card>
+      </div>
+    </div>
+
+    <div class="flex w-full">
+      <Image
+        src={wattigniesBarProgImage}
+        alt="Le bar du Wattignies"
+        class="h-full max-h-[400px] w-full rounded-2xl object-cover lg:max-h-max"
+        widths={[330, 400, 540, wattigniesBarProgImage.width]}
+      />
+    </div>
+  </Container>
+</Section>

@@ -1,0 +1,24 @@
+---
+import { Image } from 'astro:assets'
+
+import Container from '@/components/container.astro'
+import Heading from '@/components/heading.astro'
+import Section from '@/components/section.astro'
+import heroImage from '../images/communile-hero.webp'
+---
+
+<Section variant="transparent" spacing="none" class="flex w-full flex-col items-center">
+  <Container class="space-y-6">
+    <Heading as="h1" size="2xl" weight="bold" align="center" color="muted"> Archipel de(s) communs </Heading>
+
+    <div class="relative w-full overflow-hidden rounded-2xl">
+      <Image
+        src={heroImage}
+        alt="Un mur peint avec les couleurs du logo. Le fond est bleu, des plantes rouges serpentent le long du mur. En haut, Commun'île est écrit en gros, en jaune. Les différents noms de lieux sont écrits de part et d'autre, en gris. Des photos Polaroid de différents moments de vie sont collées sur le mur."
+        height={435}
+        widths={[330, 400, 540, 720, heroImage.width]}
+        class="max-h-[435px] w-full object-cover object-top"
+      />
+    </div>
+  </Container>
+</Section>

@@ -1,0 +1,39 @@
+---
+import { Image } from 'astro:assets'
+import Container from '@/components/container.astro'
+import Heading from '@/components/heading.astro'
+import Section from '@/components/section.astro'
+import Text from '@/components/text.astro'
+import LandeWhatOrnament from '../images/landes-what-ornament.svg'
+import landesWhatImage from '../images/landes-what.webp'
+---
+
+<Section variant="primary" class="overflow-hidden">
+  <LandeWhatOrnament class="absolute bottom-0 left-0" />
+  <Container class="relative z-20 grid grid-cols-1 items-start gap-12 lg:grid-cols-2">
+    <div class="my-auto space-y-6 text-white">
+      <Heading as="h2" size="xl" weight="bold" color="white" class="mt-6">Les Landes Fertiles, c'est quoi ?</Heading>
+      <Text size="xl" weight="semibold" color="white" class="mt-12 max-w-sm">
+        Ferme maraîchère bio-intensive, à Corcoué-sur-Logne
+      </Text>
+      <Text size="base" color="white" class="max-w-xl">
+        La ferme approvisionne 100 foyers par semaine en vente directe (lors des marchés paysans du Wattignies et du
+        Labo Diva) ainsi que nos restaurants en circuits courts et zéro gaspi ! Les Landes Fertiles c’est aussi une
+        coopération avec d’autres producteurs du Pays de Retz pour réfléchir à des cultures complémentaires, mutualiser
+        des ressources, valoriser les produits de toutes et de tous. Commun'île est propriétaire des terrains agricoles
+        exploités.
+      </Text>
+      <Text font="pally" size="xl" weight="semibold" class="max-w-sm"
+        >Nourrir le territoire, dans le respect de la terre et des personnes qui la cultivent !</Text
+      >
+    </div>
+    <div class="grid grid-cols-1 gap-4">
+      <Image
+        src={landesWhatImage}
+        alt="Le Wattignies"
+        class="w-full rounded-2xl object-cover"
+        widths={[640, 960, 1280, landesWhatImage.width]}
+      />
+    </div>
+  </Container>
+</Section>

@@ -1,0 +1,40 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+import { cn } from '../utils/style'
+
+type Props = HTMLAttributes<'span'> & {
+  color?: 'blue' | 'green' | 'red' | 'yellow' | 'neutral' | 'primary' | 'quaternary' | 'tertiary' | 'secondary'
+}
+
+const { color = 'neutral', class: className, ...delegated } = Astro.props
+---
+
+<span
+  class={cn(
+    'inline-block px-3 py-2 rounded-full font-bold leading-normal text-base',
+    {
+      'bg-gradient-to-bl to-primary-light from-[color-mix(in_oklab,var(--theme-primary)_15%,var(--color-white))] text-primary':
+        color === 'primary',
+      'bg-gradient-to-bl to-quaternary-light from-[color-mix(in_oklab,var(--theme-quaternary)_15%,var(--color-white))] text-quaternary':
+        color === 'quaternary',
+      'bg-gradient-to-bl to-tertiary-light from-[color-mix(in_oklab,var(--theme-tertiary)_15%,var(--color-white))] text-tertiary':
+        color === 'tertiary',
+      'bg-gradient-to-bl to-secondary-light from-[color-mix(in_oklab,var(--theme-secondary)_15%,var(--color-white))] text-secondary':
+        color === 'secondary',
+      'bg-gradient-to-bl to-blue-100 from-[color-mix(in_oklab,var(--color-watt-blue)_15%,var(--color-white))] text-watt-blue':
+        color === 'blue',
+      'bg-gradient-to-bl to-green-100 from-[color-mix(in_oklab,var(--color-watt-green)_15%,var(--color-white))] text-watt-green':
+        color === 'green',
+      'bg-gradient-to-bl to-red-100 from-[color-mix(in_oklab,var(--color-watt-red)_15%,var(--color-white))] text-watt-red':
+        color === 'red',
+      'bg-gradient-to-bl to-yellow-100 from-[color-mix(in_oklab,var(--color-watt-yellow)_15%,var(--color-white))] text-watt-yellow':
+        color === 'yellow',
+      'bg-background text-foreground': color === 'neutral',
+    },
+    className,
+  )}
+  {...delegated}
+>
+  <slot />
+</span>

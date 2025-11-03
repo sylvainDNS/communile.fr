@@ -1,0 +1,94 @@
+---
+import { Image } from 'astro:assets'
+import Badge from '@/components/badge.astro'
+import Container from '@/components/container.astro'
+import HeadingBadges from '@/components/heading-badges.astro'
+import Icon from '@/components/icon.astro'
+import InfoCard from '@/components/info-card.astro'
+import Section from '@/components/section.astro'
+import Text from '@/components/text.astro'
+import ShapeHexagon01 from '@/images/shape-hexagon-01.svg'
+import barIleLeRestaurantImage from '../images/bar-ile-le-restaurant.webp'
+---
+
+<Section variant="transparent" class="space-y-12">
+  <ShapeHexagon01
+    role="presentation"
+    aria-hidden="true"
+    class="absolute top-0 right-0 size-[160px] text-secondary-light"
+  />
+
+  <Container class="flex flex-col items-start gap-12 md:flex-row relative">
+    <ShapeHexagon01
+      role="presentation"
+      aria-hidden="true"
+      class="absolute bottom-[0px] left-[-160px] size-[320px] text-secondary-light"
+    />
+    <div class="my-auto relative z-20">
+      <HeadingBadges rows={3}>
+        <Badge variant="primary" rotation="-7" class="z-20" size="heading">LE RESTAURANT</Badge>
+        <Badge variant="secondary" rotation="-4" class="z-40 translate-y-0.5 leading-[1.2] py-2" size="heading">
+          DU BAR'ÎLE
+        </Badge>
+      </HeadingBadges>
+      <div class="mt-12 text-balance">
+        <Text>Le Bar'ile c'est une équipe du midi du lundi au vendredi. </Text>
+        <Text
+          >Mathilde et son·sa alternant·e en cuisine mélangent souvenirs de voyage et saisonnalité de la ferme. Un
+          équilibre entre simplicité et technique , pour un plaisir gourmand.
+        </Text>
+        <Text
+          >Gaga, en salle vous accueille toujours avec la patate, une répartie sans limite et une rapidité conviviale.
+        </Text>
+        <Text>Réservation fortement conseillée ! 02 40 47 86 12</Text>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 gap-6 max-w-3xl relative z-20">
+      <InfoCard>
+        <Icon name="smile" size="24" slot="icon" />
+        <Text size="xl" weight="medium" font="pally" slot="title">Du lundi au vendredi : une carte tournante</Text>
+        <Text slot="description">
+          Le Bar'île propose une carte végétarienne avec une unique option carné en quantité limité. Le tout qui change
+          toutes les semaines.
+        </Text>
+      </InfoCard>
+      <InfoCard>
+        <Icon name="smile" size="24" slot="icon" />
+        <Text size="xl" weight="medium" font="pally" slot="title">
+          "Le Totalum Chikichiki boum" est un concept propre au bar'île.
+        </Text>
+        <Text slot="description">
+          Mais kesako ? Un menu unique surprise en 6 temps entièrement végétarien sur le temps du midi au prix unique de
+          19 euros. Suivez-nous sur nos réseaux sociaux pour plus d'informations sur la date du prochain Totalum.
+        </Text>
+      </InfoCard>
+      <InfoCard>
+        <Icon name="smile" size="24" slot="icon" />
+        <Text size="xl" weight="medium" font="pally" slot="title"
+          >Services personnalisés pour tous vos évènements !</Text
+        >
+        <Text slot="description">
+          Vous fêtez un anniversaire ou pot de départ ? Le Bar'île vous accueille pour tous vos évènements avec
+          nourriture et boissons. N'hésitez pas à nous contacter avec vos détails et souhaits.
+        </Text>
+      </InfoCard>
+      <InfoCard>
+        <Icon name="smile" size="24" slot="icon" />
+        <Text size="xl" weight="medium" font="pally" slot="title">Mise à disposition de l'espace</Text>
+        <Text slot="description">
+          Le lieu propose des mises à disposition aux associations et collectifs, le samedi et dimanche sur demande.
+          Contactez-nous !
+        </Text>
+      </InfoCard>
+    </div>
+  </Container>
+  <Container>
+    <Image
+      src={barIleLeRestaurantImage}
+      alt="Mathilde et son·sa alternant·e en cuisine"
+      class="h-full w-full"
+      widths={[330, 400, 540, barIleLeRestaurantImage.width]}
+    />
+  </Container>
+</Section>

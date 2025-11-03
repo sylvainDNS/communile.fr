@@ -1,0 +1,67 @@
+---
+import Container from '@/components/container.astro'
+import Details from '@/components/details.astro'
+import Icon from '@/components/icon.astro'
+import LeafletMap from '@/components/leaflet-map.astro'
+import Section from '@/components/section.astro'
+import ShapeHook01 from '@/images/shape-hook-01.svg'
+import ShapeHook02 from '@/images/shape-hook-02.svg'
+---
+
+<Section variant="accent" overflow="hidden" spacing="large" class="relative space-y-8 pt-24">
+  <Container>
+    <ShapeHook01 role="presentation" aria-hidden="true" class="absolute -top-6 -right-6 text-primary-light" />
+    <ShapeHook02 role="presentation" aria-hidden="true" class="absolute -bottom-8 -left-6 text-primary-light" />
+    <div class="flex flex-col gap-12 lg:flex-row lg:gap-16">
+      <div class="relative z-10 space-y-8">
+        <div class="">
+          <h2 class="text-center font-pally text-4xl font-bold text-background">Questions fréquentes</h2>
+        </div>
+        <div class="space-y-4">
+          <Details class="bg-background">
+            <span slot="title"> Quels sont nos points de vente ? </span>
+            <span slot="content">
+              Les légumes de Landes Fertiles sont vendus au marché du mardi au Labo Diva (16h30-19h30) et au marché du
+              mercredi au Wattignies (16h30-19h30)
+            </span>
+          </Details>
+          <Details class="bg-background">
+            <span slot="title"> Est ce que tous les légumes viennent de la ferme ? </span>
+            <span slot="content">
+              Pour pouvoir proposer une étale diversifiée et pour construire des partenariats sur notre territoire, nous
+              travaillons avec d'autres producteurs de fruits et légumes pour compléter notre offre.
+            </span>
+          </Details>
+          <Details class="bg-background">
+            <span slot="title"> Comment on peut venir donner un coup de main ? </span>
+            <span slot="content">
+              On a des chantiers pour tous les goûts ! N'hésitez pas à nous contacter pour discuter des vos envies et
+              disponibilités. Dans tous les cas, pour être bénévole à la ferme il faut être sociétaire de la coopérative
+              Commun'île :)
+            </span>
+          </Details>
+        </div>
+        <a
+          href="mailto:landesfertiles@communile.fr"
+          class="inline-flex items-center gap-2 rounded-md bg-background px-6 py-4 font-medium"
+        >
+          <Icon name="mail" class="size-4" />
+          Contactez-nous
+        </a>
+      </div>
+      <div class="my-auto h-full w-full lg:max-w-xl">
+        <LeafletMap
+          height="600px"
+          zoom={16}
+          center={[46.9872, -1.56799]}
+          markers={[
+            {
+              position: [46.9872, -1.56799],
+              popup: 'Les landes fertiles',
+            },
+          ]}
+        />
+      </div>
+    </div>
+  </Container>
+</Section>

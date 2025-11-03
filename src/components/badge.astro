@@ -1,0 +1,146 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import type { VariantProps } from 'class-variance-authority'
+import { cva } from 'class-variance-authority'
+
+import { cn } from '../utils/style'
+
+const badgeVariants = cva('inline-block font-pally font-medium', {
+  variants: {
+    variant: {
+      primary: 'bg-primary text-white',
+      secondary: 'bg-secondary text-white',
+      tertiary: 'bg-tertiary text-white',
+      quaternary: 'bg-quaternary text-white',
+      neutral: 'bg-neutral-200 text-neutral-800',
+      white: 'bg-white text-neutral-800',
+    },
+    shape: {
+      pill: 'rounded-full',
+      rounded: 'rounded-lg',
+      square: 'rounded-md',
+    },
+    size: {
+      sm: 'px-2 py-1 text-sm',
+      md: 'px-4 py-2 text-base',
+      lg: 'px-6 py-3 text-lg',
+      xl: 'px-8 py-4 text-xl',
+      '2xl': 'px-4 py-2 text-3xl md:text-5xl',
+      heading: 'px-4 py-3 text-4xl md:text-5xl whitespace-nowrap font-bold',
+    },
+    rotation: {
+      none: '',
+      '1': 'rotate-1',
+      '2': 'rotate-2',
+      '3': 'rotate-3',
+      '4': 'rotate-4',
+      '5': 'rotate-5',
+      '6': 'rotate-6',
+      '7': 'rotate-7',
+      '8': 'rotate-8',
+      '9': 'rotate-9',
+      '10': 'rotate-10',
+      '11': 'rotate-11',
+      '12': 'rotate-12',
+      '-1': '-rotate-1',
+      '-2': '-rotate-2',
+      '-3': '-rotate-3',
+      '-4': '-rotate-4',
+      '-5': '-rotate-5',
+      '-7': '-rotate-7',
+      '-11': '-rotate-11',
+      '-12': '-rotate-12',
+    },
+    position: {
+      static: '',
+      relative: 'relative',
+      absolute: 'absolute',
+    },
+    zIndex: {
+      auto: '',
+      '10': 'z-10',
+      '20': 'z-20',
+      '30': 'z-30',
+    },
+  },
+  defaultVariants: {
+    variant: 'primary',
+    shape: 'pill',
+    size: 'md',
+    rotation: 'none',
+    position: 'static',
+    zIndex: 'auto',
+  },
+})
+
+type Props = HTMLAttributes<'span'> & VariantProps<typeof badgeVariants>
+const { class: className, variant, shape, size, rotation, position, zIndex, ...delegated } = Astro.props
+---
+
+<span
+  data-slot="badge"
+  data-size={size}
+  class={cn(badgeVariants({ variant, shape, size, rotation, position, zIndex }), className)}
+  {...delegated}
+>
+  <slot />
+</span>
+
+<script>
+  import { rootScope } from '@/utils/animation'
+  import { animate, stagger, text } from 'animejs'
+
+  const initAnimation = () => {
+    const badges = document.querySelectorAll('[data-slot="badge"][data-size="heading"]')
+
+    if (badges.length) {
+      badges.forEach((badge) => {
+        const { chars } = text.split(badge as HTMLElement, {
+          chars: { wrap: true },
+        })
+
+        // Vérifier si l'élément est déjà visible au chargement
+        const rect = badge.getBoundingClientRect()
+        const isInitiallyVisible = rect.top < window.innerHeight && rect.bottom > 0
+
+        // Si l'élément est déjà visible au chargement, ne pas animer
+        if (isInitiallyVisible) {
+          return
+        }
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                rootScope.add((self) => {
+                  const reduceMotion = self?.matches.reducedMotion
+                  if (reduceMotion) return
+                  animate(badge, {
+                    scale: [0.9, 1],
+                    duration: 300,
+                    rotate: [0, 1, 0],
+                    easing: 'easeOutCubic',
+                  })
+                  animate(chars, {
+                    y: ['50%', '0%'],
+                    duration: 200,
+                    ease: 'out(3)',
+                    delay: stagger(20),
+                    alternate: true,
+                  })
+                })
+
+                observer.unobserve(badge)
+              }
+            })
+          },
+          {
+            threshold: 0.5,
+          },
+        )
+        observer.observe(badge)
+      })
+    }
+  }
+  initAnimation()
+</script>

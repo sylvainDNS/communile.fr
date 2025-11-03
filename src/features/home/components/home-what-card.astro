@@ -1,0 +1,38 @@
+---
+import type { ImageMetadata } from 'astro'
+import type { HTMLAttributes } from 'astro/types'
+import { Image } from 'astro:assets'
+import Card from '@/components/card.astro'
+import Heading from '@/components/heading.astro'
+import Text from '@/components/text.astro'
+import { cn } from '@/utils/style'
+
+interface Props extends HTMLAttributes<'article'> {
+  title: string
+  description: string
+  subtitle: string
+  image: {
+    src: ImageMetadata
+    alt: string
+    class: string
+  }
+}
+
+const { title, description, subtitle, image, class: className, ...delegated } = Astro.props
+---
+
+<Card class={cn('relative overflow-hidden min-h-[460px] h-full', className)} {...delegated}>
+  <div class="relative z-10 flex h-full flex-col space-y-4">
+    <Heading as="h3" size="lg">
+      {title}
+    </Heading>
+    <Text size="base" class="max-w-sm font-medium">
+      {description}
+    </Text>
+    <Text size="xl" class="font-pally text-2xl font-bold text-balance text-black/60 md:mt-auto md:max-w-[240px]">
+      {subtitle}
+    </Text>
+  </div>
+  <div class="h-[200px] md:hidden"></div>
+  <Image width={200} src={image.src} alt={image.alt} class={cn('md:absolute bottom-0 right-0', image.class)} />
+</Card>

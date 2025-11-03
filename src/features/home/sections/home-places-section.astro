@@ -1,0 +1,109 @@
+---
+import Badge from '@/components/badge.astro'
+import Container from '@/components/container.astro'
+import HeadingBadges from '@/components/heading-badges.astro'
+import PlaceCard from '@/components/place-card.astro'
+import Section from '@/components/section.astro'
+import Text from '@/components/text.astro'
+import { PATH } from '@/utils/constants'
+import leBarIleCardImage from '../images/le-bar-ile-card.webp'
+import leLaboDivaCardImage from '../images/le-labo-diva-card.webp'
+import leWattigniesCardImage from '../images/le-wattignies-card.webp'
+import lesLandesFertilesCardImage from '../images/les-landes-fertiles-card.webp'
+import laCartePostaleCardImage from '../images/la-carte-postale-card.webp'
+---
+
+<Section>
+  <Container class="grid grid-cols-1 space-y-3 md:grid-cols-3">
+    <div class="max-w-md space-y-4">
+      <HeadingBadges rows={2}>
+        <Badge rotation="-7" size="heading">Nos</Badge>
+        <Badge variant="secondary" rotation="4" class="translate-x-1 -translate-y-2" size="heading">lieux</Badge>
+      </HeadingBadges>
+
+      <div class="mt-4 max-w-sm">
+        <Text size="base"> Commun'île c'est avant tout une histoire de lieux et de personnes qui les composent. </Text>
+        <Text size="base">
+          Des lieux où chacun·e pourra toujours bien manger, boire un coup et passer du bon temps.
+        </Text>
+        <Text size="base">
+          Des lieux où règne le respect : celui des client·e·s d'un jour et de toujours, celui des travailleur·euse·s,
+          des produits, de notre quartier, de notre ville.
+        </Text>
+      </div>
+    </div>
+
+    <div class="col-span-2 grid grid-cols-1 gap-3 md:grid-cols-2">
+      <PlaceCard
+        href={PATH.LE_WATTIGNIES}
+        image={leWattigniesCardImage}
+        imageAlt="Le Wattignies - bar et restaurant avec une façade vitrée, un comptoir bleu et des tables"
+        tagColor="yellow"
+        tagText="Le Wattignies"
+      >
+        <div slot="hover-content" class="grid h-full">
+          <p class="text-2xl font-bold">Horaires d'ouverture</p>
+          <p class="font-medium">10h00 - 23h00 du lundi au vendredi <br /> 16h00 - 23h00 samedi</p>
+        </div>
+      </PlaceCard>
+
+      <PlaceCard
+        href={PATH.LES_LANDES_FERTILES}
+        image={lesLandesFertilesCardImage}
+        imageAlt="Les Landes Fertiles - 2 personnes travaillent sur des plants de tomates"
+        tagColor="red"
+        tagText="Les Landes Fertiles"
+      >
+        <div slot="hover-content" class="grid h-full">
+          <span class="text-2xl font-bold"> Horaires d'ouverture </span>
+          <span class="font-medium"> Toute la semaine de 10h00 à 17h00 </span>
+        </div>
+      </PlaceCard>
+
+      <PlaceCard
+        href={PATH.LE_LABO_DIVA}
+        image={leLaboDivaCardImage}
+        imageAlt="Le Labo Diva - Un bar intérieur composé de lattes de bois peintes en vert, jaune, blanc ou orange."
+        tagColor="green"
+        tagText="Le Labo Diva"
+      >
+        <div slot="hover-content" class="grid h-full">
+          <span class="text-2xl font-bold"> Horaires d'ouverture </span>
+          <span class="font-medium"> 12h00 - 22h00 du mardi au samedi </span>
+        </div>
+      </PlaceCard>
+
+      <PlaceCard
+        href={PATH.LE_BAR_ILE}
+        image={leBarIleCardImage}
+        imageAlt="Le Bar Ile - Une terrasse d'un bar, les murs extérieurs sont bleus foncés. Un marché est installé avec des légumes."
+        tagColor="blue"
+        tagText="Le Bar'Île"
+      >
+        <div slot="hover-content" class="grid h-full">
+          <span class="text-2xl font-bold"> Horaires d'ouverture </span>
+          <span class="font-medium">
+            <strong>Lundi :</strong> 10h00 - 14h00 <br />
+            <strong>Mardi :</strong> 10h00 - 14h00 / 17h30 - 22h30 <br />
+            <strong>Mercredi :</strong> 10h00 - 14h00 / 17h30 - 22h30 <br />
+            <strong>Jeudi :</strong> 10h00 - 14h00 / 17h30 - 2h00 <br />
+            <strong>Vendredi :</strong> 10h00 - 14h00 / 17h30 - 2h00
+          </span>
+        </div>
+      </PlaceCard>
+      <PlaceCard
+        href={PATH.A_LA_CARTE_POSTALE}
+        image={laCartePostaleCardImage}
+        imageAlt="À La Carte Postale - Des cartes postales sont suspendues au plafond"
+        tagColor="yellow"
+        tagText="À La Carte Postale"
+        class="md:mx-auto md:col-span-2 md:w-1/2"
+      >
+        <div slot="hover-content" class="grid h-full">
+          <span class="text-2xl font-bold"> Horaires d'ouverture </span>
+          <span class="font-medium"> 10h00 - 17h00 du lundi au vendredi </span>
+        </div>
+      </PlaceCard>
+    </div>
+  </Container>
+</Section>

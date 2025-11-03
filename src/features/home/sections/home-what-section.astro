@@ -1,0 +1,56 @@
+---
+import Container from '@/components/container.astro'
+import Heading from '@/components/heading.astro'
+import Section from '@/components/section.astro'
+import HomeWhatCard from '@/features/home/components/home-what-card.astro'
+import illuAccompagnerTransitionImage from '../images/communile-illu-accompagner-transition.webp'
+import illuCreerLienImage from '../images/communile-illu-creer-lien.webp'
+import illuCreerModeleImage from '../images/communile-illu-creer-modele.webp'
+---
+
+<Section spacing="medium">
+  <Container>
+    <Heading as="h2" size="lg" align="center"> Commun'Île, c'est quoi ? </Heading>
+    <ul class="mt-6 grid grid-cols-1 gap-3 md:grid-cols-3 md:gap-12">
+      <li>
+        <HomeWhatCard
+          title="Accompagner la transition alimentaire"
+          description="Nous produisons nos légumes en maraîchage bio, que nous cuisinons dans nos restaurants ou que vous achetez sur nos marchés paysans, favorisant l'accès à une alimentation saine, la structuration de la filière et l'amélioration des conditions de travail du monde agricole."
+          subtitle="Défendre un modèle de la fourche à la fourchette"
+          image={{
+            src: illuAccompagnerTransitionImage,
+            alt: 'Illustration de la transition alimentaire',
+            class: 'absolute bottom-0 right-0',
+          }}
+          class="bg-watt-blue text-white"
+        />
+      </li>
+      <li>
+        <HomeWhatCard
+          title="Créer du lien social et favoriser la citoyenneté"
+          description="Casser la croûte, se faire des confidences autour d'un verre, vivre l'émotion d'un concert enjaillé, soutenir des initiatives locales... autant de moments qui permettent de tisser des liens avec celles et ceux qu'on ne connaît jamais assez."
+          subtitle="Provoquer des rencontres et des échanges"
+          image={{
+            src: illuCreerLienImage,
+            alt: 'Illustration de la création de liens sociaux',
+            class: 'absolute bottom-0 right-0',
+          }}
+          class="bg-watt-yellow text-white"
+        />
+      </li>
+      <li>
+        <HomeWhatCard
+          title="Créer un modèle innovant"
+          description="Faire autrement : production, consommation, travail, gouvernance, répartition des richesses... Commun'Île fait le pari d'une économie au service de l'humain et du vivant, et ancré sur son territoire."
+          subtitle="Construire une économie alternative et démocratique"
+          image={{
+            src: illuCreerModeleImage,
+            alt: "Illustration de la création d'un modèle innovant",
+            class: 'absolute bottom-0 right-0',
+          }}
+          class="bg-watt-red text-white"
+        />
+      </li>
+    </ul>
+  </Container>
+</Section>

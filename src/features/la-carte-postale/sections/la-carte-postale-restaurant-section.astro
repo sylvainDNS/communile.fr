@@ -1,0 +1,88 @@
+---
+import { Image } from 'astro:assets'
+import Badge from '@/components/badge.astro'
+import Container from '@/components/container.astro'
+import HeadingBadges from '@/components/heading-badges.astro'
+import Icon from '@/components/icon.astro'
+import InfoCard from '@/components/info-card.astro'
+import Section from '@/components/section.astro'
+import Text from '@/components/text.astro'
+import ShapeHexagon01 from '@/images/shape-hexagon-01.svg'
+import laCartePostaleLeRestaurantImage from '../images/la-carte-postale-inauguration.webp'
+---
+
+<Section variant="transparent" class="space-y-12">
+  <ShapeHexagon01
+    role="presentation"
+    aria-hidden="true"
+    class="absolute top-0 right-0 size-[160px] text-secondary-light"
+  />
+
+  <Container class="flex flex-col items-start gap-12 md:flex-row relative">
+    <ShapeHexagon01
+      role="presentation"
+      aria-hidden="true"
+      class="absolute bottom-[0px] left-[-160px] size-[320px] text-secondary-light"
+    />
+    <div class="my-auto relative z-20">
+      <HeadingBadges rows={3}>
+        <Badge variant="primary" rotation="7" class="z-20 text-3xl" size="heading">LE RESTAURANT</Badge>
+        <Badge
+          variant="secondary"
+          rotation="10"
+          class="z-30"
+          size="heading"
+          class="translate-y-0.5 -translate-x-2 z-40 overflow-auto text-3xl"
+        >
+          A LA CARTE POSTALE
+        </Badge>
+      </HeadingBadges>
+      <div class="mt-12 text-balance">
+        <Text>Sous format cantine, garanti le self le plus cool de la terre (on est comme ça nous, on y croit !)</Text>
+        <Text>On vous accueille toujours avec la patate, une répartie sans limite et une rapidité conviviale.</Text>
+        <Text
+          ><b class="font-semibold">14,50€</b> l'entrée-plat-dessert en version végétarienne <br />
+          <b class="font-semibold">15,50€</b> en version carnée !</Text
+        >
+        <Text>Réservation grandement conseillée au 07 59 55 78 14</Text>
+      </div>
+      <div class="mt-12 flex rounded-2xl overflow-hidden">
+        <Image
+          src={laCartePostaleLeRestaurantImage}
+          alt="La cantine du Labo Diva"
+          class="h-full w-full"
+          widths={[330, 400, 540, laCartePostaleLeRestaurantImage.width]}
+        />
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 my-auto gap-6 max-w-3xl relative z-20">
+      <InfoCard>
+        <Icon name="smile" size="24" slot="icon" />
+        <Text size="xl" weight="medium" font="pally" slot="title">Du Lundi au vendredi le menu de la semaine !</Text>
+        <Text slot="description">
+          À la Carte Postale propose une carte végétarienne curieuse avec une unique option carnée en quantité limité.
+        </Text>
+      </InfoCard>
+      <InfoCard>
+        <Icon name="smile" size="24" slot="icon" />
+        <Text size="xl" weight="medium" font="pally" slot="title">Une salle à s'approprier !</Text>
+        <Text slot="description">
+          Nous souhaitons que la carte postale soit un lieu vivant ou plein de personnes se croisent et pour cela vous
+          pouvez venir utiliser la salle pour vos réunions, conférences et ateliers le matin, l'après-midi, le soir ou
+          le week-end. Nous proposons des accueils petits déjeuner, des formules apéro.. et autant d'idées que ce que
+          vous avez dans la tête...
+        </Text>
+      </InfoCard>
+      <InfoCard>
+        <Icon name="smile" size="24" slot="icon" />
+        <Text size="xl" weight="medium" font="pally" slot="title">Un espace de cuisine partagée en lancement !</Text>
+        <Text slot="description">
+          N'hésitez pas à parler à nos collègues de la mise à disposition de l'espace de cuisine partagé. Pour se tester
+          ou se lancer, pour un besoin ponctuel, notre grand espace de production est l'endroit révé pour produire
+          ensemble. Ouverture progressive début 2026...
+        </Text>
+      </InfoCard>
+    </div>
+  </Container>
+</Section>

@@ -1,0 +1,184 @@
+---
+import { Image } from 'astro:assets'
+import Badge from '@/components/badge.astro'
+import Container from '@/components/container.astro'
+import HeadingBadges from '@/components/heading-badges.astro'
+import Section from '@/components/section.astro'
+import SpotlightCard from '@/components/spotlight-card.astro'
+// Import du composant factorisé
+import coopcycleImage from '../images/wattignies-residents-coopcycle.webp'
+import desHistoiresDeSiegesImage from '../images/wattignies-residents-des-histoires-de-sieges.webp'
+import etMaDoucheImage from '../images/wattignies-residents-et-ma-douche.webp'
+import laBrocanteVerteImage from '../images/wattignies-residents-la-brocante-verte.webp'
+import laClocheImage from '../images/wattignies-residents-la-cloche.webp'
+import latelierDuWattImage from '../images/wattignies-residents-latelier-du-watt.webp'
+import lesCoursiersNantaisImage from '../images/wattignies-residents-les-coursiers-nantais.webp'
+// Import des images des cartes
+import lesGirouettesImage from '../images/wattignies-residents-les-girouettes.webp'
+import marcelChineImage from '../images/wattignies-residents-marcel-chine.webp'
+import nippesFriperieImage from '../images/wattignies-residents-nippes-friperie.webp'
+import sergeDeZolaImage from '../images/wattignies-residents-serge-de-zola.webp'
+import singaImage from '../images/wattignies-residents-singa.webp'
+// Import de l'étoile décorative
+import starImage from '../images/wattignies-residents-star.svg'
+---
+
+<Section overflow="hidden" class="relative">
+  <Container class="relative z-20 space-y-16 py-12 md:py-24">
+    <!-- LES STRUCTURES RÉSIDENTES -->
+    <div class="space-y-8 text-center">
+      <div class="space-y-16 pb-4">
+        <div class="inline-flex">
+          <HeadingBadges rows={2}>
+            <Badge variant="primary" class="-rotate-7" size="heading">Les structures</Badge>
+            <Badge variant="secondary" class="translate-x-1 translate-y-4 rotate-4" size="heading">résidentes</Badge>
+          </HeadingBadges>
+        </div>
+      </div>
+
+      <div class="relative mx-auto mt-32 grid max-w-max grid-cols-1 gap-6 md:mt-0 md:grid-cols-2 lg:grid-cols-3">
+        <Image
+          src={starImage}
+          alt=""
+          aria-hidden="true"
+          class="absolute -top-28 -left-24 h-60 w-60"
+          width={240}
+          height={240}
+        />
+        <Image
+          src={starImage}
+          alt=""
+          aria-hidden="true"
+          class="absolute -right-[183px] -bottom-[183px] h-[356px] w-[356px]"
+          width={356}
+          height={356}
+        />
+        <SpotlightCard
+          image={lesGirouettesImage}
+          title="LES GIROUETTES"
+          description="Recyclerie créative"
+          tagColor="green"
+          alt="Les Girouettes - Recyclerie créative"
+        />
+
+        <SpotlightCard
+          image={singaImage}
+          title="SINGA"
+          description="Association engagée pour l'inclusion des personnes migrantes"
+          tagColor="blue"
+          alt="SINGA - Association pour l'inclusion des migrants"
+        />
+
+        <SpotlightCard
+          image={nippesFriperieImage}
+          title="NIPPES FRIPERIE"
+          description="Mode & vintage"
+          tagColor="red"
+          alt="Nippes Friperie - Mode & vintage"
+        />
+
+        <SpotlightCard
+          image={marcelChineImage}
+          title="MARCEL CHINE"
+          description="Brocante d'objets et de mobilier spécifique"
+          tagColor="yellow"
+          alt="Marcel Chine - Brocante d'objets et mobilier"
+        />
+
+        <SpotlightCard
+          image={sergeDeZolaImage}
+          title="SERGE DE ZOLA"
+          description="Disquaire, disque vinyle, CD et BD"
+          tagColor="green"
+          alt="Serge de Zola - Disquaire, vinyles, CD et BD"
+        />
+
+        <SpotlightCard
+          image={laBrocanteVerteImage}
+          title="LA BROCANTE VERTE"
+          description="Ressourcerie de plantes par une activité d'insertion"
+          tagColor="blue"
+          alt="La Brocante Verte - Ressourcerie de plantes"
+        />
+
+        <SpotlightCard
+          image={latelierDuWattImage}
+          title="L'ATELIER DU WATT"
+          description="Service de réparation et d'entretien de vélos"
+          tagColor="red"
+          alt="L'Atelier du Watt - Réparation et entretien de vélos"
+        />
+
+        <SpotlightCard
+          image={laClocheImage}
+          title="LA CLOCHE"
+          description="Association œuvrant à créer des liens sociaux et à soutenir la réinsertion des personnes en grande précarité"
+          tagColor="yellow"
+          alt="La Cloche - Association de réinsertion sociale"
+        />
+
+        <SpotlightCard
+          image={desHistoiresDeSiegesImage}
+          title="DES HISTOIRES DE SIÈGES"
+          description="Tapissière décoratrice"
+          tagColor="green"
+          alt="Des Histoires de Sièges - Tapissier décorateur"
+        />
+      </div>
+    </div>
+
+    <!-- LES RÉSIDENT.ES DU WATT -->
+    <div class="space-y-8 text-center">
+      <div class="inline-flex">
+        <HeadingBadges rows={3}>
+          <Badge size="heading" variant="primary" rotation="-7" class="z-20 -rotate-7"> Les résident.es </Badge>
+          <Badge size="heading" variant="secondary" rotation="2" class="translate-y-2 md:-translate-x-8">
+            dans les coulisses
+          </Badge>
+          <Badge size="heading" variant="tertiary" rotation="-7" class="translate-x-20 translate-y-2 md:translate-x-44">
+            du Watt
+          </Badge>
+        </HeadingBadges>
+      </div>
+
+      <div class="relative mx-auto grid max-w-max grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <Image
+          src={starImage}
+          alt=""
+          aria-hidden="true"
+          class="absolute -right-20 -bottom-24 h-[178px] w-[178px]"
+          width={178}
+          height={178}
+        />
+
+        <SpotlightCard
+          image={lesCoursiersNantaisImage}
+          title="LES COURSIERS NANTAIS/NAO FOOD"
+          description="Collectif de cousier.ères à vélo"
+          tagColor="green"
+          alt="Les Coursiers Nantais/NAO Food - Collectif de coursiers à vélo"
+          class="[&_[data-slot='title']]:py-2.5 [&_[data-slot='title']]:text-xl"
+          href="https://www.lescoursiersnantais.fr/"
+        />
+
+        <SpotlightCard
+          image={coopcycleImage}
+          title="COOPCYCLE"
+          description="Fédération de coopératives de livraison et de logistique à vélo"
+          tagColor="blue"
+          alt="COOPCYCLE - Fédération de coopératives de livraison"
+          href="https://coopcycle.org/fr/"
+        />
+
+        <SpotlightCard
+          image={etMaDoucheImage}
+          title="ET MA DOUCHE"
+          description="Association engagée dans la lutte contre les inégalités sanitaires"
+          tagColor="red"
+          alt="Et Ma Douche - Lutte contre les inégalités sanitaires"
+          href="https://etmadouche.fr/"
+        />
+      </div>
+    </div>
+  </Container>
+</Section>

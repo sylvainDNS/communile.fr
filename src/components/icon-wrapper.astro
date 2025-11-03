@@ -1,0 +1,58 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import type { VariantProps } from 'class-variance-authority'
+import { cva } from 'class-variance-authority'
+
+import { cn } from '../utils/style'
+
+const iconWrapperVariants = cva('inline-flex items-center justify-center', {
+  variants: {
+    variant: {
+      default: 'bg-neutral-200 text-neutral-800',
+      primary: 'bg-primary text-white',
+      secondary: 'bg-secondary text-white',
+      tertiary: 'bg-tertiary text-white',
+      white: 'bg-white text-neutral-800',
+      transparent: 'bg-transparent',
+    },
+    size: {
+      sm: 'w-8 h-8 p-1',
+      md: 'w-10 h-10 p-2',
+      lg: 'w-12 h-12 p-3',
+      xl: 'w-16 h-16 p-4',
+    },
+    shape: {
+      square: 'rounded-md',
+      rounded: 'rounded-lg',
+      circle: 'rounded-full',
+      xl: 'rounded-xl',
+    },
+    position: {
+      static: '',
+      relative: 'relative',
+      absolute: 'absolute',
+    },
+    placement: {
+      none: '',
+      'top-right': 'top-4 right-4',
+      'bottom-right': 'bottom-4 right-4',
+      'top-left': 'top-4 left-4',
+      'bottom-left': 'bottom-4 left-4',
+    },
+  },
+  defaultVariants: {
+    variant: 'default',
+    size: 'md',
+    shape: 'rounded',
+    position: 'static',
+    placement: 'none',
+  },
+})
+
+type Props = HTMLAttributes<'span'> & VariantProps<typeof iconWrapperVariants>
+const { class: className, variant, size, shape, position, placement, ...delegated } = Astro.props
+---
+
+<span class={cn(iconWrapperVariants({ variant, size, shape, position, placement }), className)} {...delegated}>
+  <slot />
+</span>

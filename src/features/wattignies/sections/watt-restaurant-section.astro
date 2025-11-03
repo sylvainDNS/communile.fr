@@ -1,0 +1,56 @@
+---
+import { Image } from 'astro:assets'
+import Badge from '@/components/badge.astro'
+import Card from '@/components/card.astro'
+import Container from '@/components/container.astro'
+import HeadingBadges from '@/components/heading-badges.astro'
+import Icon from '@/components/icon.astro'
+import Section from '@/components/section.astro'
+import Text from '@/components/text.astro'
+import wattigniesRestaurantImage from '../images/wattignies-le-restaurant.webp'
+---
+
+<Section variant="transparent">
+  <Container class="flex flex-col gap-12 lg:flex-row lg:items-center">
+    <div class="space-y-4">
+      <HeadingBadges rows={2}>
+        <Badge size="heading" variant="primary" rotation="-7" class="-rotate-7">Le restaurant</Badge>
+        <Badge size="heading" variant="secondary" rotation="-5" class="translate-x-1 -translate-y-2 -rotate-5"
+          >du Wattignies</Badge
+        >
+      </HeadingBadges>
+      <Text class="mt-12 lg:max-w-lg">
+        Jean et son·sa alternant·e élaborent chaque semaine des menus végétariens, variés, préparés avec des produits
+        frais issus directement de notre ferme.
+      </Text>
+      <Text class="lg:max-w-lg">
+        De la fourche à la fourchette, nous mettons un point d’honneur à garantir qualité et saveurs. Nos prix, justes
+        et abordables reflètent notre engagement à rendre une cuisine de qualité accessible au plus grand nombre.
+      </Text>
+      <p class="font-pally text-2xl font-bold">Vous pouvez même prendre à emporter !</p>
+      <Text class="lg:max-w-lg">
+        Grâce aux Tupperwares mis à disposition et à un système de consigne, il est désormais possible de prendre vos
+        repas à emporter !
+      </Text>
+    </div>
+    <div class="flex h-full flex-1 flex-col justify-center gap-4">
+      <Card class="">
+        <div class="flex items-center gap-4">
+          <div class="flex size-10 items-center justify-center rounded-xl bg-neutral-200">
+            <Icon name="timer" size="24" />
+          </div>
+          <Text class="font-pally text-xl font-semibold text-foreground/80 md:text-2xl">
+            Retrouvez-nous tous les jours du lundi au vendredi, de <span class="font-bold text-foreground">12h00</span>
+            à <span class="font-bold text-foreground">14h00</span>
+          </Text>
+        </div>
+      </Card>
+      <Image
+        src={wattigniesRestaurantImage}
+        alt="Le restaurant du Wattignies"
+        class="h-full w-full rounded-2xl object-cover"
+        widths={[330, 400, 540, wattigniesRestaurantImage.width]}
+      />
+    </div>
+  </Container>
+</Section>

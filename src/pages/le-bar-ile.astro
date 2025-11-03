@@ -1,0 +1,20 @@
+---
+import BarIleFaqSection from '@/features/bar-ile/sections/bar-ile-faq-section.astro'
+import BarIleHeroSection from '@/features/bar-ile/sections/bar-ile-hero-section.astro'
+import BarIleRestaurantSection from '@/features/bar-ile/sections/bar-ile-restaurant-section.astro'
+import BarIleWhatSection from '@/features/bar-ile/sections/bar-ile-what-section.astro'
+import Layout from '../layouts/main.astro'
+import BarIleBarDuSoirSection from '@/features/bar-ile/sections/bar-ile-bar-du-soir-section.astro'
+import BarIleAvisSection from '@/features/bar-ile/sections/bar-ile-avis-section.astro'
+import BarIleInstagramSection from '@/features/bar-ile/sections/bar-ile-instagram-section.astro'
+---
+
+<Layout theme="bar-ile" content={{ title: 'Le Bar ILE' }}>
+  <BarIleHeroSection />
+  <BarIleWhatSection />
+  <BarIleRestaurantSection />
+  <BarIleBarDuSoirSection />
+  <BarIleAvisSection />
+  <BarIleFaqSection />
+  <BarIleInstagramSection />
+</Layout>
