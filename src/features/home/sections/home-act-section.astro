@@ -12,6 +12,7 @@ import { cn } from '@/utils/style'
 ---
 
 <Section variant="accent" overflow="hidden" class="relative">
+  <ShapeHook01 role="presentation" aria-hidden="true" class="absolute -top-6 -right-6 text-primary" />
   <Container>
     <div class="mb-14 grid grid-cols-1 gap-y-6 md:grid-cols-2 lg:grid-cols-3">
       <HeadingBadges rows={3}>
@@ -22,7 +23,6 @@ import { cn } from '@/utils/style'
         <Badge variant="tertiary" size="heading" rotation="-11" class="translate-x-29 -translate-y-6"> d'agir </Badge>
       </HeadingBadges>
 
-      <ShapeHook01 role="presentation" aria-hidden="true" class="absolute -top-6 -right-6 text-primary" />
       <div class="relative lg:col-span-2">
         <div class="relative z-10 space-y-6">
           <HomeActCard iconName="trees">
