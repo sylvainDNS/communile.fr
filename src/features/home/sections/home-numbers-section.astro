@@ -5,10 +5,11 @@ import Icon from '@/components/icon.astro'
 import Section from '@/components/section.astro'
 import ShapeWaves01 from '@/images/shape-waves-01.svg'
 import ShapeWaves02 from '@/images/shape-waves-02.svg'
+import { SECTIONS } from '@/utils/constants'
 import HomeNumberCard from '../components/home-number-card.astro'
 ---
 
-<Section overflow="hidden">
+<Section overflow="hidden" id={SECTIONS.EN_QUELLES_CHIFFRES}>
   <Container>
     <ShapeWaves01
       role="presentation"

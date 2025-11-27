@@ -3,12 +3,13 @@ import Container from '@/components/container.astro'
 import Heading from '@/components/heading.astro'
 import Section from '@/components/section.astro'
 import HomeWhatCard from '@/features/home/components/home-what-card.astro'
+import { SECTIONS } from '@/utils/constants'
 import illuAccompagnerTransitionImage from '../images/communile-illu-accompagner-transition.webp'
 import illuCreerLienImage from '../images/communile-illu-creer-lien.webp'
 import illuCreerModeleImage from '../images/communile-illu-creer-modele.webp'
 ---
 
-<Section spacing="medium">
+<Section spacing="medium" id={SECTIONS.NOTRE_CONCEPT}>
   <Container>
     <Heading as="h2" size="lg" align="center"> Commun'Île, c'est quoi ? </Heading>
     <ul class="mt-6 grid grid-cols-1 gap-3 md:grid-cols-3 md:gap-12">

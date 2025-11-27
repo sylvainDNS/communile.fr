@@ -1,5 +1,12 @@
 export const SITE_NAME = 'Commun\'île'
 
+export const SECTIONS = {
+  QUI_SOMMES_NOUS: 'qui-sommes-nous',
+  NOTRE_CONCEPT: 'notre-concept',
+  EN_QUELLES_CHIFFRES: 'en-quelques-chiffres',
+  SCIC: 'scic',
+} as const
+
 export const PATH = {
   HOME: '/',
   LE_WATTIGNIES: '/le-wattignies',
@@ -11,4 +18,4 @@ export const PATH = {
   NOTRE_CONCEPT: '/#notre-concept',
   EN_QUELLES_CHIFFRES: '/#en-quelques-chiffres',
   SCIC: '/#scic',
-}
+} as const

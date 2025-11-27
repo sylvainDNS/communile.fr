@@ -5,7 +5,7 @@ import HeadingBadges from '@/components/heading-badges.astro'
 import PlaceCard from '@/components/place-card.astro'
 import Section from '@/components/section.astro'
 import Text from '@/components/text.astro'
-import { PATH } from '@/utils/constants'
+import { PATH, SECTIONS } from '@/utils/constants'
 import leBarIleCardImage from '../images/le-bar-ile-card.webp'
 import leLaboDivaCardImage from '../images/le-labo-diva-card.webp'
 import leWattigniesCardImage from '../images/le-wattignies-card.webp'
@@ -13,7 +13,7 @@ import lesLandesFertilesCardImage from '../images/les-landes-fertiles-card.webp'
 import laCartePostaleCardImage from '../images/la-carte-postale-card.webp'
 ---
 
-<Section>
+<Section id={SECTIONS.QUI_SOMMES_NOUS}>
   <Container class="grid grid-cols-1 space-y-3 md:grid-cols-3">
     <div class="max-w-md space-y-4">
       <HeadingBadges rows={2}>
