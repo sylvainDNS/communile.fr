@@ -10,9 +10,39 @@ import LaboDivaLocationSection from '@/features/le-labo-diva/sections/le-labo-di
 import LaboDivaInstagramSection from '@/features/le-labo-diva/sections/le-labo-diva-instagram-section.astro'
 import LaboDivaWhatSection from '@/features/le-labo-diva/sections/le-labo-diva-what-section.astro'
 import Layout from '../layouts/main.astro'
+import { SITE_URL } from '../utils/constants'
+import laboDivaWhatImage from '@/features/le-labo-diva/images/le-labo-diva-what.webp'
+
+const description =
+  "Le Labo Diva est un lieu à Nantes proposant cantine, marché de producteurs, café-bar, coworking et location d'espaces. Un espace convivial et engagé."
+
+// Schema LocalBusiness JSON-LD
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'Le Labo Diva',
+  description: description,
+  url: `${SITE_URL}/le-labo-diva`,
+  image: `${SITE_URL}/communile-logo.webp`,
+  telephone: '+33788941741',
+  email: 'labodiva@communile.fr',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Nantes',
+    addressCountry: 'FR',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 47.204776,
+    longitude: -1.568215,
+  },
+}
 ---
 
-<Layout theme="labo-diva" content={{ title: 'Les labo-diva Fertiles' }}>
+<Layout theme="labo-diva" content={{ title: 'Le Labo Diva', description, image: laboDivaWhatImage }}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+  </Fragment>
   <LaboDivaHeroSection />
   <LaboDivaWhatSection />
   <LaboDivaCantineSection />

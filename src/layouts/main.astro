@@ -1,19 +1,50 @@
 ---
+import { getImage } from 'astro:assets'
 import Footer from '../components/footer.astro'
 import Header from '../components/header.astro'
-import { SITE_NAME } from '../utils/constants'
+import { DEFAULT_DESCRIPTION, SITE_NAME, SITE_URL } from '../utils/constants'
 import '../styles/global.css'
 
 interface Props {
   content?: {
     title?: string
+    description?: string
+    image?: ImageMetadata
   }
   theme?: 'default' | 'wattignies' | 'landes-fertiles' | 'labo-diva' | 'bar-ile' | 'la-carte-postale'
+  noindex?: boolean
 }
 
-const { content, theme } = Astro.props
+const { content, theme, noindex = false } = Astro.props
 
 const title = content?.title ? `${content.title} · ${SITE_NAME}` : SITE_NAME
+const description = content?.description || DEFAULT_DESCRIPTION
+const canonicalURL = new URL(Astro.url.pathname, SITE_URL)
+
+let ogImageUrl = `${SITE_URL}/communile-logo.webp`
+if (content?.image) {
+  const optimizedImage = await getImage({ src: content.image, width: 1200 })
+  ogImageUrl = new URL(optimizedImage.src, Astro.url).href
+}
+
+// Schema Organization JSON-LD
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: SITE_NAME,
+  url: SITE_URL,
+  logo: `${SITE_URL}/communile-logo.webp`,
+  description: DEFAULT_DESCRIPTION,
+  email: 'contact@communile.fr',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Rue de Wattignies',
+    addressLocality: 'Lille',
+    postalCode: '59000',
+    addressCountry: 'FR',
+  },
+  sameAs: [],
+}
 ---
 
 <html lang="fr">
@@ -21,8 +52,35 @@ const title = content?.title ? `${content.title} · ${SITE_NAME}` : SITE_NAME
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    {/* Open Graph */}
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:url" content={canonicalURL.href} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:locale" content="fr_FR" />
+
+    {/* Twitter Card */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    {/* Canonical URL */}
+    <link rel="canonical" href={canonicalURL.href} />
+
+    {/* Schema.org JSON-LD - Organization */}
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)}></script>
+
+    <slot name="head" />
+
     {
       import.meta.env.PROD && (
+        <>
         <script
           is:inline
           slot="head"
@@ -45,6 +103,7 @@ const title = content?.title ? `${content.title} · ${SITE_NAME}` : SITE_NAME
               ;(window.plausible.q = window.plausible.q || []).push(arguments)
             }
         </script>
+        </>
     )}
   </head>
   <body data-theme={theme} class="min-h-screen bg-background px-2 pb-4 text-foreground md:px-4">

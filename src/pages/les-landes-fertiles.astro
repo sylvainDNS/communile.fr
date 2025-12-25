@@ -8,9 +8,13 @@ import LandesPartnersSection from '@/features/landes-fertiles/sections/landes-pa
 import LandesInstagramSection from '@/features/landes-fertiles/sections/landes-instagram-section.astro'
 import LandesWhatSection from '@/features/landes-fertiles/sections/landes-what-section.astro'
 import Layout from '../layouts/main.astro'
+import landesWhatImage from '@/features/landes-fertiles/images/landes-what.webp'
+
+const description =
+  "Les Landes Fertiles est la ferme maraîchère bio de Commun'île. Découvrez nos légumes de saison, nos points de vente et comment participer à la vie de la ferme."
 ---
 
-<Layout theme="landes-fertiles" content={{ title: 'Les Landes Fertiles' }}>
+<Layout theme="landes-fertiles" content={{ title: 'Les Landes Fertiles', description, image: landesWhatImage }}>
   <LandesHeroSection />
   <LandesWhatSection />
   <LandesPartnersSection />

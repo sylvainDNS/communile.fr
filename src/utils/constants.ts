@@ -1,4 +1,7 @@
 export const SITE_NAME = 'Commun\'île'
+export const SITE_URL = 'https://communile.fr'
+export const DEFAULT_DESCRIPTION
+  = 'Commun\'île : offrir à toutes et tous des espaces ouverts, accessibles et des moments conviviaux, en proposant des produits et services de qualité, à prix juste.'
 
 export const SECTIONS = {
   QUI_SOMMES_NOUS: 'qui-sommes-nous',
