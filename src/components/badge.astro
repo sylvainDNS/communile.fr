@@ -21,15 +21,15 @@ const badgeVariants = cva('inline-block font-pally font-medium', {
       square: 'rounded-md',
     },
     size: {
-      sm: 'px-2 py-1 text-sm',
-      md: 'px-4 py-2 text-base',
-      lg: 'px-6 py-3 text-lg',
-      xl: 'px-8 py-4 text-xl',
+      'sm': 'px-2 py-1 text-sm',
+      'md': 'px-4 py-2 text-base',
+      'lg': 'px-6 py-3 text-lg',
+      'xl': 'px-8 py-4 text-xl',
       '2xl': 'px-4 py-2 text-3xl md:text-5xl',
-      heading: 'px-4 py-3 text-4xl md:text-5xl whitespace-nowrap font-bold',
+      'heading': 'px-4 py-3 text-4xl md:text-5xl whitespace-nowrap font-bold',
     },
     rotation: {
-      none: '',
+      'none': '',
       '1': 'rotate-1',
       '2': 'rotate-2',
       '3': 'rotate-3',
@@ -58,9 +58,9 @@ const badgeVariants = cva('inline-block font-pally font-medium', {
     },
     zIndex: {
       auto: '',
-      '10': 'z-10',
-      '20': 'z-20',
-      '30': 'z-30',
+      10: 'z-10',
+      20: 'z-20',
+      30: 'z-30',
     },
   },
   defaultVariants: {
@@ -87,60 +87,61 @@ const { class: className, variant, shape, size, rotation, position, zIndex, ...d
 </span>
 
 <script>
-  import { rootScope } from '@/utils/animation'
-  import { animate, stagger, text } from 'animejs'
+import { animate, stagger, text } from 'animejs'
+import { rootScope } from '@/utils/animation'
 
-  const initAnimation = () => {
-    const badges = document.querySelectorAll('[data-slot="badge"][data-size="heading"]')
+function initAnimation() {
+  const badges = document.querySelectorAll('[data-slot="badge"][data-size="heading"]')
 
-    if (badges.length) {
-      badges.forEach((badge) => {
-        const { chars } = text.split(badge as HTMLElement, {
-          chars: { wrap: true },
-        })
-
-        // Vérifier si l'élément est déjà visible au chargement
-        const rect = badge.getBoundingClientRect()
-        const isInitiallyVisible = rect.top < window.innerHeight && rect.bottom > 0
-
-        // Si l'élément est déjà visible au chargement, ne pas animer
-        if (isInitiallyVisible) {
-          return
-        }
-
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                rootScope.add((self) => {
-                  const reduceMotion = self?.matches.reducedMotion
-                  if (reduceMotion) return
-                  animate(badge, {
-                    scale: [0.9, 1],
-                    duration: 300,
-                    rotate: [0, 1, 0],
-                    easing: 'easeOutCubic',
-                  })
-                  animate(chars, {
-                    y: ['50%', '0%'],
-                    duration: 200,
-                    ease: 'out(3)',
-                    delay: stagger(20),
-                    alternate: true,
-                  })
-                })
-
-                observer.unobserve(badge)
-              }
-            })
-          },
-          {
-            threshold: 0.5,
-          },
-        )
-        observer.observe(badge)
+  if (badges.length) {
+    badges.forEach((badge) => {
+      const { chars } = text.split(badge as HTMLElement, {
+        chars: { wrap: true },
       })
-    }
+
+      // Vérifier si l'élément est déjà visible au chargement
+      const rect = badge.getBoundingClientRect()
+      const isInitiallyVisible = rect.top < window.innerHeight && rect.bottom > 0
+
+      // Si l'élément est déjà visible au chargement, ne pas animer
+      if (isInitiallyVisible) {
+        return
+      }
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              rootScope.add((self) => {
+                const reduceMotion = self?.matches.reducedMotion
+                if (reduceMotion)
+                  return
+                animate(badge, {
+                  scale: [0.9, 1],
+                  duration: 300,
+                  rotate: [0, 1, 0],
+                  easing: 'easeOutCubic',
+                })
+                animate(chars, {
+                  y: ['50%', '0%'],
+                  duration: 200,
+                  ease: 'out(3)',
+                  delay: stagger(20),
+                  alternate: true,
+                })
+              })
+
+              observer.unobserve(badge)
+            }
+          })
+        },
+        {
+          threshold: 0.5,
+        },
+      )
+      observer.observe(badge)
+    })
   }
-  initAnimation()
+}
+initAnimation()
 </script>

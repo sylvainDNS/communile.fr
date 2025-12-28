@@ -1,60 +1,60 @@
 ---
+import laCartePostaleWhatImage from '@/features/la-carte-postale/images/la-carte-postale-what.webp'
+import LaCarePostaleAvisSection from '@/features/la-carte-postale/sections/la-carte-postale-avis-section.astro'
+import LaCarePostaleEquipeSection from '@/features/la-carte-postale/sections/la-carte-postale-equipe-section.astro'
 import LaCarePostaleFaqSection from '@/features/la-carte-postale/sections/la-carte-postale-faq-section.astro'
 import LaCarePostaleHeroSection from '@/features/la-carte-postale/sections/la-carte-postale-hero-section.astro'
+import LaCarePostaleInstagramSection from '@/features/la-carte-postale/sections/la-carte-postale-instagram-section.astro'
 import LaCarePostaleRestaurantSection from '@/features/la-carte-postale/sections/la-carte-postale-restaurant-section.astro'
 import LaCarePostaleWhatSection from '@/features/la-carte-postale/sections/la-carte-postale-what-section.astro'
 import Layout from '../layouts/main.astro'
-import LaCarePostaleAvisSection from '@/features/la-carte-postale/sections/la-carte-postale-avis-section.astro'
-import LaCarePostaleEquipeSection from '@/features/la-carte-postale/sections/la-carte-postale-equipe-section.astro'
-import LaCarePostaleInstagramSection from '@/features/la-carte-postale/sections/la-carte-postale-instagram-section.astro'
 import { SITE_URL } from '../utils/constants'
-import laCartePostaleWhatImage from '@/features/la-carte-postale/images/la-carte-postale-what.webp'
 
-const description =
-  'À La Carte Postale est une cantine du midi et restaurant de partage à Nantes. Cuisine végétale et locale, espace de cuisine partagée. Réservation conseillée.'
+const description
+  = 'À La Carte Postale est une cantine du midi et restaurant de partage à Nantes. Cuisine végétale et locale, espace de cuisine partagée. Réservation conseillée.'
 
 // Schema Restaurant JSON-LD
 const restaurantSchema = {
   '@context': 'https://schema.org',
   '@type': 'Restaurant',
-  name: 'À La Carte Postale',
-  description: description,
-  url: `${SITE_URL}/a-la-carte-postale`,
-  image: `${SITE_URL}/communile-logo.webp`,
-  telephone: '+33759557814',
-  email: 'alacartepostale@communile.fr',
-  address: {
+  'name': 'À La Carte Postale',
+  'description': description,
+  'url': `${SITE_URL}/a-la-carte-postale`,
+  'image': `${SITE_URL}/communile-logo.webp`,
+  'telephone': '+33759557814',
+  'email': 'alacartepostale@communile.fr',
+  'address': {
     '@type': 'PostalAddress',
-    addressLocality: 'Nantes',
-    addressCountry: 'FR',
+    'addressLocality': 'Nantes',
+    'addressCountry': 'FR',
   },
-  geo: {
+  'geo': {
     '@type': 'GeoCoordinates',
-    latitude: 47.207252502441406,
-    longitude: -1.559303,
+    'latitude': 47.207252502441406,
+    'longitude': -1.559303,
   },
-  openingHoursSpecification: [
+  'openingHoursSpecification': [
     {
       '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
-      opens: '09:00',
-      closes: '17:00',
+      'dayOfWeek': ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+      'opens': '09:00',
+      'closes': '17:00',
     },
     {
       '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Friday'],
-      opens: '09:00',
-      closes: '15:00',
+      'dayOfWeek': ['Friday'],
+      'opens': '09:00',
+      'closes': '15:00',
     },
   ],
-  servesCuisine: 'Végétarien',
-  priceRange: '€€',
+  'servesCuisine': 'Végétarien',
+  'priceRange': '€€',
 }
 ---
 
 <Layout theme="la-carte-postale" content={{ title: 'À La Carte Postale', description, image: laCartePostaleWhatImage }}>
   <Fragment slot="head">
-    <script type="application/ld+json" set:html={JSON.stringify(restaurantSchema)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(restaurantSchema)} />
   </Fragment>
   <LaCarePostaleHeroSection />
   <LaCarePostaleWhatSection />

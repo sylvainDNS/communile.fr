@@ -1,4 +1,5 @@
 ---
+import wattigniesWhatImage from '@/features/wattignies/images/wattignies-what.webp'
 import WattAvisSection from '@/features/wattignies/sections/watt-avis-section.astro'
 import WattBarProgSection from '@/features/wattignies/sections/watt-bar-prog-section.astro'
 import WattFaqSection from '@/features/wattignies/sections/watt-faq-section.astro'
@@ -11,37 +12,36 @@ import WattRestaurantSection from '@/features/wattignies/sections/watt-restauran
 import WattCestQuoiSection from '@/features/wattignies/sections/watt-what-section.astro'
 import Layout from '../layouts/main.astro'
 import { SITE_URL } from '../utils/constants'
-import wattigniesWhatImage from '@/features/wattignies/images/wattignies-what.webp'
 
-const description =
-  "Le Wattignies est un tiers-lieu social à Nantes où la solidarité et l'inclusion occupent une place centrale. Restaurant, bar, programmation culturelle et 12 structures résidentes de l'ESS."
+const description
+  = 'Le Wattignies est un tiers-lieu social à Nantes où la solidarité et l\'inclusion occupent une place centrale. Restaurant, bar, programmation culturelle et 12 structures résidentes de l\'ESS.'
 
 // Schema LocalBusiness JSON-LD
 const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
-  name: 'Le Wattignies',
-  description: description,
-  url: `${SITE_URL}/le-wattignies`,
-  image: `${SITE_URL}/communile-logo.webp`,
-  telephone: '+33228495939',
-  email: 'wattignies@communile.fr',
-  address: {
+  'name': 'Le Wattignies',
+  'description': description,
+  'url': `${SITE_URL}/le-wattignies`,
+  'image': `${SITE_URL}/communile-logo.webp`,
+  'telephone': '+33228495939',
+  'email': 'wattignies@communile.fr',
+  'address': {
     '@type': 'PostalAddress',
-    addressLocality: 'Nantes',
-    addressCountry: 'FR',
+    'addressLocality': 'Nantes',
+    'addressCountry': 'FR',
   },
-  geo: {
+  'geo': {
     '@type': 'GeoCoordinates',
-    latitude: 47.20422,
-    longitude: -1.546397,
+    'latitude': 47.20422,
+    'longitude': -1.546397,
   },
 }
 ---
 
 <Layout theme="wattignies" content={{ title: 'Le Wattignies', description, image: wattigniesWhatImage }}>
   <Fragment slot="head">
-    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
   </Fragment>
   <WattHeroSection />
   <WattCestQuoiSection />

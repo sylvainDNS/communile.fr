@@ -1,66 +1,66 @@
 ---
+import barIleWhatImage from '@/features/bar-ile/images/bar-ile-what.webp'
+import BarIleAvisSection from '@/features/bar-ile/sections/bar-ile-avis-section.astro'
+import BarIleBarDuSoirSection from '@/features/bar-ile/sections/bar-ile-bar-du-soir-section.astro'
 import BarIleFaqSection from '@/features/bar-ile/sections/bar-ile-faq-section.astro'
 import BarIleHeroSection from '@/features/bar-ile/sections/bar-ile-hero-section.astro'
+import BarIleInstagramSection from '@/features/bar-ile/sections/bar-ile-instagram-section.astro'
 import BarIleRestaurantSection from '@/features/bar-ile/sections/bar-ile-restaurant-section.astro'
 import BarIleWhatSection from '@/features/bar-ile/sections/bar-ile-what-section.astro'
 import Layout from '../layouts/main.astro'
-import BarIleBarDuSoirSection from '@/features/bar-ile/sections/bar-ile-bar-du-soir-section.astro'
-import BarIleAvisSection from '@/features/bar-ile/sections/bar-ile-avis-section.astro'
-import BarIleInstagramSection from '@/features/bar-ile/sections/bar-ile-instagram-section.astro'
 import { SITE_URL } from '../utils/constants'
-import barIleWhatImage from '@/features/bar-ile/images/bar-ile-what.webp'
 
-const description =
-  "Le Bar'Île est un bistro de quartier et bar d'habitué·es à Nantes. Restaurant végétarien du midi, bar du soir avec programmation culturelle. Réservation conseillée."
+const description
+  = 'Le Bar\'Île est un bistro de quartier et bar d\'habitué·es à Nantes. Restaurant végétarien du midi, bar du soir avec programmation culturelle. Réservation conseillée.'
 
 // Schema Restaurant JSON-LD
 const restaurantSchema = {
   '@context': 'https://schema.org',
   '@type': 'Restaurant',
-  name: "Le Bar'Île",
-  description: description,
-  url: `${SITE_URL}/le-bar-ile`,
-  image: `${SITE_URL}/communile-logo.webp`,
-  telephone: '+33240478612',
-  email: 'barile@communile.fr',
-  address: {
+  'name': 'Le Bar\'Île',
+  'description': description,
+  'url': `${SITE_URL}/le-bar-ile`,
+  'image': `${SITE_URL}/communile-logo.webp`,
+  'telephone': '+33240478612',
+  'email': 'barile@communile.fr',
+  'address': {
     '@type': 'PostalAddress',
-    addressLocality: 'Nantes',
-    addressCountry: 'FR',
+    'addressLocality': 'Nantes',
+    'addressCountry': 'FR',
   },
-  geo: {
+  'geo': {
     '@type': 'GeoCoordinates',
-    latitude: 47.204802,
-    longitude: -1.548481,
+    'latitude': 47.204802,
+    'longitude': -1.548481,
   },
-  openingHoursSpecification: [
+  'openingHoursSpecification': [
     {
       '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      opens: '11:00',
-      closes: '15:00',
+      'dayOfWeek': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      'opens': '11:00',
+      'closes': '15:00',
     },
     {
       '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Tuesday', 'Wednesday'],
-      opens: '17:30',
-      closes: '22:30',
+      'dayOfWeek': ['Tuesday', 'Wednesday'],
+      'opens': '17:30',
+      'closes': '22:30',
     },
     {
       '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Thursday', 'Friday'],
-      opens: '17:30',
-      closes: '02:00',
+      'dayOfWeek': ['Thursday', 'Friday'],
+      'opens': '17:30',
+      'closes': '02:00',
     },
   ],
-  servesCuisine: 'Végétarien',
-  priceRange: '€€',
+  'servesCuisine': 'Végétarien',
+  'priceRange': '€€',
 }
 ---
 
 <Layout theme="bar-ile" content={{ title: 'Le Bar ILE', description, image: barIleWhatImage }}>
   <Fragment slot="head">
-    <script type="application/ld+json" set:html={JSON.stringify(restaurantSchema)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(restaurantSchema)} />
   </Fragment>
   <BarIleHeroSection />
   <BarIleWhatSection />

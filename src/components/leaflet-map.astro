@@ -80,7 +80,8 @@ const {
           <path
             fill-rule="evenodd"
             d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-            clip-rule="evenodd"></path>
+            clip-rule="evenodd"
+          ></path>
         </svg>
       </div>
       <p class="text-sm text-red-600">{errorText}</p>
@@ -105,130 +106,141 @@ const {
   }}
   is:inline
 >
-  // Configuration de la carte
-  const mapConfig = {
-    id: document.getElementById(id),
-    center,
-    zoom,
-    markers,
-    tileLayer,
-    controls: {
-      showControls,
-      scrollWheelZoom,
-      dragging,
-      touchZoom,
-      doubleClickZoom,
-      boxZoom,
-      keyboard,
-    },
+// Configuration de la carte
+const mapConfig = {
+  id: document.getElementById(id),
+  center,
+  zoom,
+  markers,
+  tileLayer,
+  controls: {
+    showControls,
+    scrollWheelZoom,
+    dragging,
+    touchZoom,
+    doubleClickZoom,
+    boxZoom,
+    keyboard,
+  },
+}
+
+function initMap() {
+  try {
+    if (typeof L === 'undefined') {
+      throw new TypeError('Leaflet library not loaded')
+    }
+
+    const map = L.map(mapConfig.id).setView(mapConfig.center, mapConfig.zoom)
+
+    if (!mapConfig.controls.scrollWheelZoom)
+      map.scrollWheelZoom.disable()
+    if (!mapConfig.controls.dragging)
+      map.dragging.disable()
+    if (!mapConfig.controls.touchZoom)
+      map.touchZoom.disable()
+    if (!mapConfig.controls.doubleClickZoom)
+      map.doubleClickZoom.disable()
+    if (!mapConfig.controls.boxZoom)
+      map.boxZoom.disable()
+    if (!mapConfig.controls.keyboard)
+      map.keyboard.disable()
+
+    L.tileLayer(mapConfig.tileLayer.url, {
+      maxZoom: mapConfig.tileLayer.maxZoom,
+      attribution: mapConfig.tileLayer.attribution,
+    }).addTo(map)
+
+    mapConfig.markers.forEach((markerData) => {
+      const marker = L.marker(markerData.position).addTo(map)
+
+      if (markerData.popup) {
+        marker.bindPopup(markerData.popup)
+      }
+    })
+
+    const skeleton = document.getElementById(`${id}-skeleton`)
+    if (skeleton) {
+      skeleton.style.display = 'none'
+    }
+
+    setTimeout(() => {
+      map.invalidateSize()
+    }, 100)
   }
+  catch {
+    const skeleton = document.getElementById(`${id}-skeleton`)
+    const errorDiv = document.getElementById(`${id}-error`)
 
-  function initMap() {
-    try {
-      if (typeof L === 'undefined') {
-        throw new TypeError('Leaflet library not loaded')
-      }
-
-      const map = L.map(mapConfig.id).setView(mapConfig.center, mapConfig.zoom)
-
-      if (!mapConfig.controls.scrollWheelZoom) map.scrollWheelZoom.disable()
-      if (!mapConfig.controls.dragging) map.dragging.disable()
-      if (!mapConfig.controls.touchZoom) map.touchZoom.disable()
-      if (!mapConfig.controls.doubleClickZoom) map.doubleClickZoom.disable()
-      if (!mapConfig.controls.boxZoom) map.boxZoom.disable()
-      if (!mapConfig.controls.keyboard) map.keyboard.disable()
-
-      L.tileLayer(mapConfig.tileLayer.url, {
-        maxZoom: mapConfig.tileLayer.maxZoom,
-        attribution: mapConfig.tileLayer.attribution,
-      }).addTo(map)
-
-      mapConfig.markers.forEach((markerData) => {
-        const marker = L.marker(markerData.position).addTo(map)
-
-        if (markerData.popup) {
-          marker.bindPopup(markerData.popup)
-        }
-      })
-
-      const skeleton = document.getElementById(`${id}-skeleton`)
-      if (skeleton) {
-        skeleton.style.display = 'none'
-      }
-
-      setTimeout(() => {
-        map.invalidateSize()
-      }, 100)
-    } catch {
-      const skeleton = document.getElementById(`${id}-skeleton`)
-      const errorDiv = document.getElementById(`${id}-error`)
-
-      if (skeleton) skeleton.style.display = 'none'
-      if (errorDiv) {
-        errorDiv.classList.remove('hidden')
-        errorDiv.classList.add('flex')
-      }
+    if (skeleton)
+      skeleton.style.display = 'none'
+    if (errorDiv) {
+      errorDiv.classList.remove('hidden')
+      errorDiv.classList.add('flex')
     }
   }
+}
 
-  function loadLeaflet() {
-    return new Promise((resolve, reject) => {
-      if (typeof L !== 'undefined') {
-        resolve(L)
-        return
-      }
+function loadLeaflet() {
+  return new Promise((resolve, reject) => {
+    if (typeof L !== 'undefined') {
+      resolve(L)
+      return
+    }
 
-      const cssLink = document.createElement('link')
-      cssLink.rel = 'stylesheet'
-      cssLink.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css'
-      cssLink.integrity = 'sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY='
-      cssLink.crossOrigin = ''
-      document.head.appendChild(cssLink)
+    const cssLink = document.createElement('link')
+    cssLink.rel = 'stylesheet'
+    cssLink.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css'
+    cssLink.integrity = 'sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY='
+    cssLink.crossOrigin = ''
+    document.head.appendChild(cssLink)
 
-      const script = document.createElement('script')
-      script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js'
-      script.integrity = 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo='
-      script.crossOrigin = ''
+    const script = document.createElement('script')
+    script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js'
+    script.integrity = 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo='
+    script.crossOrigin = ''
 
-      script.onload = () => {
-        setTimeout(() => resolve(L), 100)
-      }
+    script.onload = () => {
+      setTimeout(() => resolve(L), 100)
+    }
 
-      script.onerror = () => {
-        reject(new Error('Failed to load Leaflet library'))
-      }
+    script.onerror = () => {
+      reject(new Error('Failed to load Leaflet library'))
+    }
 
-      document.head.appendChild(script)
-    })
-  }
+    document.head.appendChild(script)
+  })
+}
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-      loadLeaflet()
-        .then(() => initMap())
-        .catch((_error) => {
-          const skeleton = document.getElementById(`${id}-skeleton`)
-          const errorDiv = document.getElementById(`${id}-error`)
-
-          if (skeleton) skeleton.style.display = 'none'
-          if (errorDiv) {
-            errorDiv.classList.remove('hidden')
-            errorDiv.classList.add('flex')
-          }
-        })
-    })
-  } else {
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
     loadLeaflet()
       .then(() => initMap())
       .catch((_error) => {
         const skeleton = document.getElementById(`${id}-skeleton`)
         const errorDiv = document.getElementById(`${id}-error`)
 
-        if (skeleton) skeleton.style.display = 'none'
+        if (skeleton)
+          skeleton.style.display = 'none'
         if (errorDiv) {
           errorDiv.classList.remove('hidden')
           errorDiv.classList.add('flex')
         }
       })
-  }
+  })
+}
+else {
+  loadLeaflet()
+    .then(() => initMap())
+    .catch((_error) => {
+      const skeleton = document.getElementById(`${id}-skeleton`)
+      const errorDiv = document.getElementById(`${id}-error`)
+
+      if (skeleton)
+        skeleton.style.display = 'none'
+      if (errorDiv) {
+        errorDiv.classList.remove('hidden')
+        errorDiv.classList.add('flex')
+      }
+    })
+}
 </script>
