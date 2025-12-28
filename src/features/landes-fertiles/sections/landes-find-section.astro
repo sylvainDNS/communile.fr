@@ -26,7 +26,7 @@ const infoCards: InfoCardType[] = [
     icon: 'smile',
     title: 'Dans nos restaurants',
     description:
-      "Nos cuisinier·es utilisent les produits que nous cultivons dans les plats gourmands de nos 4 restaurants sur l'île de Nantes. À retrouver au Wattignies, au Bar'île, À la Carte Postale et au Labo Diva.",
+      'Nos cuisinier·es utilisent les produits que nous cultivons dans les plats gourmands de nos 4 restaurants sur l\'île de Nantes. À retrouver au Wattignies, au Bar\'île, À la Carte Postale et au Labo Diva.',
   },
 ]
 ---
@@ -42,7 +42,7 @@ const infoCards: InfoCardType[] = [
         </HeadingBadges>
       </div>
       {
-        infoCards.map((infoCard) => (
+        infoCards.map(infoCard => (
           <InfoCard>
             <Icon name={infoCard.icon} size="24" slot="icon" />
             <Text size="xl" weight="medium" slot="title">

@@ -1,4 +1,5 @@
 ---
+import homeHeroImage from '@/features/home/images/communile-hero.webp'
 import HomeActSection from '@/features/home/sections/home-act-section.astro'
 import HomeChoicesSection from '@/features/home/sections/home-choices-section.astro'
 import HomeHeroSection from '@/features/home/sections/home-hero-section.astro'
@@ -7,9 +8,29 @@ import HomeNumbersSection from '@/features/home/sections/home-numbers-section.as
 import HomePlacesSection from '@/features/home/sections/home-places-section.astro'
 import HomeWhatSection from '@/features/home/sections/home-what-section.astro'
 import Layout from '../layouts/main.astro'
+import { SITE_URL } from '../utils/constants'
+
+const description
+  = 'Commun\'île est une coopérative qui propose des espaces ouverts et conviviaux à Lille et Nantes. Découvrez Le Wattignies, Le Labo Diva, Le Bar\'Île, À La Carte Postale et Les Landes Fertiles.'
+
+// Schema WebSite JSON-LD
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  'name': 'Commun\'île',
+  'url': SITE_URL,
+  'description': description,
+  'publisher': {
+    '@type': 'Organization',
+    'name': 'Commun\'île',
+  },
+}
 ---
 
-<Layout theme="default" content={{ title: 'Accueil' }}>
+<Layout theme="default" content={{ title: 'Accueil', description, image: homeHeroImage }}>
+  <Fragment slot="head">
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+  </Fragment>
   <HomeHeroSection />
   <HomePlacesSection />
   <HomeWhatSection />

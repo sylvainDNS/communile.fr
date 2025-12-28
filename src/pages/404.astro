@@ -7,9 +7,12 @@ import Section from '@/components/section.astro'
 import Text from '@/components/text.astro'
 import MainLayout from '@/layouts/main.astro'
 import { PATH } from '@/utils/constants'
+
+const description
+  = 'La page que vous cherchez n\'existe pas ou a été déplacée. Retournez à l\'accueil pour découvrir Commun\'île.'
 ---
 
-<MainLayout content={{ title: 'Page non trouvée' }} theme="default">
+<MainLayout content={{ title: 'Page non trouvée', description }} theme="default" noindex>
   <Section spacing="large">
     <Container class="flex flex-col items-center justify-center py-16 text-center">
       <div class="justify-items-center gap-3">

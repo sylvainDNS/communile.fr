@@ -30,7 +30,7 @@ const links = [
     href: PATH.LE_LABO_DIVA,
   },
   {
-    label: "Le Bar'Île",
+    label: 'Le Bar\'Île',
     href: PATH.LE_BAR_ILE,
   },
   {
@@ -53,7 +53,7 @@ const links = [
       <nav class="hidden xl:block" aria-label="Navigation principale">
         <ul class="flex items-center gap-0.5">
           {
-            links.map((link) => (
+            links.map(link => (
               <li>
                 <NavLink active={pathname === link.href} href={link.href}>
                   {link.label}
@@ -94,7 +94,7 @@ const links = [
           <nav aria-label="Navigation mobile" class="flex flex-1 items-center justify-center overflow-y-auto px-2 pt-2">
             <ul class="flex flex-col items-center justify-center gap-2 space-y-2 text-xl">
               {
-                links.map((link) => (
+                links.map(link => (
                   <li>
                     <NavLink active={pathname === link.href} href={link.href}>
                       {link.label}
@@ -108,154 +108,165 @@ const links = [
       </div>
     </div>
     <script>
-      import { animate, svg } from 'animejs'
+import { animate, svg } from 'animejs'
 
-      import { icons } from '@/utils/icons'
+import { icons } from '@/utils/icons'
 
-      const btn = document.getElementById('mobile-menu-button')
+const btn = document.getElementById('mobile-menu-button')
 
-      const overlay = document.getElementById('mobile-overlay')
-      const panel = document.getElementById('mobile-panel')
-      const headerRoot = document.querySelector('header')
+const overlay = document.getElementById('mobile-overlay')
+const panel = document.getElementById('mobile-panel')
+const headerRoot = document.querySelector('header')
 
-      let isOpen = false
-      let focusRestoreEl: HTMLElement | null = null
+let isOpen = false
+let focusRestoreEl: HTMLElement | null = null
 
-      // Icon paths from the icon component
-      const menuIconPaths = icons.menu.paths
-      const crossIconPaths = icons.cross.paths
+// Icon paths from the icon component
+const menuIconPaths = icons.menu.paths
+const crossIconPaths = icons.cross.paths
 
-      // Create reusable target path elements for morphing (simpler and faster than recreating each time)
-      function createPathEl(d: string) {
-        const el = document.createElementNS('http://www.w3.org/2000/svg', 'path')
-        el.setAttribute('d', d)
-        return el
-      }
+// Create reusable target path elements for morphing (simpler and faster than recreating each time)
+function createPathEl(d: string) {
+  const el = document.createElementNS('http://www.w3.org/2000/svg', 'path')
+  el.setAttribute('d', d)
+  return el
+}
 
-      const menuTargets = menuIconPaths.map(createPathEl)
-      const crossTargets = crossIconPaths.map(createPathEl)
+const menuTargets = menuIconPaths.map(createPathEl)
+const crossTargets = crossIconPaths.map(createPathEl)
 
-      function openMenu() {
-        if (isOpen) return
-        isOpen = true
-        focusRestoreEl = document.activeElement as HTMLElement | null
+function openMenu() {
+  if (isOpen)
+    return
+  isOpen = true
+  focusRestoreEl = document.activeElement as HTMLElement | null
 
-        overlay?.setAttribute('data-visible', 'true')
-        // Position overlay just below header
-        const headerHeight = headerRoot?.getBoundingClientRect().height || 0
-        if (overlay) overlay.style.setProperty('--mobile-overlay-top', `${headerHeight}px`)
-        btn?.setAttribute('aria-expanded', 'true')
+  overlay?.setAttribute('data-visible', 'true')
+  // Position overlay just below header
+  const headerHeight = headerRoot?.getBoundingClientRect().height || 0
+  if (overlay)
+    overlay.style.setProperty('--mobile-overlay-top', `${headerHeight}px`)
+  btn?.setAttribute('aria-expanded', 'true')
 
-        if (!panel) return
+  if (!panel)
+    return
 
-        animate(panel, {
-          clipPath: ['inset(0% 0% 100% 0%)', 'inset(0% 0% 0% 0%)'],
-          duration: 300,
-          ease: 'inExpo',
-        })
+  animate(panel, {
+    clipPath: ['inset(0% 0% 100% 0%)', 'inset(0% 0% 0% 0%)'],
+    duration: 300,
+    ease: 'inExpo',
+  })
 
-        morphMenuIcon(btn, true)
+  morphMenuIcon(btn, true)
 
-        const firstFocusable = overlay?.querySelector('a, button')
-        if (firstFocusable instanceof HTMLElement) firstFocusable.focus()
-      }
+  const firstFocusable = overlay?.querySelector('a, button')
+  if (firstFocusable instanceof HTMLElement)
+    firstFocusable.focus()
+}
 
-      function closeMenu() {
-        if (!isOpen) return
-        isOpen = false
+function closeMenu() {
+  if (!isOpen)
+    return
+  isOpen = false
 
-        btn?.setAttribute('aria-expanded', 'false')
+  btn?.setAttribute('aria-expanded', 'false')
 
-        let completed = 0
-        const done = () => {
-          completed += 1
-          if (completed >= 2) {
-            overlay?.setAttribute('data-visible', 'false')
-            if (focusRestoreEl instanceof HTMLElement) focusRestoreEl.focus()
-          }
-        }
+  let completed = 0
+  const done = () => {
+    completed += 1
+    if (completed >= 2) {
+      overlay?.setAttribute('data-visible', 'false')
+      if (focusRestoreEl instanceof HTMLElement)
+        focusRestoreEl.focus()
+    }
+  }
 
-        if (!panel) return
+  if (!panel)
+    return
 
-        animate(panel, {
-          clipPath: ['inset(0% 0% 0% 0%)', 'inset(0% 0% 100% 0%)'],
-          duration: 250,
-          ease: 'inBack',
-          onComplete: done,
-        })
+  animate(panel, {
+    clipPath: ['inset(0% 0% 0% 0%)', 'inset(0% 0% 100% 0%)'],
+    duration: 250,
+    ease: 'inBack',
+    onComplete: done,
+  })
 
-        morphMenuIcon(btn, false)
-      }
+  morphMenuIcon(btn, false)
+}
 
-      function morphMenuIcon(targetBtn: HTMLElement | null, isX: boolean) {
-        const svgElement = targetBtn?.querySelector('svg')
-        if (!svgElement) return
-        const paths = svgElement.querySelectorAll('path')
+function morphMenuIcon(targetBtn: HTMLElement | null, isX: boolean) {
+  const svgElement = targetBtn?.querySelector('svg')
+  if (!svgElement)
+    return
+  const paths = svgElement.querySelectorAll('path')
 
-        if (paths.length < 3) return
+  if (paths.length < 3)
+    return
 
-        const middle = paths[0]
-        const top = paths[1]
-        const bottom = paths[2]
+  const middle = paths[0]
+  const top = paths[1]
+  const bottom = paths[2]
 
-        if (isX) {
-          // Morph to cross icon
-          // Hide middle line
-          animate(middle, {
-            opacity: 0,
-            duration: 150,
-            ease: 'ease-in-out',
-          })
+  if (isX) {
+    // Morph to cross icon
+    // Hide middle line
+    animate(middle, {
+      opacity: 0,
+      duration: 150,
+      ease: 'ease-in-out',
+    })
 
-          // Morph top line to first diagonal
-          animate(top, {
-            d: svg.morphTo(crossTargets[0]),
-            duration: 260,
-            ease: 'ease-in-out',
-          })
+    // Morph top line to first diagonal
+    animate(top, {
+      d: svg.morphTo(crossTargets[0]),
+      duration: 260,
+      ease: 'ease-in-out',
+    })
 
-          // Morph bottom line to second diagonal
-          animate(bottom, {
-            d: svg.morphTo(crossTargets[1]),
-            duration: 260,
-            ease: 'ease-in-out',
-          })
-        } else {
-          // Morph back to menu icon
-          // Show middle line
-          animate(middle, {
-            opacity: 1,
-            duration: 150,
-            ease: 'ease-in-out',
-          })
+    // Morph bottom line to second diagonal
+    animate(bottom, {
+      d: svg.morphTo(crossTargets[1]),
+      duration: 260,
+      ease: 'ease-in-out',
+    })
+  }
+  else {
+    // Morph back to menu icon
+    // Show middle line
+    animate(middle, {
+      opacity: 1,
+      duration: 150,
+      ease: 'ease-in-out',
+    })
 
-          // Morph first diagonal back to top line
-          animate(top, {
-            d: svg.morphTo(menuTargets[1]),
-            duration: 260,
-            ease: 'ease-in-out',
-          })
+    // Morph first diagonal back to top line
+    animate(top, {
+      d: svg.morphTo(menuTargets[1]),
+      duration: 260,
+      ease: 'ease-in-out',
+    })
 
-          // Morph second diagonal back to bottom line
-          animate(bottom, {
-            d: svg.morphTo(menuTargets[2]),
-            duration: 260,
-            ease: 'ease-in-out',
-          })
-        }
-      }
+    // Morph second diagonal back to bottom line
+    animate(bottom, {
+      d: svg.morphTo(menuTargets[2]),
+      duration: 260,
+      ease: 'ease-in-out',
+    })
+  }
+}
 
-      btn?.addEventListener('click', () => {
-        if (isOpen) closeMenu()
-        else openMenu()
-      })
+btn?.addEventListener('click', () => {
+  if (isOpen)
+    closeMenu()
+  else openMenu()
+})
 
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && isOpen) {
-          e.preventDefault()
-          closeMenu()
-        }
-      })
-    </script>
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && isOpen) {
+    e.preventDefault()
+    closeMenu()
+  }
+})
+</script>
   </div>
 </header>

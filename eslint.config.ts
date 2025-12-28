@@ -1,10 +1,10 @@
 import antfu from '@antfu/eslint-config'
 
 export default antfu({
+  astro: true,
   formatters: {
-    astro: true,
     prettierOptions: {
-      plugins: ['prettier-plugin-tailwindcss', 'prettier-plugin-astro'],
+      plugins: ['prettier-plugin-tailwindcss'],
     },
   },
   typescript: true,

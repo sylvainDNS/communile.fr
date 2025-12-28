@@ -32,7 +32,7 @@ const iconType = fill ? 'fill' : selectedIcon.type || 'stroke'
 >
   {title && <title>{title}</title>}
   {
-    selectedIcon.paths.map((path) => (
+    selectedIcon.paths.map(path => (
       <path
         stroke-linecap={iconType === 'stroke' ? 'round' : undefined}
         stroke-linejoin={iconType === 'stroke' ? 'round' : undefined}
