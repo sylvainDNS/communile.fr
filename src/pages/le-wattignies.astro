@@ -39,10 +39,7 @@ const localBusinessSchema = {
 }
 ---
 
-<Layout theme="wattignies" content={{ title: 'Le Wattignies', description, image: wattigniesWhatImage }}>
-  <Fragment slot="head">
-    <script is:inline type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
-  </Fragment>
+<Layout theme="wattignies" content={{ title: 'Le Wattignies', description, image: wattigniesWhatImage, jsonLd: localBusinessSchema }}>
   <WattHeroSection />
   <WattCestQuoiSection />
   <WattRestaurantSection />

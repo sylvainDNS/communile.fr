@@ -58,10 +58,7 @@ const restaurantSchema = {
 }
 ---
 
-<Layout theme="bar-ile" content={{ title: 'Le Bar ILE', description, image: barIleWhatImage }}>
-  <Fragment slot="head">
-    <script is:inline type="application/ld+json" set:html={JSON.stringify(restaurantSchema)} />
-  </Fragment>
+<Layout theme="bar-ile" content={{ title: 'Le Bar ILE', description, image: barIleWhatImage, jsonLd: restaurantSchema }}>
   <BarIleHeroSection />
   <BarIleWhatSection />
   <BarIleRestaurantSection />

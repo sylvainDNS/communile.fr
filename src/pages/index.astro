@@ -27,10 +27,7 @@ const websiteSchema = {
 }
 ---
 
-<Layout theme="default" content={{ title: 'Accueil', description, image: homeHeroImage }}>
-  <Fragment slot="head">
-    <script is:inline type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
-  </Fragment>
+<Layout theme="default" content={{ title: 'Accueil', description, image: homeHeroImage, jsonLd: websiteSchema }}>
   <HomeHeroSection />
   <HomePlacesSection />
   <HomeWhatSection />

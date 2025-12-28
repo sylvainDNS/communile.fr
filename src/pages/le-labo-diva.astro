@@ -39,10 +39,7 @@ const localBusinessSchema = {
 }
 ---
 
-<Layout theme="labo-diva" content={{ title: 'Le Labo Diva', description, image: laboDivaWhatImage }}>
-  <Fragment slot="head">
-    <script is:inline type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
-  </Fragment>
+<Layout theme="labo-diva" content={{ title: 'Le Labo Diva', description, image: laboDivaWhatImage, jsonLd: localBusinessSchema }}>
   <LaboDivaHeroSection />
   <LaboDivaWhatSection />
   <LaboDivaCantineSection />

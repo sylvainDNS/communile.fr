@@ -9,12 +9,35 @@ import LandesInstagramSection from '@/features/landes-fertiles/sections/landes-i
 import LandesPartnersSection from '@/features/landes-fertiles/sections/landes-partners-section.astro'
 import LandesWhatSection from '@/features/landes-fertiles/sections/landes-what-section.astro'
 import Layout from '../layouts/main.astro'
+import { SITE_URL } from '../utils/constants'
 
 const description
   = 'Les Landes Fertiles est la ferme maraîchère bio de Commun\'île. Découvrez nos légumes de saison, nos points de vente et comment participer à la vie de la ferme.'
+
+// Schema LocalBusiness JSON-LD
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  'name': 'Les Landes Fertiles',
+  'description': description,
+  'url': `${SITE_URL}/les-landes-fertiles`,
+  'image': `${SITE_URL}/communile-logo.webp`,
+  'telephone': '+33759557814',
+  'email': 'landesfertiles@communile.fr',
+  'address': {
+    '@type': 'PostalAddress',
+    'addressLocality': 'Corcoué-sur-Logne',
+    'addressCountry': 'FR',
+  },
+  'geo': {
+    '@type': 'GeoCoordinates',
+    'latitude': 46.9872,
+    'longitude': -1.56799,
+  },
+}
 ---
 
-<Layout theme="landes-fertiles" content={{ title: 'Les Landes Fertiles', description, image: landesWhatImage }}>
+<Layout theme="landes-fertiles" content={{ title: 'Les Landes Fertiles', description, image: landesWhatImage, jsonLd: localBusinessSchema }}>
   <LandesHeroSection />
   <LandesWhatSection />
   <LandesPartnersSection />

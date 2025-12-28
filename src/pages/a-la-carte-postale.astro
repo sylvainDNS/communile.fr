@@ -58,10 +58,7 @@ const restaurantSchema = {
 }
 ---
 
-<Layout theme="la-carte-postale" content={{ title: 'À La Carte Postale', description, image: laCartePostaleWhatImage }}>
-  <Fragment slot="head">
-    <script is:inline type="application/ld+json" set:html={JSON.stringify(restaurantSchema)} />
-  </Fragment>
+<Layout theme="la-carte-postale" content={{ title: 'À La Carte Postale', description, image: laCartePostaleWhatImage, jsonLd: restaurantSchema }}>
   <LaCarePostaleHeroSection />
   <LaCarePostaleWhatSection />
   <LaCarePostaleRestaurantSection />

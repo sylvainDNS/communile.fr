@@ -10,6 +10,7 @@ interface Props {
   content?: {
     title?: string
     description?: string
+    jsonLd?: Record<string, unknown>
     image?: ImageMetadata
   }
   theme?: 'default' | 'wattignies' | 'landes-fertiles' | 'labo-diva' | 'bar-ile' | 'la-carte-postale'
@@ -28,23 +29,18 @@ if (content?.image) {
   ogImageUrl = new URL(optimizedImage.src, Astro.url).href
 }
 
-// Schema Organization JSON-LD
-const organizationSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  'name': SITE_NAME,
-  'url': SITE_URL,
-  'logo': `${SITE_URL}/communile-logo.webp`,
-  'description': DEFAULT_DESCRIPTION,
-  'email': 'contact@communile.fr',
-  'address': {
-    '@type': 'PostalAddress',
-    'streetAddress': 'Rue de Wattignies',
-    'addressLocality': 'Lille',
-    'postalCode': '59000',
-    'addressCountry': 'FR',
-  },
-  'sameAs': [],
+let jsonLd = content?.jsonLd
+if (!jsonLd) {
+  jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    'name': SITE_NAME,
+    'url': SITE_URL,
+    'logo': `${SITE_URL}/communile-logo.webp`,
+    'description': DEFAULT_DESCRIPTION,
+    'email': 'contact@communile.fr',
+    'sameAs': [],
+  }
 }
 ---
 
@@ -75,7 +71,7 @@ const organizationSchema = {
     <link rel="canonical" href={canonicalURL.href} />
 
     {/* Schema.org JSON-LD - Organization */}
-    <script is:inline type="application/ld+json" set:html={JSON.stringify(organizationSchema)}></script>
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
 
     <slot name="head" />
 
