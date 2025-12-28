@@ -23,7 +23,9 @@ const { href, image, imageAlt, tagColor, tagText, class: className = '' } = Astr
     src={image}
     alt={imageAlt}
     class="h-64 w-full object-cover transition-transform duration-300 group-hover:scale-105"
-    widths={[330, 400, 540, 720, image.width]}
+    widths={[330, 400, 540, 720, 960]}
+    loading="lazy"
+    height={256}
   />
   <span class="transition-opacity duration-300 group-hover:opacity-0">
     <Tag color={tagColor} class="absolute top-4 left-4 uppercase">

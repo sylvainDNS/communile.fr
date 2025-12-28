@@ -34,5 +34,13 @@ const { title, description, subtitle, image, class: className, ...delegated } = 
     </Text>
   </div>
   <div class="h-[200px] md:hidden"></div>
-  <Image width={200} src={image.src} alt={image.alt} class={cn('md:absolute bottom-0 right-0', image.class)} />
+  <Image
+    width={200}
+    height={200}
+    src={image.src}
+    alt={image.alt}
+    class={cn('md:absolute bottom-0 right-0', image.class)}
+    widths={[200, 300, 400]}
+    loading="lazy"
+  />
 </Card>
