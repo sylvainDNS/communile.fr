@@ -77,29 +77,31 @@ if (!jsonLd) {
 
     {
       import.meta.env.PROD && (
-        <>
-          <script
-            is:inline
-            slot="head"
-            defer
-            data-domain="communile.fr"
-            data-api="/mix/load/event"
-            src="/mix/load/script.js"
-          ></script>
-          <script>
-            declare global {
-              interface Window {
-                plausible: any
-              }
-            }
+        <script
+          is:inline
+          slot="head"
+          defer
+          data-domain="communile.fr"
+          data-api="/mix/load/event"
+          src="/mix/load/script.js"
+        ></script>
 
-            window.plausible = window.plausible || function (...args: unknown[]) {
-              ;(window.plausible.q = window.plausible.q || []).push(args)
-            }
-          </script>
-        </>
-      )
+        <script>
+  declare global {
+    interface Window {
+      plausible: any
     }
+  }
+
+  window.plausible
+    = window.plausible
+      || function () {
+      // eslint-disable-next-line prefer-rest-params
+        ;(window.plausible.q = window.plausible.q || []).push(arguments)
+      }
+  </script>
+    )
+}
   </head>
   <body data-theme={theme} class="min-h-screen bg-background px-2 pb-4 text-foreground md:px-4">
     <Header />
