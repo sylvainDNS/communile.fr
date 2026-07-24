@@ -15,7 +15,7 @@ const description
 ☀️ Café - Cantine timbrée et partagée
 🔵 Coopérative Commun'ile
 🌱 Légumes de notre ferme
-🕐 9h-16h30 lundi au vendredi
+🕐 Lun-Mar 9h-17h · Mer 9h-20h · Jeu-Ven 9h-23h
 📍10 rue de l’île Mabon Nantes
 `
 
@@ -42,15 +42,21 @@ const restaurantSchema = {
   'openingHoursSpecification': [
     {
       '@type': 'OpeningHoursSpecification',
-      'dayOfWeek': ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+      'dayOfWeek': ['Monday', 'Tuesday'],
       'opens': '09:00',
       'closes': '17:00',
     },
     {
       '@type': 'OpeningHoursSpecification',
-      'dayOfWeek': ['Friday'],
+      'dayOfWeek': ['Wednesday'],
       'opens': '09:00',
-      'closes': '15:00',
+      'closes': '20:00',
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      'dayOfWeek': ['Thursday', 'Friday'],
+      'opens': '09:00',
+      'closes': '23:00',
     },
   ],
   'servesCuisine': 'Végétarien',
