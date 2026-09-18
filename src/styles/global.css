@@ -87,6 +87,19 @@
   --color-la-carte-postale-neutral: oklch(0.1292 0.0415 265.15);
   --color-la-carte-postale-neutral-accent: oklch(0.0501 0.0086 264.05);
 
+  /* La Sibra */
+  --color-sibra-green: oklch(0.6214 0.1490 120.95);
+  --color-sibra-green-accent: oklch(0.5214 0.1490 120.95);
+
+  --color-sibra-pink: oklch(0.6469 0.1663 1.60);
+  --color-sibra-pink-accent: oklch(0.5469 0.1663 1.60);
+
+  --color-sibra-orange: oklch(0.7880 0.1707 69.98);
+  --color-sibra-orange-accent: oklch(0.6880 0.1707 69.98);
+
+  --color-sibra-neutral: oklch(0.1292 0.0415 265.15);
+  --color-sibra-neutral-accent: oklch(0.0501 0.0086 264.05);
+
   /* Common */
 
   --spacing-2k: 2000px;
@@ -226,5 +239,16 @@
     --theme-primary-accent: var(--color-la-carte-postale-alacp-blue-accent);
     --theme-secondary: var(--color-la-carte-postale-alcp-yellow);
     --theme-secondary-accent: var(--color-la-carte-postale-alcp-yellow-accent);
+  }
+
+  [data-theme='sibra'] {
+    --theme-primary: var(--color-sibra-green);
+    --theme-primary-accent: var(--color-sibra-green-accent);
+    --theme-secondary: var(--color-sibra-pink);
+    --theme-secondary-accent: var(--color-sibra-pink-accent);
+    --theme-tertiary: var(--color-sibra-orange);
+    --theme-tertiary-accent: var(--color-sibra-orange-accent);
+    --theme-quaternary: var(--color-sibra-neutral);
+    --theme-quaternary-accent: var(--color-sibra-neutral-accent);
   }
 }
