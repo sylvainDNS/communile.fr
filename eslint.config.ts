@@ -14,5 +14,8 @@ export default antfu({
     'public/**',
     'tmp/**',
     '**/*.css',
+    // outillage agent versionné tel quel (spec kit) : hors périmètre du lint projet
+    '.claude/**',
+    '.specify/**',
   ],
 })
