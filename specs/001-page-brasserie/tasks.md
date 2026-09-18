@@ -1,8 +1,10 @@
-# Tasks: Page « Les Bières de Charlotte »
+# Tasks: Page « La Sibra »
 
 **Input**: Design documents from `/specs/001-page-brasserie/`
 
-**Prerequisites**: plan.md, spec.md, research.md, data-model.md, contracts/, quickstart.md
+**Prerequisites**: plan.md, spec.md, research.md, data-model.md, contracts/, quickstart.md, assets/ (SVG proposés)
+
+**Révision 2026-09-18** : palette imposée par la charte (T004), SVG hero « bulles » (T007), nouveau texte source (T008, T009, T013, T022), liste des lieux revendeurs (T022), mise à jour Carte Postale (T018b), gate T029 réduit au téléphone/email/repères, nom du lieu tranché : « La Sibra » (T000). Correspondance issues GitHub : #59 (T001–T007), #60 (US1), #61 (US2), #62 (US5a), #63 (US5b), #64 (US3), #65 (US4), #66 (Polish), #67 (gate).
 
 **Tests**: Aucun framework de test dans le dépôt — pas de tâches de tests automatisés. La validation repose sur `pnpm build` (astro check), `pnpm lint` et la **vérification visuelle mobile + desktop** (demande explicite : s'assurer que le design avec les illustrations/shapes est bien conçu), intégrée à chaque story et en revue finale.
 
@@ -23,17 +25,21 @@
 
 ## Path Conventions
 
-Site Astro par features : pages dans `src/pages/`, feature dans `src/features/bieres-de-charlotte/{sections,images}/`, composants partagés dans `src/components/`, thèmes dans `src/styles/global.css`.
+Site Astro par features : pages dans `src/pages/`, feature dans `src/features/sibra/{sections,images}/`, composants partagés dans `src/components/`, thèmes dans `src/styles/global.css`.
 
 ---
+
+## Phase 0: Décision préalable
+
+- [x] T000 ✅ **Nom d'usage du lieu tranché le 2026-09-18 : « La Sibra »** (research.md R11) — artefacts mis à jour (URL `/la-sibra`, feature `sibra`, thème, `PATH.LA_SIBRA`, libellés, title, JSON-LD `name` + `alternateName`) ; reste à répercuter dans les titres des issues #59–#67 lors de la passe GitHub
 
 ## Phase 1: Setup
 
 **Purpose**: Préparer les assets et la constante de route utilisés par toutes les stories.
 
-- [ ] T001 [P] Convertir les 3 photos `brasserie-assets/1000016867.jpg` (boutique), `1000016868.jpg` (salle de brassage), `1000016869.jpg` (bouteilles) en webp optimisés (~1600 px max, qualité ~80, cf. research.md R6) vers `src/features/bieres-de-charlotte/images/bieres-de-charlotte-{boutique,brassage,bouteilles}.webp`
-- [ ] T002 [P] Créer le recadrage paysage (cadré sur le comptoir/tonneau de la photo boutique, sans déformation) `src/features/home/images/les-bieres-de-charlotte-card.webp` pour la `PlaceCard` de l'accueil (ratio type 800×256, prévoir largeur source ~1280 px pour le retina)
-- [ ] T003 [P] Ajouter `LES_BIERES_DE_CHARLOTTE: '/les-bieres-de-charlotte'` à l'objet `PATH` de `src/utils/constants.ts`
+- [ ] T001 [P] Convertir les 3 photos `brasserie-assets/1000016867.jpg` (boutique), `1000016868.jpg` (salle de brassage), `1000016869.jpg` (bouteilles) en webp optimisés (~1600 px max, qualité ~80, cf. research.md R6) vers `src/features/sibra/images/la-sibra-{boutique,brassage,bouteilles}.webp`
+- [ ] T002 [P] Créer le recadrage paysage (cadré sur le comptoir/tonneau de la photo boutique, sans déformation) `src/features/home/images/la-sibra-card.webp` pour la `PlaceCard` de l'accueil (ratio type 800×256, prévoir largeur source ~1280 px pour le retina)
+- [ ] T003 [P] Ajouter `LA_SIBRA: '/la-sibra'` à l'objet `PATH` de `src/utils/constants.ts`
 
 ---
 
@@ -43,10 +49,10 @@ Site Astro par features : pages dans `src/pages/`, feature dans `src/features/bi
 
 **⚠️ CRITICAL**: aucune story ne peut commencer avant la fin de cette phase.
 
-- [ ] T004 Déclarer les 6 couleurs nommées (`--color-bieres-de-charlotte-{amber,gold,brown}` + accents) dans le bloc `@theme` et le mapping `[data-theme='bieres-de-charlotte']` (`--theme-primary/secondary/tertiary/quaternary` + accents) dans `@layer base` de `src/styles/global.css`, selon `contracts/theme.md` ; vérifier au contrast checker que blanc sur `primary` et `tertiary` ≥ 4.5:1 et ajuster les valeurs oklch si besoin
-- [ ] T005 [P] Ajouter `'bieres-de-charlotte'` à l'union `Props['theme']` de `src/layouts/main.astro` (ligne ~16)
-- [ ] T006 Créer la page squelette `src/pages/les-bieres-de-charlotte.astro` : `Layout theme="bieres-de-charlotte"` avec `content={{ title: 'Les Bières de Charlotte', description }}` (description factuelle provisoire) ; vérifier que `/les-bieres-de-charlotte` rend en 200 via `pnpm dev`
-- [ ] T007 [P] Créer les SVG décoratifs du lieu dans `src/features/bieres-de-charlotte/images/` : `bieres-de-charlotte-hero-decoration.svg` et `bieres-de-charlotte-what-ornament.svg` (adapter les patrons existants type `la-carte-postale-hero-decoration.svg` / `shape-*.svg` de `src/images/`, en `currentColor` pour être teintés par `text-primary-accent` etc.)
+- [ ] T004 Déclarer les 8 couleurs nommées (`--color-sibra-{green,pink,orange,neutral}` + accents — valeurs **exactes** de la charte : vert `oklch(0.6214 0.1490 120.95)`, rose `oklch(0.6469 0.1663 1.60)`, orange `oklch(0.7880 0.1707 69.98)`, accents L −0,10) dans le bloc `@theme` et le mapping `[data-theme='sibra']` (`--theme-primary`=vert, `secondary`=rose, `tertiary`=orange, `quaternary`=neutre + accents) dans `@layer base` de `src/styles/global.css`, selon `contracts/theme.md` ; ne pas modifier les teintes de base — respecter les règles d'usage du contrat (texte courant `foreground` sur fonds bruts, blanc sur `-accent`, jamais de blanc sur orange)
+- [ ] T005 [P] Ajouter `'sibra'` à l'union `Props['theme']` de `src/layouts/main.astro` (ligne ~16)
+- [ ] T006 Créer la page squelette `src/pages/la-sibra.astro` : `Layout theme="sibra"` avec `content={{ title: 'La Sibra', description }}` (description factuelle provisoire) ; vérifier que `/la-sibra` rend en 200 via `pnpm dev`
+- [ ] T007 [P] Déplacer les SVG proposés `specs/001-page-brasserie/assets/sibra-hero-decoration.svg` (motif « bulles », research.md R3-bis) et `sibra-what-ornament.svg` (trois disques) vers `src/features/sibra/images/` ; vérifier qu'ils s'importent comme composants Astro (`import Deco from '../images/….svg'` puis `<Deco class="… text-primary-accent" />`, patron `la-carte-postale-hero-section.astro`) et que `currentColor` prend bien la teinte des classes `text-*-accent`
 
 **Checkpoint**: page vide accessible avec son thème — les stories peuvent démarrer.
 
@@ -56,15 +62,15 @@ Site Astro par features : pages dans `src/pages/`, feature dans `src/features/bi
 
 **Goal**: un visiteur comprend immédiatement ce qu'est le lieu, où il est, ce qui distingue sa bière — hero + « c'est quoi ? » + Instagram, avec l'identité visuelle propre.
 
-**Independent Test**: ouvrir `/les-bieres-de-charlotte` sans connaître la coopérative et comprendre le lieu, sa localisation (quartier St-Clément) et sa philosophie de brassage sans naviguer ailleurs (spec US1).
+**Independent Test**: ouvrir `/la-sibra` sans connaître la coopérative et comprendre le lieu, sa localisation (quartier St-Clément) et sa philosophie de brassage sans naviguer ailleurs (spec US1).
 
 ### Implementation for User Story 1
 
-- [ ] T008 [US1] Créer `src/features/bieres-de-charlotte/sections/bieres-de-charlotte-hero-section.astro` : identité typographique (pas de logo fourni) — `h1` « Les Bières de Charlotte » en `font-pally` + accroche « Le tout nouveau lieu de la coopérative ! », décorations `bieres-de-charlotte-hero-decoration.svg` positionnées en absolu et teintées thème (patron `la-carte-postale-hero-section.astro`)
-- [ ] T009 [P] [US1] Créer `src/features/bieres-de-charlotte/sections/bieres-de-charlotte-what-section.astro` (`Section variant="primary"`) : texte source intégral « La brasserie c'est quoi ? » (quartier St-Clément, anciens locaux, artisanal/local, non filtrée/non pasteurisée/sans conservateur ni clarifiant, FR-003), photo `bieres-de-charlotte-boutique.webp` (`<Image>` responsive, alt FR descriptif), ornement SVG, et mention « Retrouvez aussi les bières dans les autres lieux » avec liens `PATH.*` (FR-007)
-- [ ] T010 [P] [US1] Créer `src/features/bieres-de-charlotte/sections/bieres-de-charlotte-instagram-section.astro` : `InstagramFeed username="bieresdecharlotte"` sur le patron `la-carte-postale-instagram-section.astro` (FR-013)
-- [ ] T011 [US1] Assembler hero → what → instagram dans `src/pages/les-bieres-de-charlotte.astro` (les sections des phases suivantes s'inséreront entre what et instagram)
-- [ ] T012 [US1] **Vérification visuelle mobile (375 px) + desktop (≥ 1280 px)** du hero et du what : les illus/shapes ne chevauchent pas le texte, sont masquées ou repositionnées proprement en mobile (`hidden md:block` si besoin), la palette ambre/cuivre rend bien sur les photos, contrastes lisibles — ajuster positions/tailles/couleurs dans les sections et `src/styles/global.css` jusqu'à un rendu soigné
+- [ ] T008 [US1] Créer `src/features/sibra/sections/sibra-hero-section.astro` (patron `la-carte-postale-hero-section.astro`, `Section class="relative overflow-hidden bg-white"`) : deux décorations `sibra-hero-decoration.svg` (`absolute top-0 left-0 hidden w-[300px] md:block text-secondary-accent` et `absolute bottom-0 right-0 hidden w-[300px] rotate-180 md:block text-primary-accent`) ; au centre, en placeholder du logo pas encore fourni, le motif des trois disques de la charte en SVG inline (`fill="var(--color-tertiary)"`, `var(--color-secondary)`, `var(--color-primary)`, `aria-hidden`) ; nom « La Sibra » en `Heading` + `h1` accroche « De l'houblon à la pression » en `font-pally text-4xl md:text-5xl` (validée, research.md R3) ; le bloc disques + nom est un **placeholder logo** : l'annoter `<!-- TODO logo : remplacer par le logo de La Sibra dès réception -->`
+- [ ] T009 [P] [US1] Créer `src/features/sibra/sections/sibra-what-section.astro` (`Section variant="primary"`, patron `la-carte-postale-what-section.astro`) avec le texte source **du 2026-09-18** : accroche « Le tout nouveau lieu de la coopérative ! » (`Text size="xl" weight="semibold" color="white"`), paragraphe de présentation (« Véritable monument du quartier St Clément, la microbrasserie, anciennement Les Bières de Charlotte… chaque gorgée en appelle une autre. ») en texte courant couleur `foreground` (contraste, contrat thème), paragraphe « A l'image du lien entre notre ferme maraîchère et nos restaurants… L'aventure Commun'île y prend tout son sens ! » en `Text font="pally" size="xl" weight="semibold"` (FR-003), photo `sibra-boutique.webp` (`<Image>` responsive, alt FR descriptif), ornement `sibra-what-ornament.svg` (`absolute bottom-0 left-0 text-primary-accent`), et mention « Retrouvez aussi les bières dans les autres lieux de la coopérative et lors des marchés de la ferme des Landes Fertiles ! » avec liens `PATH.*` (FR-007)
+- [ ] T010 [P] [US1] Créer `src/features/sibra/sections/sibra-instagram-section.astro` : `InstagramFeed username="bieresdecharlotte"` sur le patron `la-carte-postale-instagram-section.astro` (FR-013)
+- [ ] T011 [US1] Assembler hero → what → instagram dans `src/pages/la-sibra.astro` (les sections des phases suivantes s'inséreront entre what et instagram)
+- [ ] T012 [US1] **Vérification visuelle mobile (375 px) + desktop (≥ 1280 px)** du hero et du what : les bulles et les trois disques ne chevauchent pas le texte, sont masqués ou repositionnés proprement en mobile (`hidden md:block` si besoin), la palette vert/rose/orange rend bien avec les photos, contrastes conformes au contrat thème (pas de texte courant blanc sur fond brut) — ajuster positions/tailles dans les sections (pas les teintes de base de `global.css`) jusqu'à un rendu soigné
 
 **Checkpoint**: MVP publiable — la page présente le lieu avec son identité propre.
 
@@ -78,9 +84,9 @@ Site Astro par features : pages dans `src/pages/`, feature dans `src/features/bi
 
 ### Implementation for User Story 2
 
-- [ ] T013 [US2] Créer `src/features/bieres-de-charlotte/sections/bieres-de-charlotte-boutique-section.astro` : horaires proéminents (vendredi 16 h–20 h, samedi 11 h–20 h — source `brasserie-assets/Texte site internet.md`, PAS l'archive), texte dégustation/« bouteilles ouvertes dans le frigo »/échange avec le brasseur (FR-004), photo `bieres-de-charlotte-bouteilles.webp` avec alt FR
-- [ ] T014 [US2] Géocoder « 121 rue du Général Buat, 44000 Nantes » (vérifier le point sur une carte) puis créer `src/features/bieres-de-charlotte/sections/bieres-de-charlotte-infos-section.astro` : adresse, repères (églises Saint-Clément/Saint-Donatien, Chronobus C1 « Chanzy »), téléphone `tel:+33633015663`, email `bce.brasserie@gmail.com` (FR-011, valeurs de data-model.md) + `LeafletMap` (center/marker/popup, patron `contact.astro`)
-- [ ] T015 [US2] Intégrer boutique + infos pratiques dans `src/pages/les-bieres-de-charlotte.astro` (après what) puis **vérification visuelle mobile + desktop** : horaires lisibles sans débordement horizontal à 375 px, carte responsive, décorations de sections bien placées
+- [ ] T013 [US2] Créer `src/features/sibra/sections/sibra-boutique-section.astro` : horaires proéminents (vendredi 16 h–20 h, samedi 11 h–20 h — source `brasserie-assets/Texte site internet.md`, PAS l'archive) avec l'adresse « au 121 rue du Général Buat » comme dans le texte source, texte dégustation/« bouteilles ouvertes dans le frigo »/échange avec le brasseur (FR-004), photo `sibra-bouteilles.webp` avec alt FR
+- [ ] T014 [US2] Géocoder « 121 rue du Général Buat, 44000 Nantes » (vérifier le point sur une carte) puis créer `src/features/sibra/sections/sibra-infos-section.astro` : adresse, repères (églises Saint-Clément/Saint-Donatien, Chronobus C1 « Chanzy »), téléphone `tel:+33633015663`, email `bce.brasserie@gmail.com` (FR-011, valeurs de data-model.md) + `LeafletMap` (center/marker/popup, patron `contact.astro`)
+- [ ] T015 [US2] Intégrer boutique + infos pratiques dans `src/pages/la-sibra.astro` (après what) puis **vérification visuelle mobile + desktop** : horaires lisibles sans débordement horizontal à 375 px, carte responsive, décorations de sections bien placées
 
 **Checkpoint**: US1 + US2 fonctionnelles — un visiteur peut préparer sa visite.
 
@@ -94,10 +100,11 @@ Site Astro par features : pages dans `src/pages/`, feature dans `src/features/bi
 
 ### Implementation for User Story 5
 
-- [ ] T016 [P] [US5] Ajouter `{ label: 'Les Bières de Charlotte', href: PATH.LES_BIERES_DE_CHARLOTTE }` en fin de `links` dans `src/components/header.astro`, puis **vérification visuelle** : nav desktop à 7 entrées sur une ligne au breakpoint `xl` (1280 px) sans débordement (sinon réduire `gap`/padding des `NavLink` ; libellé court « La Brasserie » en dernier recours, cf. research.md R7) et menu mobile fonctionnel (edge case spec)
-- [ ] T017 [P] [US5] Ajouter le `<li><Link href={PATH.LES_BIERES_DE_CHARLOTTE}>Les Bières de Charlotte</Link></li>` dans la colonne des lieux de `src/components/footer.astro` (FR-009)
-- [ ] T018 [US5] Dans `src/features/home/sections/home-places-section.astro` : ajouter la 6ᵉ `PlaceCard` (image `les-bieres-de-charlotte-card.webp`, alt FR descriptif, `tagColor` lisible sur la photo parmi `yellow|red|green|blue`, horaires boutique dans `hover-content`) et retirer la classe `md:mx-auto md:col-span-2 md:w-1/2` de la carte À La Carte Postale pour une grille 2×3 régulière (research.md R8) ; **vérification visuelle mobile + desktop** de la grille
-- [ ] T019 [P] [US5] Finaliser le SEO de `src/pages/les-bieres-de-charlotte.astro` : description définitive (≤ 160 car. utiles, patron des autres pages), `image` OG = photo du lieu, JSON-LD `@type: 'Brewery'` complet selon `contracts/page-et-seo.md` (adresse, geo de T014, horaires ven/sam, telephone, email, sameAs Instagram) ; valider sur https://validator.schema.org (0 erreur, FR-010)
+- [ ] T016 [P] [US5] Ajouter `{ label: 'La Sibra', href: PATH.LA_SIBRA }` en fin de `links` dans `src/components/header.astro`, puis **vérification visuelle** : nav desktop à 7 entrées sur une ligne au breakpoint `xl` (1280 px) sans débordement (sinon réduire `gap`/padding des `NavLink` ; libellé court « La Brasserie » en dernier recours, cf. research.md R7) et menu mobile fonctionnel (edge case spec)
+- [ ] T017 [P] [US5] Ajouter le `<li><Link href={PATH.LA_SIBRA}>La Sibra</Link></li>` dans la colonne des lieux de `src/components/footer.astro` (FR-009)
+- [ ] T018 [US5] Dans `src/features/home/sections/home-places-section.astro` : ajouter la 6ᵉ `PlaceCard` (image `la-sibra-card.webp`, alt FR descriptif, `tagColor="green"` de préférence — rappel du vert de la charte — ou autre parmi `yellow|red|blue` si illisible sur la photo, horaires boutique dans `hover-content`) et retirer la classe `md:mx-auto md:col-span-2 md:w-1/2` de la carte À La Carte Postale pour une grille 2×3 régulière (research.md R8) ; **vérification visuelle mobile + desktop** de la grille
+- [ ] T018b [P] [US5] Dans `src/features/la-carte-postale/sections/la-carte-postale-what-section.astro` (~l. 28), remplacer « C'est le dernier lieu né de la coopérative, … » par « C'est le quatrième restaurant de la coopérative, une brique supplémentaire pour solidifier notre plaidoyer en faveur d'une alimentation plus végétale et locale ! » (FR-015, research.md R10) ; `grep -rn "dernier lieu" src/` pour vérifier qu'aucune autre occurrence ne subsiste
+- [ ] T019 [P] [US5] Finaliser le SEO de `src/pages/la-sibra.astro` : description définitive (≤ 160 car. utiles, patron des autres pages), `image` OG = photo du lieu, JSON-LD `@type: 'Brewery'` complet selon `contracts/page-et-seo.md` (`name: 'La Sibra'`, `alternateName: 'Les Bières de Charlotte'`, adresse, geo de T014, horaires ven/sam, telephone, email, sameAs Instagram) ; valider sur https://validator.schema.org (0 erreur, FR-010)
 - [ ] T020 [P] [US5] Créer l'endpoint `src/pages/sitemap.xml.ts` : XML listant les 8 pages publiques (routes `PATH` sans ancres `/#` + `/contact`) en URLs absolues sur `SITE_URL`, `Content-Type: application/xml` (research.md R5, contrat page-et-seo.md)
 - [ ] T021 [P] [US5] Créer `public/robots.txt` : indexation autorisée + ligne `Sitemap: https://communile.fr/sitemap.xml`
 
@@ -113,7 +120,7 @@ Site Astro par features : pages dans `src/pages/`, feature dans `src/features/bi
 
 ### Implementation for User Story 3
 
-- [ ] T022 [US3] Créer `src/features/bieres-de-charlotte/sections/bieres-de-charlotte-bieres-section.astro` : deux blocs `InfoCard` (patron `landes-find-section.astro`) — « recettes classiques indémodables » (Blonde, Ambrée, Triple, Blanche ; mise en avant Carlota : recette héritée de Charlotte, inchangée depuis 15 ans) et « brassins éphémères saisonniers » (créativité du brasseur Simon) — + photo `bieres-de-charlotte-brassage.webp` avec alt FR ; intégrer entre boutique et tireuse dans `src/pages/les-bieres-de-charlotte.astro` ; **vérification visuelle mobile + desktop** (listes lisibles à 375 px, FR-005)
+- [ ] T022 [US3] Créer `src/features/sibra/sections/sibra-bieres-section.astro` : deux blocs `InfoCard` (patron `landes-find-section.astro`) — « recettes classiques indémodables » (Blonde, Ambrée, Triple, Blanche ; mise en avant Carlota : recette héritée de Charlotte, inchangée depuis 15 ans) et « brassins éphémères saisonniers » (créativité du brasseur Simon) — + photo `sibra-brassage.webp` avec alt FR ; en pied de section, bloc « Où retrouver nos bières ? » : `Tag` par lieu depuis une constante locale (Le Wattignies → lien `PATH.LE_WATTIGNIES`, `color="primary"` ; L'industrie, Ohmtown, Pioche sans lien — décision du 2026-09-18 —, `color="neutral"`) + « … et bien d'autres » (FR-014, data-model « Lieu revendeur » — aucune entrée inventée) ; intégrer entre boutique et tireuse dans `src/pages/la-sibra.astro` ; **vérification visuelle mobile + desktop** (listes lisibles à 375 px, FR-005)
 
 **Checkpoint**: le contenu « produit » de la page est complet.
 
@@ -127,7 +134,7 @@ Site Astro par features : pages dans `src/pages/`, feature dans `src/features/bi
 
 ### Implementation for User Story 4
 
-- [ ] T023 [US4] Créer `src/features/bieres-de-charlotte/sections/bieres-de-charlotte-tireuse-section.astro` : principe (prêt pour l'achat d'un fût), occasions (anniversaire, séminaire, week-end entre copaines), CTA « Appelez la brasserie » en lien `tel:+33633015663` (FR-006) ; intégrer avant les infos pratiques dans `src/pages/les-bieres-de-charlotte.astro` ; **vérification visuelle mobile + desktop** de la section
+- [ ] T023 [US4] Créer `src/features/sibra/sections/sibra-tireuse-section.astro` : principe (prêt pour l'achat d'un fût), occasions (anniversaire, séminaire, week-end entre copaines), CTA « Appelez la brasserie » en lien `tel:+33633015663` (FR-006) ; intégrer avant les infos pratiques dans `src/pages/la-sibra.astro` ; **vérification visuelle mobile + desktop** de la section
 
 **Checkpoint**: tout le contenu fonctionnel de la spec est en place.
 
@@ -137,12 +144,12 @@ Site Astro par features : pages dans `src/pages/`, feature dans `src/features/bi
 
 **Purpose**: qualité globale, gates constitutionnels et de mise en ligne.
 
-- [ ] T024 **Revue design d'ensemble mobile (375 px) + desktop (≥ 1280 px)** de la page complète et des pages touchées (accueil, header/footer partout) : rythme visuel entre sections, cohérence et placement de toutes les illus/shapes (aucun chevauchement, débordement ou coupure disgracieuse), alternance des variantes de `Section` ; mise côte à côte avec les 5 autres pages de lieux pour confirmer la distinctivité de la palette (SC-005) — ajuster jusqu'à un rendu au niveau des pages existantes
-- [ ] T025 [P] Passe accessibilité sur `/les-bieres-de-charlotte` : navigation clavier complète, hiérarchie de titres (h1 unique, h2 par section), alt FR sur toutes les images porteuses de sens, contrastes AA sur fonds thémés (FR-012)
-- [ ] T026 [P] Lighthouse mobile sur `/les-bieres-de-charlotte` vs `/a-la-carte-postale` : perf/a11y/SEO équivalents, poids de page du même ordre (SC-004) — corriger toute régression avant merge (constitution III)
+- [ ] T024 **Revue design d'ensemble mobile (375 px) + desktop (≥ 1280 px)** de la page complète et des pages touchées (accueil, header/footer partout, paragraphe Carte Postale) : rythme visuel entre sections, cohérence et placement de toutes les illus/shapes (aucun chevauchement, débordement ou coupure disgracieuse), alternance des variantes de `Section` ; mise côte à côte avec les 5 autres pages de lieux pour confirmer la distinctivité de la palette et la fidélité aux trois couleurs de la charte (SC-005) — ajuster jusqu'à un rendu au niveau des pages existantes
+- [ ] T025 [P] Passe accessibilité sur `/la-sibra` : navigation clavier complète, hiérarchie de titres (h1 unique, h2 par section), alt FR sur toutes les images porteuses de sens, contrastes AA sur fonds thémés (FR-012)
+- [ ] T026 [P] Lighthouse mobile sur `/la-sibra` vs `/a-la-carte-postale` : perf/a11y/SEO équivalents, poids de page du même ordre (SC-004) — corriger toute régression avant merge (constitution III)
 - [ ] T027 `pnpm build` (inclut `astro check`) et `pnpm lint` verts (constitution V)
 - [ ] T028 Dérouler `specs/001-page-brasserie/quickstart.md` de bout en bout et cocher chaque vérification
-- [ ] T029 🚦 **GATE mise en ligne** : faire confirmer par la coopérative l'adresse, le téléphone, l'email et les horaires publiés (coordonnées issues de l'archive Wayback d'avril 2025 — FR-011, SC-006, constitution I) ; corriger la page et le JSON-LD si écart
+- [ ] T029 🚦 **GATE mise en ligne** : faire confirmer par la coopérative le téléphone, l'email et les repères d'accès (églises, Chronobus C1 « Chanzy ») publiés — issus de l'archive Wayback d'avril 2025 (FR-011, SC-006, constitution I) ; l'adresse et les horaires sont déjà confirmés par le texte source du 2026-09-18 ; corriger la page et le JSON-LD si écart
 
 ---
 
@@ -150,7 +157,8 @@ Site Astro par features : pages dans `src/pages/`, feature dans `src/features/bi
 
 ### Phase Dependencies
 
-- **Setup (Phase 1)**: aucune dépendance
+- **Décision (Phase 0)**: T000 résolue (« La Sibra ») — plus de bloqueur
+- **Setup (Phase 1)**: après T000
 - **Foundational (Phase 2)**: après Setup (T004–T007 ; T006 dépend de T003 et T005) — **bloque toutes les stories**
 - **User Stories (Phases 3–7)**: après Phase 2, dans l'ordre de priorité P1 → P2 (US2 puis US5) → P3 → P4 ; en parallèle si plusieurs personnes
 - **Polish (Phase 8)**: après toutes les stories retenues ; T029 est le seul bloqueur de mise en production (pas de merge)
@@ -172,8 +180,8 @@ Site Astro par features : pages dans `src/pages/`, feature dans `src/features/bi
 - Phase 1 : T001, T002, T003 en parallèle
 - Phase 2 : T005 et T007 en parallèle de T004 ; T006 après T003+T005
 - US1 : T009 et T010 en parallèle (T008 aussi — fichiers distincts)
-- US5 : T016, T017, T019, T020, T021 en parallèle ; T018 seul sur home-places-section
-- Après Phase 2, les 5 stories peuvent avancer en parallèle (fichiers de sections distincts ; seule `src/pages/les-bieres-de-charlotte.astro` est un point de contention — intégrations à sérialiser)
+- US5 : T016, T017, T018b, T019, T020, T021 en parallèle ; T018 seul sur home-places-section
+- Après Phase 2, les 5 stories peuvent avancer en parallèle (fichiers de sections distincts ; seule `src/pages/la-sibra.astro` est un point de contention — intégrations à sérialiser)
 - Phase 8 : T025 et T026 en parallèle
 
 ---
@@ -182,9 +190,9 @@ Site Astro par features : pages dans `src/pages/`, feature dans `src/features/bi
 
 ```bash
 # Lancer les 3 sections de US1 en parallèle (fichiers distincts) :
-Task: "Créer bieres-de-charlotte-hero-section.astro (T008)"
-Task: "Créer bieres-de-charlotte-what-section.astro (T009)"
-Task: "Créer bieres-de-charlotte-instagram-section.astro (T010)"
+Task: "Créer sibra-hero-section.astro (T008)"
+Task: "Créer sibra-what-section.astro (T009)"
+Task: "Créer sibra-instagram-section.astro (T010)"
 # Puis séquentiellement : T011 (assemblage page) → T012 (vérification visuelle mobile/desktop)
 ```
 
@@ -209,7 +217,7 @@ Task: "Créer bieres-de-charlotte-instagram-section.astro (T010)"
 
 ### Parallel Team Strategy
 
-Après la Phase 2 : une personne par story (sections indépendantes) ; sérialiser uniquement les éditions de `src/pages/les-bieres-de-charlotte.astro` et la revue design finale (T024) faite par une seule personne pour la cohérence.
+Après la Phase 2 : une personne par story (sections indépendantes) ; sérialiser uniquement les éditions de `src/pages/la-sibra.astro` et la revue design finale (T024) faite par une seule personne pour la cohérence.
 
 ---
 

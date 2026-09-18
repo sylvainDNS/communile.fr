@@ -1,4 +1,4 @@
-# Specification Quality Checklist: Page « Les Bières de Charlotte »
+# Specification Quality Checklist: Page « La Sibra »
 
 **Purpose**: Validate specification completeness and quality before proceeding to planning
 **Created**: 2026-09-01
@@ -32,7 +32,8 @@
 ## Notes
 
 - 3 questions de clarification posées et résolues (2026-09-01) :
-  - Q1 nom officiel → « Les Bières de Charlotte » (brasserie rachetée, nom conservé).
+  - Q1 nom officiel → « Les Bières de Charlotte » (brasserie rachetée, nom conservé) — **remplacé le 2026-09-18 par « La Sibra »**, ancien nom conservé en `alternateName`.
   - Q2 coordonnées → retrouvées via la Wayback Machine (snapshot avril 2025 de l'ancien site) : 121 rue du Général Buat, 44000 Nantes ; 06 33 01 56 63 ; bce.brasserie@gmail.com — à confirmer avant mise en ligne.
   - Q3 sections → Instagram seul (https://www.instagram.com/bieresdecharlotte/), pas de section avis en v1.
 - Validation complète : tous les critères passent.
+- Révision 2026-09-18 : 5 questions posées et résolues — nom « La Sibra » ; pas de logo (placeholder) ; accroche hero « De l'houblon à la pression » ; pas de liens vers les lieux revendeurs tiers ; règle de contraste texte blanc grand texte / texte courant sombre validée. Aucun marqueur [NEEDS CLARIFICATION] restant.

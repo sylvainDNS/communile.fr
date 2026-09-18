@@ -1,8 +1,10 @@
-# Feature Specification: Page « Les Bières de Charlotte »
+# Feature Specification: Page « La Sibra » (ex-Les Bières de Charlotte)
 
 **Feature Branch**: `001-page-brasserie`
 
 **Created**: 2026-09-01
+
+**Updated**: 2026-09-18 — renommage du lieu en « La Sibra », placeholder logo, nouveau texte source, charte graphique fournie (orange/rose/vert), décoration hero, mise à jour de la page À La Carte Postale
 
 **Status**: Draft
 
@@ -10,9 +12,11 @@
 
 ## Vue d'ensemble
 
-Commun'ile ouvre un nouveau lieu : la microbrasserie **Les Bières de Charlotte** (121 rue du Général Buat, quartier Saint-Clément, Nantes), rachetée par la coopérative. La brasserie existait avant le rachat (14 ans de brassage) et conserve son nom, ses recettes et son savoir-faire, transmis par Charlotte elle-même. Le site vitrine doit présenter ce lieu au même titre que les cinq autres (Le Wattignies, Les Landes Fertiles, Le Labo Diva, Le Bar'Île, À La Carte Postale) : une page dédiée avec sa propre identité visuelle, intégrée à la navigation et à la découverte des lieux sur l'ensemble du site.
+Commun'ile ouvre un nouveau lieu : la microbrasserie **La Sibra** (121 rue du Général Buat, quartier Saint-Clément, Nantes), anciennement **Les Bières de Charlotte**, rachetée par la coopérative. La brasserie existait avant le rachat (14 ans de brassage) et conserve ses recettes et son savoir-faire, transmis par Charlotte elle-même. Le lieu est renommé **La Sibra** (décision du 2026-09-18) ; « Les Bières de Charlotte » reste son ancien nom, cité dans le texte de présentation (« anciennement Les Bières de Charlotte ») et conservé en `alternateName` pour le référencement, car c'est encore le nom que cherchent les visiteurs. La Carlota et les recettes historiques gardent leurs noms. Le site vitrine doit présenter ce lieu au même titre que les cinq autres (Le Wattignies, Les Landes Fertiles, Le Labo Diva, Le Bar'Île, À La Carte Postale) : une page dédiée avec sa propre identité visuelle, intégrée à la navigation et à la découverte des lieux sur l'ensemble du site.
 
-Contenu source : `brasserie-assets/Texte site internet.md` (texte de présentation, boutique et horaires, gammes de bières, prêt de tireuses) et 3 photos (intérieur de la boutique, salle de brassage avec cuves inox, bouteilles en rayon).
+Contenu source : `brasserie-assets/Texte site internet.md` — **version du 2026-09-18** (texte de présentation enrichi d'un paragraphe sur le lien ferme ↔ restaurants ↔ brasserie « de l'houblon à la pression », boutique avec horaires **et adresse**, gammes de bières, prêt de tireuses, liste des lieux revendeurs) et 3 photos (intérieur de la boutique, salle de brassage avec cuves inox, bouteilles en rayon).
+
+Charte graphique fournie (2026-09-18) : trois disques qui se chevauchent — orange `#FEA300`, rose `#DC5B87`, vert olive `#7A9300`. Ces trois couleurs constituent la palette du lieu ; les nuances complémentaires (accents foncés, neutre) en sont dérivées. Aucun logo n'a été fourni à ce jour : le hero utilise un visuel provisoire (placeholder) à remplacer dès réception du logo.
 
 Contexte complémentaire : l'ancien site `lesbieresdecharlotte.fr` n'appartient plus à la brasserie (domaine expiré, récupéré par un tiers). Son contenu historique reste consultable via la Wayback Machine (snapshot d'avril 2025) et a servi à retrouver les coordonnées factuelles ; son texte NE DOIT PAS être réutilisé tel quel (droits d'auteur) — seuls les faits (adresse, contact) en sont repris.
 
@@ -20,7 +24,7 @@ Contexte complémentaire : l'ancien site `lesbieresdecharlotte.fr` n'appartient 
 
 ### User Story 1 - Découvrir la brasserie (Priority: P1)
 
-Un visiteur (habitant du quartier, curieux, client d'un autre lieu de la coopérative) arrive sur la page de la brasserie et comprend immédiatement ce qu'est ce lieu : une microbrasserie artisanale de la coopérative, son histoire (anciens locaux des Bières de Charlotte, quartier Saint-Clément), sa philosophie de brassage (artisanal, ingrédients locaux, bière non filtrée, non pasteurisée, sans conservateur ni clarifiant).
+Un visiteur (habitant du quartier, curieux, client d'un autre lieu de la coopérative) arrive sur la page de la brasserie et comprend immédiatement ce qu'est ce lieu : une microbrasserie artisanale de la coopérative, son histoire (anciennement Les Bières de Charlotte, quartier Saint-Clément), sa philosophie de brassage (artisanal, ingrédients locaux, bière non filtrée, non pasteurisée, sans conservateur ni clarifiant).
 
 **Why this priority**: C'est la raison d'être de la page — sans présentation du lieu, rien d'autre n'a de sens. Une page réduite à ce seul contenu constitue déjà un MVP publiable.
 
@@ -28,9 +32,10 @@ Un visiteur (habitant du quartier, curieux, client d'un autre lieu de la coopér
 
 **Acceptance Scenarios**:
 
-1. **Given** un visiteur sur la page de la brasserie, **When** la page se charge, **Then** il voit un écran d'accueil (hero) identifiant clairement le lieu, avec l'identité visuelle propre à la brasserie.
-2. **Given** un visiteur sur la page, **When** il fait défiler la première section de présentation, **Then** il lit le texte « c'est quoi ? » fourni (lieu de la coopérative, quartier Saint-Clément, brassage artisanal et local, bière non filtrée/non pasteurisée) accompagné d'au moins une photo du lieu.
-3. **Given** un visiteur sur la page, **When** il parcourt la présentation, **Then** il est informé que les bières sont aussi disponibles dans les autres lieux de la coopérative.
+1. **Given** un visiteur sur la page de la brasserie, **When** la page se charge, **Then** il voit un écran d'accueil (hero) identifiant clairement le lieu (nom « La Sibra », accroche « De l'houblon à la pression »), avec l'identité visuelle propre à la brasserie ; en l'absence de logo, un visuel provisoire (motif des trois disques de la charte) tient lieu de logo.
+2. **Given** un visiteur sur la page, **When** il fait défiler la première section de présentation, **Then** il lit le texte « c'est quoi ? » fourni (lieu de la coopérative, quartier Saint-Clément, « anciennement Les Bières de Charlotte », brassage artisanal et local, bière non filtrée/non pasteurisée) accompagné d'au moins une photo du lieu.
+3. **Given** un visiteur sur la page, **When** il poursuit la présentation, **Then** il comprend le sens du projet pour la coopérative : à l'image du lien ferme maraîchère ↔ restaurants, la brasserie permet d'agir « de l'houblon à la pression » (produire soi-même ce qui est servi dans les lieux, soutenir une activité artisanale locale, repenser les liens entre métiers de bar et de brassage, dans le respect des valeurs de la coopérative).
+4. **Given** un visiteur sur la page, **When** il parcourt la présentation, **Then** il est informé que les bières sont aussi disponibles dans les autres lieux de la coopérative et lors des marchés de la ferme des Landes Fertiles.
 
 ---
 
@@ -62,6 +67,7 @@ Un amateur de bière veut savoir ce que brasse la brasserie : la gamme permanent
 
 1. **Given** un visiteur sur la page, **When** il consulte la section des bières, **Then** il voit la gamme permanente (Blonde, Ambrée, Triple, Blanche) et la mise en avant de la Carlota (recette héritée de Charlotte, inchangée depuis 15 ans).
 2. **Given** un visiteur sur la page, **When** il consulte la section des bières, **Then** il découvre l'existence des brassins éphémères saisonniers créés par le brasseur Simon.
+3. **Given** un amateur qui veut boire ces bières ailleurs qu'à la brasserie, **When** il consulte la page, **Then** il trouve la liste des lieux où elles sont servies ou vendues (Le Wattignies, L'industrie, Ohmtown, Pioche, …), sans que la liste prétende être exhaustive.
 
 ---
 
@@ -101,23 +107,27 @@ Un visiteur qui navigue sur communile.fr (accueil, autre page de lieu) découvre
 - Écrans étroits : les horaires et les listes de bières restent lisibles sans débordement horizontal.
 - Photos sources au format portrait (3472×4624 JPEG) : elles doivent être recadrées/optimisées pour les usages en paysage (hero, cartes) sans déformation ni poids excessif.
 - Lieu repris récemment par la coopérative : pas de section « avis » pour cette v1 — la page ne doit pas afficher de section vide ou de contenu factice pour « faire comme les autres pages ».
-- Ancien site toujours en ligne sous le même nom de domaine mais au contenu détourné (casino) : la nouvelle page doit s'imposer comme la référence pour les recherches sur « Les Bières de Charlotte » (métadonnées soignées, données structurées).
+- Liste des lieux revendeurs volontairement ouverte (« … » dans le texte source) : afficher uniquement les lieux nommés, sans entrée inventée ni lien externe (confirmé le 2026-09-18 : pas de liens vers les lieux tiers) ; la formulation doit laisser entendre que d'autres lieux existent.
+- Charte à trois couleurs vives : l'orange `#FEA300` ne supporte pas de texte blanc (contraste 2,0:1) — il ne doit jamais servir de fond à du texte blanc ; le rose et le vert ne l'acceptent qu'en grand texte ou via leurs accents foncés (règle validée le 2026-09-18, voir contrat thème).
+- Ancien site toujours en ligne sous le même nom de domaine mais au contenu détourné (casino) : la nouvelle page doit s'imposer comme la référence pour les recherches sur « Les Bières de Charlotte » comme sur « La Sibra » (métadonnées soignées, données structurées, ancien nom en `alternateName` et dans la description).
 
 ## Requirements *(mandatory)*
 
 ### Functional Requirements
 
-- **FR-001**: Le site DOIT proposer une page dédiée à la brasserie « Les Bières de Charlotte », accessible à sa propre URL stable dérivée de ce nom, au même niveau que les autres pages de lieux.
-- **FR-002**: La page DOIT porter une identité visuelle (palette de couleurs) qui lui est propre, distincte de celles des cinq autres lieux, tout en restant cohérente avec la charte globale du site (mêmes gabarits de sections, typographies et composants que les autres pages de lieux).
-- **FR-003**: La page DOIT présenter le lieu avec le contenu texte fourni : nouveau lieu de la coopérative, quartier Saint-Clément, anciens locaux des Bières de Charlotte, brassage artisanal avec ingrédients locaux, bière non filtrée, non pasteurisée, sans conservateur ni clarifiant.
+- **FR-001**: Le site DOIT proposer une page dédiée à la brasserie « La Sibra », accessible à sa propre URL stable dérivée de ce nom avec son article (`/la-sibra`), au même niveau que les autres pages de lieux. L'ancien nom « Les Bières de Charlotte » DOIT rester trouvable (mention dans le texte, `alternateName` dans les données structurées).
+- **FR-002**: La page DOIT porter l'identité visuelle fournie par la coopérative — palette à trois couleurs orange `#FEA300`, rose `#DC5B87`, vert olive `#7A9300` (charte du 2026-09-18), complétée de nuances dérivées — distincte de celles des cinq autres lieux, tout en restant cohérente avec la charte globale du site (mêmes gabarits de sections, typographies et composants que les autres pages de lieux). Le hero DOIT comporter, comme les pages Landes Fertiles, Labo Diva, Bar'Île et Carte Postale, une décoration SVG géométrique monochrome dans les coins, teintée aux couleurs du thème.
+- **FR-003**: La page DOIT présenter le lieu avec le contenu texte fourni (version du 2026-09-18) : nouveau lieu de la coopérative, quartier Saint-Clément, « anciennement Les Bières de Charlotte », brassage artisanal avec ingrédients locaux, bière non filtrée, non pasteurisée, sans conservateur ni clarifiant, et le paragraphe sur le sens du projet pour la coopérative (« de l'houblon à la pression », lien ferme ↔ restaurants ↔ brasserie, valeurs).
 - **FR-004**: La page DOIT afficher les horaires exacts de la boutique (vendredi 16 h–20 h, samedi 11 h–20 h) et décrire l'expérience proposée (dégustation, échange avec le brasseur).
 - **FR-005**: La page DOIT présenter la gamme permanente (Blonde, Ambrée, Triple, Blanche, avec mise en avant de la Carlota) et les brassins éphémères saisonniers.
 - **FR-006**: La page DOIT présenter le service de prêt de tireuse (principe, occasions, réservation par téléphone).
-- **FR-007**: La page DOIT mentionner que les bières sont disponibles dans les autres lieux de la coopérative.
+- **FR-007**: La page DOIT mentionner que les bières sont disponibles dans les autres lieux de la coopérative et lors des marchés de la ferme des Landes Fertiles.
+- **FR-014**: La page DOIT lister les lieux où retrouver les bières tels que fournis dans le texte source (Le Wattignies, L'industrie, Ohmtown, Pioche), en indiquant que la liste n'est pas exhaustive ; seuls les lieux de la coopérative reçoivent un lien interne, les lieux tiers sont nommés sans lien tant qu'aucune URL n'est fournie.
+- **FR-015** (transverse) : la page À La Carte Postale DOIT cesser de se présenter comme « le dernier lieu né de la coopérative » ; le paragraphe devient : « C'est le quatrième restaurant de la coopérative, une brique supplémentaire pour solidifier notre plaidoyer en faveur d'une alimentation plus végétale et locale ! » Cette modification est livrée avec la page de la brasserie (même mise en ligne).
 - **FR-008**: La page DOIT utiliser les 3 photos fournies (`brasserie-assets/`), optimisées (format moderne, dimensions adaptées) et dotées de textes alternatifs descriptifs en français.
 - **FR-009**: La brasserie DOIT être intégrée aux points de découverte existants : navigation principale (desktop et mobile), section « lieux » de la page d'accueil, et tout autre inventaire des lieux du site (pied de page, page contact) si ceux-ci listent les lieux.
 - **FR-010**: La page DOIT exposer ses métadonnées de référencement (titre, description) et des données structurées de type établissement local, et figurer dans le sitemap — au même niveau d'exigence que les pages de lieux existantes.
-- **FR-011**: La page DOIT afficher les informations pratiques exactes : adresse 121 rue du Général Buat, 44000 Nantes (entre les églises Saint-Clément et Saint-Donatien, arrêt Chronobus C1 « Chanzy »), téléphone 06 33 01 56 63, email bce.brasserie@gmail.com. Ces coordonnées, retrouvées via l'archive de l'ancien site (avril 2025), DOIVENT être confirmées par la coopérative avant mise en ligne ; aucune coordonnée inventée ou approximative NE DOIT être publiée (constitution, principe I).
+- **FR-011**: La page DOIT afficher les informations pratiques exactes : adresse 121 rue du Général Buat, 44000 Nantes (confirmée par le texte source du 2026-09-18 ; repères « entre les églises Saint-Clément et Saint-Donatien, arrêt Chronobus C1 « Chanzy » » issus de l'archive), téléphone 06 33 01 56 63, email bce.brasserie@gmail.com. Le téléphone, l'email et les repères, retrouvés via l'archive de l'ancien site (avril 2025), DOIVENT être confirmés par la coopérative avant mise en ligne ; aucune coordonnée inventée ou approximative NE DOIT être publiée (constitution, principe I).
 - **FR-013**: La page DOIT intégrer une section Instagram pointant vers le compte de la brasserie (https://www.instagram.com/bieresdecharlotte/), cohérente avec les sections Instagram des autres pages de lieux. Aucune section « avis » n'est prévue pour cette v1.
 - **FR-012**: La page DOIT être utilisable sur mobile comme sur desktop, avec un HTML sémantique (hiérarchie de titres, contrastes, navigation clavier) conforme aux exigences du site (WCAG 2.1 AA en référence).
 
@@ -135,17 +145,17 @@ Un visiteur qui navigue sur communile.fr (accueil, autre page de lieu) découvre
 - **SC-002**: Les horaires de la boutique sont trouvables en un seul parcours de page, sans clic supplémentaire, sur mobile comme sur desktop.
 - **SC-003**: La page est accessible en un clic depuis la navigation de n'importe quelle page du site et depuis la section lieux de l'accueil, en desktop comme en mobile.
 - **SC-004**: La page atteint des scores de performance, d'accessibilité et de SEO équivalents à ceux des pages de lieux existantes (aucune régression mesurable Lighthouse ; poids de page du même ordre).
-- **SC-005**: L'identité visuelle de la page est distincte : mise côte à côte avec chacune des cinq autres pages de lieux, la palette n'est confondue avec aucune d'elles.
+- **SC-005**: L'identité visuelle de la page est distincte : mise côte à côte avec chacune des cinq autres pages de lieux, la palette n'est confondue avec aucune d'elles, et les trois couleurs de la charte fournie sont reconnaissables telles quelles (pas de dérive de teinte).
 - **SC-006**: 100 % des informations factuelles publiées (horaires, adresse, contacts, noms) proviennent des ressources fournies ou validées par la coopérative — zéro contenu factice en production.
 
 ## Assumptions
 
-- Le nom du lieu est « Les Bières de Charlotte » (confirmé par l'utilisateur) : brasserie préexistante rachetée par la coopérative, qui conserve nom, recettes et savoir-faire.
-- Les coordonnées (adresse, téléphone, email) proviennent de l'archive Wayback Machine de l'ancien site (snapshot d'avril 2025, déjà signé « l'équipe de la brasserie communale extraordinaire », donc postérieur à la reprise) ; elles sont présumées toujours valides mais seront confirmées par la coopérative avant mise en ligne.
+- Le nom du lieu est **« La Sibra »** (décision de la coopérative, 2026-09-18) ; « Les Bières de Charlotte » est l'ancien nom, conservé comme mention historique et `alternateName`. L'hypothèse initiale du 2026-09-01 (nom conservé) est caduque. Le lieu se dit « La Sibra » (article confirmé le 2026-09-18) : slug `/la-sibra`, libellé de navigation « La Sibra », comme les autres lieux qui gardent leur article.
+- L'adresse (121 rue du Général Buat) figure désormais dans le texte source (paragraphe Boutique) : elle est considérée confirmée. Le téléphone, l'email et les repères d'accès proviennent de l'archive Wayback Machine de l'ancien site (snapshot d'avril 2025, déjà signé « l'équipe de la brasserie communale extraordinaire », donc postérieur à la reprise) ; ils sont présumés toujours valides mais seront confirmés par la coopérative avant mise en ligne.
 - Règle de priorité des sources (confirmée par l'utilisateur) : en cas de contradiction entre le document d'assets (`brasserie-assets/Texte site internet.md`) et l'ancien site archivé, c'est le document d'assets qui a raison. Exemple : les horaires de la boutique du texte source (vendredi 16 h–20 h, samedi 11 h–20 h) priment sur les anciens horaires visibles dans l'archive (mercredi–vendredi 17 h 30–19 h 30). L'archive ne sert qu'à combler les informations absentes du document (adresse, téléphone, email).
-- Le texte `brasserie-assets/Texte site internet.md` est la source de vérité éditoriale ; il pourra être légèrement adapté (titres, accroches) sans en changer le sens ni les faits. Le contenu rédactionnel de l'ancien site n'est pas réutilisé (droits d'auteur) ; seuls les faits en sont extraits.
-- Les 3 photos fournies suffisent pour la v1 ; d'autres visuels (logo du lieu, décorations) pourront être ajoutés ultérieurement s'ils sont fournis.
+- Le texte `brasserie-assets/Texte site internet.md` (version du 2026-09-18) est la source de vérité éditoriale ; il pourra être légèrement adapté (titres, accroches) sans en changer le sens ni les faits. Deux corrections orthographiques ont été appliquées au texte reçu (« dans le respect », virgule parasite) ; l'écriture inclusive du texte (« habitant.es », « client·es », « copaines ») est conservée telle quelle. L'accroche du hero (`h1`) est « De l'houblon à la pression » (validée le 2026-09-18, susceptible d'évoluer) ; « Le tout nouveau lieu de la coopérative ! » ouvre la section « c'est quoi ? ». Le contenu rédactionnel de l'ancien site n'est pas réutilisé (droits d'auteur) ; seuls les faits en sont extraits.
+- Les 3 photos fournies suffisent pour la v1. Pas encore de logo (confirmé le 2026-09-18) : le hero utilise un **placeholder** — motif des trois disques de la charte en SVG inline + nom « La Sibra » en `Heading` — signalé par un commentaire `TODO logo` dans le code ; le logo, une fois fourni, le remplacera (patron logo + tagline des autres pages).
 - La structure de la page reprend le patron éprouvé des pages de lieux existantes (hero, « c'est quoi ? », sections thématiques, informations pratiques) — pas de maquette : les pages existantes servent de référence de composition.
-- La palette propre au lieu s'inspirera de l'univers de la brasserie visible sur les photos (tons ambrés/cuivre de la bière, bois chaud de la boutique) ; le choix final des couleurs relève de la phase de plan/implémentation, dans le respect des contrastes (FR-012).
+- La palette est imposée par la charte fournie le 2026-09-18 (orange `#FEA300`, rose `#DC5B87`, vert `#7A9300`) — l'hypothèse initiale « ambre/cuivre » inspirée des photos est abandonnée. Les nuances dérivées (accents foncés pour les fonds sous texte blanc, neutre commun) sont fixées dans le contrat thème, dans le respect des contrastes (FR-012).
 - Aucune section FAQ n'est prévue : aucun contenu FAQ n'a été fourni (contrairement aux autres lieux) ; elle pourra être ajoutée plus tard si un contenu est rédigé.
 - Pas de vente en ligne ni de réservation en ligne : le site reste vitrine (constitution, principe II) ; la réservation de tireuse se fait par téléphone.
