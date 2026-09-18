@@ -6,7 +6,7 @@ Interfaces publiques exposées par la feature (URLs et métadonnées lues par le
 
 | Route | Méthode | Contenu | Statut |
 |---|---|---|---|
-| `/les-bieres-de-charlotte` | GET | Page HTML du lieu | 200, indexable (pas de `noindex`) |
+| `/la-sibra` | GET | Page HTML du lieu | 200, indexable (pas de `noindex`) |
 | `/sitemap.xml` | GET | XML sitemap de toutes les pages publiques | 200, `Content-Type: application/xml` |
 | `/robots.txt` | GET | Autorise l'indexation, référence `Sitemap: https://communile.fr/sitemap.xml` | 200 (fichier statique `public/`) |
 
@@ -14,9 +14,9 @@ Interfaces publiques exposées par la feature (URLs et métadonnées lues par le
 
 | Élément | Contrat |
 |---|---|
-| `<title>` | `Les Bières de Charlotte · Commun'île` (suffixe ajouté par le layout) |
-| `<meta name="description">` | Description factuelle (lieu, quartier, horaires boutique) |
-| Canonical | `https://communile.fr/les-bieres-de-charlotte` (généré par le layout) |
+| `<title>` | `La Sibra · Commun'île` (suffixe ajouté par le layout) |
+| `<meta name="description">` | Description factuelle (lieu, « anciennement Les Bières de Charlotte », quartier, horaires boutique) |
+| Canonical | `https://communile.fr/la-sibra` (généré par le layout) |
 | Open Graph / Twitter | title, description, image = photo du lieu optimisée 1200 px (via `content.image`) |
 | `lang` | `fr` (layout) |
 
@@ -26,9 +26,10 @@ Interfaces publiques exposées par la feature (URLs et métadonnées lues par le
 {
   "@context": "https://schema.org",
   "@type": "Brewery",
-  "name": "Les Bières de Charlotte",
+  "name": "La Sibra",
+  "alternateName": "Les Bières de Charlotte",
   "description": "<description de la page>",
-  "url": "https://communile.fr/les-bieres-de-charlotte",
+  "url": "https://communile.fr/la-sibra",
   "image": "<photo optimisée>",
   "telephone": "+33633015663",          // ⚠️ confirmé avant mise en ligne
   "email": "bce.brasserie@gmail.com",   // ⚠️ confirmé avant mise en ligne
@@ -51,13 +52,13 @@ Interfaces publiques exposées par la feature (URLs et métadonnées lues par le
 ## Sitemap — contrat de contenu
 
 Le XML liste exactement les pages publiques indexables :
-`/`, `/le-wattignies`, `/les-landes-fertiles`, `/le-labo-diva`, `/le-bar-ile`, `/a-la-carte-postale`, `/les-bieres-de-charlotte`, `/contact` — URLs absolues sur `SITE_URL`. `404` exclue. Source : constantes `PATH` (les entrées avec ancre `/#...` sont exclues).
+`/`, `/le-wattignies`, `/les-landes-fertiles`, `/le-labo-diva`, `/le-bar-ile`, `/a-la-carte-postale`, `/la-sibra`, `/contact` — URLs absolues sur `SITE_URL`. `404` exclue. Source : constantes `PATH` (les entrées avec ancre `/#...` sont exclues).
 
 ## Points d'intégration internes (consommés par le reste du site)
 
 | Consommateur | Contrat |
 |---|---|
-| `header.astro` | entrée `{ label: 'Les Bières de Charlotte', href: PATH.LES_BIERES_DE_CHARLOTTE }` en fin de `links` |
+| `header.astro` | entrée `{ label: 'La Sibra', href: PATH.LA_SIBRA }` en fin de `links` |
 | `footer.astro` | `<li>` supplémentaire dans la colonne des lieux |
 | `home-places-section.astro` | `PlaceCard` avec image paysage dédiée, alt FR, horaires boutique dans `hover-content` |
-| `main.astro` | `theme` accepte `'bieres-de-charlotte'` |
+| `main.astro` | `theme` accepte `'sibra'` |
