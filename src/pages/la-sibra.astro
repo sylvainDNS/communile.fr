@@ -1,0 +1,27 @@
+---
+import SibraHeroDeco from '@/features/sibra/images/sibra-hero-decoration.svg'
+import SibraWhatOrnament from '@/features/sibra/images/sibra-what-ornament.svg'
+import Container from '../components/container.astro'
+import Section from '../components/section.astro'
+import Layout from '../layouts/main.astro'
+
+const description
+  = 'La Sibra, microbrasserie du quartier Saint-Clément à Nantes, anciennement Les Bières de Charlotte, nouveau lieu de la coopérative Commun\'île.'
+---
+
+<Layout theme="sibra" content={{ title: 'La Sibra', description }}>
+  {/* TODO #60 : bloc de vérification des décorations — remplacé par le hero */}
+  <Section class="relative overflow-hidden">
+    <SibraHeroDeco
+      class="absolute top-0 left-0 hidden w-[150px] md:block text-secondary-accent"
+      aria-hidden="true"
+    />
+    <SibraHeroDeco
+      class="absolute bottom-0 right-0 hidden w-[150px] rotate-180 md:block text-primary-accent"
+      aria-hidden="true"
+    />
+    <Container>
+      <SibraWhatOrnament class="w-[100px] text-primary-accent" aria-hidden="true" />
+    </Container>
+  </Section>
+</Layout>
