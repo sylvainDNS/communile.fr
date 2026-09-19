@@ -97,3 +97,13 @@ Relevés en recalculant les contrastes (cf. [research.md § R61-3](./research.md
 2. `../../contracts/theme.md` ligne 43 : `Tag color="tertiary"` présenté comme valide ; il rend du texte orange sur fond clair, soit ≈ **1,83:1** sur `background`.
 3. `../../contracts/theme.md` lignes 39/41 : la colonne `foreground` est sous-estimée d'environ 10 % (5,1 / 5,0 / 8,9 annoncés contre 5,66 / 5,55 / 9,85 réels). Sans danger, mais faux.
 4. **Nouveau** : le contrat ne documente pas `text-foreground` sur `primary-accent` (**3,77:1**) ni sur `secondary-accent` (**3,67:1**). Les deux sont **sous AA pour du texte courant** et devraient être explicitement interdits.
+
+### Défauts du composant partagé `src/components/leaflet-map.astro`
+
+Relevés en revue de code sur la PR #73 et **re-vérifiés indépendamment** (calcul de contraste, lecture du source). Ils sont **pré-existants** : ils affectent déjà `/contact` en production. Aucun n'est corrigé ici — modifier un composant partagé est hors périmètre (FR-026) et ferait porter à cette issue un risque de régression sur une autre page. **À traiter par une issue dédiée** (candidat : #66).
+
+5. **Panneau d'erreur sous AA** (`leaflet-map.astro:87`) : `text-red-600` `#E7000B` sur `bg-red-50` `#FEF2F2` = **4,36:1**, sous le seuil 4,5:1 pour du texte de 14 px. C'est précisément le panneau qui porte le repli de localisation écrit par cette issue (`errorText`, FR-016 / SC-008) : le repli existe, mais il est à la limite basse.
+6. **Conteneur de carte focusable sans nom accessible** (`leaflet-map.astro:69`) : Leaflet pose `tabindex="0"` sur le `div`, qui n'a ni `role` ni `aria-label`. Son nom calculé est son contenu (« +− Leaflet | © OpenStreetMap »). WCAG 4.1.2.
+7. **Marqueur focusable sans nom accessible** (`leaflet-map.astro:154`) : `L.marker(position)` est appelé sans option `alt`, donc l'image du marqueur reçoit un `alt` vide tout en étant focusable. WCAG 4.1.2 et 1.1.1.
+
+Ce ne sont **pas** des pièges de focus (la tabulation en sort normalement, vérifié), et l'adresse textuelle reste l'équivalent accessible de la carte — FR-016 et SC-008 tiennent.
