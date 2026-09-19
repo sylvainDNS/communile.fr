@@ -1,0 +1,48 @@
+---
+import Card from '@/components/card.astro'
+import Container from '@/components/container.astro'
+import Heading from '@/components/heading.astro'
+import Icon from '@/components/icon.astro'
+import Section from '@/components/section.astro'
+import Text from '@/components/text.astro'
+import { icons } from '@/utils/icons'
+import SibraWhatOrnament from '../images/sibra-what-ornament.svg'
+
+type Occasion = {
+  icon: keyof typeof icons
+  label: string
+}
+
+const occasions: Occasion[] = [
+  { icon: 'calendar-heart', label: 'Un anniversaire' },
+  { icon: 'users-round', label: 'Un séminaire d’entreprise' },
+  { icon: 'smile', label: 'Un week-end entre copaines' },
+]
+---
+
+<Section variant="secondary" class="overflow-hidden">
+  {/* Ornement en bas à droite : en haut à droite, ses cercles (opacité 0,6, superposés) passaient sous le
+      paragraphe en `text-foreground`, qui tombait à 3,8:1 à 375 px et 3,9:1 à 768 px (seuil 4,5:1). Ici il ne
+      couvre que les cartes opaques et le grand texte blanc gras (5,3:1 ≥ 3:1) ; le texte courant reste sur le
+      rose plein (5,5:1). Mesuré dans le navigateur à 375 / 768 / 1280 px. */}
+  <SibraWhatOrnament class="absolute right-0 bottom-0 text-secondary-accent" aria-hidden="true" />
+  <Container class="relative z-20 space-y-6">
+    <Heading as="h2" size="xl" weight="bold" color="white">Prêt de tireuse</Heading>
+    <Text size="base" class="max-w-xl text-foreground">
+      La brasserie propose aussi le prêt de tireuse pour l’achat d’un fût. Par exemple :
+    </Text>
+    <ul role="list" class="grid grid-cols-1 gap-4 md:grid-cols-3">
+      {
+        occasions.map(occasion => (
+          <li>
+            <Card class="flex items-center gap-3 bg-background">
+              <Icon name={occasion.icon} size="24" class="shrink-0 text-secondary" />
+              <Text class="text-foreground">{occasion.label}</Text>
+            </Card>
+          </li>
+        ))
+      }
+    </ul>
+    <Text size="xl" weight="bold" color="white">Appelez la brasserie pour réserver une tireuse !</Text>
+  </Container>
+</Section>
