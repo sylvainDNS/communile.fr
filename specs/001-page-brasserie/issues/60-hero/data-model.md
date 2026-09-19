@@ -10,9 +10,9 @@ Source de vérité éditoriale : `brasserie-assets/Texte site internet.md`, **ve
 |---|---|---|---|
 | Décoration haut-gauche | `sibra-hero-decoration.svg` (bulles) | `absolute top-0 left-0 hidden w-[300px] md:block text-secondary-accent` | décorative, `aria-hidden` |
 | Décoration bas-droite | `sibra-hero-decoration.svg` | `absolute bottom-0 right-0 hidden w-[300px] rotate-180 md:block text-primary-accent` | décorative, `aria-hidden` |
-| Placeholder logo | motif des trois disques | SVG inline, `fill="var(--color-tertiary)"` / `var(--color-secondary)` / `var(--color-primary)` | `aria-hidden`, précédé de `TODO logo` (FR-002) |
+| Placeholder logo | motif des trois disques | SVG inline, cercles en `fill-tertiary` / `fill-secondary` / `fill-primary` (classes Tailwind — les `var()` ne sont pas substituées dans un attribut de présentation SVG, cf. research R60-1) | `aria-hidden`, précédé de `TODO logo` (FR-002) |
 | Nom du lieu | « La Sibra » | `<p>` en `font-pally`, gras, centré | **pas** un élément de titre (R60-4) |
-| Accroche | « De l'houblon à la pression » | `h1`, `font-pally text-4xl md:text-5xl`, centré | unique `h1` de la page (FR-001) |
+| Accroche | « De l’houblon à la pression » | `h1`, `font-pally text-4xl md:text-5xl`, centré | unique `h1` de la page (FR-001) |
 
 ## Entité : Présentation (`sibra-what-section.astro`)
 
@@ -21,7 +21,7 @@ Fond : `Section variant="primary"` (vert de la charte). Ornement : `sibra-what-o
 | Bloc | Texte exact | Rendu | Couleur (contrat thème) |
 |---|---|---|---|
 | Titre | « La Sibra, c’est quoi ? » | `Heading as="h2" size="xl" weight="bold"` | blanc (grand texte) |
-| Accroche | « Le tout nouveau lieu de la coopérative ! » | `Text size="xl" weight="semibold"` | blanc (grand texte) |
+| Accroche | « Le tout nouveau lieu de la coopérative ! » | `Text size="xl" weight="bold"` | blanc (grand texte — **`bold` et non `semibold`**, cf. research R60-6) |
 | Présentation | « Véritable monument du quartier St Clément, la microbrasserie, anciennement Les Bières de Charlotte, est un passage obligé pour les habitant.es du quartier et les autres ! La bière y est brassée de manière artisanale, avec des ingrédients locaux. Elle est non filtrée, non pasteurisée, sans conservateur ni clarifiant. De la bière simple et sans fioritures dont chaque gorgée en appelle une autre. » | `Text size="base"` | `text-foreground` — **jamais blanc** |
 | Sens du projet | « À l’image du lien entre notre ferme maraîchère et nos restaurants, intégrer une brasserie permet à la coopérative d’agir de l’houblon à la pression : produire nous-même ce qui est proposé aux client·es de nos lieux, soutenir une activité artisanale locale, repenser les liens entre métiers de bar et de brassage — le tout dans le respect de nos valeurs. L’aventure Commun’île y prend tout son sens ! » | `Text font="pally" size="xl" weight="semibold"` | `text-foreground` |
 | Disponibilité | « Retrouvez aussi les bières dans **les autres lieux de la coopérative** et lors des marchés de **la ferme des Landes Fertiles** ! » (les passages en gras sont les liens) | `Text size="base"` + `Link` | `text-foreground`, liens soulignés au survol |

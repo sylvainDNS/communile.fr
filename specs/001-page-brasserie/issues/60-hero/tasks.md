@@ -24,7 +24,7 @@
 
 ## Phase 1: Setup
 
-- [ ] T001 Créer le dossier `src/features/sibra/sections/` (dossier de sections de la feature, absent à ce stade — le socle #59 n'a livré que `images/`)
+- [X] T001 Créer le dossier `src/features/sibra/sections/` (dossier de sections de la feature, absent à ce stade — le socle #59 n'a livré que `images/`)
 
 ---
 
@@ -40,9 +40,9 @@ Aucune tâche bloquante : le socle (#59) a déjà livré la route, le thème, le
 
 **Independent Test**: ouvrir la page à 375 px et à ≥ 1280 px → nom et accroche lisibles, décorations masquées en mobile, visuel provisoire non annoncé aux lecteurs d'écran.
 
-- [ ] T002 [US1] Créer `src/features/sibra/sections/sibra-hero-section.astro` sur le patron `src/features/la-carte-postale/sections/la-carte-postale-hero-section.astro` : `<Section class="relative overflow-hidden bg-white">`, deux `SibraHeroDeco` importés de `@/features/sibra/images/sibra-hero-decoration.svg` (`absolute top-0 left-0 hidden w-[300px] md:block text-secondary-accent` et `absolute bottom-0 right-0 hidden w-[300px] rotate-180 md:block text-primary-accent`, tous deux `aria-hidden="true"`), un `<Container>` central
-- [ ] T003 [US1] Dans `sibra-hero-section.astro`, ajouter le bloc **placeholder logo** précédé du commentaire `TODO logo : remplacer par le logo de La Sibra dès réception` : SVG inline `aria-hidden="true" focusable="false"` à trois cercles (`fill="var(--color-tertiary)"`, `var(--color-secondary)`, `var(--color-primary)`, géométrie reprise de `src/features/sibra/images/sibra-what-ornament.svg`), surmontant le nom « La Sibra » rendu par un `<p>` en `font-pally` gras centré — **pas** un élément de titre (research R60-4)
-- [ ] T004 [US1] Dans `sibra-hero-section.astro`, ajouter le `h1` « De l'houblon à la pression » en `text-center font-pally text-4xl font-bold md:text-5xl` (unique `h1` de la page, FR-001)
+- [X] T002 [US1] Créer `src/features/sibra/sections/sibra-hero-section.astro` sur le patron `src/features/la-carte-postale/sections/la-carte-postale-hero-section.astro` : `<Section class="relative overflow-hidden bg-white">`, deux `SibraHeroDeco` importés de `@/features/sibra/images/sibra-hero-decoration.svg` (`absolute top-0 left-0 hidden w-[300px] md:block text-secondary-accent` et `absolute bottom-0 right-0 hidden w-[300px] rotate-180 md:block text-primary-accent`, tous deux `aria-hidden="true"`), un `<Container>` central
+- [X] T003 [US1] Dans `sibra-hero-section.astro`, ajouter le bloc **placeholder logo** précédé du commentaire `TODO logo : remplacer par le logo de La Sibra dès réception` : SVG inline `aria-hidden="true" focusable="false"` à trois cercles en classes `fill-tertiary` / `fill-secondary` / `fill-primary` (géométrie reprise de `src/features/sibra/images/sibra-what-ornament.svg`), surmontant le nom « La Sibra » rendu par un `<p>` en `font-pally` gras centré — **pas** un élément de titre (research R60-4)
+- [X] T004 [US1] Dans `sibra-hero-section.astro`, ajouter le `h1` « De l’houblon à la pression » en `text-center font-pally text-4xl font-bold md:text-5xl` (unique `h1` de la page, FR-001)
 
 **Checkpoint**: le hero se rend seul, à l'identique du patron, sans texte recouvert.
 
@@ -54,10 +54,10 @@ Aucune tâche bloquante : le socle (#59) a déjà livré la route, le thème, le
 
 **Independent Test**: lire la section → les quatre informations sont restituables sans naviguer ailleurs.
 
-- [ ] T005 [P] [US2] Créer `src/features/sibra/sections/sibra-what-section.astro` sur le patron `la-carte-postale-what-section.astro` : `<Section variant="primary" class="overflow-hidden">`, ornement `SibraWhatOrnament` (`absolute bottom-0 left-0 text-primary-accent`, `aria-hidden="true"`), `<Container class="relative z-20 grid grid-cols-1 items-start gap-12 lg:grid-cols-2">`
-- [ ] T006 [US2] Dans `sibra-what-section.astro`, intégrer les textes **exacts** de [data-model.md](./data-model.md) : `Heading as="h2" color="white"` « La Sibra, c’est quoi ? », `Text size="xl" weight="semibold" color="white"` « Le tout nouveau lieu de la coopérative ! », paragraphe de présentation en `Text size="base"` **sans `color="white"`**, paragraphe « À l’image du lien… » en `Text font="pally" size="xl" weight="semibold"` — le conteneur de colonne ne porte **pas** `text-white` (research R60-2)
-- [ ] T007 [US2] Dans `sibra-what-section.astro`, ajouter la mention de disponibilité avec deux `Link` vers `PATH.HOME` (« les autres lieux de la coopérative ») et `PATH.LES_LANDES_FERTILES` (« la ferme des Landes Fertiles »), importés de `@/utils/constants` — aucune URL en dur (FR-005)
-- [ ] T008 [US2] Dans `sibra-what-section.astro`, ajouter la photo `@/features/sibra/images/sibra-boutique.webp` via `<Image widths={[640, 960, 1280, …]} class="w-full rounded-2xl object-cover">` avec l'alt FR descriptif de [data-model.md](./data-model.md) (FR-006)
+- [X] T005 [P] [US2] Créer `src/features/sibra/sections/sibra-what-section.astro` sur le patron `la-carte-postale-what-section.astro` : `<Section variant="primary" class="overflow-hidden">`, ornement `SibraWhatOrnament` (`absolute bottom-0 left-0 text-primary-accent`, `aria-hidden="true"`), `<Container class="relative z-20 grid grid-cols-1 items-start gap-12 lg:grid-cols-2">`
+- [X] T006 [US2] Dans `sibra-what-section.astro`, intégrer les textes **exacts** de [data-model.md](./data-model.md) : `Heading as="h2" color="white"` « La Sibra, c’est quoi ? », `Text size="xl" weight="semibold" color="white"` « Le tout nouveau lieu de la coopérative ! », paragraphe de présentation en `Text size="base"` **sans `color="white"`**, paragraphe « À l’image du lien… » en `Text font="pally" size="xl" weight="semibold"` — le conteneur de colonne ne porte **pas** `text-white` (research R60-2)
+- [X] T007 [US2] Dans `sibra-what-section.astro`, ajouter la mention de disponibilité avec deux `Link` vers `PATH.HOME` (« les autres lieux de la coopérative ») et `PATH.LES_LANDES_FERTILES` (« la ferme des Landes Fertiles »), importés de `@/utils/constants` — aucune URL en dur (FR-005)
+- [X] T008 [US2] Dans `sibra-what-section.astro`, ajouter la photo `@/features/sibra/images/sibra-boutique.webp` via `<Image widths={[640, 960, 1280, …]} class="w-full rounded-2xl object-cover">` avec l'alt FR descriptif de [data-model.md](./data-model.md) (FR-006)
 
 **Checkpoint**: la section se rend seule, contrastes conformes, liens internes fonctionnels.
 
@@ -69,22 +69,22 @@ Aucune tâche bloquante : le socle (#59) a déjà livré la route, le thème, le
 
 **Independent Test**: dérouler jusqu'en bas → titre de section + fil du compte de la brasserie.
 
-- [ ] T009 [P] [US3] Créer `src/features/sibra/sections/sibra-instagram-section.astro` sur le patron `la-carte-postale-instagram-section.astro` : `h2` « Retrouvez-nous sur Instagram » + `<InstagramFeed username="bieresdecharlotte" />` (FR-008)
+- [X] T009 [P] [US3] Créer `src/features/sibra/sections/sibra-instagram-section.astro` sur le patron `la-carte-postale-instagram-section.astro` : `h2` « Retrouvez-nous sur Instagram » + `<InstagramFeed username="bieresdecharlotte" />` (FR-008)
 
 ---
 
 ## Phase 6: Assemblage
 
-- [ ] T010 Modifier `src/pages/la-sibra.astro` : supprimer le bloc annoté `TODO #60` et les imports de SVG devenus inutiles, importer et rendre `SibraHeroSection` → `SibraWhatSection` → `SibraInstagramSection` ; `Layout theme="sibra"` et `content` inchangés (métadonnées définitives = issue #63) (FR-009)
+- [X] T010 Modifier `src/pages/la-sibra.astro` : supprimer le bloc annoté `TODO #60` et les imports de SVG devenus inutiles, importer et rendre `SibraHeroSection` → `SibraWhatSection` → `SibraInstagramSection` ; `Layout theme="sibra"` et `content` inchangés (métadonnées définitives = issue #63) (FR-009)
 
 ---
 
 ## Phase 7: Polish & vérifications
 
-- [ ] T011 Lancer `./node_modules/.bin/eslint . --ext .js,.ts,.astro,.css` puis `./node_modules/.bin/astro check` et `./node_modules/.bin/astro build` — tous verts (SC-006)
-- [ ] T012 **Vérification visuelle mobile (375 px) + desktop (≥ 1280 px)** selon la check-list de [quickstart.md](./quickstart.md) : bulles et trois disques sans chevauchement, masquage mobile propre, pas de défilement horizontal, contrastes conformes — ajuster positions/tailles **dans les sections**, jamais les teintes de `src/styles/global.css` (SC-002, SC-003)
-- [ ] T013 Vérifier sur le HTML produit : un seul `h1` (SC-004) et **aucune** coordonnée (`tel:`, `mailto:`, `@gmail`, numéro) (SC-005, FR-012)
-- [ ] T014 Corriger dans `specs/001-page-brasserie/tasks.md` la mention de l'ancien schéma de branche à slash (`001-page-brasserie/T008-hero-section`) : git interdit qu'une référence soit à la fois une branche et le préfixe d'une autre, le schéma retenu est plat (`001-page-brasserie-<suffixe>`)
+- [X] T011 Lancer `./node_modules/.bin/eslint . --ext .js,.ts,.astro,.css` puis `./node_modules/.bin/astro check` et `./node_modules/.bin/astro build` — tous verts (SC-006)
+- [X] T012 **Vérification visuelle mobile (375 px) + desktop (≥ 1280 px)** selon la check-list de [quickstart.md](./quickstart.md) : bulles et trois disques sans chevauchement, masquage mobile propre, pas de défilement horizontal, contrastes conformes — ajuster positions/tailles **dans les sections**, jamais les teintes de `src/styles/global.css` (SC-002, SC-003)
+- [X] T013 Vérifier sur le HTML produit : un seul `h1` (SC-004) et **aucune** coordonnée (`tel:`, `mailto:`, `@gmail`, numéro) (SC-005, FR-012)
+- [X] T014 Corriger dans `specs/001-page-brasserie/tasks.md` la mention de l'ancien schéma de branche à slash (`001-page-brasserie/T008-hero-section`) : git interdit qu'une référence soit à la fois une branche et le préfixe d'une autre, le schéma retenu est plat (`001-page-brasserie-<suffixe>`)
 
 ---
 

@@ -22,9 +22,9 @@ Aucune prop : comme les sections des cinq autres lieux, le contenu est porté pa
   ├── <SibraHeroDeco aria-hidden class="absolute bottom-0 right-0 hidden w-[300px] rotate-180 md:block text-primary-accent">
   └── <Container>
         └── bloc placeholder logo (précédé du commentaire « TODO logo : … »)
-              ├── <svg aria-hidden focusable="false"> 3 cercles fill=var(--color-tertiary|secondary|primary)
+              ├── <svg aria-hidden focusable="false"> 3 cercles en classes fill-tertiary | fill-secondary | fill-primary
               └── <p> « La Sibra » — font-pally, gras, centré (PAS un titre)
-        └── <h1 class="text-center font-pally text-4xl font-bold md:text-5xl"> « De l'houblon à la pression »
+        └── <h1 class="text-center font-pally text-4xl font-bold md:text-5xl"> « De l’houblon à la pression »
 ```
 
 Invariants :

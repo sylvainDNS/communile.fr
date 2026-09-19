@@ -8,15 +8,17 @@ Cette note ne traite que les points d'adaptation propres à l'implémentation de
 
 ## R60-1 — Comment colorer le motif « trois disques » du placeholder logo ?
 
-**Decision**: SVG **inline** dans `sibra-hero-section.astro`, trois `<circle>` portant `fill="var(--color-tertiary)"`, `var(--color-secondary)`, `var(--color-primary)`, le `<svg>` marqué `aria-hidden="true"` et `focusable="false"`.
+**Decision**: SVG **inline** dans `sibra-hero-section.astro`, trois `<circle>` portant les classes Tailwind `fill-tertiary`, `fill-secondary`, `fill-primary`, le `<svg>` marqué `aria-hidden="true"` et `focusable="false"`.
 
 **Rationale**:
-- l'epic (tasks.md T008, contrat de thème) impose explicitement ces trois tokens, pour que le placeholder affiche les couleurs de marque **brutes** de la charte, et non des accents ;
-- vérifié sur le CSS produit par `astro build` : le bloc `@theme inline` de `src/styles/global.css` émet bien `--color-primary: var(--theme-primary)`, `--color-secondary`, `--color-tertiary` dans la feuille de styles ; combinées au mapping `[data-theme='sibra']`, ces variables résolvent vers le vert, le rose et l'orange de la charte. Le motif se rethème donc tout seul si la charte évolue ;
+- l'epic (tasks.md T008, contrat de thème) impose les trois couleurs de marque **brutes** de la charte (orange / rose / vert), et non des accents. Les utilitaires `fill-*` de Tailwind consomment exactement les mêmes tokens (`--color-tertiary` → `--theme-tertiary` → `--color-sibra-orange`), donc le motif se rethème tout seul si la charte évolue — l'intention du contrat est respectée ;
 - inline plutôt qu'un fichier `.svg` importé : le fichier `sibra-what-ornament.svg` du socle est monochrome (`currentColor`) et sert l'ornement de la section « what » ; un motif **tricolore** ne peut pas être teinté par une classe `text-*` unique. Dupliquer le fichier en version tricolore ajouterait un asset à supprimer dès réception du logo.
 
+**Correction du 2026-09-19 (première rédaction erronée)** : cette note prescrivait d'abord `fill="var(--color-tertiary)"` en **attribut de présentation** SVG. Vérifié au navigateur pendant l'implémentation : les trois cercles ressortaient en `fill: none` et le placeholder était invisible. Les attributs de présentation SVG ne font pas de substitution `var()` — une custom property n'y est utilisable qu'à travers une déclaration CSS (classe ou `style`). La vérification initiale portait sur la **présence** des variables dans la feuille de styles, ce qui ne prouvait rien quant à leur substitution dans un attribut. D'où le passage aux classes `fill-*`, qui sont de vraies déclarations CSS.
+
 **Alternatives considered**:
-- classes Tailwind `fill-primary` / `fill-secondary` / `fill-tertiary` sur les cercles — équivalent au rendu près, mais s'écarte de la formulation du contrat de thème et de T008 ;
+- `fill="var(--color-…)"` en attribut de présentation — **ne fonctionne pas** (voir correction ci-dessus) ;
+- `style="fill: var(--color-tertiary)"` — fonctionnerait, mais un style inline contourne le système d'utilitaires du dépôt et échappe au lint des classes ;
 - réutiliser `sibra-what-ornament.svg` en trois exemplaires superposés, chacun teinté par une classe `text-*` — trois requêtes de composant et un empilement fragile pour le même résultat ;
 - image bitmap provisoire — proscrit (principe I : pas d'image de remplissage, et rien à convertir).
 
@@ -27,7 +29,7 @@ Cette note ne traite que les points d'adaptation propres à l'implémentation de
 ## R60-2 — Couleur des textes de la section « c'est quoi ? » sur fond vert
 
 **Decision**: sur `Section variant="primary"` (vert `#7A9300`) :
-- accroche « Le tout nouveau lieu de la coopérative ! » et titre `h2` → **blanc**, parce qu'ils sont du grand texte (`Heading`, `Text size="xl" weight="semibold"`) ;
+- accroche « Le tout nouveau lieu de la coopérative ! » et titre `h2` → **blanc**, parce qu'ils sont du grand texte (`Heading`, `Text size="xl" weight="bold"` — voir R60-6 pour la graisse) ;
 - paragraphe de présentation et mention de disponibilité → **`text-foreground`** (neutre foncé), pas de blanc ;
 - paragraphe « de l'houblon à la pression » (`Text font="pally" size="xl" weight="semibold"`) → laissé en couleur héritée `foreground`, ce qui le distingue visuellement tout en restant conforme.
 
@@ -78,3 +80,15 @@ Cette note ne traite que les points d'adaptation propres à l'implémentation de
 
 **Alternatives considered**:
 - garder les bulles en mobile à taille réduite — rejeté : à 375 px, un motif de 300 px de large passerait derrière le texte ou déclencherait un défilement horizontal ; T008 impose `hidden md:block`.
+
+---
+
+## R60-6 — Graisse de l'accroche blanche sur le vert (correctif de revue, 2026-09-19)
+
+**Decision**: l'accroche « Le tout nouveau lieu de la coopérative ! » est rendue en `Text size="xl" weight="bold"` (et non `weight="semibold"` comme l'écrivaient l'epic et la première version de data-model.md).
+
+**Rationale**: `size="xl"` rend `text-xl md:text-2xl`. Au-dessus du point de rupture `md`, cela fait 24 px : conforme au seuil WCAG « grand texte » quelle que soit la graisse. **Sous `md`, cela fait 20 px** — et le seuil « grand texte » y est de 18,66 px **en graisse 700**. À 20 px/600 (`semibold`), le texte est donc du texte courant au sens WCAG, où AA exige 4,5:1 ; or le blanc sur le vert de la charte plafonne à 3,5:1. L'accroche était donc non conforme en mobile. Passer en `bold` (20 px/700 ≥ 18,66 px gras) la fait qualifier comme grand texte : 3:1 suffit, le 3,5:1 mesuré passe.
+
+**Alternative considered**: passer l'accroche en `text-foreground` (5,1:1, conforme partout) — rejeté : l'accroche perdrait sa hiérarchie visuelle avec le `h2` blanc juste au-dessus, alors que le changement de graisse coûte presque rien visuellement.
+
+**⚠️ Tension à remonter à l'epic**: [`../../contracts/theme.md`](../../contracts/theme.md) cite `Text size="xl" weight="semibold"` comme exemple de « grand texte » autorisé en blanc. C'est **exact au-dessus de `md` et faux en dessous**. Le contrat de l'epic mérite d'être amendé (en `weight="bold"`, ou en précisant que la dispense ne vaut qu'à partir de `md`) — hors périmètre de cette issue, à trancher par l'humain avec l'issue Polish (#66).
