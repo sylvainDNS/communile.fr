@@ -31,8 +31,8 @@ Interfaces publiques exposées par la feature (URLs et métadonnées lues par le
   "description": "<description de la page>",
   "url": "https://communile.fr/la-sibra",
   "image": "<photo optimisée>",
-  "telephone": "+33633015663",          // ⚠️ confirmé avant mise en ligne
-  "email": "bce.brasserie@gmail.com",   // ⚠️ confirmé avant mise en ligne
+  "telephone": "+33633015663", // ⚠️ confirmé avant mise en ligne
+  "email": "bce.brasserie@gmail.com", // ⚠️ confirmé avant mise en ligne
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "121 rue du Général Buat",
