@@ -1,6 +1,8 @@
 ---
 import SibraBieresSection from '@/features/sibra/sections/sibra-bieres-section.astro'
+import SibraBoutiqueSection from '@/features/sibra/sections/sibra-boutique-section.astro'
 import SibraHeroSection from '@/features/sibra/sections/sibra-hero-section.astro'
+import SibraInfosSection from '@/features/sibra/sections/sibra-infos-section.astro'
 import SibraInstagramSection from '@/features/sibra/sections/sibra-instagram-section.astro'
 import SibraTireuseSection from '@/features/sibra/sections/sibra-tireuse-section.astro'
 import SibraWhatSection from '@/features/sibra/sections/sibra-what-section.astro'
@@ -13,7 +15,9 @@ const description
 <Layout theme="sibra" content={{ title: 'La Sibra', description }}>
   <SibraHeroSection />
   <SibraWhatSection />
+  <SibraBoutiqueSection />
   <SibraBieresSection />
   <SibraTireuseSection />
+  <SibraInfosSection />
   <SibraInstagramSection />
 </Layout>

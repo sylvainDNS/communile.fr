@@ -1,0 +1,62 @@
+---
+import Container from '@/components/container.astro'
+import Heading from '@/components/heading.astro'
+import LeafletMap from '@/components/leaflet-map.astro'
+import Section from '@/components/section.astro'
+import Text from '@/components/text.astro'
+
+const coordonnees: [number, number] = [47.225406, -1.543878]
+
+const reperes: string[] = [
+  'Entre les églises Saint-Clément et Saint-Donatien',
+  'Arrêt de bus « Chanzy », à moins de 200 m',
+]
+---
+
+<Section variant="accent">
+  <Container class="grid grid-cols-1 items-start gap-12 lg:grid-cols-2">
+    <div class="space-y-8">
+      <Heading as="h2" size="xl" weight="bold" color="white">Infos pratiques</Heading>
+
+      <div class="space-y-3">
+        <Heading as="h3" size="base" color="white">Adresse</Heading>
+        <address class="text-lg leading-relaxed text-white not-italic">
+          La Sibra<br />
+          121 rue du Général Buat<br />
+          44000 Nantes
+        </address>
+      </div>
+
+      <div class="space-y-3">
+        <Heading as="h3" size="base" color="white">Se repérer</Heading>
+        <ul role="list" class="space-y-2">
+          {
+            reperes.map(repere => (
+              <li>
+                <Text color="white">{repere}</Text>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    <div>
+      <LeafletMap
+        id="sibra-infos-map"
+        height="400px"
+        center={coordonnees}
+        zoom={16}
+        scrollWheelZoom={false}
+        markers={[
+          {
+            position: coordonnees,
+            popup: '<strong>La Sibra</strong><br>121 rue du Général Buat<br>44000 Nantes',
+          },
+        ]}
+        errorText="La carte n’a pas pu être chargée. La Sibra se trouve au 121 rue du Général Buat, 44000 Nantes."
+        class="overflow-hidden rounded-2xl"
+      />
+    </div>
+  </Container>
+</Section>
