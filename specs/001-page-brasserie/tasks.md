@@ -19,7 +19,7 @@
 ## Git Workflow (branche epic)
 
 - Créer une **feature branch epic** `001-page-brasserie` depuis `main` avant tout travail.
-- Chaque issue est implémentée sur sa propre branche (ex. `001-page-brasserie/T008-hero-section`) et sa **PR cible la branche epic `001-page-brasserie`**, jamais `main` directement.
+- Chaque issue est implémentée sur sa propre branche, schéma **plat** (ex. `001-page-brasserie-hero`, pas `001-page-brasserie/T008-hero-section`) — git interdit qu'une référence soit à la fois une branche et le préfixe d'une autre, or la branche epic s'appelle exactement `001-page-brasserie` — et sa **PR cible la branche epic `001-page-brasserie`**, jamais `main` directement.
 - La branche epic est mergée vers `main` en une seule PR finale, une fois la Phase 8 (Polish) verte — le gate T029 (confirmation des coordonnées) reste bloquant pour la mise en ligne, pas pour le merge des PRs intermédiaires vers l'epic.
 - Gates constitution (build + lint verts, Conventional Commits) : à respecter sur chaque PR vers l'epic ; la relecture visuelle et Lighthouse s'appliquent au moins à la PR finale epic → `main`.
 

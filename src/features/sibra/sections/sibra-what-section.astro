@@ -1,0 +1,50 @@
+---
+import { Image } from 'astro:assets'
+import Container from '@/components/container.astro'
+import Heading from '@/components/heading.astro'
+import Link from '@/components/link.astro'
+import Section from '@/components/section.astro'
+import Text from '@/components/text.astro'
+import { PATH } from '@/utils/constants'
+import sibraBoutiqueImage from '../images/sibra-boutique.webp'
+import SibraWhatOrnament from '../images/sibra-what-ornament.svg'
+---
+
+<Section variant="primary" class="overflow-hidden">
+  <SibraWhatOrnament class="absolute bottom-0 left-0 text-primary-accent" aria-hidden="true" />
+  <Container class="relative z-20 grid grid-cols-1 items-start gap-12 lg:grid-cols-2">
+    <div class="my-auto space-y-6">
+      <Heading as="h2" size="xl" weight="bold" color="white" class="mt-6">La Sibra, c’est quoi ?</Heading>
+      {/* weight="bold" (et non semibold) : sous `md`, `size="xl"` rend 20 px — le seuil WCAG « grand texte »
+          est 24 px, ou 18,66 px en graisse 700. Seul le gras qualifie ce blanc sur le vert (3,5:1) en mobile. */}
+      <Text size="xl" weight="bold" color="white" class="mt-12 max-w-sm">
+        Le tout nouveau lieu de la coopérative !
+      </Text>
+      <Text size="base" class="max-w-xl text-foreground">
+        Véritable monument du quartier St Clément, la microbrasserie, anciennement Les Bières de Charlotte, est un
+        passage obligé pour les habitant.es du quartier et les autres ! La bière y est brassée de manière artisanale,
+        avec des ingrédients locaux. Elle est non filtrée, non pasteurisée, sans conservateur ni clarifiant. De la
+        bière simple et sans fioritures dont chaque gorgée en appelle une autre.
+      </Text>
+      <Text font="pally" size="xl" weight="semibold" class="max-w-md text-foreground">
+        À l’image du lien entre notre ferme maraîchère et nos restaurants, intégrer une brasserie permet à la
+        coopérative d’agir de l’houblon à la pression : produire nous-même ce qui est proposé aux client·es de nos
+        lieux, soutenir une activité artisanale locale, repenser les liens entre métiers de bar et de brassage — le
+        tout dans le respect de nos valeurs. L’aventure Commun’île y prend tout son sens !
+      </Text>
+      <Text size="base" class="max-w-xl text-foreground">
+        Retrouvez aussi les bières dans <Link href={PATH.HOME} class="font-semibold">les autres lieux de la coopérative</Link> et
+        lors des marchés de <Link href={PATH.LES_LANDES_FERTILES} class="font-semibold">la ferme des Landes Fertiles</Link> !
+      </Text>
+    </div>
+    <div class="grid grid-cols-1 gap-4">
+      <Image
+        src={sibraBoutiqueImage}
+        alt="L’intérieur de la boutique de La Sibra : le comptoir en bois et les étagères de bouteilles de la microbrasserie"
+        class="w-full rounded-2xl object-cover"
+        widths={[640, 960, 1280, sibraBoutiqueImage.width]}
+        sizes="(min-width: 1024px) 50vw, 100vw"
+      />
+    </div>
+  </Container>
+</Section>

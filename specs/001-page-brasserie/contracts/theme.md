@@ -36,7 +36,7 @@ Tokens CSS ajoutés à `src/styles/global.css`, suivant exactement la mécanique
 
 | Fond | Texte blanc | Texte `foreground` (neutre foncé) | Usage autorisé |
 |---|---|---|---|
-| `primary` vert `#7A9300` | 3,5:1 | 5,1:1 | blanc en **grand texte** (≥ 24 px ou ≥ 18,66 px gras : `Heading`, `Text size="xl" weight="semibold"`) ; texte courant en `foreground` |
+| `primary` vert `#7A9300` | 3,5:1 | 5,1:1 | blanc en **grand texte** (≥ 24 px ou ≥ 18,66 px **en graisse 700** : `Heading`, `Text size="xl" weight="bold"`) ; texte courant en `foreground`. ⚠️ `weight="semibold"` (600) ne qualifie **pas** : sous `md`, `size="xl"` rend 20 px, donc du texte courant au sens WCAG (cf. `issues/60-hero/research.md` R60-6) |
 | `primary-accent` `#5E7500` | 5,2:1 | — | blanc en texte courant (`Section variant="accent"`, `Badge variant="primary"` sur `-accent` si besoin) |
 | `secondary` rose `#DC5B87` | 3,6:1 | 5,0:1 | idem primary : blanc en grand texte, courant en `foreground` |
 | `secondary-accent` `#B93B6A` | 5,4:1 | — | blanc en texte courant |
@@ -45,7 +45,7 @@ Tokens CSS ajoutés à `src/styles/global.css`, suivant exactement la mécanique
 
 - **Interdits sur cette page** : `Badge variant="tertiary"` (rend `bg-tertiary text-white`) ; `Text size="base" color="white"` directement sur `Section variant="primary|secondary"`.
 - **Distinctivité (SC-005)** : vert olive + rose en dominantes — aucun thème existant n'utilise ces teintes ; l'orange voisin du Bar'Île reste tertiaire.
-- **Décorations** : `sibra-hero-decoration.svg` en `text-secondary-accent` (coin haut-gauche) et `text-primary-accent` (coin bas-droit, `rotate-180`) ; `sibra-what-ornament.svg` en `text-primary-accent` sur fond `primary`. Motif « trois disques » du hero en couleurs de marque brutes (`fill="var(--color-tertiary)"`, `var(--color-secondary)`, `var(--color-primary)`).
+- **Décorations** : `sibra-hero-decoration.svg` en `text-secondary-accent` (coin haut-gauche) et `text-primary-accent` (coin bas-droit, `rotate-180`) ; `sibra-what-ornament.svg` en `text-primary-accent` sur fond `primary`. Motif « trois disques » du hero en couleurs de marque brutes, via les classes Tailwind `fill-tertiary` / `fill-secondary` / `fill-primary` — **pas** `fill="var(--color-…)"` en attribut de présentation SVG, qui ne substitue pas les `var()` (cf. `issues/60-hero/research.md` R60-1).
 - **Déclaration TypeScript** : `'sibra'` ajouté à l'union `Props['theme']` de `src/layouts/main.astro:16`.
 - Les dérivés `-light`/`-dark` (color-mix) sont produits automatiquement par le bloc `@theme inline` existant — rien à ajouter.
 - Vérification outillée des valeurs finales (contrast checker) avant merge ; les ratios ci-dessus ont été calculés sur les hex de la charte (formule WCAG relative luminance).
