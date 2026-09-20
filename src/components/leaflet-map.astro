@@ -11,6 +11,7 @@ export interface Props {
     position: [number, number]
     popup?: string
     icon?: string
+    alt?: string
   }>
   tileLayer?: {
     url: string
@@ -26,6 +27,7 @@ export interface Props {
   keyboard?: boolean
   loadingText?: string
   errorText?: string
+  ariaLabel?: string
 }
 
 const {
@@ -49,6 +51,7 @@ const {
   keyboard = true,
   loadingText = 'Chargement de la carte...',
   errorText = 'Erreur lors du chargement de la carte',
+  ariaLabel = 'Carte de localisation',
 } = Astro.props
 ---
 
@@ -66,7 +69,7 @@ const {
   </div>
 
   <!-- Conteneur de la carte -->
-  <div id={id} class="w-full rounded-lg" style={{ height }}></div>
+  <div id={id} class="w-full rounded-lg" role="application" aria-label={ariaLabel} style={{ height }}></div>
 
   <!-- Message d'erreur (caché par défaut) -->
   <div
@@ -76,7 +79,7 @@ const {
   >
     <div class="text-center">
       <div class="mb-2 h-8 w-8 text-red-500">
-        <svg fill="currentColor" viewBox="0 0 20 20">
+        <svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
           <path
             fill-rule="evenodd"
             d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
@@ -84,7 +87,7 @@ const {
           ></path>
         </svg>
       </div>
-      <p class="text-sm text-red-600">{errorText}</p>
+      <p class="text-sm text-red-700">{errorText}</p>
     </div>
   </div>
 </div>
@@ -151,7 +154,12 @@ function initMap() {
     }).addTo(map)
 
     mapConfig.markers.forEach((markerData) => {
-      const marker = L.marker(markerData.position).addTo(map)
+      // Le popup contient du HTML : les balises sont remplacées par une espace, et non supprimées,
+      // sans quoi les lignes se collent et un lecteur d'écran annonce « La Sibra121 rue du Général Buat ».
+      const markerAlt = markerData.alt
+        || (markerData.popup ? markerData.popup.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim() : '')
+        || 'Marqueur de localisation'
+      const marker = L.marker(markerData.position, { alt: markerAlt }).addTo(map)
 
       if (markerData.popup) {
         marker.bindPopup(markerData.popup)
