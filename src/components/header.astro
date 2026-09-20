@@ -37,6 +37,10 @@ const links = [
     label: 'À La Carte Postale',
     href: PATH.A_LA_CARTE_POSTALE,
   },
+  {
+    label: 'La Sibra',
+    href: PATH.LA_SIBRA,
+  },
 ]
 ---
 
@@ -55,7 +59,7 @@ const links = [
           {
             links.map(link => (
               <li>
-                <NavLink active={pathname === link.href} href={link.href}>
+                <NavLink active={pathname === link.href} href={link.href} class="px-2 2xl:px-4">
                   {link.label}
                 </NavLink>
               </li>
