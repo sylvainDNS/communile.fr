@@ -18,6 +18,7 @@ export const PATH = {
   LE_BAR_ILE: '/le-bar-ile',
   A_LA_CARTE_POSTALE: '/a-la-carte-postale',
   LA_SIBRA: '/la-sibra',
+  CONTACT: '/contact',
   QUI_SOMMES_NOUS: '/#qui-sommes-nous',
   NOTRE_CONCEPT: '/#notre-concept',
   EN_QUELLES_CHIFFRES: '/#en-quelques-chiffres',
