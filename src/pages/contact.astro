@@ -8,7 +8,7 @@ import Text from '../components/text.astro'
 import Layout from '../layouts/main.astro'
 
 const description
-  = 'Contactez Commun\'île pour toute question ou demande. Retrouvez nos coordonnées, horaires d\'ouverture et localisation à Lille.'
+  = 'Contactez Commun’île pour toute question ou demande. Retrouvez nos coordonnées, horaires d\'ouverture et localisation à Lille.'
 ---
 
 <Layout content={{ title: 'Contact', description }} theme="default">
@@ -53,6 +53,7 @@ const description
             <Heading as="h2" size="base" weight="semibold" font="sans">Notre localisation</Heading>
             <LeafletMap
               id="contact-map"
+              ariaLabel="Carte de localisation de Commun’île"
               height="400px"
               center={[50.6292, 3.0573]}
               zoom={15}
