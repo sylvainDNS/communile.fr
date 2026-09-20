@@ -69,11 +69,17 @@ const {
   </div>
 
   <!-- Conteneur de la carte -->
-  <div id={id} class="w-full rounded-lg" role="application" aria-label={ariaLabel} style={{ height }}></div>
+  {/* `region` plutôt que `application` : Leaflet rend ce conteneur focusable (`tabindex="0"`) sans lui
+      donner de nom, d'où le besoin d'un rôle et d'un label (WCAG 4.1.2). `application` ferait basculer les
+      lecteurs d'écran en mode formulaire sur tout le sous-arbre, qui contient pourtant du contenu à lire —
+      attribution OpenStreetMap, boutons de zoom, popups. Les flèches de déplacement fonctionnent de toute
+      façon une fois le focus pris, et Tab n'est jamais intercepté : on entre et on sort sans piège. */}
+  <div id={id} class="w-full rounded-lg" role="region" aria-label={ariaLabel} style={{ height }}></div>
 
   <!-- Message d'erreur (caché par défaut) -->
   <div
     id={`${id}-error`}
+    role="alert"
     class="absolute inset-0 z-20 hidden items-center justify-center rounded-lg border border-red-200 bg-red-50"
     style={{ height }}
   >

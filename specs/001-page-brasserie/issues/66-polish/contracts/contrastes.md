@@ -80,12 +80,29 @@ l'onglet Accessibility de Chrome DevTools sur le rendu réel.
 | `color="primary"` | **2,51** | ✗ |
 | `color="secondary"` | **2,55** | ✗ |
 | `color="tertiary"` | **1,65** | ✗ |
-| n'importe laquelle + `class="text-foreground"` | **≥ 14,1** | ✅ |
+| n'importe laquelle + `text-foreground` | **≥ 14,1** | ✅ |
 
 Le défaut n'est pas propre au thème sibra : il touche aussi `la-carte-postale` (2,35), `labo-diva` (2,65) et
 `wattignies` (3,30). Seuls `bar-ile` (6,19) et `landes-fertiles` (5,70) y échappent, parce que leur couleur
 primaire est déjà très foncée. Passer la couleur de texte à la variante `-accent` **ne suffit pas**
-(sibra : 3,77 / 3,85 / 2,37). Seul `text-foreground` est conforme sur les six thèmes.
+(sibra : 3,77 / 3,85 / 2,37). Seul `text-foreground` est conforme sur tous les thèmes.
+
+### `Tag color="quaternary"` — le piège du token qui change de nature
+
+`quaternary` avait d'abord été laissé tel quel, au motif que ce token est « le neutre foncé commun ». **C'est
+faux pour la moitié des thèmes**, et c'est exactement le genre de raccourci que ce document existe pour
+empêcher :
+
+| Thème | `--theme-quaternary` | `text-quaternary` sur fond 30 % |
+|---|---|---|
+| `default`, `wattignies` | `watt-green`, un vert **moyen** | **2,53** ✗ |
+| `landes-fertiles` | vert foncé | 7,18 ✅ |
+| `labo-diva`, `sibra` | le neutre foncé | 8,70 ✅ |
+| `bar-ile`, `la-carte-postale` | **non défini** | couleur invalide → `unset` |
+
+Deux enseignements : un token nommé pareil ne porte pas la même couleur d'un thème à l'autre, et un token
+**non défini** fait retomber la couleur du texte en `unset`. `text-foreground`, lui, est toujours défini —
+d'où son choix pour les quatre variantes thémées.
 
 ### Panneau d'erreur de `leaflet-map`
 

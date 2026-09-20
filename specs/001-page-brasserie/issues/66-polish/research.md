@@ -140,13 +140,32 @@ sa valeur en pixels.
 3. **Skeleton de chargement.** Le squelette animé est masqué par `style.display = 'none'` une fois la carte
    prête — correct — mais il n'est pas annoncé pendant le chargement. Défaut mineur, non bloquant.
 
-**Décision** : corriger (1) par `role="application"` + `aria-label` paramétrable, et (2) en passant un `alt`
+**Décision** : corriger (1) par `role="region"` + `aria-label` paramétrable, et (2) en passant un `alt`
 français à `L.marker`. Laisser (3) : ajouter une région live pour un squelette qui dure moins d'une seconde
 ajoute du bruit d'annonce pour un gain douteux.
 
-**Choix de `role="application"` plutôt que `role="region"`** : une carte Leaflet interceptant les flèches du
-clavier pour se déplacer, `application` est le rôle qui décrit honnêtement ce comportement et évite que le
-lecteur d'écran intercepte ces mêmes touches en mode lecture.
+**`role="region"` et non `role="application"`** — arbitrage revu en cours de passe. `application` avait été
+retenu d'abord, au motif qu'une carte Leaflet intercepte les flèches du clavier et que ce rôle décrit
+honnêtement ce comportement. Deux vérifications ont renversé la décision :
+
+- `application` fait basculer les lecteurs d'écran en mode formulaire sur **tout le sous-arbre**. Or ce
+  sous-arbre contient du contenu à lire : l'attribution OpenStreetMap, les boutons de zoom, le contenu des
+  popups. On perdait la navigation par éléments à l'intérieur de la carte pour un bénéfice théorique.
+- l'argument qui motivait `application` ne tient pas : `Map.Keyboard` n'intercepte que les flèches, `+`/`-`
+  et `Échap`. **`Tab` n'est jamais `preventDefault()`é** — il n'y avait donc aucun piège clavier à éviter,
+  et les flèches fonctionnent de toute façon une fois le focus pris.
+
+`role="img"` est écarté pour une autre raison : il masquerait les descendants d'une carte pourtant
+interactive.
+
+**Ajout (4), constaté après coup** : le bloc de repli n'était annoncé à personne. Il apparaît
+dynamiquement, donc il reçoit `role="alert"`. L'effet de bord redouté — une annonce parasite au chargement —
+ne se produit pas : le bloc est `hidden` par défaut et n'est révélé qu'en cas d'échec réel.
+
+**Ajout (5)** : le mécanisme `ariaLabel` ne servait à rien tant qu'aucun appelant ne le renseignait. Les sept
+cartes du site annonçaient toutes « Carte de localisation », y compris sur la page que cette passe polit.
+Chacune reçoit désormais un libellé distinct — un mécanisme de personnalisation que personne n'utilise n'est
+pas une correction d'accessibilité, c'est une intention.
 
 **Portée** : ce composant sert les six pages de lieux **et** `/contact`. Toute modification s'y vérifie sur
 les sept pages, pas sur `/la-sibra` seule.
