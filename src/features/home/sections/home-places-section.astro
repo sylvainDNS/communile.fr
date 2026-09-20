@@ -7,6 +7,7 @@ import Section from '@/components/section.astro'
 import Text from '@/components/text.astro'
 import { PATH, SECTIONS } from '@/utils/constants'
 import laCartePostaleCardImage from '../images/la-carte-postale-card.webp'
+import laSibraCardImage from '../images/la-sibra-card.webp'
 import leBarIleCardImage from '../images/le-bar-ile-card.webp'
 import leLaboDivaCardImage from '../images/le-labo-diva-card.webp'
 import leWattigniesCardImage from '../images/le-wattignies-card.webp'
@@ -97,11 +98,26 @@ import lesLandesFertilesCardImage from '../images/les-landes-fertiles-card.webp'
         imageAlt="À La Carte Postale - Des cartes postales sont suspendues au plafond"
         tagColor="yellow"
         tagText="À La Carte Postale"
-        class="md:mx-auto md:col-span-2 md:w-1/2"
       >
         <div slot="hover-content" class="grid h-full">
           <span class="text-2xl font-bold"> Horaires d'ouverture </span>
           <span class="font-medium"> 10h00 - 17h00 du lundi au vendredi </span>
+        </div>
+      </PlaceCard>
+
+      <PlaceCard
+        href={PATH.LA_SIBRA}
+        image={laSibraCardImage}
+        imageAlt="La Sibra - La boutique de la brasserie, son comptoir en bois, ses étagères de bouteilles et un tonneau"
+        tagColor="green"
+        tagText="La Sibra"
+      >
+        <div slot="hover-content" class="grid h-full">
+          <span class="text-2xl font-bold"> Horaires d'ouverture </span>
+          <span class="font-medium">
+            <strong>Vendredi :</strong> 16h00 - 20h00 <br />
+            <strong>Samedi :</strong> 11h00 - 20h00
+          </span>
         </div>
       </PlaceCard>
     </div>
