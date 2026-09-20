@@ -87,6 +87,17 @@
 - **Decision**: créer `src/pages/sitemap.xml.ts`, endpoint qui génère le XML à partir des routes publiques (constantes `PATH` sans ancres + `/contact`), et `public/robots.txt` le référençant. Pas d'usage de `@astrojs/sitemap`.
 - **Rationale**: FR-010 et la constitution (principe III) exigent le sitemap, or le site n'en a aucun (la dépendance `@astrojs/sitemap` est installée mais non configurée). Avec `output: 'server'` sans pages prérendues, l'intégration `@astrojs/sitemap` ne produirait rien (elle n'inclut que les routes prérendues). Un endpoint maintenu depuis `PATH` est la solution la plus simple (principe II), testable et sans changement de configuration de rendu.
 - **Alternatives considered**: `@astrojs/sitemap` + passage des pages en prérendu (rejeté ici : changement transverse du mode de rendu, hors périmètre — pourra faire l'objet d'une amélioration séparée) ; sitemap statique dans `public/` (rejeté : doublon manuel du XML, l'endpoint TS reste au plus près des constantes).
+- **Correction (2026-09-20, issue #66)** — la décision reste la bonne, mais la raison invoquée est
+  imprécise et pourrait égarer une décision future. Le Rationale attribue l'inopérance de
+  `@astrojs/sitemap` au mode `output: 'server'` ; la vraie condition est l'**absence de routes
+  prérendues**. Les deux coïncident dans ce dépôt (`astro.config.mjs` déclare `output: 'server'` et aucune
+  page n'exporte `prerender = true`, vérifié), mais elles sont indépendantes : en `output: 'server'`, une
+  route qui exporte `prerender = true` est bien reprise par l'intégration. Formulée comme elle l'est, R5
+  laisse croire que le sitemap automatique est hors d'atteinte tant qu'on reste en `output: 'server'`, ce
+  qui est faux. À lire donc : « l'intégration ne produirait rien **tant qu'aucune route n'est
+  prérendue** ». Conséquence pratique inchangée — l'endpoint manuel `src/pages/sitemap.xml.ts` reste le
+  bon choix, et la dépendance `@astrojs/sitemap` demeure installée sans être utilisée (cf.
+  `issues/66-polish/data-model.md` D14).
 
 ## R6. Optimisation des 3 photos (portrait 3472×4624, ~3,5 Mo)
 
@@ -99,6 +110,21 @@
 - **Decision**: libellé « La Sibra » ajouté en dernière position des `links` du header et du footer. Libellé court (8 caractères) : le risque de débordement de la nav desktop à 7 entrées au breakpoint `xl` est faible, vérification visuelle tout de même obligatoire (edge case spec).
 - **Rationale**: FR-009 « au même titre que les autres lieux » — les 6 entrées actuelles utilisent les noms complets ; edge case spec : le 7ᵉ item ne doit casser ni le header desktop ni le menu mobile (le menu mobile est une liste verticale, sans risque).
 - **Alternatives considered**: menu déroulant « Nos lieux » (rejeté : refonte de navigation hors périmètre, YAGNI).
+- **Vérification (2026-09-20, issue #66)** — la vérification visuelle que cette entrée déclarait
+  « obligatoire » a été faite, et la conclusion de R7 **tient** : aucun débordement de la nav desktop ni de
+  la page, mesuré à 1280, 1366, 1440, 1536 et 1920 px. À 1280 px (le point de bascule, la nav étant
+  `hidden xl:block`), les 7 entrées occupent 874 px dans une colonne de 886 px, sur une seule ligne.
+
+  En revanche, le **critère** surveillé par R7 n'était pas le bon, et c'est ce qu'il faut retenir pour une
+  8ᵉ entrée éventuelle. R7 raisonnait en largeur de libellé (« 8 caractères, risque faible ») et en
+  débordement horizontal. Or la grille du header est `1fr auto 1fr` : la colonne de nav s'adapte à son
+  contenu et les colonnes latérales absorbent le reste. Testé en allongeant le dernier libellé, la page ne
+  déborde **jamais** — même avec 200 caractères ajoutés. Ce qui cède d'abord, c'est la **hauteur** : à
+  +60 caractères, la nav passe sur deux lignes et le header grandit de 24 à 72 px.
+
+  Donc : le mode de rupture d'une nav trop chargée est le passage à deux lignes du header, pas un
+  débordement de page. C'est cette hauteur qu'il faudra mesurer avant d'ajouter une 8ᵉ entrée, pas la
+  longueur du libellé.
 
 ## R8. Section lieux de l'accueil (6 cartes)
 
