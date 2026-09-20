@@ -15,7 +15,12 @@ import illuScicImage from '../images/communile-illu-scic.webp'
 <Section variant="transparent" id={SECTIONS.SCIC}>
   <Container>
     <ShapeHexagon01 role="presentation" aria-hidden="true" class="absolute -top-3 -right-2 h-auto w-40" />
-    <div class="relative z-10 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-[260px_auto_50%]">
+    {/* Troisième colonne en `minmax(0,1fr)` et non `50%` : avec `50%`, la somme `260px` + colonne `auto`
+        (incompressible, son contenu fait 400 px) + la moitié du conteneur + deux gaps dépassait la largeur
+        disponible et débordait la page de 27 px à 1280 px. `overflow-hidden` aurait masqué le symptôme en
+        coupant du contenu réel — ce sont les cartes de cette colonne qui dépassaient, pas les hexagones
+        décoratifs. Mesuré au navigateur : colonnes 260/359/616 avant, 260/400/524 après, débordement 0. */}
+    <div class="relative z-10 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-[260px_auto_minmax(0,1fr)]">
       <div
         class="order-last mx-auto aspect-square w-full max-w-[400px] overflow-hidden rounded-2xl md:order-first md:aspect-auto"
       >
