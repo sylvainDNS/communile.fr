@@ -117,3 +117,77 @@ Arrêter les serveurs de développement lancés pour la vérification.
 | Contrastes mesurés sur `/la-sibra` | aucun texte sous son seuil |
 | Lighthouse `/la-sibra` vs `/a-la-carte-postale` | pas de régression |
 | `tel:` / `mailto:` non confirmés | absents |
+
+---
+
+## Relevé de la passe du 2026-09-20
+
+Mesures effectuées sous Chrome, serveur de développement local. Firefox indisponible (marionette).
+375 px obtenu par émulation d'appareil, pas par redimensionnement.
+
+### Débordement horizontal — 8 pages × 2 largeurs
+
+| | avant | après |
+|---|---|---|
+| `/` à 1280 px | **27 px** | **0** |
+| 15 autres combinaisons | 0 | 0 |
+
+Cause réelle : la grille `xl:grid-cols-[260px_auto_50%]` de `home-choices-section.astro`. L'élément dont
+le bord droit atteignait exactement `scrollWidth` (1307 px) était la colonne des `HomeIconTextCard`, donc
+du **contenu**. `overflow-hidden` l'aurait coupé. Corrigé par `minmax(0,1fr)` : colonnes 260/359/616 →
+260/400/524, la colonne centrale atteignant enfin son `max-w-[400px]`.
+
+### Contrastes — mesurés sur le rendu, pas estimés
+
+Toutes les combinaisons texte/fond des 8 pages, seuils 4,5:1 et 3:1 selon taille et graisse :
+
+| Page | Non-conformités |
+|---|---|
+| `/la-sibra` | **0** |
+| `/contact` | **0** |
+| `/`, `/le-wattignies`, `/le-bar-ile`, `/le-labo-diva`, `/les-landes-fertiles`, `/a-la-carte-postale` | défauts **préexistants**, hors périmètre (variantes `yellow`/`red` de `Tag` et `Badge`, non thémées) |
+
+`/la-sibra` est la seule page de lieu sans aucune non-conformité de contraste.
+
+### Composant de carte
+
+| Point | Avant | Après |
+|---|---|---|
+| Panneau d'erreur | 4,41:1 | **5,87:1** mesuré sur le rendu |
+| Conteneur | focusable anonyme (`tabindex="0"` posé par Leaflet) | `role="application"` + `aria-label` |
+| Marqueur | sans nom accessible | « La Sibra 121 rue du Général Buat 44000 Nantes » |
+| Icône d'erreur | exposée | `aria-hidden="true" focusable="false"` |
+
+Le remplacement des balises du popup se fait par une **espace** et non par la chaîne vide : la première
+version produisait « La Sibra121 rue du Général Buat44000 Nantes ».
+
+### Clavier — 8 pages
+
+Aucun élément focusable anonyme sur aucune des 8 pages. 3 pages hors epic
+(`/le-wattignies`, `/le-labo-diva`, `/a-la-carte-postale`) contiennent des focusables dans un sous-arbre
+`aria-hidden="true"` — défaut **préexistant**, confirmé par Lighthouse, hors périmètre.
+
+### Lighthouse mobile — comparé dans la même session
+
+| | `/la-sibra` | `/a-la-carte-postale` |
+|---|---|---|
+| Accessibilité | **100** | 93 |
+| SEO | **100** | 100 |
+| Bonnes pratiques | **96** | 96 |
+| Agentic browsing | **100** | 50 |
+| Audits en échec | **1** | 4 |
+| Poids HTML | **163 Ko** | 232 Ko |
+
+L'unique échec de `/la-sibra` (`image-size-responsive`) est **partagé** avec la page de référence : il
+n'est donc pas imputable à cette page. Aucune régression — `/la-sibra` est meilleure ou à égalité partout.
+
+### Navigation à 7 entrées (vérification due par R7)
+
+Aucun débordement à 1280, 1366, 1440, 1536 ni 1920 px. À 1280 px, les 7 entrées occupent 874 px dans une
+colonne de 886 px, sur une seule ligne. En allongeant artificiellement le dernier libellé, la page ne
+déborde jamais : à +60 caractères la nav passe à **deux lignes** et le header grandit de 24 à 72 px.
+C'est la hauteur qui cède, pas la largeur.
+
+### Gates
+
+`eslint` (dépôt entier), `astro check` (0 erreur / 0 avertissement / 0 hint) et `astro build` : exit 0.
