@@ -8,7 +8,7 @@ import Text from '../components/text.astro'
 import Layout from '../layouts/main.astro'
 
 const description
-  = 'Contactez Commun\'île pour toute question ou demande. Retrouvez nos coordonnées, horaires d\'ouverture et localisation à Lille.'
+  = 'Contactez Commun\'île pour toute question ou demande. Retrouvez nos coordonnées, horaires d\'ouverture et localisation à Nantes.'
 ---
 
 <Layout content={{ title: 'Contact', description }} theme="default">
@@ -24,7 +24,7 @@ const description
             <div class="space-y-3">
               <div>
                 <Text class="font-semibold">Adresse :</Text>
-                <Text>Le Wattignies<br />Rue de Wattignies, 59000 Lille</Text>
+                <Text>Le Wattignies<br />Nantes</Text>
               </div>
               <div>
                 <Text class="font-semibold">Email :</Text>
@@ -54,12 +54,12 @@ const description
             <LeafletMap
               id="contact-map"
               height="400px"
-              center={[50.6292, 3.0573]}
+              center={[47.20422, -1.546397]}
               zoom={15}
               markers={[
                 {
-                  position: [50.6292, 3.0573],
-                  popup: '<strong>Le Wattignies</strong><br>Rue de Wattignies<br>59000 Lille',
+                  position: [47.20422, -1.546397],
+                  popup: '<strong>Le Wattignies</strong><br>Nantes',
                 },
               ]}
               class="overflow-hidden rounded-lg"

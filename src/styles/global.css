@@ -41,7 +41,7 @@
 
   /* Landes Fertiles */
   --color-landes-fertiles-grey: oklch(0.3752 0.0394 256.85);
-  --color-landes-fertiles-grey-accent: oklch(0.2961 0.2045 255.09);
+  --color-landes-fertiles-grey-accent: oklch(0.2823 0.0548 255.60);
 
   --color-landes-fertiles-red: oklch(0.4761 0.194 29.08);
   --color-landes-fertiles-red-accent: oklch(0.3976 0.2045 28.91);
@@ -214,7 +214,7 @@
 
   [data-theme='bar-ile'] {
     --theme-primary: var(--color-le-bar-ile-blue);
-    --theme-primary-accent: var(--color-le-labo-diva-green-accent);
+    --theme-primary-accent: var(--color-le-bar-ile-blue-accent);
     --theme-secondary: var(--color-le-bar-ile-orange);
     --theme-secondary-accent: var(--color-le-bar-ile-orange-accent);
     --theme-tertiary: var(--color-le-bar-ile-neutral);
