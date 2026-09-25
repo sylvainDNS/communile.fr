@@ -14,5 +14,10 @@ export default antfu({
     'public/**',
     'tmp/**',
     '**/*.css',
+    // outillage agent versionné tel quel (spec kit) : hors périmètre du lint projet
+    '.claude/**',
+    '.specify/**',
+    // artefacts régénérés par Impeccable (sidecar design.json, cache et config locale du hook)
+    '.impeccable/**',
   ],
 })
