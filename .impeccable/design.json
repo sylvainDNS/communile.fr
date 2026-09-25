@@ -1,0 +1,748 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-25T15:38:17+00:00",
+  "title": "Design System: Commun'île",
+  "extensions": {
+    "colorMeta": {
+      "sky-mist": {
+        "role": "neutral",
+        "displayName": "Brume de ciel",
+        "canonical": "oklch(96.8% 0.007 247.896)",
+        "tonalRamp": [
+          "oklch(0.15 0.007 247.9)",
+          "oklch(0.26 0.007 247.9)",
+          "oklch(0.37 0.007 247.9)",
+          "oklch(0.48 0.007 247.9)",
+          "oklch(0.59 0.007 247.9)",
+          "oklch(0.70 0.007 247.9)",
+          "oklch(0.83 0.007 247.9)",
+          "oklch(0.95 0.007 247.9)"
+        ]
+      },
+      "night-ink": {
+        "role": "neutral",
+        "displayName": "Encre de nuit",
+        "canonical": "oklch(0.145 0 0)",
+        "tonalRamp": [
+          "oklch(0.15 0.000 0.0)",
+          "oklch(0.26 0.000 0.0)",
+          "oklch(0.37 0.000 0.0)",
+          "oklch(0.48 0.000 0.0)",
+          "oklch(0.59 0.000 0.0)",
+          "oklch(0.70 0.000 0.0)",
+          "oklch(0.83 0.000 0.0)",
+          "oklch(0.95 0.000 0.0)"
+        ]
+      },
+      "island-ink": {
+        "role": "neutral",
+        "displayName": "Encre d'île",
+        "canonical": "oklch(0.1292 0.0415 265.15)",
+        "tonalRamp": [
+          "oklch(0.15 0.042 265.1)",
+          "oklch(0.26 0.042 265.1)",
+          "oklch(0.37 0.042 265.1)",
+          "oklch(0.48 0.042 265.1)",
+          "oklch(0.59 0.042 265.1)",
+          "oklch(0.70 0.042 265.1)",
+          "oklch(0.83 0.042 265.1)",
+          "oklch(0.95 0.042 265.1)"
+        ]
+      },
+      "pebble": {
+        "role": "neutral",
+        "displayName": "Galet",
+        "canonical": "#e2e8f0",
+        "tonalRamp": [
+          "oklch(0.15 0.013 255.5)",
+          "oklch(0.26 0.013 255.5)",
+          "oklch(0.37 0.013 255.5)",
+          "oklch(0.48 0.013 255.5)",
+          "oklch(0.59 0.013 255.5)",
+          "oklch(0.70 0.013 255.5)",
+          "oklch(0.83 0.013 255.5)",
+          "oklch(0.95 0.013 255.5)"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "Blanc",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "oklch(0.15 0.000 89.9)",
+          "oklch(0.26 0.000 89.9)",
+          "oklch(0.37 0.000 89.9)",
+          "oklch(0.48 0.000 89.9)",
+          "oklch(0.59 0.000 89.9)",
+          "oklch(0.70 0.000 89.9)",
+          "oklch(0.83 0.000 89.9)",
+          "oklch(0.95 0.000 89.9)"
+        ]
+      },
+      "watt-blue": {
+        "role": "primary",
+        "displayName": "Bleu Fresque",
+        "canonical": "oklch(0.5605 0.2414 266.27)",
+        "tonalRamp": [
+          "oklch(0.15 0.113 266.3)",
+          "oklch(0.26 0.180 266.3)",
+          "oklch(0.37 0.241 266.3)",
+          "oklch(0.48 0.241 266.3)",
+          "oklch(0.59 0.241 266.3)",
+          "oklch(0.70 0.241 266.3)",
+          "oklch(0.83 0.241 266.3)",
+          "oklch(0.95 0.174 266.3)"
+        ]
+      },
+      "watt-blue-accent": {
+        "role": "primary",
+        "displayName": "Bleu Outremer",
+        "canonical": "oklch(0.4827 0.2923 265.07)",
+        "tonalRamp": [
+          "oklch(0.15 0.113 265.1)",
+          "oklch(0.26 0.180 265.1)",
+          "oklch(0.37 0.248 265.1)",
+          "oklch(0.48 0.292 265.1)",
+          "oklch(0.59 0.292 265.1)",
+          "oklch(0.70 0.292 265.1)",
+          "oklch(0.83 0.248 265.1)",
+          "oklch(0.95 0.174 265.1)"
+        ]
+      },
+      "watt-red": {
+        "role": "secondary",
+        "displayName": "Rouge Piment",
+        "canonical": "hsla(0, 100%, 57%, 1)",
+        "tonalRamp": [
+          "oklch(0.15 0.113 27.9)",
+          "oklch(0.26 0.180 27.9)",
+          "oklch(0.37 0.246 27.9)",
+          "oklch(0.48 0.246 27.9)",
+          "oklch(0.59 0.246 27.9)",
+          "oklch(0.70 0.246 27.9)",
+          "oklch(0.83 0.246 27.9)",
+          "oklch(0.95 0.174 27.9)"
+        ]
+      },
+      "watt-yellow": {
+        "role": "tertiary",
+        "displayName": "Jaune Soleil",
+        "canonical": "oklch(0.8408 0.1725 84.2)",
+        "tonalRamp": [
+          "oklch(0.15 0.113 84.2)",
+          "oklch(0.26 0.172 84.2)",
+          "oklch(0.37 0.172 84.2)",
+          "oklch(0.48 0.172 84.2)",
+          "oklch(0.59 0.172 84.2)",
+          "oklch(0.70 0.172 84.2)",
+          "oklch(0.83 0.172 84.2)",
+          "oklch(0.95 0.172 84.2)"
+        ]
+      },
+      "watt-yellow-accent": {
+        "role": "tertiary",
+        "displayName": "Jaune Citron",
+        "canonical": "oklch(0.8982 0.181764 97.3809)",
+        "tonalRamp": [
+          "oklch(0.15 0.113 97.4)",
+          "oklch(0.26 0.180 97.4)",
+          "oklch(0.37 0.182 97.4)",
+          "oklch(0.48 0.182 97.4)",
+          "oklch(0.59 0.182 97.4)",
+          "oklch(0.70 0.182 97.4)",
+          "oklch(0.83 0.182 97.4)",
+          "oklch(0.95 0.174 97.4)"
+        ]
+      },
+      "watt-green": {
+        "role": "tertiary",
+        "displayName": "Vert Potager",
+        "canonical": "hsla(137, 71%, 36%, 1)",
+        "tonalRamp": [
+          "oklch(0.15 0.113 147.4)",
+          "oklch(0.26 0.170 147.4)",
+          "oklch(0.37 0.170 147.4)",
+          "oklch(0.48 0.170 147.4)",
+          "oklch(0.59 0.170 147.4)",
+          "oklch(0.70 0.170 147.4)",
+          "oklch(0.83 0.170 147.4)",
+          "oklch(0.95 0.170 147.4)"
+        ]
+      },
+      "landes-grey": {
+        "role": "primary",
+        "displayName": "Ardoise de ferme",
+        "canonical": "oklch(0.3752 0.0394 256.85)",
+        "tonalRamp": [
+          "oklch(0.15 0.039 256.9)",
+          "oklch(0.26 0.039 256.9)",
+          "oklch(0.37 0.039 256.9)",
+          "oklch(0.48 0.039 256.9)",
+          "oklch(0.59 0.039 256.9)",
+          "oklch(0.70 0.039 256.9)",
+          "oklch(0.83 0.039 256.9)",
+          "oklch(0.95 0.039 256.9)"
+        ]
+      },
+      "landes-grey-accent": {
+        "role": "primary",
+        "displayName": "Ardoise profonde",
+        "canonical": "oklch(0.2823 0.0548 255.60)",
+        "tonalRamp": [
+          "oklch(0.15 0.055 255.6)",
+          "oklch(0.26 0.055 255.6)",
+          "oklch(0.37 0.055 255.6)",
+          "oklch(0.48 0.055 255.6)",
+          "oklch(0.59 0.055 255.6)",
+          "oklch(0.70 0.055 255.6)",
+          "oklch(0.83 0.055 255.6)",
+          "oklch(0.95 0.055 255.6)"
+        ]
+      },
+      "landes-red": {
+        "role": "secondary",
+        "displayName": "Rouge Brique",
+        "canonical": "oklch(0.4761 0.194 29.08)",
+        "tonalRamp": [
+          "oklch(0.15 0.113 29.1)",
+          "oklch(0.26 0.180 29.1)",
+          "oklch(0.37 0.194 29.1)",
+          "oklch(0.48 0.194 29.1)",
+          "oklch(0.59 0.194 29.1)",
+          "oklch(0.70 0.194 29.1)",
+          "oklch(0.83 0.194 29.1)",
+          "oklch(0.95 0.174 29.1)"
+        ]
+      },
+      "landes-red-accent": {
+        "role": "secondary",
+        "displayName": "Rouge Brique profond",
+        "canonical": "oklch(0.3976 0.2045 28.91)",
+        "tonalRamp": [
+          "oklch(0.15 0.113 28.9)",
+          "oklch(0.26 0.180 28.9)",
+          "oklch(0.37 0.204 28.9)",
+          "oklch(0.48 0.204 28.9)",
+          "oklch(0.59 0.204 28.9)",
+          "oklch(0.70 0.204 28.9)",
+          "oklch(0.83 0.204 28.9)",
+          "oklch(0.95 0.174 28.9)"
+        ]
+      },
+      "landes-green": {
+        "role": "tertiary",
+        "displayName": "Vert Sous-bois",
+        "canonical": "oklch(0.2718 0.1589 135.68)",
+        "tonalRamp": [
+          "oklch(0.15 0.113 135.7)",
+          "oklch(0.26 0.159 135.7)",
+          "oklch(0.37 0.159 135.7)",
+          "oklch(0.48 0.159 135.7)",
+          "oklch(0.59 0.159 135.7)",
+          "oklch(0.70 0.159 135.7)",
+          "oklch(0.83 0.159 135.7)",
+          "oklch(0.95 0.159 135.7)"
+        ]
+      },
+      "labo-green": {
+        "role": "primary",
+        "displayName": "Sarcelle Diva",
+        "canonical": "oklch(0.5997 0.1049 186.55)",
+        "tonalRamp": [
+          "oklch(0.15 0.105 186.6)",
+          "oklch(0.26 0.105 186.6)",
+          "oklch(0.37 0.105 186.6)",
+          "oklch(0.48 0.105 186.6)",
+          "oklch(0.59 0.105 186.6)",
+          "oklch(0.70 0.105 186.6)",
+          "oklch(0.83 0.105 186.6)",
+          "oklch(0.95 0.105 186.6)"
+        ]
+      },
+      "labo-green-dark": {
+        "role": "tertiary",
+        "displayName": "Sarcelle profonde",
+        "canonical": "oklch(0.4415 0.0747 189.15)",
+        "tonalRamp": [
+          "oklch(0.15 0.075 189.2)",
+          "oklch(0.26 0.075 189.2)",
+          "oklch(0.37 0.075 189.2)",
+          "oklch(0.48 0.075 189.2)",
+          "oklch(0.59 0.075 189.2)",
+          "oklch(0.70 0.075 189.2)",
+          "oklch(0.83 0.075 189.2)",
+          "oklch(0.95 0.075 189.2)"
+        ]
+      },
+      "labo-yellow": {
+        "role": "secondary",
+        "displayName": "Jaune Moutarde",
+        "canonical": "oklch(0.8341 0.1634 80.48)",
+        "tonalRamp": [
+          "oklch(0.15 0.113 80.5)",
+          "oklch(0.26 0.163 80.5)",
+          "oklch(0.37 0.163 80.5)",
+          "oklch(0.48 0.163 80.5)",
+          "oklch(0.59 0.163 80.5)",
+          "oklch(0.70 0.163 80.5)",
+          "oklch(0.83 0.163 80.5)",
+          "oklch(0.95 0.163 80.5)"
+        ]
+      },
+      "labo-yellow-accent": {
+        "role": "secondary",
+        "displayName": "Jaune Moutarde clair",
+        "canonical": "oklch(0.8913 0.1725 87.3809)",
+        "tonalRamp": [
+          "oklch(0.15 0.113 87.4)",
+          "oklch(0.26 0.172 87.4)",
+          "oklch(0.37 0.172 87.4)",
+          "oklch(0.48 0.172 87.4)",
+          "oklch(0.59 0.172 87.4)",
+          "oklch(0.70 0.172 87.4)",
+          "oklch(0.83 0.172 87.4)",
+          "oklch(0.95 0.172 87.4)"
+        ]
+      },
+      "bar-blue": {
+        "role": "primary",
+        "displayName": "Bleu Nuit de Bistro",
+        "canonical": "oklch(0.3546 0.1298 258.19)",
+        "tonalRamp": [
+          "oklch(0.15 0.113 258.2)",
+          "oklch(0.26 0.130 258.2)",
+          "oklch(0.37 0.130 258.2)",
+          "oklch(0.48 0.130 258.2)",
+          "oklch(0.59 0.130 258.2)",
+          "oklch(0.70 0.130 258.2)",
+          "oklch(0.83 0.130 258.2)",
+          "oklch(0.95 0.130 258.2)"
+        ]
+      },
+      "bar-blue-accent": {
+        "role": "primary",
+        "displayName": "Bleu Nuit profond",
+        "canonical": "oklch(0.266 0.092 256.83)",
+        "tonalRamp": [
+          "oklch(0.15 0.092 256.8)",
+          "oklch(0.26 0.092 256.8)",
+          "oklch(0.37 0.092 256.8)",
+          "oklch(0.48 0.092 256.8)",
+          "oklch(0.59 0.092 256.8)",
+          "oklch(0.70 0.092 256.8)",
+          "oklch(0.83 0.092 256.8)",
+          "oklch(0.95 0.092 256.8)"
+        ]
+      },
+      "bar-orange": {
+        "role": "secondary",
+        "displayName": "Orange Apéro",
+        "canonical": "oklch(0.772 0.1738 64.55)",
+        "tonalRamp": [
+          "oklch(0.15 0.113 64.5)",
+          "oklch(0.26 0.174 64.5)",
+          "oklch(0.37 0.174 64.5)",
+          "oklch(0.48 0.174 64.5)",
+          "oklch(0.59 0.174 64.5)",
+          "oklch(0.70 0.174 64.5)",
+          "oklch(0.83 0.174 64.5)",
+          "oklch(0.95 0.174 64.5)"
+        ]
+      },
+      "bar-orange-accent": {
+        "role": "secondary",
+        "displayName": "Orange Apéro profond",
+        "canonical": "oklch(0.6765 0.1738 64.55)",
+        "tonalRamp": [
+          "oklch(0.15 0.113 64.5)",
+          "oklch(0.26 0.174 64.5)",
+          "oklch(0.37 0.174 64.5)",
+          "oklch(0.48 0.174 64.5)",
+          "oklch(0.59 0.174 64.5)",
+          "oklch(0.70 0.174 64.5)",
+          "oklch(0.83 0.174 64.5)",
+          "oklch(0.95 0.174 64.5)"
+        ]
+      },
+      "alacp-blue": {
+        "role": "primary",
+        "displayName": "Bleu Timbre",
+        "canonical": "oklch(0.6622 0.1782 273.07)",
+        "tonalRamp": [
+          "oklch(0.15 0.113 273.1)",
+          "oklch(0.26 0.178 273.1)",
+          "oklch(0.37 0.178 273.1)",
+          "oklch(0.48 0.178 273.1)",
+          "oklch(0.59 0.178 273.1)",
+          "oklch(0.70 0.178 273.1)",
+          "oklch(0.83 0.178 273.1)",
+          "oklch(0.95 0.174 273.1)"
+        ]
+      },
+      "alacp-blue-accent": {
+        "role": "primary",
+        "displayName": "Bleu Timbre profond",
+        "canonical": "oklch(0.5002 0.2496 272.75)",
+        "tonalRamp": [
+          "oklch(0.15 0.113 272.8)",
+          "oklch(0.26 0.180 272.8)",
+          "oklch(0.37 0.248 272.8)",
+          "oklch(0.48 0.250 272.8)",
+          "oklch(0.59 0.250 272.8)",
+          "oklch(0.70 0.250 272.8)",
+          "oklch(0.83 0.248 272.8)",
+          "oklch(0.95 0.174 272.8)"
+        ]
+      },
+      "alacp-yellow": {
+        "role": "secondary",
+        "displayName": "Jaune Poste",
+        "canonical": "oklch(0.8328 0.171572 82.0575)",
+        "tonalRamp": [
+          "oklch(0.15 0.113 82.1)",
+          "oklch(0.26 0.172 82.1)",
+          "oklch(0.37 0.172 82.1)",
+          "oklch(0.48 0.172 82.1)",
+          "oklch(0.59 0.172 82.1)",
+          "oklch(0.70 0.172 82.1)",
+          "oklch(0.83 0.172 82.1)",
+          "oklch(0.95 0.172 82.1)"
+        ]
+      },
+      "alacp-yellow-accent": {
+        "role": "secondary",
+        "displayName": "Jaune Poste profond",
+        "canonical": "oklch(0.7596 0.171572 82.0575)",
+        "tonalRamp": [
+          "oklch(0.15 0.113 82.1)",
+          "oklch(0.26 0.172 82.1)",
+          "oklch(0.37 0.172 82.1)",
+          "oklch(0.48 0.172 82.1)",
+          "oklch(0.59 0.172 82.1)",
+          "oklch(0.70 0.172 82.1)",
+          "oklch(0.83 0.172 82.1)",
+          "oklch(0.95 0.172 82.1)"
+        ]
+      },
+      "sibra-green": {
+        "role": "primary",
+        "displayName": "Vert Houblon",
+        "canonical": "oklch(0.6214 0.1490 120.95)",
+        "tonalRamp": [
+          "oklch(0.15 0.113 121.0)",
+          "oklch(0.26 0.149 121.0)",
+          "oklch(0.37 0.149 121.0)",
+          "oklch(0.48 0.149 121.0)",
+          "oklch(0.59 0.149 121.0)",
+          "oklch(0.70 0.149 121.0)",
+          "oklch(0.83 0.149 121.0)",
+          "oklch(0.95 0.149 121.0)"
+        ]
+      },
+      "sibra-green-accent": {
+        "role": "primary",
+        "displayName": "Vert Houblon profond",
+        "canonical": "oklch(0.5214 0.1490 120.95)",
+        "tonalRamp": [
+          "oklch(0.15 0.113 121.0)",
+          "oklch(0.26 0.149 121.0)",
+          "oklch(0.37 0.149 121.0)",
+          "oklch(0.48 0.149 121.0)",
+          "oklch(0.59 0.149 121.0)",
+          "oklch(0.70 0.149 121.0)",
+          "oklch(0.83 0.149 121.0)",
+          "oklch(0.95 0.149 121.0)"
+        ]
+      },
+      "sibra-pink": {
+        "role": "secondary",
+        "displayName": "Rose Framboise",
+        "canonical": "oklch(0.6469 0.1663 1.60)",
+        "tonalRamp": [
+          "oklch(0.15 0.113 1.6)",
+          "oklch(0.26 0.166 1.6)",
+          "oklch(0.37 0.166 1.6)",
+          "oklch(0.48 0.166 1.6)",
+          "oklch(0.59 0.166 1.6)",
+          "oklch(0.70 0.166 1.6)",
+          "oklch(0.83 0.166 1.6)",
+          "oklch(0.95 0.166 1.6)"
+        ]
+      },
+      "sibra-pink-accent": {
+        "role": "secondary",
+        "displayName": "Rose Framboise profond",
+        "canonical": "oklch(0.5469 0.1663 1.60)",
+        "tonalRamp": [
+          "oklch(0.15 0.113 1.6)",
+          "oklch(0.26 0.166 1.6)",
+          "oklch(0.37 0.166 1.6)",
+          "oklch(0.48 0.166 1.6)",
+          "oklch(0.59 0.166 1.6)",
+          "oklch(0.70 0.166 1.6)",
+          "oklch(0.83 0.166 1.6)",
+          "oklch(0.95 0.166 1.6)"
+        ]
+      },
+      "sibra-orange": {
+        "role": "tertiary",
+        "displayName": "Orange Ambrée",
+        "canonical": "oklch(0.7880 0.1707 69.98)",
+        "tonalRamp": [
+          "oklch(0.15 0.113 70.0)",
+          "oklch(0.26 0.171 70.0)",
+          "oklch(0.37 0.171 70.0)",
+          "oklch(0.48 0.171 70.0)",
+          "oklch(0.59 0.171 70.0)",
+          "oklch(0.70 0.171 70.0)",
+          "oklch(0.83 0.171 70.0)",
+          "oklch(0.95 0.171 70.0)"
+        ]
+      },
+      "sibra-orange-accent": {
+        "role": "tertiary",
+        "displayName": "Orange Ambrée profond",
+        "canonical": "oklch(0.6880 0.1707 69.98)",
+        "tonalRamp": [
+          "oklch(0.15 0.113 70.0)",
+          "oklch(0.26 0.171 70.0)",
+          "oklch(0.37 0.171 70.0)",
+          "oklch(0.48 0.171 70.0)",
+          "oklch(0.59 0.171 70.0)",
+          "oklch(0.70 0.171 70.0)",
+          "oklch(0.83 0.171 70.0)",
+          "oklch(0.95 0.171 70.0)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display (badges)",
+        "purpose": "Titres de section en piles de badges ; 2.25rem sous md."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Titres de section non badgés et h1 ; 2.25rem sous md."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Titres de cartes et sous-sections ; 1.5rem sous md."
+      },
+      "numeral": {
+        "displayName": "Numeral",
+        "purpose": "Chiffres clés."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Texte courant, 18px par défaut."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Tags et étiquettes de lieux."
+      },
+      "ui": {
+        "displayName": "UI",
+        "purpose": "Navigation, boutons, mentions."
+      }
+    },
+    "shadows": [
+      {
+        "name": "header",
+        "value": "0 4px 40px -10px rgba(0, 0, 0, 0.03), 0 2px 32px -5px rgba(0, 0, 0, 0.04)",
+        "purpose": "Header flottant et panneau de menu mobile uniquement."
+      }
+    ],
+    "motion": [
+      {
+        "name": "badge-stick",
+        "value": "scale 0.9→1, 300ms easeOutCubic ; lettres y 50%→0, 200ms out(3), stagger 20ms",
+        "purpose": "Apparition des badges de titre à l'entrée dans le viewport (anime.js), coupée sous reduced-motion."
+      },
+      {
+        "name": "photo-hover",
+        "value": "transform scale(1.05), 300ms",
+        "purpose": "Zoom des photos des cartes de lieu au survol (rotate -2deg sur les cartes résidents)."
+      },
+      {
+        "name": "menu-reveal",
+        "value": "clip-path inset(0 0 100% 0)→inset(0), 300ms inExpo",
+        "purpose": "Déroulé du panneau de menu mobile ; l'icône menu se transforme en croix."
+      },
+      {
+        "name": "details-toggle",
+        "value": "rotate 90deg→270deg, 200ms",
+        "purpose": "Chevron des FAQ."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      },
+      {
+        "name": "2xl",
+        "value": "1536px"
+      },
+      {
+        "name": "2k",
+        "value": "2000px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Bouton plein du rôle primary ; rare, l'action passe surtout par liens et cartes.",
+      "html": "<button class=\"ds-btn-primary\">Nous contacter</button>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;justify-content:center;height:40px;padding:8px 16px;border:none;border-radius:6px;background:var(--color-primary, #335FFF);color:#fff;font-family: Inter, ui-sans-serif, system-ui, sans-serif;font-size:16px;font-weight:500;cursor:pointer;transition:background-color .15s} .ds-btn-primary:hover{background:color-mix(in oklab,var(--color-primary, #335FFF) 90%,transparent)} .ds-btn-primary:focus-visible{outline:none;box-shadow:0 0 0 2px #fff,0 0 0 4px var(--color-primary, #335FFF)}"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Bouton contour dans la couleur courante, se remplit au survol.",
+      "html": "<button class=\"ds-btn-outline\">Voir la carte</button>",
+      "css": ".ds-btn-outline{display:inline-flex;align-items:center;height:40px;padding:8px 16px;border:1px solid currentColor;border-radius:6px;background:transparent;color:var(--color-primary, #335FFF);font-family: Inter, ui-sans-serif, system-ui, sans-serif;font-size:16px;font-weight:500;cursor:pointer;transition:background-color .15s,color .15s} .ds-btn-outline:hover{background:var(--color-primary, #335FFF);color:#fff} .ds-btn-outline:focus-visible{outline:none;box-shadow:0 0 0 2px #fff,0 0 0 4px var(--color-primary, #335FFF)}"
+    },
+    {
+      "name": "Heading Badges",
+      "kind": "custom",
+      "refersTo": "badge-heading",
+      "description": "Signature : titre de section en pile de 2–3 pilules inclinées, Pally 700 capitales.",
+      "html": "<h2 class=\"ds-badges\"><span class=\"ds-badge ds-b1\">Nos</span><span class=\"ds-badge ds-b2\">lieux</span></h2>",
+      "css": ".ds-badges{display:grid;justify-items:start;margin:0;font-family: Pally, ui-sans-serif, system-ui, sans-serif;font-weight:700;font-size:48px;line-height:1.5;text-transform:uppercase} .ds-badge{display:inline-block;padding:12px 16px;border-radius:9999px;color:#fff;white-space:nowrap;transition:transform .3s} .ds-b1{background:var(--color-primary, #335FFF);transform:rotate(-7deg)} .ds-b2{background:var(--color-secondary, #FF2424);transform:translate(4px,-8px) rotate(4deg);position:relative;z-index:1} .ds-badges:hover .ds-b2{transform:translate(4px,-8px) rotate(6deg)}"
+    },
+    {
+      "name": "Tag",
+      "kind": "chip",
+      "refersTo": "tag",
+      "description": "Pilule Inter 700 sur dégradé clair du rôle, texte en encre.",
+      "html": "<span class=\"ds-tag\">Convivialité</span>",
+      "css": ".ds-tag{display:inline-block;padding:8px 12px;border-radius:9999px;font-family: Inter, ui-sans-serif, system-ui, sans-serif;font-size:16px;font-weight:700;line-height:1.5;color:oklch(0.145 0 0);background:linear-gradient(to bottom left,color-mix(in oklab,var(--color-primary, #335FFF) 15%,#fff),color-mix(in oklab,var(--color-primary, #335FFF) 30%,#fff))}"
+    },
+    {
+      "name": "Place Card",
+      "kind": "card",
+      "refersTo": "place-card",
+      "description": "Photo du lieu, tag en capitales, flèche ronde ; au survol, zoom et voile d'horaires.",
+      "html": "<a class=\"ds-place\" href=\"#\"><span class=\"ds-place-img\"></span><span class=\"ds-place-tag\">Le Wattignies</span><span class=\"ds-place-arrow\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7 7h10v10\"/><path d=\"M7 17 17 7\"/></svg></span><span class=\"ds-place-hover\"><strong>Horaires d'ouverture</strong><span>10h00 - 23h00 du lundi au vendredi</span></span></a>",
+      "css": ".ds-place{position:relative;display:block;width:320px;height:256px;border-radius:16px;overflow:hidden;color:inherit;text-decoration:none} .ds-place-img{position:absolute;inset:0;background:linear-gradient(135deg,oklch(0.45 0.08 40),oklch(0.30 0.10 265));transition:transform .3s} .ds-place:hover .ds-place-img{transform:scale(1.05)} .ds-place-tag{position:absolute;top:16px;left:16px;padding:8px 12px;border-radius:9999px;background:#dbe6ff;color:#335FFF;font-family: Inter, ui-sans-serif, system-ui, sans-serif;font-weight:700;text-transform:uppercase;transition:opacity .3s} .ds-place-arrow{position:absolute;right:16px;bottom:16px;display:flex;padding:8px;border-radius:9999px;background:#fff;color:oklch(0.145 0 0);transition:opacity .3s} .ds-place:hover .ds-place-tag,.ds-place:hover .ds-place-arrow{opacity:0} .ds-place-hover{position:absolute;inset:0;display:grid;place-content:center;gap:8px;padding:16px;background:rgba(0,0,0,.8);color:#fff;text-align:center;font-family: Inter, ui-sans-serif, system-ui, sans-serif;opacity:0;transition:opacity .3s} .ds-place-hover strong{font-size:24px} .ds-place:hover .ds-place-hover,.ds-place:focus-visible .ds-place-hover{opacity:1} .ds-place:focus-visible{outline:2px solid #6366f1;outline-offset:2px}"
+    },
+    {
+      "name": "Diagonal Card",
+      "kind": "card",
+      "refersTo": "card-diagonal",
+      "description": "Carte « valeur » : blanche, coins diagonaux 40px, tag en Pally et icône.",
+      "html": "<article class=\"ds-diag\"><span class=\"ds-diag-tag\">Durabilité</span><p>Comme un pré-requis non négociable</p><span class=\"ds-diag-icon\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4\"/></svg></span></article>",
+      "css": ".ds-diag{position:relative;width:280px;padding:16px;border-radius:40px 8px 40px 8px;background:#fff;color:oklch(0.145 0 0)} .ds-diag-tag{display:inline-block;padding:8px 12px;border-radius:9999px;font-family: Pally, ui-sans-serif, system-ui, sans-serif;font-size:24px;font-weight:500;color:oklch(0.145 0 0 / .8);background:linear-gradient(to bottom left,color-mix(in oklab,var(--color-tertiary, #FFBF00) 15%,#fff),color-mix(in oklab,var(--color-tertiary, #FFBF00) 30%,#fff))} .ds-diag p{margin:8px 0 24px;font-family: Rubik, ui-sans-serif, system-ui, sans-serif;font-size:18px;line-height:1.375} .ds-diag-icon{position:absolute;right:16px;bottom:12px}"
+    },
+    {
+      "name": "Info Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Carte d'information : coin haut-droit 64px, pastille d'icône Galet, titre Pally.",
+      "html": "<article class=\"ds-info\"><div class=\"ds-info-head\"><span class=\"ds-info-icon\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4\"/></svg></span><span class=\"ds-info-title\">Intérêt collectif</span></div><p>Salarié·es, usager·es, partenaires et collectivités prennent part aux décisions.</p></article>",
+      "css": ".ds-info{max-width:420px;padding:16px 32px 16px 16px;border-radius:8px 64px 8px 8px;background:#fff;color:oklch(0.145 0 0)} .ds-info-head{display:flex;align-items:center;gap:16px} .ds-info-icon{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:8px;background:#e2e8f0} .ds-info-title{font-family: Pally, ui-sans-serif, system-ui, sans-serif;font-size:24px;font-weight:500} .ds-info p{margin:16px 0 0;font-family: Rubik, ui-sans-serif, system-ui, sans-serif;font-size:18px;line-height:1.375}"
+    },
+    {
+      "name": "Number Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Chiffre clé : carte pleine de couleur, coins 40/32px, chiffre Pally 700 blanc.",
+      "html": "<article class=\"ds-num\"><span class=\"ds-num-icon\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4\"/></svg></span><span class=\"ds-num-label\">Évènements par an</span><span class=\"ds-num-value\">+200</span></article>",
+      "css": ".ds-num{display:flex;flex-direction:column;width:320px;padding:16px 16px 24px;border-radius:40px 8px 32px 8px;background:var(--color-primary, #335FFF);color:#fff} .ds-num-icon{display:flex;align-items:center;justify-content:center;margin-left:auto;width:40px;height:40px;border-radius:6px;background:#fff;color:var(--color-primary, #335FFF)} .ds-num-label{margin-top:16px;font-family: Inter, ui-sans-serif, system-ui, sans-serif;font-size:20px;font-weight:600} .ds-num-value{font-family: Pally, ui-sans-serif, system-ui, sans-serif;font-size:36px;font-weight:700}"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Header blanc flottant, liens Inter, lien actif en pilule Galet.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Navigation\"><strong class=\"ds-nav-logo\">Commun’île</strong><a class=\"ds-nav-link\" aria-current=\"page\" href=\"#\">Qui sommes-nous ?</a><a class=\"ds-nav-link\" href=\"#\">Le Wattignies</a><a class=\"ds-nav-link\" href=\"#\">La Sibra</a></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;gap:2px;padding:12px 16px;border-radius:6px;background:#fff;box-shadow:0 4px 40px -10px rgba(0,0,0,.03),0 2px 32px -5px rgba(0,0,0,.04);font-family: Inter, ui-sans-serif, system-ui, sans-serif;font-size:16px} .ds-nav-logo{margin-right:auto;padding-right:24px;text-transform:uppercase;color:#1e293b} .ds-nav-link{padding:8px 16px;border-radius:16px;color:oklch(0.145 0 0);text-decoration:none;transition:background .3s} .ds-nav-link:hover{background:linear-gradient(to bottom right,rgb(226 232 240/.2),rgb(226 232 240/.5))} .ds-nav-link[aria-current=page]{background:linear-gradient(to bottom right,rgb(226 232 240/.8),rgb(226 232 240/.3) 50%,#e2e8f0)} .ds-nav-link:focus-visible{outline:2px solid #6366f1;outline-offset:2px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "L'Archipel",
+    "overview": "Commun'île n'est pas une marque qui se décline, c'est un archipel : chaque lieu est une île qui a sa couleur, son logo et son caractère (le rouge-jaune-bleu du Wattignies, la sarcelle du Labo Diva, le bleu nuit du Bar'Île, le vert houblon de La Sibra…). Ce qui fait l'archipel, c'est le langage commun qui relie les îles : les titres en badges collés de travers, les cartes blanches aux coins très arrondis, les photos réelles des lieux et les ornements peints à la main (feuillages, fleurs, étoiles, crochets). Une nouvelle page « fait Commun'île » quand on peut changer sa palette sans changer sa grammaire.\n\nLe système est plat, lumineux et populaire. Les couleurs sont franches et posées en aplats sur un fond brume à peine bleuté ; la profondeur vient de la superposition (badges qui se chevauchent, ornements qui débordent des sections) et jamais de l'ombre. Les formes sont rondes et joueuses : pilules, coins asymétriques, rotations légères. La densité est moyenne : de grandes sections arrondies empilées, chacune un bloc de couleur ou de blanc, séparées par l'air du fond.\n\nDeux mondes sont explicitement rejetés. **Pas de corporate ni de startup** : pas de dégradés tech, pas de gris sages, pas d'illustrations 3D génériques, pas de ton de plaquette. **Pas de bio-bobo épuré** : pas de beige, de kraft, de serif élégante ni de minimalisme d'épicerie fine ; Commun'île est populaire, pas chic.",
+    "keyCharacteristics": [
+      "Une palette par lieu, appliquée par `data-theme` ; les composants ne connaissent que des rôles (`primary`, `secondary`, `tertiary`, `quaternary`).",
+      "Titres de section en piles de badges inclinés, en capitales Pally Bold.",
+      "Cartes blanches arrondies, coins signature asymétriques (diagonale 40px, coin haut-droit 64px).",
+      "Photos réelles des lieux, jamais de banque d'images ; ornements SVG peints propres à chaque lieu.",
+      "Plat : aucune ombre hors du header flottant.",
+      "Mouvement discret et physique : badges qui « se collent » à l'apparition, photos qui zooment légèrement au survol, toujours coupé sous `prefers-reduced-motion`."
+    ],
+    "rules": [
+      {
+        "name": "The One Island, One Palette Rule",
+        "body": "Un composant ne lit que les rôles de thème (`bg-primary`, `text-secondary`…), jamais la couleur brute d'un lieu. Seules exceptions tolérées : le footer (tricolore parapluie) et les tags de la page d'accueil qui désignent chaque lieu par sa couleur.",
+        "section": "colors"
+      },
+      {
+        "name": "The Measured Contrast Rule",
+        "body": "Les contrastes se mesurent sur les tokens, ils ne s'estiment pas. Le jaune et l'orange (watt-yellow, labo-yellow, bar-orange, alacp-yellow, sibra-orange) ne portent **jamais** de texte blanc, quelle que soit la taille : blanc sur Jaune Soleil est sous 2:1. Sur ces fonds, le texte est en encre.",
+        "section": "colors"
+      },
+      {
+        "name": "The Accent Is Not Always Darker Rule",
+        "body": "Le suffixe `-accent` désigne la variante d'appui d'une couleur, pas un sens de variation : il est plus sombre pour les bleus, verts et rouges, plus clair pour certains jaunes (watt-yellow-accent, labo-yellow-accent). Vérifier la valeur avant de poser du texte dessus.",
+        "section": "colors"
+      },
+      {
+        "name": "The Three Voices Rule",
+        "body": "Pally parle, Rubik raconte, Inter indique. Ne jamais composer un paragraphe en Pally ni un titre de section en Inter.",
+        "section": "typography"
+      },
+      {
+        "name": "The Sticker Heading Rule",
+        "body": "Un titre en badges fait 2 à 3 mots maximum, un badge par mot ou groupe de mots, chaque badge d'une couleur de rôle différente. C'est la signature de section, pas un style de titre courant : une seule pile par section.",
+        "section": "typography"
+      },
+      {
+        "name": "The Overflowing Ornament Rule",
+        "body": "Les ornements (crochets, vagues, hexagones, étoiles) se posent en `absolute`, débordent des bords de section (`-top-6 -right-6`), restent décoratifs (`aria-hidden`) et sous le contenu (`z-10` sur le contenu). La section coupe le débordement (`overflow-hidden`) : les ornements ne créent jamais de défilement horizontal.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat Island Rule",
+        "body": "Aucune ombre sur les cartes, sections, boutons ou badges. Si un élément doit se détacher, il change de fond (blanc sur couleur, couleur sur brume), pas d'élévation.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Soft Corner Rule",
+        "body": "Aucun angle vif sur une surface. Un nouvel élément prend au minimum 6px ; une carte mise en avant prend un coin asymétrique existant plutôt qu'un nouveau rayon.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "**Do** poser `data-theme` sur la page d'un lieu et ne consommer que les rôles `primary` / `secondary` / `tertiary` / `quaternary` dans ses sections.",
+      "**Do** ouvrir chaque section importante par une pile de 2 à 3 badges inclinés en Pally 700 capitales.",
+      "**Do** utiliser des photos réelles des lieux et les ornements SVG du lieu concerné, en `aria-hidden`, débordant du bord de section.",
+      "**Do** garder tous les coins arrondis (6px minimum) et réutiliser les coins signature (diagonale 40px, haut-droit 64px) pour mettre une carte en avant.",
+      "**Do** mesurer chaque contraste sur les tokens (WCAG 2.1 AA) et poser du texte en encre sur les jaunes et oranges.",
+      "**Do** couper toute animation sous `prefers-reduced-motion`."
+    ],
+    "donts": [
+      "**Don't** faire corporate ou startup : pas de dégradés tech, pas de gris sages, pas d'illustrations 3D génériques, pas de ton de plaquette.",
+      "**Don't** faire bio-bobo épuré : pas de beige, de kraft, de serif élégante ni de minimalisme d'épicerie fine.",
+      "**Don't** mettre de texte blanc sur un jaune ou un orange (watt-yellow, labo-yellow, bar-orange, alacp-yellow, sibra-orange), y compris dans un badge `tertiary`.",
+      "**Don't** ajouter d'ombre portée à une carte, un bouton ou un badge.",
+      "**Don't** utiliser la couleur brute d'un autre lieu dans une page thémée, ni ajuster les couleurs de base imposées par la charte de La Sibra.",
+      "**Don't** écrire un paragraphe en Pally ni un titre de section en Inter."
+    ]
+  }
+}
