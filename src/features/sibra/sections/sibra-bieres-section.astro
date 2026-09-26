@@ -1,0 +1,101 @@
+---
+import { Image } from 'astro:assets'
+import Container from '@/components/container.astro'
+import Heading from '@/components/heading.astro'
+import Icon from '@/components/icon.astro'
+import InfoCard from '@/components/info-card.astro'
+import Link from '@/components/link.astro'
+import Section from '@/components/section.astro'
+import Tag from '@/components/tag.astro'
+import Text from '@/components/text.astro'
+import { PATH } from '@/utils/constants'
+import { icons } from '@/utils/icons'
+import sibraBrassageImage from '../images/sibra-brassage.webp'
+
+type InfoCardType = {
+  icon: keyof typeof icons
+  title: string
+  description: string
+}
+
+const infoCards: InfoCardType[] = [
+  {
+    icon: 'glass-water',
+    title: 'Des recettes classiques indémodables',
+    description:
+      'Blonde, Ambrée, Triple, Blanche. La brasserie propose une gamme permanente de bières classiques. De la blonde de soif à l’emblématique Carlota dont la recette (héritée de Charlotte elle-même) est inchangée depuis 15 ans. Il y en a pour tous les goûts.',
+  },
+  {
+    icon: 'sparkles',
+    title: 'Des brassins éphémères saisonniers',
+    description:
+      'Notre brasseur Simon n’hésite pas à faire preuve d’une créativité débordante pour brasser des bières inédites, surprenantes mais toujours délicieuses !',
+  },
+]
+
+type Revendeur = {
+  name: string
+  href?: string
+}
+
+const revendeurs: Revendeur[] = [
+  { name: 'Le Wattignies', href: PATH.LE_WATTIGNIES },
+  { name: 'L’industrie' },
+  { name: 'Ohmtown' },
+  { name: 'Pioche' },
+]
+---
+
+<Section>
+  <Container class="grid grid-cols-1 items-start gap-12 md:grid-cols-2 md:items-stretch">
+    <div class="order-1 flex flex-col items-start space-y-6">
+      <Heading as="h2" size="xl" weight="bold">Nos bières</Heading>
+      {
+        infoCards.map(infoCard => (
+          <InfoCard class="bg-background">
+            <Icon name={infoCard.icon} size="24" slot="icon" />
+            <Text size="xl" weight="medium" slot="title">
+              {infoCard.title}
+            </Text>
+            <Text slot="description" class="max-w-3xl">
+              {infoCard.description}
+            </Text>
+          </InfoCard>
+        ))
+      }
+    </div>
+
+    <div class="order-2 flex">
+      <Image
+        src={sibraBrassageImage}
+        alt="La salle de brassage de La Sibra : les cuves de brassage en inox de la microbrasserie"
+        class="h-full max-h-[560px] w-full max-w-[460px] rounded-2xl object-cover"
+        widths={[330, 400, 540, sibraBrassageImage.width]}
+        sizes="(min-width: 768px) 460px, 100vw"
+        loading="lazy"
+      />
+    </div>
+  </Container>
+
+  <Container class="mt-12 space-y-4">
+    <Heading as="h3" size="base">Où retrouver nos bières ?</Heading>
+    <ul role="list" class="flex list-none flex-wrap gap-3">
+      {
+        revendeurs.map(revendeur => (
+          <li>
+            {revendeur.href
+              ? (
+                  <Link href={revendeur.href}>
+                    <Tag color="primary">{revendeur.name}</Tag>
+                  </Link>
+                )
+              : (
+                  <Tag color="neutral">{revendeur.name}</Tag>
+                )}
+          </li>
+        ))
+      }
+    </ul>
+    <Text>… et bien d’autres</Text>
+  </Container>
+</Section>

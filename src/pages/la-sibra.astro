@@ -1,0 +1,71 @@
+---
+import { getImage } from 'astro:assets'
+
+import sibraBoutiqueImage from '@/features/sibra/images/sibra-boutique.webp'
+import SibraBieresSection from '@/features/sibra/sections/sibra-bieres-section.astro'
+import SibraBoutiqueSection from '@/features/sibra/sections/sibra-boutique-section.astro'
+import SibraHeroSection from '@/features/sibra/sections/sibra-hero-section.astro'
+import SibraInfosSection from '@/features/sibra/sections/sibra-infos-section.astro'
+import SibraInstagramSection from '@/features/sibra/sections/sibra-instagram-section.astro'
+import SibraTireuseSection from '@/features/sibra/sections/sibra-tireuse-section.astro'
+import SibraWhatSection from '@/features/sibra/sections/sibra-what-section.astro'
+import Layout from '../layouts/main.astro'
+import { PATH, SITE_URL } from '../utils/constants'
+
+const description
+  = 'La Sibra, microbrasserie nantaise du quartier Saint-Clément, anciennement Les Bières de Charlotte. Boutique : vendredi 16 h – 20 h, samedi 11 h – 20 h.'
+
+// URL résolue sur SITE_URL et non sur l'origine de la requête : le JSON-LD est une donnée
+// canonique, son `image` doit rester cohérent avec son `url` quel que soit le domaine servi.
+const optimizedImage = await getImage({ src: sibraBoutiqueImage, width: 1200 })
+const imageUrl = new URL(optimizedImage.src, SITE_URL).href
+
+// Schema Brewery JSON-LD
+// `telephone` et `email` volontairement omis : coordonnées non confirmées, sous gate humain #67 (constitution principe I).
+const brewerySchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Brewery',
+  'name': 'La Sibra',
+  'alternateName': 'Les Bières de Charlotte',
+  'description': description,
+  'url': `${SITE_URL}${PATH.LA_SIBRA}`,
+  'image': imageUrl,
+  'address': {
+    '@type': 'PostalAddress',
+    'streetAddress': '121 rue du Général Buat',
+    'postalCode': '44000',
+    'addressLocality': 'Nantes',
+    'addressCountry': 'FR',
+  },
+  'geo': {
+    '@type': 'GeoCoordinates',
+    'latitude': 47.225406,
+    'longitude': -1.543878,
+  },
+  'openingHoursSpecification': [
+    {
+      '@type': 'OpeningHoursSpecification',
+      'dayOfWeek': ['Friday'],
+      'opens': '16:00',
+      'closes': '20:00',
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      'dayOfWeek': ['Saturday'],
+      'opens': '11:00',
+      'closes': '20:00',
+    },
+  ],
+  'sameAs': ['https://www.instagram.com/bieresdecharlotte/'],
+}
+---
+
+<Layout theme="sibra" content={{ title: 'La Sibra', description, image: sibraBoutiqueImage, jsonLd: brewerySchema }}>
+  <SibraHeroSection />
+  <SibraWhatSection />
+  <SibraBoutiqueSection />
+  <SibraBieresSection />
+  <SibraTireuseSection />
+  <SibraInfosSection />
+  <SibraInstagramSection />
+</Layout>

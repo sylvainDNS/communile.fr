@@ -22,3 +22,7 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# sources photos non versionnées (converties en webp dans src/ au fur et à mesure)
+brasserie-assets/
+specs/*/assets/
