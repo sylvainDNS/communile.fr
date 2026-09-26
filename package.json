@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "packageManager": "pnpm@12.6.0+sha512.3ef68f951cb111ac204b4a5a16f0b2ddf0da56a96e0413e81d855d9f0b55ef926714709028e1cd00c405c2c5fb7b9e8ec4dc46777c805d0373c2f2ff00fd20ec",
   "engines": {
-    "node": ">=22",
+    "node": "^22.22.3 || ^24.16.0 || >=26.3.0",
     "pnpm": ">=12"
   },
   "scripts": {
@@ -16,11 +16,11 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.6",
-    "@astrojs/cloudflare": "^12.6.12",
+    "@astrojs/cloudflare": "^13.7.0",
     "@astrojs/sitemap": "^3.6.0",
     "@tailwindcss/vite": "^4.1.16",
     "animejs": "^4.2.2",
-    "astro": "^5.16.6",
+    "astro": "^6.4.8",
     "class-variance-authority": "^0.7.1",
     "clsx": "2.1.1",
     "leaflet": "^1.9.4",
@@ -34,6 +34,7 @@
     "eslint-plugin-format": "^1.0.2",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.7.1",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "wrangler": "^4.140.0"
   }
 }
