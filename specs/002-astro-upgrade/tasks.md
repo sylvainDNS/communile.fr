@@ -208,10 +208,10 @@ Tout est livré dans **une seule PR**, avec un commit par palier (commits via l'
   - les résultats de parité (diff HTML, captures, Lighthouse avant/après, `outdated.txt`) ;
   - la checklist SC-001 à SC-006 ;
   - la procédure de bascule et de retour arrière ([quickstart §4](./quickstart.md#4-mise-en-production-palier-6)).
-- [ ] T043 🧑 Revue, approbation et merge de la PR par le mainteneur. **Avant le merge**, dans le projet Pages (Settings → Builds), désactiver les déploiements automatiques : preview deployments sur « None » et pause des déploiements de production. Pages ne sait plus construire le projet ; sans cette étape, le build de `main` échoue. Pages continue de servir son dernier déploiement dans tous les cas.
-- [ ] T044 🧑 Dans Workers Builds, repasser la branche de production du Worker à `main`, puis attendre la fin du déploiement.
-- [ ] T045 Parité finale sur `https://communile-fr.<compte>.workers.dev` (build de `main`) : `snapshot.sh` puis `compare.sh baseline/prod`.
-- [ ] T046 🧑 Bascule du domaine **par route**, sans coupure (SC-006) :
+- [X] T043 🧑 Revue, approbation et merge de la PR par le mainteneur. **Avant le merge**, dans le projet Pages (Settings → Builds), désactiver les déploiements automatiques : preview deployments sur « None » et pause des déploiements de production. Pages ne sait plus construire le projet ; sans cette étape, le build de `main` échoue. Pages continue de servir son dernier déploiement dans tous les cas.
+- [X] T044 🧑 Dans Workers Builds, repasser la branche de production du Worker à `main`, puis attendre la fin du déploiement.
+- [X] T045 Parité finale sur `https://communile-fr.<compte>.workers.dev` (build de `main`) : `snapshot.sh` puis `compare.sh baseline/prod`.
+- [X] T046 🧑 Bascule du domaine **par route**, sans coupure (SC-006) :
   - proxy Plausible : la route `*communile.fr/mix/*` vers `worker-billowing-wave-39b0`, constatée le 2026-09-26, reste **intouchable** (décision du mainteneur). Aucune route ni config ne doit être ajoutée ou modifiée pour lui.
     - Risque : son hôte est générique alors que celui de `communile.fr/*` est exact, et la règle de spécificité ne dit pas laquelle gagne.
     - Vérifier donc **immédiatement** après l'ajout de la route que `/mix/load/script.js` répond 200 avec le script Plausible. Sinon, supprimer la route `communile.fr/*` (retour arrière instantané) et passer au repli par Custom Domain : les routes s'exécutent toujours avant un Worker de Custom Domain ;
@@ -219,7 +219,7 @@ Tout est livré dans **une seule PR**, avec un commit par palier (commits via l'
   - **vérifier que c'est bien le Worker qui répond** : le HTML de `https://communile.fr/` doit référencer les mêmes noms `_astro/*.<hash>` que `current/b-cf` ou le build de `main` sur `*.workers.dev`, et non ceux de `baseline/prod` ;
   - si la route ne prend pas le pas sur le domaine personnalisé Pages (comportement non documenté par Cloudflare) : supprimer la route, puis se replier sur un détachement du domaine de Pages et un rattachement en Custom Domain au Worker, à très faible trafic. La coupure est courte ; le certificat universel de la zone couvre déjà `communile.fr`.
   - **retour arrière** : supprimer la route. C'est instantané, et Pages sert de nouveau le domaine.
-- [ ] T047 Vérification en production ([quickstart §4](./quickstart.md#4-mise-en-production-palier-6)) :
+- [X] T047 Vérification en production ([quickstart §4](./quickstart.md#4-mise-en-production-palier-6)) :
   - `snapshot.sh https://communile.fr current/prod`, puis `compare.sh baseline/prod current/prod` ;
   - absence de `X-Robots-Tag: noindex` ;
   - `/mix/load/script.js` en 200, et un pageview de test visible dans Plausible ;
