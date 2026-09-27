@@ -15,17 +15,17 @@
     "lint": "eslint . --ext .js,.ts,.astro,.css"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.6",
-    "@astrojs/cloudflare": "^13.7.0",
-    "@astrojs/sitemap": "^3.6.0",
-    "@tailwindcss/vite": "^4.1.16",
+    "@astrojs/check": "^0.9.10",
+    "@astrojs/cloudflare": "^14.3.3",
+    "@astrojs/sitemap": "^3.7.4",
+    "@tailwindcss/vite": "^4.3.3",
     "animejs": "^4.2.2",
-    "astro": "^6.4.8",
+    "astro": "^7.3.5",
     "class-variance-authority": "^0.7.1",
     "clsx": "2.1.1",
     "leaflet": "^1.9.4",
     "tailwind-merge": "3.3.1",
-    "tailwindcss": "^4.1.16"
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^6.2.0",

@@ -85,7 +85,7 @@ Tout est livré dans **une seule PR**, avec un commit par palier (commits via l'
   - tout écart doit être corrigé dans `src/`, ou expliqué dans `tmp/astro-upgrade/palier-a.md`.
 - [X] T015 `pnpm lint` doit être vert (outillage de lint encore inchangé).
 - [X] T016 Commit du palier A (agent `git-commit`), par exemple `chore(astro): monter Astro 6 et migrer Cloudflare Pages vers Workers`. Puis `git push -u origin 002-astro-upgrade`.
-- [ ] T017 🧑 Checkpoint humain, dans le dashboard Cloudflare :
+- [X] T017 🧑 Checkpoint humain, dans le dashboard Cloudflare :
   - créer le Worker `communile-fr` via **Workers Builds** en connectant le dépôt GitHub. Branche de production **temporaire** : `002-astro-upgrade`. Build : `pnpm build`. Déploiement : `npx wrangler deploy`. Variable de build `NODE_VERSION=24` ;
   - vérifier que le proxy Plausible est attaché en **route** `communile.fr/mix/load/*` (et non en Custom Domain) ;
   - ne **pas** toucher au domaine `communile.fr`, qui reste sur Pages.
@@ -105,23 +105,23 @@ Tout est livré dans **une seule PR**, avec un commit par palier (commits via l'
 
 **Independent Test** : [quickstart §2 et §3](./quickstart.md) sur le build du palier B. Attendus : diff HTML vide contre la référence, captures identiques à 390 px et à 1440 px, Lighthouse ≥ référence − 2 pts, poids ≤ +5 %.
 
-- [ ] T018 [US1] Monter les dépendances du palier B : `pnpm add astro@latest @astrojs/cloudflare@latest @astrojs/check@latest @astrojs/sitemap@latest tailwindcss@latest @tailwindcss/vite@latest`. Attendu : astro 7.3.5, adaptateur 14.3.3, tailwind 4.3.3. Vérifier qu'aucune erreur de peer bloquante n'apparaît. Si `wrangler` est sous le peer requis (^4.125), le monter avec `pnpm add -D wrangler@latest`.
-- [ ] T019 [US1] Dans `astro.config.mjs` :
+- [X] T018 [US1] Monter les dépendances du palier B : `pnpm add astro@latest @astrojs/cloudflare@latest @astrojs/check@latest @astrojs/sitemap@latest tailwindcss@latest @tailwindcss/vite@latest`. Attendu : astro 7.3.5, adaptateur 14.3.3, tailwind 4.3.3. Vérifier qu'aucune erreur de peer bloquante n'apparaît. Si `wrangler` est sous le peer requis (^4.125), le monter avec `pnpm add -D wrangler@latest`.
+- [X] T019 [US1] Dans `astro.config.mjs` :
   - ajouter `compressHTML: true` au niveau racine de `defineConfig` (R6) ;
   - passer l'adaptateur à `cloudflare({ imageService: 'compile', session: false })` (R8) ;
   - laisser `output: 'server'` et `vite.plugins` inchangés.
-- [ ] T020 [US1] `pnpm build` : corriger dans `src/**/*.astro` chaque erreur du compilateur Rust (balises non-void non fermées, syntaxe refusée), sans changer le rendu attendu (R7).
-- [ ] T021 [US1] Lancer `pnpm preview`, puis `snapshot.sh http://localhost:4321 tmp/astro-upgrade/current/b` et `compare.sh baseline/local current/b` :
+- [X] T020 [US1] `pnpm build` : corriger dans `src/**/*.astro` chaque erreur du compilateur Rust (balises non-void non fermées, syntaxe refusée), sans changer le rendu attendu (R7).
+- [X] T021 [US1] Lancer `pnpm preview`, puis `snapshot.sh http://localhost:4321 tmp/astro-upgrade/current/b` et `compare.sh baseline/local current/b` :
   - corriger dans `src/` toute différence de texte, de balisage ou d'imbrication (par exemple un `<div>` dans un `<p>` qui n'est plus réimbriqué, R7) ;
   - seuls restent acceptables les écarts de sérialisation CSS de Tailwind 4.3 (R9), à consigner dans `tmp/astro-upgrade/palier-b.md`.
-- [ ] T022 [P] [US1] Contrôle témoin des espaces blancs : dans `current/b/html/a-la-carte-postale.html`, le texte doit contenir `programmation sur <a` (avec l'espace). Faire le même contrôle sur les FAQ de `/le-labo-diva` et `/le-wattignies`.
-- [ ] T023 [P] [US1] Contrôle des interactions en local via Chrome DevTools MCP :
+- [X] T022 [P] [US1] Contrôle témoin des espaces blancs : dans `current/b/html/a-la-carte-postale.html`, le texte doit contenir `programmation sur <a` (avec l'espace). Faire le même contrôle sur les FAQ de `/le-labo-diva` et `/le-wattignies`.
+- [X] T023 [P] [US1] Contrôle des interactions en local via Chrome DevTools MCP :
   - carte Leaflet (tuiles chargées, marqueur visible) sur `/le-bar-ile` ;
   - animations anime.js au scroll sur `/` ;
   - menu mobile du header à 390 px ;
   - ouverture et fermeture d'un `details` de FAQ ;
   - aucune erreur en console.
-- [ ] T024 [US1] `pnpm lint` (outillage encore en ancienne version) :
+- [X] T024 [US1] `pnpm lint` (outillage encore en ancienne version) :
   - s'il est vert, continuer ;
   - si `eslint-plugin-astro` 1.x ne parse plus certains fichiers à cause de la syntaxe Astro 7, consigner les fichiers et les erreurs dans `tmp/astro-upgrade/palier-b.md`, sans désactiver de règle. Le palier D les résout ; ne pas pousser tant que ce n'est pas tranché avec le mainteneur, car la CI de la PR lance `pnpm lint`.
 

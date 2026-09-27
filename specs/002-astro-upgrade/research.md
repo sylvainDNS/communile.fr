@@ -110,7 +110,7 @@ prettier-plugin-astro, prettier-plugin-tailwindcss, tailwindcss ; métadonnées 
 ## R8 — Sessions : `session: false`
 
 - **Constat** : l'adaptateur 14 configure par défaut un binding KV `SESSION`, auto-provisionné au déploiement (déduit du code de l'adaptateur, pas de la doc). Le site n'utilise pas de sessions.
-- **Decision** : `session: false` dans la config de l'adaptateur. Aucune ressource inutile n'est créée, et le runtime de session est éliminé du bundle (14.2.0, PR #16871). C'est conforme au principe II.
+- **Decision** : `session: false` à la racine de la config Astro (l'adaptateur 14 n'a pas d'option dédiée ; il lit `config.session === false`, vérifié dans son code). Aucune ressource inutile n'est créée, et le runtime de session est éliminé du bundle (14.2.0, PR #16871). C'est conforme au principe II.
 
 ## R9 — Autres points
 
