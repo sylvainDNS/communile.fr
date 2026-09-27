@@ -19,6 +19,6 @@ export default defineConfig({
   // aucune page n'utilise Astro.session : évite le binding KV SESSION créé par l'adaptateur
   session: false,
   // sitemap-index.xml des pages indexables (la 404 est exclue)
-  integrations: [sitemap({ filter: page => !page.includes('/404') })],
+  integrations: [sitemap({ filter: page => page !== 'https://communile.fr/404' })],
   adapter: cloudflare({ imageService: 'compile' }),
 })

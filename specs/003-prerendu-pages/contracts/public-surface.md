@@ -20,7 +20,7 @@ Ce contrat liste ce qui DOIT rester identique, ce qui change volontairement et c
 - **`<head>`** : `title`, `meta description`, `robots` (404), `og:title`, `og:description`, `og:url`, `twitter:*` et canonique DOIVENT être identiques à la référence. En particulier :
   - `og:url` et la canonique ne contiennent jamais `.html` ;
   - elles restent sans slash final, sauf `/` ;
-  - **exception acceptée (constat T013)** : sur la page 404, canonique et `og:url` valent `https://communile.fr/404`, et non plus l'URL demandée. Une page prérendue ne connaît pas l'URL de la requête. La page est en `noindex` et répond 404 : aucun effet SEO.
+  - **exception (constat T013, corrigée après revue)** : une page prérendue ne connaît pas l'URL de la requête, donc la 404 ne peut plus pointer vers l'URL demandée. Les pages en `noindex`, dont la 404, n'émettent donc plus ni canonique ni `og:url`.
 - **Image de partage** :
   - pages avec image dédiée : même image source en 1200 px de large, mais son URL change (`/_image?…` devient `/_astro/<nom>.<hash>.webp`) ;
   - pages sans image dédiée (`/contact`, 404) : l'URL déclarée DOIT désormais répondre 200 (FR-016).

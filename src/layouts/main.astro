@@ -59,7 +59,7 @@ if (!jsonLd) {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageUrl} />
-    <meta property="og:url" content={canonicalURL.href} />
+    {!noindex && <meta property="og:url" content={canonicalURL.href} />}
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={SITE_NAME} />
     <meta property="og:locale" content="fr_FR" />
@@ -71,7 +71,7 @@ if (!jsonLd) {
     <meta name="twitter:image" content={ogImageUrl} />
 
     {/* Canonical URL */}
-    <link rel="canonical" href={canonicalURL.href} />
+    {!noindex && <link rel="canonical" href={canonicalURL.href} />}
     <link rel="sitemap" href="/sitemap-index.xml" />
 
     {/* Schema.org JSON-LD - Organization */}
