@@ -168,8 +168,8 @@ Tout est livré dans **une seule PR**, avec un commit par palier (commits via l'
   - `pnpm dev`, puis modifier un texte dans `src/pages/contact.astro` : il doit apparaître sans redémarrage (annuler la modification ensuite) ;
   - `pnpm preview` ;
   - `pnpm build` et `pnpm lint` verts.
-- [ ] T036 [P] [US2] Vérifier que `.github/workflows/pull_request.yml` fonctionne tel quel (Node `'24'`, `pnpm install --frozen-lockfile`, `pnpm lint`). Ne le modifier que s'il échoue sur la PR.
-- [ ] T037 [US2] `git push`, puis contrôler que le déploiement Workers Builds de la branche réussit. Rejouer `snapshot.sh` et `compare.sh baseline/prod` sur `*.workers.dev`.
+- [X] T036 [P] [US2] Vérifier que `.github/workflows/pull_request.yml` fonctionne tel quel (Node `'24'`, `pnpm install --frozen-lockfile`, `pnpm lint`). Ne le modifier que s'il échoue sur la PR.
+- [X] T037 [US2] `git push`, puis contrôler que le déploiement Workers Builds de la branche réussit. Rejouer `snapshot.sh` et `compare.sh baseline/prod` sur `*.workers.dev`.
 
 **Checkpoint** : US2 validée. Tout est vert avec les mêmes commandes qu'avant, et le déploiement fonctionne.
 
@@ -181,12 +181,12 @@ Tout est livré dans **une seule PR**, avec un commit par palier (commits via l'
 
 **Independent Test** : `pnpm outdated` n'affiche que `typescript` dans le périmètre. La constitution et `.cursor/rules/context.mdc` citent Astro 7, Node et pnpm à jour.
 
-- [ ] T038 [US3] `pnpm outdated`. Le seul paquet du périmètre toléré est `typescript` (6.0.3 contre 7.x, R3). Les paquets exclus (`animejs`, `leaflet`, `tailwind-merge`, `class-variance-authority`, `clsx`) restent tels quels. Copier la sortie dans `tmp/astro-upgrade/outdated.txt`, pour la PR.
-- [ ] T039 [P] [US3] Amender `.specify/memory/constitution.md` via `/speckit-constitution`, en PATCH 1.0.0 → 1.0.1, avec un Sync Impact Report :
+- [X] T038 [US3] `pnpm outdated`. Le seul paquet du périmètre toléré est `typescript` (6.0.3 contre 7.x, R3). Les paquets exclus (`animejs`, `leaflet`, `tailwind-merge`, `class-variance-authority`, `clsx`) restent tels quels. Copier la sortie dans `tmp/astro-upgrade/outdated.txt`, pour la PR.
+- [X] T039 [P] [US3] Amender `.specify/memory/constitution.md` via `/speckit-constitution`, en PATCH 1.0.0 → 1.0.1, avec un Sync Impact Report :
   - principe V : « Astro 7 », « déployée sur Cloudflare Workers » ;
   - contraintes techniques : « pnpm ≥ 12, Node ≥ 22.22 (cf. `package.json` engines) » ;
   - l'hébergement reste l'adaptateur `@astrojs/cloudflare`.
-- [ ] T040 [P] [US3] Mettre à jour `.cursor/rules/context.mdc` :
+- [X] T040 [P] [US3] Mettre à jour `.cursor/rules/context.mdc` :
   - « Astro 5 » → « Astro 7 » ;
   - « deployed on Cloudflare (Pages/Workers) » → « deployed on Cloudflare Workers » ;
   - la ligne « Engines » → valeurs de `package.json` (Node `^22.22.3 || ^24.16.0 || >=26.3.0`, pnpm ≥ 12).

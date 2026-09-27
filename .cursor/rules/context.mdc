@@ -10,7 +10,7 @@ alwaysApply: true
 
 - This project is a website for a cooperative company called Commun'Île.
 - The website is built with Astro, Tailwind CSS 4, anime.js v4 and TypeScript (strict).
-- The website is deployed on Cloudflare (Pages/Workers) using the Cloudflare adapter with server output.
+- The website is deployed on Cloudflare Workers (static assets) using the Cloudflare adapter with server output.
 
 ## Project goals
 
@@ -23,9 +23,9 @@ alwaysApply: true
 
 ## Stack & environment
 
-- Astro 5, Tailwind CSS 4 via `@tailwindcss/vite`, TypeScript strict.
+- Astro 7, Tailwind CSS 4 via `@tailwindcss/vite`, TypeScript strict.
 - Cloudflare adapter (server output), Biome for lint/format, pnpm as the package manager.
-- Engines: Node >= 21, pnpm >= 9.
+- Engines: Node `^22.22.3 || ^24.16.0 || >=26.3.0`, pnpm >= 12 (see `package.json`).
 
 ## Repo specifics
 
