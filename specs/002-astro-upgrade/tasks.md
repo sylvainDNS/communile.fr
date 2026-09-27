@@ -226,7 +226,7 @@ Tout est livré dans **une seule PR**, avec un commit par palier (commits via l'
   - Lighthouse final.
 
   En cas d'écart : retour arrière immédiat (T046).
-- [ ] T048 🧑 Après quelques jours d'observation sans incident :
+- [X] T048 🧑 Après quelques jours d'observation sans incident :
   - si la bascule s'est faite par route, attacher `communile.fr` en Custom Domain au Worker. Cloudflare remplace l'enregistrement DNS qui pointe vers Pages ;
   - supprimer ensuite la route `communile.fr/*`, puis rejouer T047 ;
   - supprimer le projet Cloudflare Pages. Ouvrir ensuite une issue de suivi pour retirer la règle `pages.dev` de `public/_headers`.
