@@ -1,4 +1,5 @@
 import cloudflare from '@astrojs/cloudflare'
+import sitemap from '@astrojs/sitemap'
 import tailwindcss from '@tailwindcss/vite'
 import { defineConfig } from 'astro/config'
 
@@ -17,5 +18,7 @@ export default defineConfig({
   compressHTML: true,
   // aucune page n'utilise Astro.session : évite le binding KV SESSION créé par l'adaptateur
   session: false,
+  // sitemap-index.xml des pages indexables (la 404 est exclue)
+  integrations: [sitemap({ filter: page => !page.includes('/404') })],
   adapter: cloudflare({ imageService: 'compile' }),
 })

@@ -4,6 +4,7 @@ import { getImage } from 'astro:assets'
 import Footer from '../components/footer.astro'
 import Header from '../components/header.astro'
 import { DEFAULT_DESCRIPTION, SITE_NAME, SITE_URL } from '../utils/constants'
+import { getLogoUrl } from '../utils/image'
 import { getPagePath } from '../utils/url'
 import '../styles/global.css'
 
@@ -24,7 +25,8 @@ const title = content?.title ? `${content.title} · ${SITE_NAME}` : SITE_NAME
 const description = content?.description || DEFAULT_DESCRIPTION
 const canonicalURL = new URL(getPagePath(Astro.url), SITE_URL)
 
-let ogImageUrl = `${SITE_URL}/communile-logo.webp`
+const logoUrl = await getLogoUrl()
+let ogImageUrl = logoUrl
 if (content?.image) {
   const optimizedImage = await getImage({ src: content.image, width: 1200 })
   ogImageUrl = new URL(optimizedImage.src, SITE_URL).href
@@ -37,7 +39,7 @@ if (!jsonLd) {
     '@type': 'Organization',
     'name': SITE_NAME,
     'url': SITE_URL,
-    'logo': `${SITE_URL}/communile-logo.webp`,
+    'logo': logoUrl,
     'description': DEFAULT_DESCRIPTION,
     'email': 'contact@communile.fr',
     'sameAs': [],
@@ -70,6 +72,7 @@ if (!jsonLd) {
 
     {/* Canonical URL */}
     <link rel="canonical" href={canonicalURL.href} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
 
     {/* Schema.org JSON-LD - Organization */}
     <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>

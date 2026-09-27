@@ -143,27 +143,27 @@ Tout est livré dans **une seule PR**. On fait un commit par phase qui touche le
 
 **Independent Test** : `dist/client/sitemap-0.xml` contient les 7 URL canoniques. `robots.txt` contient `Sitemap:`. Toute URL absolue d'image du HTML (`og:image`, `twitter:image`, JSON-LD `logo` et `image`) pointe vers un fichier présent dans `dist/client/` (SC-008).
 
-- [ ] T021 [P] [US3] Dans `astro.config.mjs`, importer `sitemap` depuis `@astrojs/sitemap`. Ajouter `integrations: [sitemap({ filter: page => !page.includes('/404') })]`, le filtre validé par le prototype. La 404 doit être exclue du résultat (R7).
-- [ ] T022 [P] [US3] Créer `public/robots.txt` avec, dans l'ordre : `User-agent: *`, `Allow: /`, une ligne vide, puis `Sitemap: https://communile.fr/sitemap-index.xml` (R7).
-- [ ] T023 [P] [US3] Créer `src/utils/image.ts`, qui exporte `async function getLogoUrl()`. La fonction importe `getImage` depuis `astro:assets`, `logo` depuis `@/images/communile-logo.webp` et `SITE_URL` depuis `./constants`, puis renvoie `new URL((await getImage({ src: logo })).src, SITE_URL).href`. Ajouter un commentaire d'une ligne : l'URL absolue du logo est réellement émise dans `/_astro/` au build, alors que l'ancien `/communile-logo.webp` répondait 404 (R8).
+- [X] T021 [P] [US3] Dans `astro.config.mjs`, importer `sitemap` depuis `@astrojs/sitemap`. Ajouter `integrations: [sitemap({ filter: page => !page.includes('/404') })]`, le filtre validé par le prototype. La 404 doit être exclue du résultat (R7).
+- [X] T022 [P] [US3] Créer `public/robots.txt` avec, dans l'ordre : `User-agent: *`, `Allow: /`, une ligne vide, puis `Sitemap: https://communile.fr/sitemap-index.xml` (R7).
+- [X] T023 [P] [US3] Créer `src/utils/image.ts`, qui exporte `async function getLogoUrl()`. La fonction importe `getImage` depuis `astro:assets`, `logo` depuis `@/images/communile-logo.webp` et `SITE_URL` depuis `./constants`, puis renvoie `new URL((await getImage({ src: logo })).src, SITE_URL).href`. Ajouter un commentaire d'une ligne : l'URL absolue du logo est réellement émise dans `/_astro/` au build, alors que l'ancien `/communile-logo.webp` répondait 404 (R8).
 
   Dans `src/layouts/main.astro` :
   - `const logoUrl = await getLogoUrl()` ;
   - l'utiliser comme valeur par défaut de `ogImageUrl` et pour `'logo'` dans le JSON-LD `Organization` par défaut, à la place des deux occurrences de `${SITE_URL}/communile-logo.webp` ;
   - ajouter `<link rel="sitemap" href="/sitemap-index.xml" />` après la canonique (R7).
-- [ ] T024 [P] [US3] Dans `src/pages/a-la-carte-postale.astro`, `src/pages/le-bar-ile.astro`, `src/pages/les-landes-fertiles.astro`, `src/pages/le-wattignies.astro` et `src/pages/le-labo-diva.astro` :
+- [X] T024 [P] [US3] Dans `src/pages/a-la-carte-postale.astro`, `src/pages/le-bar-ile.astro`, `src/pages/les-landes-fertiles.astro`, `src/pages/le-wattignies.astro` et `src/pages/le-labo-diva.astro` :
   - importer `getLogoUrl` depuis `../utils/image`, à côté de l'import existant de `../utils/constants` ;
   - ajouter `const logoUrl = await getLogoUrl()` dans le frontmatter, avant l'objet JSON-LD ;
   - remplacer `'image': \`${SITE_URL}/communile-logo.webp\`` par `'image': logoUrl` dans le JSON-LD ;
   - garder l'import de `SITE_URL`, qui sert encore pour `'url'` (R8).
-- [ ] T025 [US3] `pnpm build && pnpm lint`. Attendu :
+- [X] T025 [US3] `pnpm build && pnpm lint`. Attendu :
   - `grep -o '<loc>[^<]*' dist/client/sitemap-0.xml` donne 7 URL (`/` et les 6 pages), sans slash final ni `/404` ;
   - `dist/client/robots.txt` est présent ;
   - `og:image` de `contact.html` et de `404.html`, `logo` du JSON-LD par défaut et `image` du JSON-LD des 5 pages lieux pointent vers `https://communile.fr/_astro/communile-logo.<hash>.webp` ;
   - `grep -c 'communile.fr/communile-logo.webp' dist/client/*.html` vaut 0 partout ;
   - toute URL absolue d'image existe dans `dist/` : `grep -hoE 'https://communile\.fr/[^"]+\.(webp|png|jpg)' dist/client/*.html | sort -u | sed 's#https://communile.fr#dist/client#' | xargs ls` ne renvoie aucune erreur.
-- [ ] T026 [US3] Prévisualisation locale : `/sitemap-index.xml`, `/sitemap-0.xml` et `/robots.txt` répondent 200, et l'URL du logo répond 200.
-- [ ] T027 [US3] Commit (agent `git-commit`) de `astro.config.mjs`, `public/robots.txt`, `src/utils/image.ts`, `src/layouts/main.astro` et des 5 pages de T024. Exemple de message : `feat(seo): publier le sitemap et corriger les URL du logo`.
+- [X] T026 [US3] Prévisualisation locale : `/sitemap-index.xml`, `/sitemap-0.xml` et `/robots.txt` répondent 200, et l'URL du logo répond 200.
+- [X] T027 [US3] Commit (agent `git-commit`) de `astro.config.mjs`, `public/robots.txt`, `src/utils/image.ts`, `src/layouts/main.astro` et des 5 pages de T024. Exemple de message : `feat(seo): publier le sitemap et corriger les URL du logo`.
 
 **Checkpoint** : les trois user stories sont vérifiées localement.
 
