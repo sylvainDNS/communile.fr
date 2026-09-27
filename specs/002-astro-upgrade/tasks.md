@@ -53,8 +53,8 @@ Tout est livré dans **une seule PR**, avec un commit par palier (commits via l'
   - servir `./dist` avec `pnpm dlx wrangler@4 pages dev ./dist --port 8788` ;
   - `snapshot.sh http://localhost:8788 tmp/astro-upgrade/baseline/local` ;
   - arrêter le serveur.
-- [ ] T006 [P] Captures d'écran pleine page, via Chrome DevTools MCP, de `https://communile.fr` à 390 px et à 1440 px de large pour les 8 routes → `tmp/astro-upgrade/baseline/screens/<slug>-<largeur>.png`.
-- [ ] T007 [P] Audit Lighthouse mobile des 7 routes 200 de `https://communile.fr` → `tmp/astro-upgrade/baseline/lighthouse.json` : scores perf, a11y, best practices et SEO, plus le poids total transféré par page.
+- [X] T006 [P] Captures d'écran pleine page, via Chrome DevTools MCP, de `https://communile.fr` à 390 px et à 1440 px de large pour les 8 routes → `tmp/astro-upgrade/baseline/screens/<slug>-<largeur>.png`.
+- [X] T007 [P] Audit Lighthouse mobile des 7 routes 200 de `https://communile.fr` → `tmp/astro-upgrade/baseline/lighthouse.json` : scores perf, a11y, best practices et SEO, plus le poids total transféré par page.
 
 **Checkpoint** : les références prod et locale existent, et `compare.sh baseline/local baseline/local` renvoie « 8/8 identiques ».
 
@@ -84,7 +84,7 @@ Tout est livré dans **une seule PR**, avec un commit par palier (commits via l'
   - attendu : un diff vide ;
   - tout écart doit être corrigé dans `src/`, ou expliqué dans `tmp/astro-upgrade/palier-a.md`.
 - [X] T015 `pnpm lint` doit être vert (outillage de lint encore inchangé).
-- [ ] T016 Commit du palier A (agent `git-commit`), par exemple `chore(astro): monter Astro 6 et migrer Cloudflare Pages vers Workers`. Puis `git push -u origin 002-astro-upgrade`.
+- [X] T016 Commit du palier A (agent `git-commit`), par exemple `chore(astro): monter Astro 6 et migrer Cloudflare Pages vers Workers`. Puis `git push -u origin 002-astro-upgrade`.
 - [ ] T017 🧑 Checkpoint humain, dans le dashboard Cloudflare :
   - créer le Worker `communile-fr` via **Workers Builds** en connectant le dépôt GitHub. Branche de production **temporaire** : `002-astro-upgrade`. Build : `pnpm build`. Déploiement : `npx wrangler deploy`. Variable de build `NODE_VERSION=24` ;
   - vérifier que le proxy Plausible est attaché en **route** `communile.fr/mix/load/*` (et non en Custom Domain) ;
@@ -208,11 +208,13 @@ Tout est livré dans **une seule PR**, avec un commit par palier (commits via l'
   - les résultats de parité (diff HTML, captures, Lighthouse avant/après, `outdated.txt`) ;
   - la checklist SC-001 à SC-006 ;
   - la procédure de bascule et de retour arrière ([quickstart §4](./quickstart.md#4-mise-en-production-palier-6)).
-- [ ] T043 🧑 Revue, approbation et merge de la PR par le mainteneur. Le build Pages de `main` va échouer, et c'est attendu : Pages continue de servir son dernier déploiement.
+- [ ] T043 🧑 Revue, approbation et merge de la PR par le mainteneur. **Avant le merge**, dans le projet Pages (Settings → Builds), désactiver les déploiements automatiques : preview deployments sur « None » et pause des déploiements de production. Pages ne sait plus construire le projet ; sans cette étape, le build de `main` échoue. Pages continue de servir son dernier déploiement dans tous les cas.
 - [ ] T044 🧑 Dans Workers Builds, repasser la branche de production du Worker à `main`, puis attendre la fin du déploiement.
 - [ ] T045 Parité finale sur `https://communile-fr.<compte>.workers.dev` (build de `main`) : `snapshot.sh` puis `compare.sh baseline/prod`.
 - [ ] T046 🧑 Bascule du domaine **par route**, sans coupure (SC-006) :
-  - vérifier une dernière fois que le proxy Plausible est en route `communile.fr/mix/load/*` ;
+  - proxy Plausible : la route `*communile.fr/mix/*` vers `worker-billowing-wave-39b0`, constatée le 2026-09-26, reste **intouchable** (décision du mainteneur). Aucune route ni config ne doit être ajoutée ou modifiée pour lui.
+    - Risque : son hôte est générique alors que celui de `communile.fr/*` est exact, et la règle de spécificité ne dit pas laquelle gagne.
+    - Vérifier donc **immédiatement** après l'ajout de la route que `/mix/load/script.js` répond 200 avec le script Plausible. Sinon, supprimer la route `communile.fr/*` (retour arrière instantané) et passer au repli par Custom Domain : les routes s'exécutent toujours avant un Worker de Custom Domain ;
   - sur la zone `communile.fr`, ajouter au Worker `communile-fr` la route `communile.fr/*`, **sans** toucher au domaine personnalisé Pages ni au DNS. La route intercepte les requêtes avant l'origine Pages. Le proxy `/mix/load/*`, plus spécifique, reste prioritaire (doc « Routes » : « the most specific route pattern wins ») ;
   - **vérifier que c'est bien le Worker qui répond** : le HTML de `https://communile.fr/` doit référencer les mêmes noms `_astro/*.<hash>` que `current/b-cf` ou le build de `main` sur `*.workers.dev`, et non ceux de `baseline/prod` ;
   - si la route ne prend pas le pas sur le domaine personnalisé Pages (comportement non documenté par Cloudflare) : supprimer la route, puis se replier sur un détachement du domaine de Pages et un rattachement en Custom Domain au Worker, à très faible trafic. La coupure est courte ; le certificat universel de la zone couvre déjà `communile.fr`.

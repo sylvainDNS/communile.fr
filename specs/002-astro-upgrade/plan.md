@@ -116,7 +116,7 @@ Ces écarts existent déjà sur `main`. La mise à jour ne les aggrave pas et ne
 
 | ID | Principe | Écart | Pourquoi il est reconduit | Suivi |
 |---|---|---|---|---|
-| D1 | II. Statique par défaut | 8 routes rendues à la demande (`output: 'server'`), sans besoin démontré | Prérendre change l'architecture de déploiement et le comportement des images. Hors d'une mise à jour à parité stricte. | Évolution « prérendu des pages » |
+| D1 | II. Statique par défaut | 8 routes rendues à la demande (`output: 'server'`), sans besoin démontré | Prérendre change l'architecture de déploiement et le comportement des images. Hors d'une mise à jour à parité stricte. Option statique (sans adaptateur, Workers static assets) étudiée et prototypée le 2026-09-26, puis **écartée par le mainteneur** : le rendu à la demande reste dans le quota gratuit (100 000 requêtes par jour). | Évolution « prérendu des pages », si le besoin apparaît |
 | D2 | III. Images aux dimensions adaptées | Les `.webp` sources sont servis sans redimensionnement (ex. `communile-illu-agir.webp`, 1,3 Mo) | `compile` est validé par le mainteneur pour la parité (R5). L'alternative `cloudflare-binding` change le rendu et ajoute un coût. Le prérendu, qui permettrait l'optimisation au build, dépend de D1. | Évolution « optimisation des images » (après D1) |
 | D3 | III. Présence dans le sitemap | `@astrojs/sitemap` est installé mais non branché | L'activer ajoute une URL publique (`/sitemap-index.xml`), ce qui est contraire à FR-013. | Évolution « sitemap » |
 
