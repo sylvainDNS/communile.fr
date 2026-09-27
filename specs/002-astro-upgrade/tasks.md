@@ -126,12 +126,12 @@ Tout est livré dans **une seule PR**, avec un commit par palier (commits via l'
   - si `eslint-plugin-astro` 1.x ne parse plus certains fichiers à cause de la syntaxe Astro 7, consigner les fichiers et les erreurs dans `tmp/astro-upgrade/palier-b.md`, sans désactiver de règle. Le palier D les résout ; ne pas pousser tant que ce n'est pas tranché avec le mainteneur, car la CI de la PR lance `pnpm lint`.
 
   Commit du palier B, par exemple `chore(astro): monter Astro 7, adaptateur Cloudflare 14 et Tailwind 4.3`. Puis `git push`. Workers Builds redéploie la branche.
-- [ ] T025 [US1] Parité sur `https://communile-fr.<compte>.workers.dev` :
+- [X] T025 [US1] Parité sur `https://communile-fr.<compte>.workers.dev` :
   - `snapshot.sh` → `current/b-cf`, puis `compare.sh baseline/prod current/b-cf` ;
   - captures à 390 et 1440 px → `current/b-cf/screens/`, à comparer visuellement à `baseline/screens/` ;
   - Lighthouse mobile → `current/b-cf/lighthouse.json`, à comparer à `baseline/lighthouse.json` (SC-003, SC-004) ;
   - consigner les résultats dans `tmp/astro-upgrade/palier-b.md`.
-- [ ] T026 [US1] 🧑 Dans le dashboard, vérifier que le Worker n'a **aucun** binding `IMAGES` ni `SESSION` (Worker → Settings → Bindings) (R5, R8).
+- [X] T026 [US1] 🧑 Dans le dashboard, vérifier que le Worker n'a **aucun** binding `IMAGES` ni `SESSION` (Worker → Settings → Bindings) (R5, R8).
 
 **Checkpoint** : US1 validée, avec un rendu identique en Astro 7 sur Cloudflare.
 
@@ -145,9 +145,9 @@ Tout est livré dans **une seule PR**, avec un commit par palier (commits via l'
 
 ### Palier C : TypeScript 6
 
-- [ ] T027 [US2] `pnpm add -D typescript@^6.0.3` (pas la 7, R3). Dans `tsconfig.json`, supprimer `"baseUrl": "."` et conserver `paths` à l'identique.
-- [ ] T028 [US2] `pnpm build` : corriger dans `src/` chaque erreur remontée par `astro check` sous TS 6 (nouveaux défauts `types: []`, `noUncheckedSideEffectImports`). Ne pas ajouter `ignoreDeprecations`. Vérifier que l'alias `@/*` se résout toujours.
-- [ ] T029 [US2] Commit du palier C, par exemple `chore(typescript): monter TypeScript 6`.
+- [X] T027 [US2] `pnpm add -D typescript@^6.0.3` (pas la 7, R3). Dans `tsconfig.json`, supprimer `"baseUrl": "."` et conserver `paths` à l'identique.
+- [X] T028 [US2] `pnpm build` : corriger dans `src/` chaque erreur remontée par `astro check` sous TS 6 (nouveaux défauts `types: []`, `noUncheckedSideEffectImports`). Ne pas ajouter `ignoreDeprecations`. Vérifier que l'alias `@/*` se résout toujours.
+- [X] T029 [US2] Commit du palier C, par exemple `chore(typescript): monter TypeScript 6`.
 
 ### Palier D : outillage de lint et de formatage
 
