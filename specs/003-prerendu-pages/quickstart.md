@@ -29,7 +29,7 @@ ls dist/client/*.html                              # 8 fichiers
 grep -c '/_image?' dist/client/*.html              # 0 partout
 grep -o '"main"' dist/client/wrangler.json         # rien (assets-only)
 grep -o '"not_found_handling":"[^"]*"' dist/client/wrangler.json   # 404-page
-grep -o '<loc>[^<]*' dist/client/sitemap-0.xml     # 7 URL, sans slash final ni /404
+grep -o '<loc>[^<]*' dist/client/sitemap-0.xml     # 6 URL, sans slash final ni /404
 grep -ho '<link rel="canonical"[^>]*>' dist/client/*.html   # jamais de .html
 ```
 
@@ -41,7 +41,7 @@ tmp/astro-upgrade/snapshot.sh <local_url> tmp/prerendu/local
 pnpm astro preview stop
 ```
 
-Attendu dans `status.txt` : 7 routes en 200, `/nexiste-pas` en 404 et `/contact/` en `307 -> /contact`. Pour la 404, envoyer `Sec-Fetch-Mode: navigate` si on teste à la main avec curl.
+Attendu dans `status.txt` : 6 routes en 200, `/contact` et `/nexiste-pas` en 404. Vérifier à la main qu'une URL avec slash final (ex. `/le-wattignies/`) redirige en 307. Pour la 404, envoyer `Sec-Fetch-Mode: navigate` si on teste à la main avec curl.
 
 Vérifications ciblées sur `tmp/prerendu/local/html` par rapport à `current/prod/html` :
 - `title`, `description`, `og:*`, `twitter:*`, canonique et JSON-LD sont égaux, sauf les URL d'images ;
@@ -54,7 +54,7 @@ Pousser la branche. Workers Builds construit alors une version de preview, à co
 
 ```sh
 tmp/astro-upgrade/snapshot.sh <preview_url> tmp/prerendu/preview
-curl -sI <preview_url>/contact | grep -i x-robots-tag       # noindex
+curl -sI <preview_url>/le-wattignies | grep -i x-robots-tag       # noindex
 node shots.mjs tmp/prerendu/preview/pshots <preview_url>     # depuis le dossier puppeteer
 node map.mjs <preview_url>                                   # tuiles, marqueur, 0 erreur JS
 ```
@@ -77,7 +77,7 @@ curl -s -o /dev/null -w '%{http_code}\n' https://communile.fr/mix/load/script.js
 curl -s https://communile.fr/robots.txt | grep -i '^sitemap:'                        # ligne présente
 curl -s https://communile.fr/sitemap-index.xml | head -c 300
 for u in $(grep -hoE 'https://communile\.fr/[^"]+\.(webp|png|jpg)' tmp/prerendu/prod/html/*.html | sort -u); do curl -s -o /dev/null -w "%{http_code} $u\n" "$u"; done   # OG + JSON-LD, tout en 200
-curl -sI https://communile.fr/contact | grep -i x-robots-tag     # rien
+curl -sI https://communile.fr/le-wattignies | grep -i x-robots-tag     # rien
 ```
 
 Attendu (SC-007, SC-008) :

@@ -31,16 +31,16 @@ Pas de données métier. Le « modèle » est l'inventaire des artefacts de conf
 
 | Sortie | Attendu |
 |---|---|
-| `index.html`, `a-la-carte-postale.html`, `contact.html`, `le-bar-ile.html`, `le-labo-diva.html`, `le-wattignies.html`, `les-landes-fertiles.html`, `404.html` | 8 fichiers (SC-002) |
+| `index.html`, `a-la-carte-postale.html`, `le-bar-ile.html`, `le-labo-diva.html`, `le-wattignies.html`, `les-landes-fertiles.html`, `404.html` | 7 fichiers (SC-002), `/contact` supprimée |
 | `_astro/*.webp` | variantes par largeur déclarée ; aucune URL `/_image?` dans le HTML (FR-005) |
 | `_astro/communile-logo.<hash>.webp` | cible de l'image OG et du logo par défaut (FR-016) |
-| `sitemap-index.xml`, `sitemap-0.xml` | 7 `<loc>` : `/` et les 6 pages sans slash final, sans `/404` (SC-008) |
+| `sitemap-index.xml`, `sitemap-0.xml` | 6 `<loc>` : `/` et les 5 pages lieux, sans slash final, sans `/404` (SC-008) |
 | `robots.txt`, `_headers`, favicons, `site.webmanifest`, `fonts/` | copiés depuis `public/` (`_headers` complété par l'adaptateur avec `immutable` sur `/_astro/*`) |
 | `wrangler.json` | config générée **sans `main`** (assets-only), `assets.not_found_handling: "404-page"` (R1, R6) |
 | `dist/server/` | vide tant qu'aucune page n'est dynamique |
 
 ## Transition d'état du Worker `communile-fr`
 
-`Worker avec code (rendu à la demande de 8 routes)` → déploiement de `main` par Workers Builds → `Worker assets-only (8 pages + assets statiques)`.
+`Worker avec code (rendu à la demande de 8 routes)` → déploiement de `main` par Workers Builds → `Worker assets-only (7 pages + assets statiques)`.
 
 Le domaine, le Custom Domain, la route du proxy `/mix/*` et la commande de déploiement ne changent pas. Pour revenir en arrière, il suffit de revert le merge : le déploiement suivant rétablit le rendu à la demande.

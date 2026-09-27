@@ -38,6 +38,8 @@ ne consomment plus le quota de requêtes de l'hébergeur.
 - Q: Site entièrement statique ou adaptateur conservé avec pages prérendues ? → A: adaptateur conservé, toutes les pages prérendues (FR-012). Pas d'amendement de la constitution.
 - Q: Le sitemap (D3) fait-il partie de cette évolution ? → A: oui (FR-015).
 - Q: L'image de partage et le logo par défaut, en 404, sont-ils corrigés ici ? → A: oui (FR-016).
+- Q (implémentation) : que faire de `/contact`, qui contient un numéro factice et des horaires génériques, et qu'aucune page ne lie ? → A: la supprimer. C'est un reliquat du développement initial (commit `3801584`, 2025-09-08), jamais rempli, contraire au principe I. `/contact` répond désormais 404. Il reste 7 pages publiques, 404 comprise, dont 6 indexables.
+- Changements hors tâches initiales, issus de la revue de code : pas de canonique ni d'`og:url` sur les pages `noindex`, car une page prérendue ne connaît pas l'URL demandée (FR-007) ; filtre de sitemap exact sur `/404` ; `getLogoUrl` mémoïsé (commit `6557f7d`).
 
 ## User Scenarios & Testing *(mandatory)*
 
@@ -81,7 +83,7 @@ répondent sans que l'hébergeur ne comptabilise d'exécution de code.
 
 **Acceptance Scenarios**:
 
-1. **Given** le site construit, **When** on inspecte le résultat de la construction, **Then** chacune des 8 pages publiques (page 404 comprise) est présente sous forme de page générée.
+1. **Given** le site construit, **When** on inspecte le résultat de la construction, **Then** chacune des 7 pages publiques (page 404 comprise) est présente sous forme de page générée.
 2. **Given** le site déployé, **When** un visiteur demande une page publique, **Then** elle est servie sans exécution de code côté hébergeur.
 3. **Given** une URL inexistante, **When** un visiteur la demande, **Then** la page 404 personnalisée s'affiche avec un statut 404.
 
@@ -111,8 +113,8 @@ chaque page, vérifier que l'image de partage déclarée répond.
 
 ### Edge Cases
 
-- **URL avec slash final** (`/contact/`) : aujourd'hui elle répond 200. Après
-  prérendu, elle redirige vers l'URL canonique sans slash (`/contact`). Ce
+- **URL avec slash final** (`/le-wattignies/`) : aujourd'hui elle répond 200. Après
+  prérendu, elle redirige vers l'URL canonique sans slash (`/le-wattignies`). Ce
   changement est accepté : il aligne les URL servies sur les URL canoniques
   déclarées.
 - **Page 404** : elle doit garder son statut 404 et ne pas être servie en 200
@@ -141,7 +143,7 @@ chaque page, vérifier que l'image de partage déclarée répond.
 
 ### Functional Requirements
 
-- **FR-001**: Chaque page publique existante (8 pages, 404 comprise) DOIT être générée au moment de la construction du site et servie telle quelle, sans calcul à la demande.
+- **FR-001**: Chaque page publique existante (7 pages, 404 comprise, après suppression de `/contact`, voir Clarifications) DOIT être générée au moment de la construction du site et servie telle quelle, sans calcul à la demande.
 - **FR-002**: Toutes les pages publiques DOIVENT rester accessibles à leurs URL canoniques actuelles (sans slash final), avec un contenu et un rendu visuel identiques à la production actuelle, en mobile comme en desktop.
 - **FR-003**: Une URL de page avec slash final DOIT rediriger vers l'URL canonique sans slash final.
 - **FR-004**: Une URL inexistante DOIT afficher la page 404 personnalisée avec un statut HTTP 404.
@@ -182,14 +184,14 @@ chaque page, vérifier que l'image de partage déclarée répond.
 
 ### Measurable Outcomes
 
-- **SC-001**: 100 % des pages publiques existantes (8 pages) s'affichent à l'identique de la production actuelle, vérifié par comparaison de captures en 390 px et 1440 px.
+- **SC-001**: 100 % des pages publiques existantes (7 pages) s'affichent à l'identique de la production actuelle, vérifié par comparaison de captures en 390 px et 1440 px.
 - **SC-002**: 100 % des pages publiques sont servies sans calcul à la demande.
 - **SC-003**: Le poids des images transférées sur la page d'accueil en mobile (390 px) baisse d'au moins 50 % par rapport à la production actuelle.
 - **SC-004**: Aucune page publique ne pèse plus lourd qu'aujourd'hui (poids total transféré, en mobile comme en desktop).
 - **SC-005**: Les scores d'audit de performance, d'accessibilité et de SEO de chaque page publique ne baissent pas de plus de 2 points.
 - **SC-006**: 0 erreur au build, à la vérification de types et au lint.
 - **SC-007**: Après la mise en production, le proxy d'analytics répond (script en 200), la page 404 répond avec un statut 404, et aucune interruption de service n'est perceptible par les visiteurs.
-- **SC-008**: Le sitemap liste 100 % des pages publiques indexables (7 pages, hors 404), et 100 % des images de partage et logos déclarés répondent 200.
+- **SC-008**: Le sitemap liste 100 % des pages publiques indexables (6 pages, hors 404), et 100 % des images de partage et logos déclarés répondent 200.
 
 ## Assumptions
 

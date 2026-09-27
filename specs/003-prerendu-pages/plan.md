@@ -15,7 +15,9 @@ Quand aucune route n'est dynamique, l'adaptateur génère une config Wrangler **
 
 Le prototype a révélé une régression à corriger : avec `format: 'file'`, `Astro.url.pathname` vaut `/contact.html`. Cela casse la canonique et le lien de navigation actif. Un utilitaire `getPagePath` normalise ce chemin.
 
-On ajoute aussi le sitemap (D3), un `robots.txt` et la correction des URL du logo, aujourd'hui en 404 : image de partage par défaut, JSON-LD par défaut et JSON-LD des 5 pages lieux. Toutes les décisions ont été prototypées et vérifiées, voir [research.md](./research.md) (R1 à R12).
+On ajoute aussi le sitemap (D3), un `robots.txt` et la correction des URL du logo, aujourd'hui en 404 : image de partage par défaut, JSON-LD par défaut et JSON-LD des 5 pages lieux. Toutes les décisions ont été prototypées et vérifiées, voir [research.md](./research.md) (R1 à R13).
+
+**Amendement d'implémentation (2026-09-27)** : la page `/contact`, un reliquat du développement initial avec un contenu factice, est supprimée à la demande du mainteneur (spec, *Clarifications*). Le site compte désormais 7 pages, 404 comprise, et le sitemap 6 URL. Les chiffres « 8 pages » ci-dessous décrivent l'état au moment du plan.
 
 ## Technical Context
 

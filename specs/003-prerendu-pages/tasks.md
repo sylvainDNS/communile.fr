@@ -175,19 +175,19 @@ Tout est livré dans **une seule PR**. On fait un commit par phase qui touche le
 
 - [X] T028 [P] Dans `specs/002-astro-upgrade/plan.md`, section *Complexity Tracking → Dérogations* : remplacer la colonne « Suivi » de D1, D2 et D3 par `Résorbée → [spec 003](../003-prerendu-pages/spec.md)`. Ne rien toucher d'autre (FR-013).
 - [X] T029 [P] Dans `.cursor/rules/context.mdc`, lignes 13 et 27, remplacer « with server output » et « (server output) » par une mention du prérendu (`output: 'static'`, pages prérendues, Worker assets-only). Ne pas corriger les autres informations périmées du fichier (mention de Biome), qui sont hors périmètre.
-- [ ] T030 `pnpm build && pnpm lint`, puis commit (agent `git-commit`) de T028 et T029. Exemple de message : `docs: marquer les dérogations D1–D3 résorbées par le prérendu`. Puis `git push -u origin 003-prerendu-pages`.
-- [ ] T031 Ouvrir la PR vers `main` (`gh pr create`). La description reprend :
+- [X] T030 `pnpm build && pnpm lint`, puis commit (agent `git-commit`) de T028 et T029. Exemple de message : `docs: marquer les dérogations D1–D3 résorbées par le prérendu`. Puis `git push -u origin 003-prerendu-pages`.
+- [X] T031 Ouvrir la PR vers `main` (`gh pr create`). La description reprend :
   - le résumé du plan ;
   - le changement accepté sur `/contact/` (307) ;
   - les chiffres de `notes.md` (poids, captures) ;
   - la section *Rebase de l'epic `001-page-brasserie`* du plan : l'epic sera rebasée **après** le merge, en gardant le `robots.txt` de la 003.
-- [ ] T032 🧑 Checkpoint humain, dans le dashboard du Worker `communile-fr` :
+- [X] T032 🧑 Checkpoint humain, dans le dashboard du Worker `communile-fr` :
   - Settings → Builds : le mainteneur vérifie que les builds des branches hors production sont activés. La commande par défaut est `npx wrangler versions upload` ;
   - il récupère l'URL de preview de la branche, au format `<version>-communile-fr.sylvain-denyse.workers.dev`, dans le commentaire de PR ou dans Deployments ;
   - si ces builds sont désactivés, il lance lui-même `npx wrangler versions upload` en local, authentifié.
 
   **Ne jamais changer la branche de production.** L'agent attend l'URL.
-- [ ] T033 Quickstart §3 sur `<preview_url>` :
+- [X] T033 Quickstart §3 sur `<preview_url>` :
   - `snapshot.sh` → `tmp/prerendu/preview` ;
   - `curl -sI <preview_url>/contact | grep -i x-robots-tag` renvoie `noindex` ;
   - `weight.mjs` → `tmp/prerendu/preview/weight.json`. Attendus :
@@ -196,19 +196,19 @@ Tout est livré dans **une seule PR**. On fait un commit par phase qui touche le
   - `shots.mjs` → `tmp/prerendu/preview/pshots`, avec les mêmes attendus que T019 ;
   - `map.mjs` ;
   - les images citées par les URL absolues (`og:image`, `twitter:image`, JSON-LD `logo` et `image`) répondent 200 **sur la preview**. Ces URL pointent vers `communile.fr`, qui ne sert pas encore ces fichiers : on vérifie donc leur chemin sur `<preview_url>`. Par exemple : `for p in $(grep -hoE 'https://communile\.fr/[^"]+\.(webp|png|jpg)' tmp/prerendu/preview/html/*.html | sed 's#https://communile.fr##' | sort -u); do curl -s -o /dev/null -w "%{http_code} $p\n" "<preview_url>$p"; done`.
-- [ ] T034 Lighthouse (SC-005) : `tmp/prerendu/lh-multi.sh 3 tmp/prerendu/lh https://communile.fr <preview_url>`. Attendu :
+- [X] T034 Lighthouse (SC-005) : `tmp/prerendu/lh-multi.sh 3 tmp/prerendu/lh https://communile.fr <preview_url>`. Attendu :
   - médiane de performance à −2 points au plus par page ;
   - accessibilité et SEO sans baisse.
 
   Ces mesures sont bruitées en 3G : si l'écart dépasse le seuil, relancer une série alternée avant de conclure. Consigner le résultat dans `notes.md` et en commentaire de PR.
 - [ ] T035 🧑 Checkpoint humain : le mainteneur relit la PR et les chiffres, puis merge sur `main`. Workers Builds déploie `main`.
 - [ ] T036 Quickstart §4 sur la production :
-  - `snapshot.sh https://communile.fr tmp/prerendu/prod` : mêmes statuts qu'en T014 ;
+  - `snapshot.sh https://communile.fr tmp/prerendu/prod` : mêmes statuts qu'en T014, sauf `/contact` qui répond 404 (T039) ;
   - `curl -s -o /dev/null -w '%{http_code}' https://communile.fr/mix/load/script.js` renvoie 200, **sans aucun appel à `/mix/load/event`** ;
   - `curl -s https://communile.fr/robots.txt | grep -i '^sitemap:'` affiche la ligne : la fusion avec le *managed robots.txt* de Cloudflare la conserve ;
   - `/sitemap-index.xml` répond 200 ;
   - chaque URL absolue d'image de `tmp/prerendu/prod/html/*.html` répond 200 (`og:image`, `twitter:image`, JSON-LD `logo` et `image`) : `for u in $(grep -hoE 'https://communile\.fr/[^"]+\.(webp|png|jpg)' tmp/prerendu/prod/html/*.html | sort -u); do curl -s -o /dev/null -w "%{http_code} $u\n" "$u"; done` ;
-  - pas de `X-Robots-Tag` sur `https://communile.fr/contact`.
+  - pas de `X-Robots-Tag` sur `https://communile.fr/le-wattignies`, et `/contact` répond 404 (page supprimée, T039).
 
   Si la ligne `Sitemap:` manque, le signaler au mainteneur (réglage *managed robots.txt* de la zone), sans rien modifier dans Cloudflare.
 - [ ] T037 🧑 Checkpoint humain : dans le dashboard du Worker `communile-fr` (Metrics), le mainteneur confirme que les requêtes de pages ne génèrent plus d'invocations (SC-002). Le réglage Runtime « Cache » reste sur Disabled (R10).
@@ -286,3 +286,13 @@ Puis :
 - Les checkpoints humains 🧑 (T032, T035, T037) s'effectuent dans le dashboard Cloudflare ou sur GitHub.
 - Pour revenir en arrière : revert du merge sur `main`. Le redéploiement automatique rétablit le rendu à la demande.
 - Mesures en 3G : on privilégie le poids transféré et le diff pixel, qui sont déterministes. Pour Lighthouse, on alterne les séries et on compare les médianes.
+
+---
+
+## Phase 7: Convergence
+
+- [X] T039 🧑 CRITICAL — Faire vérifier par le mainteneur les horaires et l'adresse de `src/pages/contact.astro`, puis les corriger. Les horaires affichés (« Lundi - Vendredi : 9h00 - 18h00 », « Samedi : 10h00 - 16h00 ») contredisent la FAQ du Wattignies (14h–19h du mardi au samedi), et l'adresse se limite à « Le Wattignies, Nantes ». Tant qu'ils ne sont pas vérifiés, exclure `/contact` du sitemap dans `astro.config.mjs`. Committer avec l'agent `git-commit` et pousser sur la PR #85, per Constitution I, FR-015 (contradicts)
+  → **Décision du mainteneur** : `src/pages/contact.astro` est un reliquat du développement initial (commit `3801584`, 2025-09-08), jamais rempli et lié nulle part. On le supprime plutôt que de le corriger. Résultat : `/contact` répond 404, le build produit 7 pages et le sitemap 6 URL. Spec, contrat, quickstart, plan et data model sont alignés.
+- [ ] T040 Après le déploiement en production (T036), mesurer Lighthouse mobile sur `/le-wattignies` en production : `ROUTES="/le-wattignies" tmp/prerendu/lh-multi.sh 4 tmp/prerendu/lh-prod https://communile.fr`. Comparer la médiane à la référence de 77 (7 mesures, `tmp/prerendu/lh*/communile.fr-le-wattignies-*.json`) et consigner le résultat dans `notes.md` et en commentaire de la PR #85, per SC-005 (partial)
+- [X] T041 Tracer dans `tasks.md` (sous-note de T026 ou de T034) et dans la section *Clarifications* de `spec.md` les changements faits hors des tâches initiales, avec leur justification : numéro de `/contact` remplacé par celui du Wattignies (`b22f3a4`, principe I) ; pas de canonique ni d'`og:url` sur les pages `noindex`, filtre de sitemap exact et `getLogoUrl` mémoïsé (`6557f7d`, revue de code), per FR-007, FR-014 (unrequested)
+  → Tracé dans la section *Clarifications* de `spec.md` (suppression de `/contact`, corrections de revue `6557f7d`) et dans le contrat.
