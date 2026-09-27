@@ -200,7 +200,7 @@ function loadLeaflet() {
     script.crossOrigin = ''
 
     script.onload = () => {
-      setTimeout(() => resolve(L), 100)
+      setTimeout(resolve, 100, L)
     }
 
     script.onerror = () => {

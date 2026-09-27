@@ -151,19 +151,19 @@ Tout est livré dans **une seule PR**, avec un commit par palier (commits via l'
 
 ### Palier D : outillage de lint et de formatage
 
-- [ ] T030 [US2] Monter l'outillage :
+- [X] T030 [US2] Monter l'outillage :
   - `pnpm add -D eslint@latest @antfu/eslint-config@latest eslint-plugin-format@latest eslint-plugin-astro@latest astro-eslint-parser@latest prettier-plugin-astro@latest prettier-plugin-tailwindcss@latest` ;
   - attendu : eslint 10.x, antfu 9.5.x, eslint-plugin-format 2.x, eslint-plugin-astro 3.x, astro-eslint-parser 3.x, prettier-plugin-astro 1.x, prettier-plugin-tailwindcss 0.8.x (R4) ;
   - vérifier que `pnpm why astro-eslint-parser` ne montre qu'une seule version majeure (3) ;
   - un warning de peer `prettier-plugin-astro ^0.14` provenant d'antfu est toléré.
-- [ ] T031 [US2] `pnpm lint` sans correction. Si la config échoue au chargement, adapter `eslint.config.ts` au minimum requis par antfu 9 / ESLint 10, sans ajouter d'option (pas de `tailwindStylesheet`, R4). Commit des dépendances et de la config, par exemple `chore(lint): monter ESLint 10 et la config antfu 9`.
-- [ ] T032 [US2] `pnpm lint --fix`, puis corriger à la main les erreurs restantes (nouvelles règles ESLint 10 : `no-useless-assignment`, `preserve-caught-error`…). Désactiver une règle seulement si la correction changerait le rendu, et justifier la désactivation en commentaire dans `eslint.config.ts`.
-- [ ] T033 [US2] Garde-fou de non-régression après le churn de formatage :
+- [X] T031 [US2] `pnpm lint` sans correction. Si la config échoue au chargement, adapter `eslint.config.ts` au minimum requis par antfu 9 / ESLint 10, sans ajouter d'option (pas de `tailwindStylesheet`, R4). Commit des dépendances et de la config, par exemple `chore(lint): monter ESLint 10 et la config antfu 9`.
+- [X] T032 [US2] `pnpm lint --fix`, puis corriger à la main les erreurs restantes (nouvelles règles ESLint 10 : `no-useless-assignment`, `preserve-caught-error`…). Désactiver une règle seulement si la correction changerait le rendu, et justifier la désactivation en commentaire dans `eslint.config.ts`.
+- [X] T033 [US2] Garde-fou de non-régression après le churn de formatage :
   - `pnpm build && pnpm preview` ;
   - `snapshot.sh` → `current/d`, puis `compare.sh current/b current/d` ;
   - attendu : diff vide ; tout écart provient du formatage `.astro` (espaces, prettier-plugin-astro 1.x) et doit être annulé.
-- [ ] T034 [US2] Commit du churn, par exemple `style: appliquer les règles ESLint 10 et le formatage prettier-plugin-astro 1`.
-- [ ] T035 [US2] Vérifier les commandes mainteneur (FR-009) :
+- [X] T034 [US2] (sans objet : aucun reformatage produit par `lint --fix`) Commit du churn, par exemple `style: appliquer les règles ESLint 10 et le formatage prettier-plugin-astro 1`.
+- [X] T035 [US2] Vérifier les commandes mainteneur (FR-009) :
   - `rm -rf node_modules && pnpm install --frozen-lockfile` ;
   - `pnpm dev`, puis modifier un texte dans `src/pages/contact.astro` : il doit apparaître sans redémarrage (annuler la modification ensuite) ;
   - `pnpm preview` ;
