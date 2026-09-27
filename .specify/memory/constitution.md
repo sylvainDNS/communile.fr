@@ -1,15 +1,19 @@
 <!--
 Sync Impact Report
-- Version change: (template, unversioned) → 1.0.0
-- Modified principles: initial adoption — all 5 principles defined
-  - I. Contenu d'abord, exactitude obligatoire
-  - II. Statique et simple par défaut
-  - III. Performance et SEO non négociables
-  - IV. Accessibilité et responsive
-  - V. Cohérence de la stack
-- Added sections: Contraintes techniques; Workflow de développement; Governance
-- Removed sections: none (template slots filled)
+- Version change: 1.0.0 → 1.0.1 (PATCH : versions de référence, sans changement de sens)
+- Modified principles:
+  - V. Cohérence de la stack : « Astro 5 » → « Astro 7 » ; « déployée sur Cloudflare » →
+    « déployée sur Cloudflare Workers » (feature 002-astro-upgrade)
+- Modified sections:
+  - Contraintes techniques : hébergement précisé (Workers avec static assets, l'adaptateur
+    @astrojs/cloudflare ≥ 13 ne supportant plus Pages) ; « pnpm ≥ 9, Node ≥ 21 » →
+    « pnpm ≥ 12 ; Node conforme au champ engines de package.json »
+- Added sections: none
+- Removed sections: none
+- Templates requiring updates: none (plan, spec et tasks lisent la constitution à l'exécution)
 - Deferred items: none
+- Historique : 1.0.0 (2026-09-01) adoption initiale des 5 principes et des sections
+  Contraintes techniques, Workflow de développement, Governance
 -->
 
 # Constitution du site vitrine Commun'ile
@@ -66,8 +70,8 @@ est une exigence de service public de fait.
 
 ### V. Cohérence de la stack
 
-La stack de référence est Astro 5, Tailwind CSS 4, TypeScript, pnpm, déployée
-sur Cloudflare. Tout nouveau code DOIT suivre les conventions existantes du
+La stack de référence est Astro 7, Tailwind CSS 4, TypeScript, pnpm, déployée
+sur Cloudflare Workers. Tout nouveau code DOIT suivre les conventions existantes du
 dépôt (ESLint config @antfu, composants Astro, layouts partagés). Le build
 (`pnpm build`, qui inclut `astro check`) et le lint (`pnpm lint`) DOIVENT
 passer avant tout merge sur `main`.
@@ -77,9 +81,10 @@ contribution reste lisible et homogène avec l'existant.
 
 ## Contraintes techniques
 
-- Hébergement : Cloudflare (adapter `@astrojs/cloudflare`) ; toute alternative
-  exige un amendement de cette constitution.
-- Gestionnaire de paquets : pnpm ≥ 9, Node ≥ 21, conformément à `package.json`.
+- Hébergement : Cloudflare Workers avec static assets (adapter
+  `@astrojs/cloudflare`) ; toute alternative exige un amendement de cette constitution.
+- Gestionnaire de paquets : pnpm ≥ 12 ; version de Node conforme au champ
+  `engines` de `package.json`.
 - Assets : stockés dans le dépôt (`public/`, `src/`) ; pas de CDN tiers pour
   les contenus propres à la coopérative.
 - Vie privée : pas de traqueur tiers invasif ; l'analytics DOIT rester minimal
@@ -109,4 +114,4 @@ Report, et versionné selon la sémantique suivante :
 Les revues (specs, plans, PRs) DOIVENT vérifier la conformité aux principes ;
 toute dérogation DOIT être justifiée par écrit dans l'artefact concerné.
 
-**Version**: 1.0.0 | **Ratified**: 2026-09-01 | **Last Amended**: 2026-09-01
+**Version**: 1.0.1 | **Ratified**: 2026-09-01 | **Last Amended**: 2026-09-27

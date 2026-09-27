@@ -1,16 +1,17 @@
 /**
  * For more details on how to configure Wrangler, refer to:
  * https://developers.cloudflare.com/workers/wrangler/configuration/
+ *
+ * Déployé en Worker avec static assets : `main` et `assets` sont injectés par @astrojs/cloudflare.
  */
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "communile-fr",
-  "compatibility_date": "2025-03-27",
+  "compatibility_date": "2026-09-26",
   "compatibility_flags": ["nodejs_compat"],
-  "pages_build_output_dir": "./dist",
   "observability": {
     "enabled": true
-  },
+  }
   /**
    * Smart Placement
    * Docs: https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
@@ -27,31 +28,9 @@
   /**
    * Environment Variables
    * https://developers.cloudflare.com/workers/wrangler/configuration/#environment-variables
-   */
-  "env": {
-    "preview": {
-      "vars": {
-        "NODE_VERSION": "21",
-        "PNPM_VERSION": "9"
-      }
-    },
-    "production": {
-      "vars": {
-        "NODE_VERSION": "21",
-        "PNPM_VERSION": "9"
-      }
-    }
-  }
-  /**
    * Note: Use secrets to store sensitive data.
    * https://developers.cloudflare.com/workers/configuration/secrets/
    */
-
-  /**
-   * Static Assets
-   * https://developers.cloudflare.com/workers/static-assets/binding/
-   */
-  // "assets": { "directory": "./public/", "binding": "ASSETS" },
 
   /**
    * Service Bindings (communicate between multiple Workers)

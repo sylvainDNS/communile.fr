@@ -8,5 +8,9 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   output: 'server',
-  adapter: cloudflare(),
+  // Astro 7 passe par défaut à 'jsx', qui supprime les espaces entre texte et éléments inline
+  compressHTML: true,
+  // aucune page n'utilise Astro.session : évite le binding KV SESSION créé par l'adaptateur
+  session: false,
+  adapter: cloudflare({ imageService: 'compile' }),
 })

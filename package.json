@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "packageManager": "pnpm@12.6.0+sha512.3ef68f951cb111ac204b4a5a16f0b2ddf0da56a96e0413e81d855d9f0b55ef926714709028e1cd00c405c2c5fb7b9e8ec4dc46777c805d0373c2f2ff00fd20ec",
   "engines": {
-    "node": ">=22",
+    "node": "^22.22.3 || ^24.16.0 || >=26.3.0",
     "pnpm": ">=12"
   },
   "scripts": {
@@ -15,25 +15,27 @@
     "lint": "eslint . --ext .js,.ts,.astro,.css"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.6",
-    "@astrojs/cloudflare": "^12.6.12",
-    "@astrojs/sitemap": "^3.6.0",
-    "@tailwindcss/vite": "^4.1.16",
+    "@astrojs/check": "^0.9.10",
+    "@astrojs/cloudflare": "^14.3.3",
+    "@astrojs/sitemap": "^3.7.4",
+    "@tailwindcss/vite": "^4.3.3",
     "animejs": "^4.2.2",
-    "astro": "^5.16.6",
+    "astro": "^7.3.5",
     "class-variance-authority": "^0.7.1",
     "clsx": "2.1.1",
     "leaflet": "^1.9.4",
     "tailwind-merge": "3.3.1",
-    "tailwindcss": "^4.1.16"
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^6.2.0",
-    "eslint": "^9.39.0",
-    "eslint-plugin-astro": "^1.4.0",
-    "eslint-plugin-format": "^1.0.2",
-    "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-tailwindcss": "^0.7.1",
-    "typescript": "^5.9.3"
+    "@antfu/eslint-config": "^9.5.1",
+    "astro-eslint-parser": "^3.2.0",
+    "eslint": "^10.11.0",
+    "eslint-plugin-astro": "^3.2.1",
+    "eslint-plugin-format": "^2.0.1",
+    "prettier-plugin-astro": "^1.1.0",
+    "prettier-plugin-tailwindcss": "^0.8.1",
+    "typescript": "^6.0.3",
+    "wrangler": "^4.141.0"
   }
 }
