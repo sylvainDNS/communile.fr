@@ -122,16 +122,18 @@ Tout est livré dans **une seule PR**. On fait un commit par phase qui touche le
 
 **Independent Test** : `imageBytes` de `weight.mjs` sur la prévisualisation locale, comparé à `tmp/prerendu/ref/weight.json` (SC-003). Captures à 390 et 1440 px identiques à la référence (SC-001). SC-004 se mesure sur la preview (T033).
 
-- [ ] T017 [US1] Comparer les images de `dist/client/*.html` à la référence `tmp/astro-upgrade/current/prod/html/` : même nombre de `<img>` par page, mêmes `alt`, mêmes `width` et `height`, mêmes `sizes`, et mêmes descripteurs `w` dans chaque `srcset`. Seules les URL changent. Un écart indique un changement non voulu : le corriger avant de continuer.
-- [ ] T018 [US1] Pendant que la prévisualisation locale tourne : `node weight.mjs <local_url> tmp/prerendu/local/weight.json`. Attendu :
+- [X] T017 [US1] Comparer les images de `dist/client/*.html` à la référence `tmp/astro-upgrade/current/prod/html/` : même nombre de `<img>` par page, mêmes `alt`, mêmes `width` et `height`, mêmes `sizes`, et mêmes descripteurs `w` dans chaque `srcset`. Seules les URL changent. Un écart indique un changement non voulu : le corriger avant de continuer.
+- [X] T018 [US1] Pendant que la prévisualisation locale tourne : `node weight.mjs <local_url> tmp/prerendu/local/weight.json`. Attendu :
   - `imageBytes` de `/` à 390 px au moins 50 % plus bas que dans la référence (T005), ce qui vérifie SC-003. Les images ne sont pas recompressées : la comparaison entre local et production est donc valable.
   - Relever `totalBytes`, sans le comparer. En local, HTML, CSS et JS ne passent pas par la même compression qu'en production. SC-004 se mesure sur la preview, en T033.
 
   Noter les chiffres dans `tmp/prerendu/notes.md`.
-- [ ] T019 [US1] Captures locales : `node shots.mjs tmp/prerendu/local/pshots <local_url>` (depuis le dossier puppeteer). Comparer aux captures de `tmp/astro-upgrade/current/prod/pshots/` avec le même outil de diff pixel qu'en 002 (voir `tmp/astro-upgrade/palier-notes.md`, *Visuel palier B*). Écarts tolérés : antialiasing des badges animés et des tuiles de carte. Noter les pourcentages dans `notes.md`.
-- [ ] T020 [US1] `node tmp/astro-upgrade/map.mjs <local_url>/le-wattignies` (depuis le dossier puppeteer) : tuiles chargées, marqueur présent, 0 erreur JS. Ouvrir aussi le menu mobile et la FAQ (FR-008).
+- [X] T019 [US1] Captures locales : `node shots.mjs tmp/prerendu/local/pshots <local_url>` (depuis le dossier puppeteer). Comparer aux captures de `tmp/astro-upgrade/current/prod/pshots/` avec le même outil de diff pixel qu'en 002 (voir `tmp/astro-upgrade/palier-notes.md`, *Visuel palier B*). Écarts tolérés : antialiasing des badges animés et des tuiles de carte. Noter les pourcentages dans `notes.md`.
 
-**Checkpoint** : SC-001 et SC-003 sont vérifiés localement. Pas de commit : aucune modification de code dans cette phase.
+  **Constat d'implémentation (R13)** : le premier diff a révélé un double recadrage des photos de cartes, jusqu'à 8 % de pixels différents. La correction ajoute `fit="outside"` à `<Image>` dans `src/components/place-card.astro`, `src/components/spotlight-card.astro`, `src/features/wattignies/components/watt-residents-card.astro` et `src/features/home/components/home-what-card.astro`. Il faut ensuite rebuild, puis rejouer T017 et le diff. Écart résiduel accepté : environ 2 % de netteté à DPR 1, faute de `sizes` sur certaines images (préexistant, issue T038).
+- [X] T020 [US1] `node tmp/astro-upgrade/map.mjs <local_url>/le-wattignies` (depuis le dossier puppeteer) : tuiles chargées, marqueur présent, 0 erreur JS. Ouvrir aussi le menu mobile et la FAQ (FR-008).
+
+**Checkpoint** : SC-001 et SC-003 sont vérifiés localement. Commit du correctif R13 (agent `git-commit`), par exemple `fix(images): ne pas recadrer les variantes au build (fit outside)`.
 
 ---
 

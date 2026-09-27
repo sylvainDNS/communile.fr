@@ -139,6 +139,28 @@ Date : 2026-09-27. Toutes les décisions ci-dessous ont été validées par un p
   - Il n'y a pas de diff HTML strict, puisque `src` et `srcset` changent forcément. On fait en revanche une vérification ciblée : `<head>` (title, description, canonique, OG, JSON-LD), nombre d'images, `alt`, `aria-current`.
 - **Rationale** : le mainteneur est souvent en 3G, et les temps mesurés sont bruités (002, *palier-notes*). Le poids et le pixel sont déterministes. Pour Lighthouse, on alterne 3 mesures avant/après et on compare les médianes (SC-005).
 
+## R13 : Recadrage des variantes (constat d'implémentation, T019)
+
+- **Constat** : au premier diff visuel local, les photos des cartes de l'accueil sont zoomées. Il y avait 5 à 8 % de pixels différents sur `/` et `/le-wattignies` en 390 px.
+  - Astro calcule la hauteur de chaque variante du `srcset` à partir du ratio **déclaré** (`width` / `height`). Sans `fit`, sharp applique son défaut, `cover`, et recadre chaque variante à ce ratio.
+  - Avant, les sources étaient servies entières et seul le CSS `object-cover` recadrait. Maintenant, le recadrage se fait deux fois : zoom et cadrage différent.
+  - T017 ne l'a pas détecté, parce que les attributs HTML sont identiques.
+- **Recensement** : 24 images ont un ratio déclaré différent de celui de leur source. Dans tous les cas, la source est plus haute que le ratio déclaré. Elles viennent de 4 composants :
+  - `src/components/place-card.astro` (800 × 256) ;
+  - `src/components/spotlight-card.astro` (404 × 260) ;
+  - `src/features/wattignies/components/watt-residents-card.astro` (404 × 260) ;
+  - `src/features/home/components/home-what-card.astro` (200 × 200, illustrations en 150 × 157).
+- **Décision** : ajouter `fit="outside"` à ces 4 `<Image>`. sharp garde alors le ratio de la source et couvre la boîte demandée : largeur égale au descripteur `w`, hauteur supérieure ou égale. Seul le CSS recadre, comme avant.
+  - `fit` n'est pas rendu dans le HTML (`layout` est absent). Les attributs `width`, `height`, `srcset` et `sizes` restent identiques (T017 toujours 8/8).
+  - Vérifié : la variante 800w de `les-landes-fertiles-card` passe de 800 × 256 à 800 × 533.
+- **Alternatives écartées** :
+  - retirer `height` des composants : cela change les attributs déclarés (FR-006) ;
+  - `fit="contain"` (sharp `inside`) : cela donne des variantes plus étroites que leur descripteur, donc floues.
+- **Écart résiduel** : environ 2 % sur `/` et `/le-wattignies` en 390 px avec une densité de pixels de 1. Le cadrage est identique, mais la netteté est un peu moindre.
+  - Cause : quelques images n'ont pas de `sizes`, un oubli qui existait déjà (ex. `watt-marches-section.astro`). Le navigateur choisit alors une variante adaptée à `100vw`, que `object-cover` agrandit pour remplir la hauteur fixe.
+  - Avant, la source pleine taille masquait ce défaut. À la densité 2 ou 3 des vrais téléphones, des variantes plus grandes sont choisies.
+  - La révision des `sizes` et des `widths` est hors périmètre de la spec : elle relève de l'issue de suivi (T038).
+
 ## Résumé du diff prototypé (6 fichiers + 1 nouveau)
 
 - `astro.config.mjs` :
