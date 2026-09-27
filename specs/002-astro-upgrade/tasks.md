@@ -192,7 +192,7 @@ Tout est livré dans **une seule PR**, avec un commit par palier (commits via l'
   - la ligne « Engines » → valeurs de `package.json` (Node `^22.22.3 || ^24.16.0 || >=26.3.0`, pnpm ≥ 12).
 
   Le reste du fichier est hors périmètre.
-- [ ] T041 [US3] Commit de la documentation, par exemple `docs: aligner constitution et règles agent sur Astro 7 et Workers`. Puis `git push`.
+- [X] T041 [US3] Commit de la documentation, par exemple `docs: aligner constitution et règles agent sur Astro 7 et Workers`. Puis `git push`.
 
 **Checkpoint** : US3 validée.
 
@@ -202,7 +202,7 @@ Tout est livré dans **une seule PR**, avec un commit par palier (commits via l'
 
 **Purpose** : une seule PR, puis la bascule du domaine, sans interruption perceptible (SC-006).
 
-- [ ] T042 Ouvrir la PR `002-astro-upgrade` → `main` avec `gh pr create`. La description contient :
+- [X] T042 Ouvrir la PR `002-astro-upgrade` → `main` avec `gh pr create`. La description contient :
   - le résumé des paliers (un commit par palier) ;
   - les écarts justifiés (TS 6, ESLint forcé, Pages → Workers : tableau Complexity Tracking de [plan.md](./plan.md)) ;
   - les résultats de parité (diff HTML, captures, Lighthouse avant/après, `outdated.txt`) ;
