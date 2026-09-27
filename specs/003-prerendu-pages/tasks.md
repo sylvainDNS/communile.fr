@@ -173,8 +173,8 @@ Tout est livré dans **une seule PR**. On fait un commit par phase qui touche le
 
 **Purpose** : documentation (palier 3), validation sur `*.workers.dev` (palier 4), puis production (palier 5).
 
-- [ ] T028 [P] Dans `specs/002-astro-upgrade/plan.md`, section *Complexity Tracking → Dérogations* : remplacer la colonne « Suivi » de D1, D2 et D3 par `Résorbée → [spec 003](../003-prerendu-pages/spec.md)`. Ne rien toucher d'autre (FR-013).
-- [ ] T029 [P] Dans `.cursor/rules/context.mdc`, lignes 13 et 27, remplacer « with server output » et « (server output) » par une mention du prérendu (`output: 'static'`, pages prérendues, Worker assets-only). Ne pas corriger les autres informations périmées du fichier (mention de Biome), qui sont hors périmètre.
+- [X] T028 [P] Dans `specs/002-astro-upgrade/plan.md`, section *Complexity Tracking → Dérogations* : remplacer la colonne « Suivi » de D1, D2 et D3 par `Résorbée → [spec 003](../003-prerendu-pages/spec.md)`. Ne rien toucher d'autre (FR-013).
+- [X] T029 [P] Dans `.cursor/rules/context.mdc`, lignes 13 et 27, remplacer « with server output » et « (server output) » par une mention du prérendu (`output: 'static'`, pages prérendues, Worker assets-only). Ne pas corriger les autres informations périmées du fichier (mention de Biome), qui sont hors périmètre.
 - [ ] T030 `pnpm build && pnpm lint`, puis commit (agent `git-commit`) de T028 et T029. Exemple de message : `docs: marquer les dérogations D1–D3 résorbées par le prérendu`. Puis `git push -u origin 003-prerendu-pages`.
 - [ ] T031 Ouvrir la PR vers `main` (`gh pr create`). La description reprend :
   - le résumé du plan ;
