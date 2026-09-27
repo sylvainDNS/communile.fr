@@ -2,13 +2,18 @@
  * For more details on how to configure Wrangler, refer to:
  * https://developers.cloudflare.com/workers/wrangler/configuration/
  *
- * Déployé en Worker avec static assets : `main` et `assets` sont injectés par @astrojs/cloudflare.
+ * Déployé en Worker avec static assets. @astrojs/cloudflare fusionne `assets` et génère la config finale :
+ * tant qu'aucune page n'est dynamique, elle est assets-only (sans `main`), aucune requête n'exécute de code.
  */
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "communile-fr",
   "compatibility_date": "2026-09-26",
   "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    // page 404 personnalisée servie avec un statut 404
+    "not_found_handling": "404-page"
+  },
   "observability": {
     "enabled": true
   }

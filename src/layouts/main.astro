@@ -4,6 +4,7 @@ import { getImage } from 'astro:assets'
 import Footer from '../components/footer.astro'
 import Header from '../components/header.astro'
 import { DEFAULT_DESCRIPTION, SITE_NAME, SITE_URL } from '../utils/constants'
+import { getPagePath } from '../utils/url'
 import '../styles/global.css'
 
 interface Props {
@@ -21,12 +22,12 @@ const { content, theme, noindex = false } = Astro.props
 
 const title = content?.title ? `${content.title} · ${SITE_NAME}` : SITE_NAME
 const description = content?.description || DEFAULT_DESCRIPTION
-const canonicalURL = new URL(Astro.url.pathname, SITE_URL)
+const canonicalURL = new URL(getPagePath(Astro.url), SITE_URL)
 
 let ogImageUrl = `${SITE_URL}/communile-logo.webp`
 if (content?.image) {
   const optimizedImage = await getImage({ src: content.image, width: 1200 })
-  ogImageUrl = new URL(optimizedImage.src, Astro.url).href
+  ogImageUrl = new URL(optimizedImage.src, SITE_URL).href
 }
 
 let jsonLd = content?.jsonLd
