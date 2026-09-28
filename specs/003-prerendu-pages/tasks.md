@@ -201,8 +201,8 @@ Tout est livré dans **une seule PR**. On fait un commit par phase qui touche le
   - accessibilité et SEO sans baisse.
 
   Ces mesures sont bruitées en 3G : si l'écart dépasse le seuil, relancer une série alternée avant de conclure. Consigner le résultat dans `notes.md` et en commentaire de PR.
-- [ ] T035 🧑 Checkpoint humain : le mainteneur relit la PR et les chiffres, puis merge sur `main`. Workers Builds déploie `main`.
-- [ ] T036 Quickstart §4 sur la production :
+- [X] T035 🧑 Checkpoint humain : le mainteneur relit la PR et les chiffres, puis merge sur `main`. Workers Builds déploie `main`.
+- [X] T036 Quickstart §4 sur la production :
   - `snapshot.sh https://communile.fr tmp/prerendu/prod` : mêmes statuts qu'en T014, sauf `/contact` qui répond 404 (T039) ;
   - `curl -s -o /dev/null -w '%{http_code}' https://communile.fr/mix/load/script.js` renvoie 200, **sans aucun appel à `/mix/load/event`** ;
   - `curl -s https://communile.fr/robots.txt | grep -i '^sitemap:'` affiche la ligne : la fusion avec le *managed robots.txt* de Cloudflare la conserve ;
@@ -211,8 +211,10 @@ Tout est livré dans **une seule PR**. On fait un commit par phase qui touche le
   - pas de `X-Robots-Tag` sur `https://communile.fr/le-wattignies`, et `/contact` répond 404 (page supprimée, T039).
 
   Si la ligne `Sitemap:` manque, le signaler au mainteneur (réglage *managed robots.txt* de la zone), sans rien modifier dans Cloudflare.
-- [ ] T037 🧑 Checkpoint humain : dans le dashboard du Worker `communile-fr` (Metrics), le mainteneur confirme que les requêtes de pages ne génèrent plus d'invocations (SC-002). Le réglage Runtime « Cache » reste sur Disabled (R10).
-- [ ] T038 Proposer au mainteneur d'ouvrir une issue de suivi « Revoir les `widths` et `sizes` des images » (R5 : `wattignies-marches-de-saison` pèse encore 924 Ko en pleine largeur). Ne l'ouvrir qu'après son accord. Cocher ensuite les tâches de ce fichier et committer `specs/003-prerendu-pages/tasks.md` (agent `git-commit`), par exemple `docs(specs): cocher la mise en production du prérendu`.
+- [X] T037 🧑 Checkpoint humain : dans le dashboard du Worker `communile-fr` (Metrics), le mainteneur confirme que les requêtes de pages ne génèrent plus d'invocations (SC-002). Le réglage Runtime « Cache » reste sur Disabled (R10).
+  → Vérifié par l'API GraphQL Analytics (`workersInvocationsAdaptive`, jeton OAuth de wrangler en lecture). Dernières invocations dans la tranche de 21:20 UTC (ancien Worker, déploiement terminé vers 21:23). De 21:25 à 21:46 : 0 invocation, malgré le trafic de vérification (T036, T040). Le réglage Runtime « Cache » reste Disabled.
+- [X] T038 Proposer au mainteneur d'ouvrir une issue de suivi « Revoir les `widths` et `sizes` des images » (R5 : `wattignies-marches-de-saison` pèse encore 924 Ko en pleine largeur). Ne l'ouvrir qu'après son accord. Cocher ensuite les tâches de ce fichier et committer `specs/003-prerendu-pages/tasks.md` (agent `git-commit`), par exemple `docs(specs): cocher la mise en production du prérendu`.
+  → Issue [#86](https://github.com/sylvainDNS/communile.fr/issues/86) ouverte avec l'accord du mainteneur : `sizes` manquants, variantes pleine largeur trop lourdes, variantes `fit="outside"` plus hautes que nécessaire, illustrations de `home-what-card`.
 
 ---
 
@@ -293,6 +295,6 @@ Puis :
 
 - [X] T039 🧑 CRITICAL — Faire vérifier par le mainteneur les horaires et l'adresse de `src/pages/contact.astro`, puis les corriger. Les horaires affichés (« Lundi - Vendredi : 9h00 - 18h00 », « Samedi : 10h00 - 16h00 ») contredisent la FAQ du Wattignies (14h–19h du mardi au samedi), et l'adresse se limite à « Le Wattignies, Nantes ». Tant qu'ils ne sont pas vérifiés, exclure `/contact` du sitemap dans `astro.config.mjs`. Committer avec l'agent `git-commit` et pousser sur la PR #85, per Constitution I, FR-015 (contradicts)
   → **Décision du mainteneur** : `src/pages/contact.astro` est un reliquat du développement initial (commit `3801584`, 2025-09-08), jamais rempli et lié nulle part. On le supprime plutôt que de le corriger. Résultat : `/contact` répond 404, le build produit 7 pages et le sitemap 6 URL. Spec, contrat, quickstart, plan et data model sont alignés.
-- [ ] T040 Après le déploiement en production (T036), mesurer Lighthouse mobile sur `/le-wattignies` en production : `ROUTES="/le-wattignies" tmp/prerendu/lh-multi.sh 4 tmp/prerendu/lh-prod https://communile.fr`. Comparer la médiane à la référence de 77 (7 mesures, `tmp/prerendu/lh*/communile.fr-le-wattignies-*.json`) et consigner le résultat dans `notes.md` et en commentaire de la PR #85, per SC-005 (partial)
+- [X] T040 Après le déploiement en production (T036), mesurer Lighthouse mobile sur `/le-wattignies` en production : `ROUTES="/le-wattignies" tmp/prerendu/lh-multi.sh 4 tmp/prerendu/lh-prod https://communile.fr`. Comparer la médiane à la référence de 77 (7 mesures, `tmp/prerendu/lh*/communile.fr-le-wattignies-*.json`) et consigner le résultat dans `notes.md` et en commentaire de la PR #85, per SC-005 (partial)
 - [X] T041 Tracer dans `tasks.md` (sous-note de T026 ou de T034) et dans la section *Clarifications* de `spec.md` les changements faits hors des tâches initiales, avec leur justification : numéro de `/contact` remplacé par celui du Wattignies (`b22f3a4`, principe I) ; pas de canonique ni d'`og:url` sur les pages `noindex`, filtre de sitemap exact et `getLogoUrl` mémoïsé (`6557f7d`, revue de code), per FR-007, FR-014 (unrequested)
   → Tracé dans la section *Clarifications* de `spec.md` (suppression de `/contact`, corrections de revue `6557f7d`) et dans le contrat.
