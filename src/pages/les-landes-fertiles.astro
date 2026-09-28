@@ -10,9 +10,12 @@ import LandesPartnersSection from '@/features/landes-fertiles/sections/landes-pa
 import LandesWhatSection from '@/features/landes-fertiles/sections/landes-what-section.astro'
 import Layout from '../layouts/main.astro'
 import { SITE_URL } from '../utils/constants'
+import { getLogoUrl } from '../utils/image'
 
 const description
   = 'Les Landes Fertiles est la ferme maraîchère bio de Commun\'île. Découvrez nos légumes de saison, nos points de vente et comment participer à la vie de la ferme.'
+
+const logoUrl = await getLogoUrl()
 
 // Schema LocalBusiness JSON-LD
 const localBusinessSchema = {
@@ -21,7 +24,7 @@ const localBusinessSchema = {
   'name': 'Les Landes Fertiles',
   'description': description,
   'url': `${SITE_URL}/les-landes-fertiles`,
-  'image': `${SITE_URL}/communile-logo.webp`,
+  'image': logoUrl,
   'telephone': '+33759557814',
   'email': 'landesfertiles@communile.fr',
   'address': {

@@ -24,6 +24,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "2.1.1",
     "leaflet": "^1.9.4",
+    "sharp": "^0.35.4",
     "tailwind-merge": "3.3.1",
     "tailwindcss": "^4.3.3"
   },

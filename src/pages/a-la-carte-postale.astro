@@ -9,6 +9,7 @@ import LaCarePostaleRestaurantSection from '@/features/la-carte-postale/sections
 import LaCarePostaleWhatSection from '@/features/la-carte-postale/sections/la-carte-postale-what-section.astro'
 import Layout from '../layouts/main.astro'
 import { SITE_URL } from '../utils/constants'
+import { getLogoUrl } from '../utils/image'
 
 const description
 = `
@@ -19,6 +20,8 @@ const description
 📍10 rue de l’île Mabon Nantes
 `
 
+const logoUrl = await getLogoUrl()
+
 // Schema Restaurant JSON-LD
 const restaurantSchema = {
   '@context': 'https://schema.org',
@@ -26,7 +29,7 @@ const restaurantSchema = {
   'name': 'À La Carte Postale',
   'description': description,
   'url': `${SITE_URL}/a-la-carte-postale`,
-  'image': `${SITE_URL}/communile-logo.webp`,
+  'image': logoUrl,
   'telephone': '+33759557814',
   'email': 'alacartepostale@communile.fr',
   'address': {

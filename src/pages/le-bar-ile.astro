@@ -9,9 +9,12 @@ import BarIleRestaurantSection from '@/features/bar-ile/sections/bar-ile-restaur
 import BarIleWhatSection from '@/features/bar-ile/sections/bar-ile-what-section.astro'
 import Layout from '../layouts/main.astro'
 import { SITE_URL } from '../utils/constants'
+import { getLogoUrl } from '../utils/image'
 
 const description
   = 'Le Bar\'Île est un bistro de quartier et bar d\'habitué·es à Nantes. Restaurant végétarien du midi, bar du soir avec programmation culturelle. Réservation conseillée.'
+
+const logoUrl = await getLogoUrl()
 
 // Schema Restaurant JSON-LD
 const restaurantSchema = {
@@ -20,7 +23,7 @@ const restaurantSchema = {
   'name': 'Le Bar\'Île',
   'description': description,
   'url': `${SITE_URL}/le-bar-ile`,
-  'image': `${SITE_URL}/communile-logo.webp`,
+  'image': logoUrl,
   'telephone': '+33240478612',
   'email': 'barile@communile.fr',
   'address': {

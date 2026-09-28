@@ -19,12 +19,14 @@ const { image, title, description, tagColor, alt, class: className, href } = Ast
 
 <a href={href} target="_blank" class="cursor-pointer">
   <div class={cn('group/residents relative w-full max-w-[400px] h-[260px] rounded overflow-hidden', className)}>
+    {/* fit outside : pas de recadrage au build, le CSS object-cover recadre comme avec l'image source */}
     <Image
       src={image}
       alt={alt}
       class="h-full w-full object-cover object-center transition-transform duration-300 group-hover/residents:scale-105 group-hover/residents:-rotate-2"
       width={404}
       height={260}
+      fit="outside"
       widths={[330, 404, 540]}
       loading="lazy"
     />

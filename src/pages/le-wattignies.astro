@@ -12,9 +12,12 @@ import WattRestaurantSection from '@/features/wattignies/sections/watt-restauran
 import WattCestQuoiSection from '@/features/wattignies/sections/watt-what-section.astro'
 import Layout from '../layouts/main.astro'
 import { SITE_URL } from '../utils/constants'
+import { getLogoUrl } from '../utils/image'
 
 const description
   = 'Le Wattignies est un tiers-lieu social à Nantes où la solidarité et l\'inclusion occupent une place centrale. Restaurant, bar, programmation culturelle et 12 structures résidentes de l\'ESS.'
+
+const logoUrl = await getLogoUrl()
 
 // Schema LocalBusiness JSON-LD
 const localBusinessSchema = {
@@ -23,7 +26,7 @@ const localBusinessSchema = {
   'name': 'Le Wattignies',
   'description': description,
   'url': `${SITE_URL}/le-wattignies`,
-  'image': `${SITE_URL}/communile-logo.webp`,
+  'image': logoUrl,
   'telephone': '+33228495939',
   'email': 'wattignies@communile.fr',
   'address': {

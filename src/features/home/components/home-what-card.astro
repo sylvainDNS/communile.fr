@@ -34,9 +34,11 @@ const { title, description, subtitle, image, class: className, ...delegated } = 
     </Text>
   </div>
   <div class="h-[200px] md:hidden"></div>
+  {/* fit outside : pas de recadrage au build, l'illustration source est servie entière comme avant */}
   <Image
     width={200}
     height={200}
+    fit="outside"
     src={image.src}
     alt={image.alt}
     class={cn('md:absolute bottom-0 right-0', image.class)}
