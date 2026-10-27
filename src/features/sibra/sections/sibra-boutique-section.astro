@@ -1,0 +1,56 @@
+---
+import { Image } from 'astro:assets'
+import Card from '@/components/card.astro'
+import Container from '@/components/container.astro'
+import Heading from '@/components/heading.astro'
+import Section from '@/components/section.astro'
+import Text from '@/components/text.astro'
+import sibraBouteillesImage from '../images/sibra-bouteilles.webp'
+
+type Horaire = { jour: string, plage: string }
+
+const horaires: Horaire[] = [
+  { jour: 'Vendredi', plage: '16 h – 20 h' },
+  { jour: 'Samedi', plage: '11 h – 20 h' },
+]
+---
+
+<Section variant="tertiary">
+  <Container class="grid grid-cols-1 items-start gap-12 md:grid-cols-2 md:items-stretch">
+    {/* `my-auto` : la colonne texte est plus courte que la photo bornée à 560 px ; sans centrage vertical,
+        le bas de la colonne laisse une large plage d'orange vide sur desktop (patron de `sibra-what-section`). */}
+    <div class="my-auto space-y-6">
+      <Heading as="h2" size="xl" weight="bold" color="foreground">La boutique</Heading>
+      <Text size="base" class="max-w-xl text-foreground">
+        La boutique de la brasserie est ouverte au 121 rue du Général Buat.
+      </Text>
+      <Card class="w-fit">
+        <dl class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {
+            horaires.map(horaire => (
+              <div>
+                <dt class="text-sm font-semibold tracking-wide text-foreground uppercase">{horaire.jour}</dt>
+                <dd class="text-2xl font-bold text-foreground">{horaire.plage}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </Card>
+      <Text size="base" class="max-w-xl text-foreground">
+        N’hésitez pas à venir goûter les nouveautés et les classiques de la brasserie et à en discuter avec le
+        brasseur. Il y a toujours quelques bouteilles d’ouvertes dans le frigo.
+      </Text>
+    </div>
+
+    <div class="flex">
+      <Image
+        src={sibraBouteillesImage}
+        alt="Des bouteilles de bière brunes, capsulées et sans étiquette, alignées sur une étagère en bois de la boutique de La Sibra"
+        class="h-full max-h-[560px] w-full max-w-[460px] rounded-2xl object-cover"
+        widths={[330, 400, 540, sibraBouteillesImage.width]}
+        sizes="(min-width: 768px) 460px, 100vw"
+        loading="lazy"
+      />
+    </div>
+  </Container>
+</Section>
