@@ -1,5 +1,9 @@
 # build output
 dist/
+# captures de travail locales (non versionnées)
+tmp/
+# config générée par @astrojs/cloudflare (wrangler)
+.wrangler/
 # generated types
 .astro/
 

@@ -12,9 +12,12 @@ import LaboDivaLocationSection from '@/features/le-labo-diva/sections/le-labo-di
 import LaboDivaWhatSection from '@/features/le-labo-diva/sections/le-labo-diva-what-section.astro'
 import Layout from '../layouts/main.astro'
 import { SITE_URL } from '../utils/constants'
+import { getLogoUrl } from '../utils/image'
 
 const description
   = 'Le Labo Diva est un lieu à Nantes proposant cantine, marché de producteurs, café-bar, coworking et location d\'espaces. Un espace convivial et engagé.'
+
+const logoUrl = await getLogoUrl()
 
 // Schema LocalBusiness JSON-LD
 const localBusinessSchema = {
@@ -23,7 +26,7 @@ const localBusinessSchema = {
   'name': 'Le Labo Diva',
   'description': description,
   'url': `${SITE_URL}/le-labo-diva`,
-  'image': `${SITE_URL}/communile-logo.webp`,
+  'image': logoUrl,
   'telephone': '+33788941741',
   'email': 'labodiva@communile.fr',
   'address': {

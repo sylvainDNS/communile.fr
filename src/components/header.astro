@@ -3,6 +3,7 @@ import { Image } from 'astro:assets'
 
 import logo from '@/images/communile-logo.webp'
 import { PATH, SITE_NAME } from '@/utils/constants'
+import { getPagePath } from '@/utils/url'
 
 import Button from './button.astro'
 import Icon from './icon.astro'
@@ -10,7 +11,7 @@ import Link from './link.astro'
 import NavLink from './nav-link.astro'
 import VisuallyHidden from './visually-hidden.astro'
 
-const pathname = new URL(Astro.request.url).pathname
+const pathname = getPagePath(Astro.url)
 
 const links = [
   {
