@@ -103,7 +103,7 @@ contenu réel de `la-sibra-card.webp` : à vérifier en ouvrant l'image avant de
 ```
 
 Les horaires sont **recopiés** depuis `sibra-boutique-section.astro` (source de vérité publiée en
-#61), pas importés — voir D3 et la dette qui y est signalée. La **notation** est en revanche celle
+\#61), pas importés — voir D3 et la dette qui y est signalée. La **notation** est en revanche celle
 des cinq cartes voisines (`HHhMM`, trait d'union), pas celle de la page Sibra (`16 h – 20 h`) : la
 donnée est la même, la convention typographique est celle de la surface éditée (D8).
 

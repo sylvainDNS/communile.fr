@@ -127,7 +127,7 @@ Site Astro : `src/pages/`, `src/features/<lieu>/`, `src/utils/`, `public/`. Chem
 | Canonical ↔ sitemap | `curl` sur `/la-sibra` et `/` | `https://communile.fr/la-sibra` et `https://communile.fr/` — identiques aux `<loc>` caractère pour caractère |
 | JSON-LD parsable | extraction du `<script>` rendu + `JSON.parse` | OK |
 | **Validateur schema.org** | **POST de la page rendue sur `validator.schema.org/validate`** | **`numObjects=1`, `totalNumErrors=0`, `totalNumWarnings=0`, `type=Brewery`** |
-| Coordonnées sous gate #67 | `grep -E 'telephone|bce\.brasserie|0633015663'` sur le HTML rendu | aucune occurrence |
+| Coordonnées sous gate #67 | `grep -E 'telephone\|bce\.brasserie\|0633015663'` sur le HTML rendu | aucune occurrence |
 | Description | mesure sur le HTML rendu | 151 caractères, identique au `description` du JSON-LD |
 | Image de partage | comparaison `og:image` / `image` du JSON-LD | même transformation `w=1200`, origine canonique pour le JSON-LD (cf. `research.md` R9) |
 

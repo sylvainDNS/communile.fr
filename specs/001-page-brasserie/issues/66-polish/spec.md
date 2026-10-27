@@ -13,7 +13,7 @@
 ## Contexte
 
 Les sept stories de l'epic sont mergées (#59 socle, #60 hero/what/instagram, #61 boutique/horaires/infos+carte,
-#62 header/footer/accueil/Carte Postale, #63 JSON-LD/sitemap/robots, #64 bières, #65 tireuse). Chaque story a
+\#62 header/footer/accueil/Carte Postale, #63 JSON-LD/sitemap/robots, #64 bières, #65 tireuse). Chaque story a
 été validée isolément ; aucune revue d'ensemble n'a eu lieu. Les revues successives ont consigné des dettes
 dont plusieurs touchent des composants partagés déjà en production sur les cinq autres pages de lieux.
 
